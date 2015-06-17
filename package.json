@@ -1,0 +1,30 @@
+{
+  "name": "liferay-forms-ui-tests",
+  "version": "0.0.0",
+  "description": "Framework for testing Liferay Forms",
+  "homepage": "https://github.com/brunobasto/liferay-forms-ui-tests",
+  "main": "tests/functional/runner.js",
+  "scripts": {
+    "test": "./tests/functional/run.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/brunobasto/liferay-forms-ui-tests.git"
+  },
+  "keywords": [
+    "webdriverio",
+    "cucumber",
+    "test",
+    "selenium"
+  ],
+  "author": "Bruno Basto <bruno.basto@liferay.com>",
+  "license": "MIT",
+  "dependencies": {
+    "chai": "~1.9.0",
+    "deepmerge": "^0.2.7",
+    "glob": "^4.4.0",
+    "mocha": "^1.18.2",
+    "webdriverio": "^2.3.0",
+    "yadda": "^0.11.4"
+  }
+}
