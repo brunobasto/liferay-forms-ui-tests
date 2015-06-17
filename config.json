@@ -1,0 +1,4 @@
+{
+	"liferay-bundle-dir": "../bundles/tomcat-7.0.62",
+	"liferay-source-dir": "../liferay-portal"
+}
