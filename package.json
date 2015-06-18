@@ -1,9 +1,12 @@
 {
   "name": "liferay-forms-ui-tests",
-  "version": "0.0.0",
+  "version": "0.0.6",
   "description": "Framework for testing Liferay Forms",
   "homepage": "https://github.com/brunobasto/liferay-forms-ui-tests",
   "main": "tests/functional/runner.js",
+  "bin": {
+    "forms-tests": "./bin/cli.js"
+  },
   "scripts": {
     "test": "./node_modules/gulp/bin/gulp.js test"
   },
@@ -21,7 +24,7 @@
   ],
   "author": "Bruno Basto <bruno.basto@liferay.com>",
   "license": "MIT",
-  "devDependencies": {
+  "dependencies": {
     "chai": "~1.9.0",
     "deepmerge": "^0.2.7",
     "glob": "^4.4.0",
@@ -42,8 +45,10 @@
     "merge": "^1.2.0",
     "mocha": "^1.18.2",
     "open": "0.0.5",
+    "optimist": "^0.6.1",
     "path": "^0.11.14",
     "properties": "^1.2.1",
+    "rc": "^1.0.3",
     "require-dir": "^0.3.0",
     "run-sequence": "^1.1.0",
     "selenium-standalone": "^4.4.2",

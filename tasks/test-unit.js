@@ -14,13 +14,13 @@ module.exports = function() {
 	});
 
 	gulp.task('test:coverage', [], function(done) {
-		runKarma({configFile: path.resolve('tests/unit/karma-coverage.conf.js')}, function() {
+		runKarma({configFile: path.resolve(__dirname, '../tests/unit/karma-coverage.conf.js')}, function() {
 			done();
 		});
 	});
 
 	gulp.task('test:coverage:open', ['test:coverage'], function(done) {
-		openFile(path.resolve('tests/unit/coverage/lcov/lcov-report/index.html'));
+		openFile(path.resolve(__dirname, '../tests/unit/coverage/lcov/lcov-report/index.html'));
 		done();
 	});
 
@@ -118,7 +118,7 @@ module.exports = function() {
 
 function runKarma(config, done) {
 	config = merge({
-		configFile: path.resolve('tests/unit/karma.conf.js'),
+		configFile: path.resolve(__dirname, '../tests/unit/karma.conf.js'),
 		singleRun: true
 	}, config);
 	karma.start(config, done);
