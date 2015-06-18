@@ -1,11 +1,11 @@
 {
   "name": "liferay-forms-ui-tests",
-  "version": "0.0.6",
+  "version": "0.0.8",
   "description": "Framework for testing Liferay Forms",
   "homepage": "https://github.com/brunobasto/liferay-forms-ui-tests",
   "main": "tests/functional/runner.js",
   "bin": {
-    "forms-tests": "./bin/cli.js"
+    "forms": "./bin/cli.js"
   },
   "scripts": {
     "test": "./node_modules/gulp/bin/gulp.js test"
@@ -45,7 +45,6 @@
     "merge": "^1.2.0",
     "mocha": "^1.18.2",
     "open": "0.0.5",
-    "optimist": "^0.6.1",
     "path": "^0.11.14",
     "properties": "^1.2.1",
     "rc": "^1.0.3",
@@ -54,6 +53,7 @@
     "selenium-standalone": "^4.4.2",
     "sinon": "^1.15.3",
     "webdriverio": "^2.3.0",
-    "yadda": "^0.11.4"
+    "yadda": "^0.11.4",
+    "yargs": "^3.11.0"
   }
 }

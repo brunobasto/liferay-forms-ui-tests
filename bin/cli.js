@@ -1,44 +1,51 @@
 #!/usr/bin/env node
 
-var optimist = require('optimist');
 var rc = require('rc');
 var gulp = require('gulp');
 var path = require('path');
 var fs = require('fs');
 
-var argv = rc(
-	'forms-tests', {}, optimist
-	.usage('Usage: $0 [options]')
-	.alias('v', 'version').describe('version', 'Prints current version.').boolean('boolean')
-	.argv);
+var yargs = require('yargs')
+	.string('_')
+	.usage('forms [command] [options]')
+	.alias('v', 'version')
+	.describe('version', 'Prints current version')
+	.help('h')
+	.epilog('Copyright 2015')
+	.version(function() {
+		return require('../package').version;
+	});
 
-if (argv.version) {
-	console.error(require('../package').version)
+require('../gulpfile');
+
+for (var task in gulp.tasks) {
+	yargs.command(task, 'Gulp task');
+}
+
+var argv = yargs.argv;
+
+if (!argv._.length) {
+	console.log(yargs.help());;
+
 	process.exit(0)
 }
 
-function getUserHome() {
+function home() {
 	return process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME'];
 }
 
-var configFile = path.resolve(getUserHome(), 'forms.config.js');
+var configFile = path.resolve(home(), 'forms.config.js');
 
 try {
 	fs.lstatSync(configFile);
 
-	require('../gulpfile');
+	GLOBAL._formsConfig = require(configFile);
 
-	var config = require(configFile);
-
-	GLOBAL._formsConfig = config;
-
-	gulp.start('test');
+	gulp.start.apply(gulp, argv._);
 }
 catch (e) {
+	console.error(e);
 	console.log('No config file found:', configFile);
-
-	console.log(e);
 
 	process.exit(1);
 }
-
