@@ -1,5 +1,5 @@
-var normalizer = require('./tests/unit/util/normalizer');
-var resolveDependencies = require('./tests/unit/util/dependencies');
+var normalizer = require('./util/normalizer');
+var resolveDependencies = require('./util/dependencies');
 
 module.exports = function (karmaConfig) {
 	resolveDependencies(function(files) {
@@ -7,14 +7,14 @@ module.exports = function (karmaConfig) {
 			frameworks: ['mocha', 'chai', 'sinon', 'source-map-support', 'commonjs'],
 
 			files: files.concat([
-				'tests/unit/src/**/*.js'
+				'src/**/*.js'
 			]),
 
 			preprocessors: {
 				'/**/*.js': ['transformPath', 'replacer'],
 				'/**/*.css': ['transformPath'],
-				'tests/unit/mocks/*.js': ['replacer'],
-				'tests/unit/src/**/*.js': ['babel', 'commonjs']
+				'mocks/*.js': ['replacer'],
+				'src/**/*.js': ['babel', 'commonjs']
 			},
 
 			browsers: ['Chrome'],

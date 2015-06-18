@@ -1,4 +1,6 @@
+var path = require('path');
+
 module.exports = {
-	liferayBundleDir: "../bundles/tomcat-7.0.62",
-	liferaySourceDir: "../liferay-portal"
+	liferayBundleDir: path.resolve('../bundles/tomcat-7.0.62'),
+	liferaySourceDir: path.resolve('../liferay-portal')
 };

@@ -8,7 +8,7 @@ var properties = require('./properties.js');
 
 var liferaySourceDir = config.liferaySourceDir;
 
-var mocksDir = path.join('tests', 'unit', 'mocks');
+var mocksDir = path.join('mocks');
 
 var frontendDir = path.join(liferaySourceDir, 'modules', 'frontend', 'frontend-js-web');
 var frontendJsSrcDir = path.join(osgi.resourcesPath(frontendDir), 'html', 'js');

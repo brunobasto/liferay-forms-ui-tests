@@ -21,7 +21,7 @@ module.exports = function() {
 	});
 
 	gulp.task('test:coverage', [], function(done) {
-		runKarma({configFile: path.resolve('karma-coverage.conf.js')}, function() {
+		runKarma({configFile: path.resolve('tests/unit/karma-coverage.conf.js')}, function() {
 			done();
 		});
 	});
@@ -125,7 +125,7 @@ module.exports = function() {
 
 function runKarma(config, done) {
 	config = merge({
-		configFile: path.resolve('karma.conf.js'),
+		configFile: path.resolve('tests/unit/karma.conf.js'),
 		singleRun: true
 	}, config);
 	karma.start(config, done);
