@@ -5,7 +5,7 @@
   "homepage": "https://github.com/brunobasto/liferay-forms-ui-tests",
   "main": "tests/functional/runner.js",
   "scripts": {
-    "gulp": "./node_modules/gulp/bin/gulp.js"
+    "test": "./node_modules/gulp/bin/gulp.js test"
   },
   "repository": {
     "type": "git",
