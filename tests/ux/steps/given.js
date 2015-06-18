@@ -7,7 +7,7 @@ module.exports = function() {
     this
         .given(/I open the (url|site) "$string"$/, function (type, page, done) {
             var url = type === 'url' ? page : this.baseUrl + page;
-            
+
             this.browser.url(url , done);
         })
 
