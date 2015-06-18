@@ -1,2 +1,5 @@
 /node_modules
 /tests/unit/coverage
+
+*.err
+*.out
