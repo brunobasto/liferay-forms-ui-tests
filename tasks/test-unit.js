@@ -5,15 +5,8 @@ var karma = require('karma').server;
 var merge = require('merge');
 var openFile = require('open');
 var path = require('path');
-var runSequence = require('run-sequence');
 
 module.exports = function() {
-	gulp.task('test', function(done) {
-		runSequence('test:unit', function() {
-			done();
-		});
-	});
-
 	gulp.task('test:unit', [], function(done) {
 		runKarma({}, function() {
 			done();

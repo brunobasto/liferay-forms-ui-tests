@@ -1,5 +1,16 @@
 'use strict';
 
-var registerTestTasks = require('./tasks/test');
+var gulp = require('gulp');
+var runSequence = require('run-sequence');
 
-registerTestTasks();
+var registerUXlTestsTasks = require('./tasks/test-ux');
+var registerUnitTestsTasks = require('./tasks/test-unit');
+
+registerUXlTestsTasks();
+registerUnitTestsTasks();
+
+gulp.task('test', function(done) {
+	runSequence('test:unit', 'test:ux', function() {
+		done();
+	});
+});
