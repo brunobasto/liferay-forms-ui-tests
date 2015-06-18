@@ -44,7 +44,7 @@ exports.config = {
      * location of feature files
      */
     featureFiles: [
-        'tests/functional/features/**/*.feature'
+        'tests/ux/features/**/*.feature'
     ],
 
     /**
