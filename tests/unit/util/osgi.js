@@ -8,6 +8,14 @@ var liferaySourceDir = config.liferaySourceDir;
 var appsDir = path.resolve(liferaySourceDir, 'modules', 'apps');
 
 module.exports = {
+	ddlBundlePath: function(bundleName) {
+		return path.resolve(appsDir, 'dynamic-data-lists', bundleName);
+	},
+
+	ddlBundleResourcesPath: function(bundleName) {
+		return path.resolve(this.resourcesPath(this.ddlBundlePath(bundleName)));
+	},
+
 	ddmBundleResourcesPath: function(bundleName) {
 		return path.resolve(this.resourcesPath(this.ddmBundlePath(bundleName)));
 	},

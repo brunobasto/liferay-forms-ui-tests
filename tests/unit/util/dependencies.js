@@ -14,12 +14,18 @@ var frontendDir = path.join(liferaySourceDir, 'modules', 'frontend', 'frontend-j
 var frontendJsSrcDir = path.join(osgi.resourcesPath(frontendDir), 'html', 'js');
 var frontendTmpSrcDir = path.join(frontendDir, 'tmp', 'META-INF', 'resources', 'html', 'js');
 
+// DMD Renderer
 var ddmRendererResourcesDir = osgi.ddmBundleResourcesPath('dynamic-data-mapping-form-renderer');
+
+// DDM Fields
 var checkboxResourcesDir = osgi.ddmBundleResourcesPath('dynamic-data-mapping-type-checkbox');
 var radioResourcesDir = osgi.ddmBundleResourcesPath('dynamic-data-mapping-type-radio');
 var textResourcesDir = osgi.ddmBundleResourcesPath('dynamic-data-mapping-type-text');
 var optionsResourcesDir = osgi.ddmBundleResourcesPath('dynamic-data-mapping-type-options');
 var selectResourcesDir = osgi.ddmBundleResourcesPath('dynamic-data-mapping-type-select');
+
+// DDL Forms Portlet
+var ddlFormsResourcesDir = osgi.ddlBundleResourcesPath('dynamic-data-lists-form-web');
 
 var files = [
 	mocksDir + '/liferay.js'
@@ -79,6 +85,11 @@ module.exports = function(callback) {
 						{
 							included: true,
 							pattern: ddmRendererResourcesDir + '/js/*.js',
+							served: true
+						},
+						{
+							included: true,
+							pattern: ddlFormsResourcesDir + '/admin/js/*.js',
 							served: true
 						},
 						{

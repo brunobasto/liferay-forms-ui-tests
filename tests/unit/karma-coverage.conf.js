@@ -15,6 +15,7 @@ module.exports = function (karmaConfig) {
 				'/**/*.js': ['transformPath', 'replacer'],
 				'/**/*.css': ['transformPath'],
 				'/**/dynamic-data-mapping/**/resources/**/!(*.soy).js': ['coverage'],
+				'/**/dynamic-data-lists/**/resources/**/!(*.soy).js': ['coverage'],
 				'mocks/*.js': ['replacer'],
 				'src/**/*.js': ['babel', 'commonjs']
 			},
