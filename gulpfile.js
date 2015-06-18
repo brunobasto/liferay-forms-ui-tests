@@ -10,7 +10,5 @@ registerUXlTestsTasks();
 registerUnitTestsTasks();
 
 gulp.task('test', function(done) {
-	runSequence('test:unit', 'test:ux', function() {
-		done();
-	});
+	runSequence('test:unit', 'test:ux', done);
 });
