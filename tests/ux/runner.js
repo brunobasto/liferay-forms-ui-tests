@@ -15,6 +15,10 @@ module.exports = function(done) {
 	 */
 	args.push(path.join(__dirname, 'support', 'init.js'));
 
+	for(flag in (config.mochaOpts || {})) {
+	    args.push('--' + flag + '=' + config.mochaOpts[flag]);
+	}
+
 	var proc = spawn(process.argv[0], args, {
 		stdio: [0, 1, 2]
 	});
