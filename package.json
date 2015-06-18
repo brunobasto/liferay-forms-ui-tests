@@ -46,6 +46,7 @@
     "properties": "^1.2.1",
     "require-dir": "^0.3.0",
     "run-sequence": "^1.1.0",
+    "selenium-standalone": "^4.4.2",
     "sinon": "^1.15.3",
     "webdriverio": "^2.3.0",
     "yadda": "^0.11.4"
