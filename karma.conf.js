@@ -7,16 +7,14 @@ module.exports = function (karmaConfig) {
 			frameworks: ['mocha', 'chai', 'sinon', 'source-map-support', 'commonjs'],
 
 			files: files.concat([
-				'config.js',
-				'tests/unit/**/*.js'
+				'tests/unit/src/**/*.js'
 			]),
 
 			preprocessors: {
 				'/**/*.js': ['transformPath', 'replacer'],
 				'/**/*.css': ['transformPath'],
-				'config.js': ['babel', 'commonjs'],
-				'tests/unit/**/*.js': ['babel', 'commonjs'],
-				'mocks/*.js': ['replacer']
+				'tests/unit/mocks/*.js': ['replacer'],
+				'tests/unit/src/**/*.js': ['babel', 'commonjs']
 			},
 
 			browsers: ['Chrome'],
