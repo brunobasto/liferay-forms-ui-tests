@@ -33,7 +33,7 @@ var files = [
 
 module.exports = function(callback) {
 	properties.read(
-		path.join(liferaySourceDir, 'portal-impl/src/portal.properties'),
+		path.resolve(liferaySourceDir, 'portal-impl/src/portal.properties'),
 		function(data) {
 			var props = data[0];
 
