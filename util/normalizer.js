@@ -1,3 +1,5 @@
+'use strict';
+
 var config = require('../config');
 var osgi = require('./osgi.js');
 var path = require('path');
