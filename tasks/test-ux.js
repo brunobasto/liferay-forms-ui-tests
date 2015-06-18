@@ -2,13 +2,19 @@
 
 var gulp = require('gulp');
 var selenium = require('selenium-standalone');
+var runSequence = require('run-sequence');
+var fs = require('fs');
 
 var runner = require('../tests/ux/runner');
+var tomcat = require('../tests/ux/utils/tomcat');
+var kill = require('../tests/ux/utils/kill');
+
+var seleniumProcess;
 
 module.exports = function() {
-	gulp.task('test:ux', ['test:ux:start-selenium'], function(done) {
+	gulp.task('test:ux', ['test:ux:start-tomcat', 'test:ux:start-selenium'], function(done) {
 		runner(function() {
-			done();
+			runSequence('test:ux:stop-tomcat', 'test:ux:stop-selenium', done);
 		});
 	});
 
@@ -25,6 +31,41 @@ module.exports = function() {
 	});
 
 	gulp.task('test:ux:start-selenium', ['test:ux:install-selenium'], function(done) {
-		selenium.start({}, done);
+		var out = fs.openSync('./selenium.out', 'a');
+
+		selenium.start({
+			spawnOptions: {
+				detached: true,
+				stdio: ['ignore', out, out]
+			}
+		}, function(err, child) {
+			seleniumProcess = child;
+
+			var shutDown = function() {
+				kill(seleniumProcess.pid);
+			};
+
+			process.on('exit', shutDown);
+			process.on('SIGTERM', shutDown);
+
+			done();
+		});
+	});
+
+	gulp.task('test:ux:stop-selenium', [], function(done) {
+		if (seleniumProcess) {
+			seleniumProcess.kill();
+			kill(seleniumProcess.pid);
+		}
+
+		done();
+	});
+
+	gulp.task('test:ux:start-tomcat', ['test:ux:stop-tomcat'], function(done) {
+		tomcat.start(done);
+	});
+
+	gulp.task('test:ux:stop-tomcat', [], function(done) {
+		tomcat.stop(done);
 	});
 };
