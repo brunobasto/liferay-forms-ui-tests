@@ -1,5 +1,5 @@
-var normalizer = require('./util/normalizer');
-var resolveDependencies = require('./util/dependencies');
+var normalizer = require('./tests/unit/util/normalizer');
+var resolveDependencies = require('./tests/unit/util/dependencies');
 
 module.exports = function (karmaConfig) {
 	resolveDependencies(function(files) {

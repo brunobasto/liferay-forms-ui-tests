@@ -2,7 +2,7 @@
 
 var path = require('path');
 
-var config = require('../config');
+var config = require('../../../config');
 var osgi = require('./osgi.js');
 var properties = require('./properties.js');
 
