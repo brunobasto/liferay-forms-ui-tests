@@ -27,7 +27,7 @@ module.exports = function() {
 	});
 
 	gulp.task('test:coverage:open', ['test:coverage'], function(done) {
-		openFile(path.resolve('coverage/lcov/lcov-report/index.html'));
+		openFile(path.resolve('tests/unit/coverage/lcov/lcov-report/index.html'));
 		done();
 	});
 
