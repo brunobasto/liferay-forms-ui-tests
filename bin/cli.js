@@ -44,7 +44,7 @@ try {
 	gulp.start.apply(gulp, argv._);
 }
 catch (e) {
-	console.error(e);
+	console.error(e.stack);
 	console.log('No config file found:', configFile);
 
 	process.exit(1);
