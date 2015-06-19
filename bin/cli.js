@@ -2,8 +2,7 @@
 
 var rc = require('rc');
 var gulp = require('gulp');
-var path = require('path');
-var fs = require('fs');
+// var gutil = require('gulp-util');
 
 var yargs = require('yargs')
 	.string('_')
@@ -30,22 +29,9 @@ if (!argv._.length) {
 	process.exit(0)
 }
 
-function home() {
-	return process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME'];
-}
-
-var configFile = path.resolve(home(), 'forms.config.js');
-
 try {
-	fs.lstatSync(configFile);
-
-	GLOBAL._formsConfig = require(configFile);
-
 	gulp.start.apply(gulp, argv._);
 }
 catch (e) {
-	console.error(e.stack);
-	console.log('No config file found:', configFile);
-
-	process.exit(1);
+	console.err(e);
 }

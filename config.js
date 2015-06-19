@@ -5,8 +5,12 @@ var config = {
 	liferaySourceDir: path.resolve('../liferay-portal')
 };
 
-if (GLOBAL._formsConfig) {
-	config = GLOBAL._formsConfig;
+if (process.env.LIFERAY_BUNDLE_HOME) {
+	config.liferayBundleDir = process.env.LIFERAY_BUNDLE_HOME;
+}
+
+if (process.env.LIFERAY_SOURCE_HOME) {
+	config.liferaySourceDir = process.env.LIFERAY_SOURCE_HOME;
 }
 
 module.exports = config;
