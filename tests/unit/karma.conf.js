@@ -6,6 +6,12 @@ module.exports = function (karmaConfig) {
 		karmaConfig.set({
 			frameworks: ['mocha', 'chai', 'sinon', 'source-map-support', 'commonjs'],
 
+			client: {
+				mocha: {
+					timeout: 20000
+				}
+			},
+
 			files: files.concat([
 				'src/**/*.js'
 			]),
