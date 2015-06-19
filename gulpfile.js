@@ -12,3 +12,7 @@ registerUnitTestsTasks();
 gulp.task('test', function(done) {
 	runSequence('test:unit', 'test:ux', done);
 });
+
+gulp.task('test:ci', function(done) {
+	runSequence('test:saucelabs', 'test:ux', done);
+});
