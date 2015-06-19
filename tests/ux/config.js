@@ -62,7 +62,7 @@ exports.config = {
      */
     mochaOpts: {
         reporter: 'spec',
-        timeout: 30000,
+        timeout: 120000,
         require: 'chai'
     }
 };
