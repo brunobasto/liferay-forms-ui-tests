@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-var rc = require('rc');
 var gulp = require('gulp');
 
 var yargs = require('yargs')
