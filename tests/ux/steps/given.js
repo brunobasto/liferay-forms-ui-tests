@@ -10,9 +10,6 @@ module.exports = function() {
 
             this.browser.url(url , done);
         })
-        .given(/My platform is "$string"$/,
-            require('../support/helper/setPlatform.js'))
-
         .given(/^the element "$string" is( not)* visible$/,
             require('../support/helper/isVisible.js'))
 

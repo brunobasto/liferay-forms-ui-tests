@@ -10,7 +10,6 @@ Scenario: open URL
 
 Scenario: log in
     Given I open the site "/"
-    And   My platform is "Desktop"
     And   I set "test@liferay.com" to the inputfield "#_58_login"
     And   I set "test" to the inputfield "#_58_password"
     And   I click on the element "#_58_fm > div > button"
@@ -34,6 +33,7 @@ Scenario: go to Forms
 Scenario: add a Form
     Given the element "#cpPortletTitle > span.portlet-title-text" does contain the text "Forms"
     And   I click on the element "#_com_liferay_dynamic_data_lists_form_web_portlet_DDLFormAdminPortlet_addButtonContainer > a"
+    When  I wait on element "#_com_liferay_dynamic_data_lists_form_web_portlet_DDLFormAdminPortlet_addButtonContainer > ul > li > a" for 2000ms
     And   I click on the element "#_com_liferay_dynamic_data_lists_form_web_portlet_DDLFormAdminPortlet_addButtonContainer > ul > li > a"
     When  I wait on element "#_com_liferay_dynamic_data_lists_form_web_portlet_DDLFormAdminPortlet_nameEditor" for 2000ms
     And   I click on the element "#_com_liferay_dynamic_data_lists_form_web_portlet_DDLFormAdminPortlet_nameEditor"
