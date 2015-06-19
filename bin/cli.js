@@ -29,9 +29,4 @@ if (!argv._.length) {
 	process.exit(0);
 }
 
-try {
-	gulp.start.apply(gulp, argv._);
-}
-catch (e) {
-	console.log(e);
-}
+gulp.start.apply(gulp, argv._);
