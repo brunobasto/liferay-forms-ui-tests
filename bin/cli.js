@@ -26,12 +26,12 @@ var argv = yargs.argv;
 if (!argv._.length) {
 	console.log(yargs.help());;
 
-	process.exit(0)
+	process.exit(0);
 }
 
 try {
 	gulp.start.apply(gulp, argv._);
 }
 catch (e) {
-	console.err(e);
+	console.log(e);
 }
