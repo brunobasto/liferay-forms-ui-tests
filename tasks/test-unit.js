@@ -8,9 +8,7 @@ var path = require('path');
 
 module.exports = function() {
 	gulp.task('test:unit', [], function(done) {
-		runKarma({}, function() {
-			done();
-		});
+		runKarma({}, done);
 	});
 
 	gulp.task('test:coverage', [], function(done) {
@@ -35,51 +33,51 @@ module.exports = function() {
 			sl_chrome: {
 				base: 'SauceLabs',
 				browserName: 'chrome'
-			},
-			sl_safari: {
-				base: 'SauceLabs',
-				browserName: 'safari'
-			},
-			sl_firefox: {
-				base: 'SauceLabs',
-				browserName: 'firefox'
-			},
-			sl_ie_9: {
-				base: 'SauceLabs',
-				browserName: 'internet explorer',
-				platform: 'Windows 7',
-				version: '9'
-			},
-			sl_ie_10: {
-				base: 'SauceLabs',
-				browserName: 'internet explorer',
-				platform: 'Windows 7',
-				version: '10'
-			},
-			sl_ie_11: {
-				base: 'SauceLabs',
-				browserName: 'internet explorer',
-				platform: 'Windows 8.1',
-				version: '11'
-			},
-			sl_iphone: {
-				base: 'SauceLabs',
-				browserName: 'iphone',
-				platform: 'OS X 10.10',
-				version: '7.1'
-			},
-			sl_android_4: {
-				base: 'SauceLabs',
-				browserName: 'android',
-				platform: 'Linux',
-				version: '4.4'
-			},
-			sl_android_5: {
-				base: 'SauceLabs',
-				browserName: 'android',
-				platform: 'Linux',
-				version: '5.0'
 			}
+			// sl_safari: {
+			// 	base: 'SauceLabs',
+			// 	browserName: 'safari'
+			// },
+			// sl_firefox: {
+			// 	base: 'SauceLabs',
+			// 	browserName: 'firefox'
+			// },
+			// sl_ie_9: {
+			// 	base: 'SauceLabs',
+			// 	browserName: 'internet explorer',
+			// 	platform: 'Windows 7',
+			// 	version: '9'
+			// },
+			// sl_ie_10: {
+			// 	base: 'SauceLabs',
+			// 	browserName: 'internet explorer',
+			// 	platform: 'Windows 7',
+			// 	version: '10'
+			// },
+			// sl_ie_11: {
+			// 	base: 'SauceLabs',
+			// 	browserName: 'internet explorer',
+			// 	platform: 'Windows 8.1',
+			// 	version: '11'
+			// },
+			// sl_iphone: {
+			// 	base: 'SauceLabs',
+			// 	browserName: 'iphone',
+			// 	platform: 'OS X 10.10',
+			// 	version: '7.1'
+			// },
+			// sl_android_4: {
+			// 	base: 'SauceLabs',
+			// 	browserName: 'android',
+			// 	platform: 'Linux',
+			// 	version: '4.4'
+			// },
+			// sl_android_5: {
+			// 	base: 'SauceLabs',
+			// 	browserName: 'android',
+			// 	platform: 'Linux',
+			// 	version: '5.0'
+			// }
 		};
 
 		runKarma({
@@ -121,5 +119,12 @@ function runKarma(config, done) {
 		configFile: path.resolve(__dirname, '../tests/unit/karma.conf.js'),
 		singleRun: true
 	}, config);
-	karma.start(config, done);
+
+	karma.start(config, function(exitCode) {
+		if (exitCode !== 0) {
+			throw new Error('Karma tests failed.');
+		}
+
+		done();
+	});
 }
