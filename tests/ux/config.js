@@ -14,8 +14,7 @@ exports.config = {
         port: 80,
         user: process.env.SAUCE_USERNAME,
         key: process.env.SAUCE_ACCESS_KEY,
-        recordScreenshots: true,
-        screenResolution: '1280x1024'
+        recordScreenshots: true
     },
 
     /**
@@ -42,7 +41,9 @@ exports.config = {
      */
     capabilities: {
         browserName: 'chrome',
-        name: 'Liferay Forms - UX'
+        name: 'Liferay Forms - UX',
+        platform: 'Windows 7',
+        screenResolution: '1600x1200'
     },
 
     /**
