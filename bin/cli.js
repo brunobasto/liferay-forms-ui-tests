@@ -2,7 +2,6 @@
 
 var rc = require('rc');
 var gulp = require('gulp');
-// var gutil = require('gulp-util');
 
 var yargs = require('yargs')
 	.string('_')
