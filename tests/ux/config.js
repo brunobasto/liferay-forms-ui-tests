@@ -10,8 +10,12 @@ exports.config = {
      * set selenium host and port
      */
     selenium: {
-        host: '0.0.0.0',
-        port: 4444
+        host: 'ondemand.saucelabs.com',
+        port: 80,
+        user: process.env.SAUCE_USERNAME,
+        key: process.env.SAUCE_ACCESS_KEY,
+        recordScreenshots: true,
+        screenResolution: '1280x1024'
     },
 
     /**
@@ -37,7 +41,8 @@ exports.config = {
      * desired capabilities
      */
     capabilities: {
-        browserName: 'phantomjs'
+        browserName: 'chrome',
+        name: 'Liferay Forms - UX'
     },
 
     /**

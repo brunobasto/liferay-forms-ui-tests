@@ -93,7 +93,7 @@ module.exports = function() {
 			reporters: ['coverage', 'progress', 'saucelabs'],
 
 			sauceLabs: {
-				testName: 'Liferay Forms tests',
+				testName: 'Liferay Forms - Unit',
 				recordScreenshots: false,
 				startConnect: true,
 				connectOptions: {
