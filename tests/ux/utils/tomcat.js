@@ -6,16 +6,14 @@ var Tail = require('tail').Tail;
 var config = require('../../../config');
 var kill = require('./kill');
 
-var catalina = path.join(config.liferayBundleDir, 'bin', 'catalina.sh');
+var catalina = path.resolve(config.liferayBundleDir, 'bin', 'catalina.sh');
 
 var checkCatalina = function() {
 	try {
-		var stats = fs.lstatSync(catalina);
-
-		return true;
+		fs.lstatSync(catalina);
 	}
 	catch (e) {
-		return false;
+		throw new Error('Could not find tomcat executable:', catalina);
 	}
 };
 
@@ -23,9 +21,7 @@ module.exports = {
 	start: function(done) {
 		var instance = this;
 
-		if (!checkCatalina()) {
-			throw new Error('Could not find tomcat executable.');
-		}
+		checkCatalina();
 
 		var out = fs.openSync('./tomcat.out', 'a');
 		var tailOut = new Tail('./tomcat.out');
@@ -77,9 +73,7 @@ module.exports = {
 	},
 
 	stop: function(done) {
-		if (!checkCatalina()) {
-			throw new Error('Could not find tomcat executable.');
-		}
+		checkCatalina();
 
 		var out = fs.openSync('./tomcat.out', 'a');
 
