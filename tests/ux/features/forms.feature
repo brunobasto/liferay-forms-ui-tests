@@ -7,18 +7,19 @@ Scenario: open URL
     Given the page url is not "http://localhost:8080/"
     And   I open the url "http://localhost:8080/"
     Then  I expect that the url is "http://localhost:8080/"
-    And   I expect that the url is not "http://google.com"
 
 Scenario: log in
     Given I open the site "/"
+    And   My platform is "Desktop"
     And   I set "test@liferay.com" to the inputfield "#_58_login"
     And   I set "test" to the inputfield "#_58_password"
-    When  I click on the element "#_58_fm > div > button"
+    And   I click on the element "#_58_fm > div > button"
     When  I wait on element "#_145_userAvatar .user-full-name" for 2000ms
-    Then  I expect that element "#_145_userAvatar .user-full-name" contains the text "Joe Bloggs"
+    Then  I expect that element "#_145_userAvatar .user-full-name" contains the text "Test Test"
 
 Scenario: go to Control Panel
     Given I open the site "/"
+    When  I wait on element "#_145_adminLinks > a" for 2000ms
     And   I click on the element "#_145_adminLinks > a"
     And   I click on the element "#_145_siteAdministrationLink-site_administration\2e content"
     When  I wait on element "#_145_dockbar > div > div > h1 > span" for 2000ms
