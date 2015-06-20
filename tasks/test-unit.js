@@ -87,6 +87,12 @@ module.exports = function() {
 			browserDisconnectTolerance: 2,
 			browserNoActivityTimeout: 240000,
 
+			client: {
+				mocha: {
+					timeout: 240000
+				}
+			},
+
 			captureTimeout: 240000,
 			customLaunchers: launchers,
 
