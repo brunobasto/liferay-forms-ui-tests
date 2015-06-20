@@ -33,7 +33,12 @@ Yadda.plugins.mocha.StepLevelPlugin.init();
  */
 var files = [];
 config.featureFiles.forEach(function(globPattern) {
-    glob.sync(globPattern, { cwd: path.join(__dirname, '..', '..', '..') }).forEach(function(file) {
+    glob.sync(
+        globPattern,
+        {
+            cwd: path.join(__dirname, '..', '..', '..')
+        }
+    ).forEach(function(file) {
         files.push(path.join(__dirname, '..', '..', '..', file))
     });
 });
@@ -44,7 +49,7 @@ config.featureFiles.forEach(function(globPattern) {
 files.forEach(function(file, i, files) {
     featureFile(file, function(feature) {
         scenarios(feature.scenarios, function(scenario) {
-            if(scenario.annotations.isolate) {
+            if (scenario.annotations.isolate) {
                 runIsolateTestOnly = true;
             }
         });
@@ -55,13 +60,12 @@ files.forEach(function(file, i, files) {
     fileCount = fileCount === null ? files.length : fileCount;
 
     featureFile(file, function(feature) {
-
-        if(feature.annotations.pending) {
+        if (feature.annotations.pending) {
             fileCount--;
         }
 
         before(function(done) {
-            if(processed === 0) {
+            if (processed === 0) {
                 return beforeHook.call(global.testscope, beforeEachHook.bind(global.testscope, done));
             }
 
@@ -69,7 +73,7 @@ files.forEach(function(file, i, files) {
         });
 
         scenarios(feature.scenarios, function(scenario) {
-            if(runIsolateTestOnly && !scenario.annotations.isolate && !scenario.annotations.only) {
+            if (runIsolateTestOnly && !scenario.annotations.isolate && !scenario.annotations.only) {
                 return;
             }
 
@@ -79,7 +83,7 @@ files.forEach(function(file, i, files) {
             steps(scenario.steps, function(step, done) {
                 var context = merge(global.testscope, config.env);
 
-                if(scenario.annotations.executedBy) {
+                if (scenario.annotations.executedBy) {
                     context.browser = context.browser.select(scenario.annotations.executedBy);
                 }
 
@@ -92,15 +96,11 @@ files.forEach(function(file, i, files) {
         });
 
         after(function(done) {
-
-            if(++processed === fileCount) {
+            if (++processed === fileCount) {
                 return afterEachHook.call(global.testscope, afterHook.bind(global.testscope, done));
             }
 
             afterEachHook.call(global.testscope, done);
-
         });
-
     });
-
 });

@@ -8,7 +8,7 @@ var fs = require('fs'),
     config = require('../config.js').config,
     envConfigPath = path.join(__dirname, '..', '..', 'config.' + process.env.NODE_ENV + '.js');
 
-if(process.env.NODE_ENV && fs.existsSync(envConfigPath)) {
+if (process.env.NODE_ENV && fs.existsSync(envConfigPath)) {
     config = merge(config, require(envConfigPath).config);
 }
 

@@ -6,7 +6,6 @@ var Yadda = require('yadda'),
     chai = require('chai');
 
 module.exports = (function() {
-
     var library = language.library(),
         dictionary = new Yadda.Dictionary(),
         stepsFiles = path.join(__dirname, '..', 'steps'),
