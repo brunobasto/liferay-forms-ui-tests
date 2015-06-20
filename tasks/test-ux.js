@@ -12,15 +12,21 @@ var kill = require('../tests/ux/utils/kill');
 var seleniumProcess;
 
 module.exports = function() {
-	gulp.task('test:ux', ['test:ux:start-selenium'], function(done) {
+	gulp.task('test:ux', ['test:ux:start-tomcat', 'test:ux:start-selenium'], function(done) {
+		runner({ sauceLabs: false }, function() {
+			runSequence('test:ux:stop-tomcat', 'test:ux:stop-selenium', done);
+		});
+	});
+
+	gulp.task('test:ux:debug', ['test:ux:start-selenium'], function(done) {
 		runner({ sauceLabs: false }, function() {
 			runSequence('test:ux:stop-selenium', done);
 		});
 	});
 
-	gulp.task('test:ux:saucelabs', ['test:ux:start-selenium'], function(done) {
+	gulp.task('test:ux:saucelabs', ['test:ux:start-tomcat', 'test:ux:start-selenium'], function(done) {
 		runner({ sauceLabs: true }, function() {
-			runSequence('test:ux:stop-selenium', done);
+			runSequence('test:ux:stop-tomcat', 'test:ux:stop-selenium', done);
 		});
 	});
 
