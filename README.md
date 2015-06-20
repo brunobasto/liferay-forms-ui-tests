@@ -38,7 +38,7 @@ module.exports = {
 And run the tests:
 
 ```
-forms-tests
+forms test
 ```
 
 ## License
