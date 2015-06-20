@@ -7,6 +7,6 @@ module.exports = function(elem, obsolete, ms, isWaitingOnSpecificState, state) {
         command = 'waitFor' + state[0].toUpperCase() + state.slice(1);
     }
 
-    ms = parseInt(ms, 10) || 3000;
+    ms = parseInt(ms, 10) || 30000;
     this.browser[command](elem, ms).call(done);
 }
