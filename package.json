@@ -51,6 +51,7 @@
     "ps-tree": "^1.0.0",
     "require-dir": "^0.3.0",
     "run-sequence": "^1.1.0",
+    "saucelabs": "^0.1.1",
     "selenium-standalone": "^4.4.2",
     "sinon": "^1.15.3",
     "tail": "^0.4.0",
