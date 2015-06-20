@@ -44,3 +44,5 @@ forms test
 ## License
 
 [BSD License](https://github.com/metal/metal.js/blob/master/LICENSE.md) © Liferay, Inc.
+
+[![Sauce Test Status](https://saucelabs.com/buildstatus/brunobasto)](https://saucelabs.com/u/brunobasto)
