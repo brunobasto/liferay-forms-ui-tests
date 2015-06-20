@@ -11,24 +11,24 @@ module.exports = function() {
 		runKarma({}, done);
 	});
 
-	gulp.task('test:coverage', [], function(done) {
+	gulp.task('test:unit:coverage', [], function(done) {
 		runKarma({configFile: path.resolve(__dirname, '../tests/unit/karma-coverage.conf.js')}, function() {
 			done();
 		});
 	});
 
-	gulp.task('test:coverage:open', ['test:coverage'], function(done) {
+	gulp.task('test:unit:coverage:open', ['test:coverage'], function(done) {
 		openFile(path.resolve(__dirname, '../tests/unit/coverage/lcov/lcov-report/index.html'));
 		done();
 	});
 
-	gulp.task('test:browsers', [], function(done) {
+	gulp.task('test:unit:browsers', [], function(done) {
 		runKarma({
 			browsers: ['Chrome', 'Firefox', 'Safari', 'IE9 - Win7', 'IE10 - Win7', 'IE11 - Win7']
 		}, done);
 	});
 
-	gulp.task('test:saucelabs', [], function(done) {
+	gulp.task('test:unit:saucelabs', [], function(done) {
 		var launchers = {
 			sl_chrome: {
 				base: 'SauceLabs',
@@ -104,7 +104,7 @@ module.exports = function() {
 		}, done);
 	});
 
-	gulp.task('test:watch', [], function(done) {
+	gulp.task('test:unit:watch', [], function(done) {
 		runKarma({
 			singleRun: false
 		}, done);

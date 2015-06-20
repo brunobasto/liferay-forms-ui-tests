@@ -14,5 +14,5 @@ gulp.task('test', function(done) {
 });
 
 gulp.task('test:ci', function(done) {
-	runSequence('test:saucelabs', 'test:ux', done);
+	runSequence('test:unit:saucelabs', 'test:ux:saucelabs', done);
 });
