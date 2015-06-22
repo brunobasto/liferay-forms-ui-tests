@@ -34,14 +34,6 @@ exports.config = {
 	},
 
 	/**
-	 * desired capabilities
-	 */
-	capabilities: {
-		browserName: 'chrome',
-		name: 'Liferay Forms - UX'
-	},
-
-	/**
 	 * location of feature files
 	 */
 	featureFiles: [

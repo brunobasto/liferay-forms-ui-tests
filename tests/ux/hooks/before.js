@@ -19,16 +19,7 @@ var BeforeHook = module.exports = function(done) {
 
 	options = merge(config.options, config.selenium || {});
 
-	if (testConfig.sauceLabs) {
-		config.capabilities = merge(config.capabilities, {
-			browserName: 'chrome',
-			name: 'Liferay Forms - UX',
-			platform: 'Windows 7',
-			screenResolution: '1600x1200'
-		});
-	}
-
-	options.desiredCapabilities = config.capabilities;
+	options.desiredCapabilities = desiredCapabilities;
 
 	var browser = WebdriverIO.remote(options);
 	this.browser = browser;

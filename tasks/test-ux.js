@@ -13,19 +13,55 @@ var seleniumProcess;
 
 module.exports = function() {
 	gulp.task('test:ux', ['test:ux:start-tomcat', 'test:ux:start-selenium'], function(done) {
-		runner({ sauceLabs: false }, function() {
+		runner({
+			sauceLabs: false,
+			browsers: [
+				{
+					browserName: 'chrome'
+				}
+			]
+		}, function() {
 			runSequence('test:ux:stop-tomcat', 'test:ux:stop-selenium', done);
 		});
 	});
 
 	gulp.task('test:ux:debug', ['test:ux:start-selenium'], function(done) {
-		runner({ sauceLabs: false }, function() {
+		runner({
+			sauceLabs: false,
+			browsers: [
+				{
+					browserName: 'chrome'
+				}
+			]
+		}, function() {
 			runSequence('test:ux:stop-selenium', done);
 		});
 	});
 
 	gulp.task('test:ux:saucelabs', ['test:ux:start-tomcat', 'test:ux:start-selenium'], function(done) {
-		runner({ sauceLabs: true }, function() {
+		runner({
+			sauceLabs: true,
+			browsers: [
+				{
+					browserName: 'safari',
+					name: 'Liferay Forms - UX - Safari',
+					platform: 'Windows 7',
+					screenResolution: '1600x1200'
+				},
+				{
+					browserName: 'chrome',
+					name: 'Liferay Forms - UX - Chrome',
+					platform: 'Windows 7',
+					screenResolution: '1600x1200'
+				},
+				{
+					browserName: 'firefox',
+					name: 'Liferay Forms - UX - Firefox',
+					platform: 'Windows 7',
+					screenResolution: '1600x1200'
+				}
+			]
+		}, function() {
 			runSequence('test:ux:stop-tomcat', 'test:ux:stop-selenium', done);
 		});
 	});
@@ -35,9 +71,11 @@ module.exports = function() {
 			version: '2.45.0',
 			baseURL: 'http://selenium-release.storage.googleapis.com',
 			drivers: {
-				version: '2.15',
-				arch: process.arch,
-				baseURL: 'http://chromedriver.storage.googleapis.com'
+				chrome: {
+					version: '2.15',
+					arch: process.arch,
+					baseURL: 'http://chromedriver.storage.googleapis.com'
+				}
 			}
 		}, done);
 	});
