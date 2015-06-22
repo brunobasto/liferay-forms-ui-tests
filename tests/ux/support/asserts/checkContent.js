@@ -2,7 +2,11 @@
  * check content for specific element or input field
  */
 
+var isIE = require('../utils/isIE');
+
 module.exports =  function(type, element, falseCase, origText, done) {
+	var browser = this.browser;
+
 	var assertText = function(err, text) {
 		should.not.exist(err);
 
@@ -15,9 +19,13 @@ module.exports =  function(type, element, falseCase, origText, done) {
 	}
 
 	if (type === 'inputfield') {
-		this.browser.getValue(element, assertText).call(done);
+		browser.getValue(element, assertText).call(done);
 	}
 	else {
-		this.browser.getAttribute(element, 'innerText', assertText).call(done);
+		isIE(browser, function(err, ie) {
+			var textAttribute = ie ? 'innerText' : 'textContent';
+
+			browser.getAttribute(element, textAttribute, assertText).call(done);
+		});
 	}
 };

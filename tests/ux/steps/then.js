@@ -5,36 +5,36 @@
 module.exports = function(dict) {
 
     this.then(/^I expect that the title is( not)* "$string"$/,
-            require('../support/helper/checkTitle'))
+            require('../support/asserts/checkTitle'))
 
         .then(/^I expect that element "$string" is( not)* visible$/,
-            require('../support/helper/isVisible'))
+            require('../support/asserts/isVisible'))
 
         .then(/^I expect that element "$string" does( not)* exist$/,
-            require('../support/helper/isExisting'))
+            require('../support/asserts/isExisting'))
 
         .then(/^I expect that element "$string" does( not)* contain the same text as element "$string"$/,
-            require('../support/helper/compareText'))
+            require('../support/asserts/compareText'))
 
         .then(/^I expect that (element|inputfield) "$string"( not)* contains the text "([^"]*)"$/,
-            require('../support/helper/checkContent'))
+            require('../support/asserts/checkContent'))
 
         .then(/^I expect that the url is( not)* "$string"$/,
-            require('../support/helper/checkURL'))
+            require('../support/asserts/checkURL'))
 
         .then(/^I expect that the( css)* attribute "$string" from element "$string" is( not)* "$string"$/,
-            require('../support/helper/checkProperty'))
+            require('../support/asserts/checkProperty'))
 
         .then(/^I expect that checkbox "$string" is( not)* selected$/,
-            require('../support/helper/checkSelected'))
+            require('../support/asserts/checkSelected'))
 
         .then(/^I expect that cookie "$string"( not)* contains "$string"$/,
-            require('../support/helper/checkCookieContent'))
+            require('../support/asserts/checkCookieContent'))
 
         .then(/^I expect that cookie "$string"( not)* exists$/,
-            require('../support/helper/checkCookieExists'))
+            require('../support/asserts/checkCookieExists'))
 
         .then(/^I expect that element "$string" is( not)* \d+px (broad|tall)$/,
-            require('../support/helper/checkDimension'));
+            require('../support/asserts/checkDimension'));
 
 };

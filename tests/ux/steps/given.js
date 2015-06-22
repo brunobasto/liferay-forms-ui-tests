@@ -11,36 +11,36 @@ module.exports = function() {
             this.browser.url(url , done);
         })
         .given(/^the element "$string" is( not)* visible$/,
-            require('../support/helper/isVisible.js'))
+            require('../support/asserts/isVisible.js'))
 
         .given(/^there is (an|no) element "$string" on the page$/,
-            require('../support/helper/checkElementExists.js'))
+            require('../support/asserts/checkElementExists.js'))
 
         .given(/^the title is( not)* "$string"$/,
-            require('../support/helper/checkTitle'))
+            require('../support/asserts/checkTitle'))
 
         .given(/^the element "$string" contains( not)* the same text as element "$string"$/,
-            require('../support/helper/compareText'))
+            require('../support/asserts/compareText'))
 
         .given(/^the (element|inputfield) "$string" does( not)* contain the text "([^"]*)"$/,
-            require('../support/helper/checkContent'))
+            require('../support/asserts/checkContent'))
 
         .given(/^the page url is( not)* "$string"$/,
-            require('../support/helper/checkURL'))
+            require('../support/asserts/checkURL'))
 
         .given(/^the( css)* attribute "$string" from element "$string" is( not)* "$string"$/,
-            require('../support/helper/checkProperty'))
+            require('../support/asserts/checkProperty'))
 
         .given(/^the checkbox "$string" is( not)* selected$/,
-            require('../support/helper/checkSelected'))
+            require('../support/asserts/checkSelected'))
 
         .given(/^the cookie "$string" contains( not)* the value "$string"$/,
-            require('../support/helper/checkCookieContent'))
+            require('../support/asserts/checkCookieContent'))
 
         .given(/^the cookie "$string" does( not)* exist$/,
-            require('../support/helper/checkCookieExists'))
+            require('../support/asserts/checkCookieExists'))
 
         .given(/^the element "$string" is( not)* \d+px (broad|tall)$/,
-            require('../support/helper/checkDimension'));
+            require('../support/asserts/checkDimension'));
 
 }
