@@ -6,8 +6,8 @@ var runSequence = require('run-sequence');
 var fs = require('fs');
 
 var runner = require('../tests/ux/runner');
-var tomcat = require('../tests/ux/utils/tomcat');
-var kill = require('../tests/ux/utils/kill');
+var tomcat = require('./lib/tomcat');
+var kill = require('./lib/kill');
 
 var seleniumProcess;
 

@@ -3,7 +3,7 @@ var path = require('path');
 var spawn = require('child_process').spawn;
 var Tail = require('tail').Tail;
 
-var config = require('../../../config');
+var config = require('../../config');
 var kill = require('./kill');
 
 var catalina = path.resolve(config.liferayBundleDir, 'bin', 'catalina.sh');
@@ -88,7 +88,9 @@ module.exports = {
 		proc.on('exit', function() {
 			console.log('Gracefully shutting down...');
 
-			done();
+			if (done) {
+				done();
+			}
 
 			shutDown();
 		});
