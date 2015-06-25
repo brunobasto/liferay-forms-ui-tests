@@ -43,12 +43,6 @@ module.exports = function() {
 			sauceLabs: true,
 			browsers: [
 				{
-					browserName: 'safari',
-					name: 'Liferay Forms - UX - Safari',
-					platform: 'Windows 7',
-					screenResolution: '1600x1200'
-				},
-				{
 					browserName: 'chrome',
 					name: 'Liferay Forms - UX - Chrome',
 					platform: 'Windows 7',
@@ -68,7 +62,7 @@ module.exports = function() {
 
 	gulp.task('test:ux:install-selenium', [], function(done) {
 		selenium.install({
-			version: '2.45.0',
+			version: '2.40.0',
 			baseURL: 'http://selenium-release.storage.googleapis.com',
 			drivers: {
 				chrome: {
@@ -84,6 +78,7 @@ module.exports = function() {
 		var out = fs.openSync('./selenium.out', 'a');
 
 		selenium.start({
+			version: '2.40.0',
 			spawnOptions: {
 				detached: true,
 				stdio: ['ignore', out, out]

@@ -3,14 +3,16 @@
  */
 
 module.exports = function (selector, falseCase, done) {
-    browser.elements(selector, function (err, elements) {
+    this.browser.elements(selector, function (err, elements) {
         should.not.exist(err);
 
-        if(falseCase) {
+        if (falseCase) {
             expect(elements.value).to.have.length(0, 'expected element "' + elements + '" not to exist');    
-        } else {
+        }
+        else {
             expect(elements.value).to.have.length.above(0, 'expected element "' + elements + '" to exist');    
         }
-        
-    }).call(done);
+
+        done.call(this, err, elements.value.length > 0);
+    });
 }

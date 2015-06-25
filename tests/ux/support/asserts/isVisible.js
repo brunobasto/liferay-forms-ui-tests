@@ -3,16 +3,15 @@
  */
 
 module.exports = function (element, falseCase, done) {
-
     this.browser.isVisible(element, function (err, visible) {
         should.not.exist(err);
 
-        if(falseCase) {
+        if (falseCase) {
             visible.should.not.equal(true, 'expected element "' + element + '" not to be visible');
-        } else {
+        }
+        else {
             visible.should.equal(true, 'expected element "' + element + '" to be visible');
         }
 
     }).call(done);
-
 };
