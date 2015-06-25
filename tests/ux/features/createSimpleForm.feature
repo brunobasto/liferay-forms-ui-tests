@@ -1,4 +1,4 @@
-Feature: Create a new Form
+Feature: Create a Simple Form
     As an user
     I should be able to create a simple form from scratch
 
