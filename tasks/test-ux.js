@@ -104,7 +104,6 @@ module.exports = function() {
 
 	gulp.task('test:ux:stop-selenium', [], function(done) {
 		if (seleniumProcess) {
-			seleniumProcess.kill();
 			kill(seleniumProcess.pid);
 		}
 
