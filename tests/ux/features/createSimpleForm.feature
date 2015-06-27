@@ -35,12 +35,12 @@ Scenario: Fill Name and Description
     And   I press "My Form description"
 
 Scenario: Add a Text Field
-    When  I click on the element "//*[@id='_com_liferay_dynamic_data_lists_form_web_portlet_DDLFormAdminPortlet_formBuilder']/div/div/div[3]/div[1]/div/div/div/div[1]/div/div/div[2]/div/span"
-    And   I click on the element "/html/body/div[2]/div/div[2]/div/div[2]"
+    When  I click on the element "#_com_liferay_dynamic_data_lists_form_web_portlet_DDLFormAdminPortlet_formBuilder > div > div > div.form-builder-layout.layout-builder-resize-col-enabled > div.layout-builder-layout-container > div > div > div > div.col.col-md-12 > div > div > div.form-builder-field-list-add-button.form-builder-field-list-add-button-visible > div > span"
+    And   I click on the element "body > div.form-builder-modal.yui3-widget.modal-dialog.yui3-widget-positioned.yui3-widget-stacked.yui3-widget-modal.modal-dialog-focused > div > div.yui3-widget-bd.modal-body > div > div:nth-child(2)"
     And   I press "first_name"
-    And   I click on the element "/html/body/div[2]/div/div[1]/form/div[6]/div/input"
+    And   I click on the element "body > div:nth-child(2) > div > div.yui3-widget-bd.modal-body > form > div:nth-child(7) > div > input"
     And   I press "First Name"
-    And   I click on the element "/html/body/div[2]/div/div[2]/div/button[2]"
+    And   I click on the element "body > div:nth-child(2) > div > div.yui3-widget-ft.modal-footer > div > button:nth-child(2)"
 
 Scenario: Submit
     When  I submit the form "#_com_liferay_dynamic_data_lists_form_web_portlet_DDLFormAdminPortlet_editForm"
