@@ -10,21 +10,22 @@ module.exports =  function(type, element, falseCase, origText, done) {
 		else {
 			origText.should.equal(text);
 		}
-	}
+	};
 
 	if (type === 'inputfield') {
 		browser.getValue(element)
 			.then(assertText)
+			.catch(function(err) {
+				should.not.exist(err);
+			})
 			.call(done)
 	}
 	else {
-		isIE(browser)
-			.then(function(ie) {
-				var textAttribute = ie ? 'innerText' : 'textContent';
-
-				browser.getAttribute(element, textAttribute)
-					.then(assertText)
-					.call(done)
+		browser.getText(element)
+			.then(assertText)
+			.catch(function(err) {
+				should.not.exist(err);
 			})
+			.call(done)
 	}
 };

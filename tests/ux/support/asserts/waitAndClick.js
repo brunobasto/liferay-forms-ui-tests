@@ -1,6 +1,6 @@
 var waitFor = require('./waitFor');
 
-module.exports = function(action, type, element, done) {
+module.exports = function(action, element, done) {
 	var instance = this;
 
 	var executeAction = function() {
@@ -9,12 +9,16 @@ module.exports = function(action, type, element, done) {
 		instance.browser[method](element).call(done);
 	};
 
-	instance.browser.elements(element, function (err, elements) {
-		if (err || elements.value.length === 0) {
-			waitFor.call(instance, element, null, 'exist', executeAction);
-		}
-		else {
-			executeAction();
-		}
-	});
+	instance.browser.elements(element)
+		.then(function (elements) {
+			if (elements.value.length === 0) {
+				waitFor.call(instance, element, null, 'exist', executeAction);
+			}
+			else {
+				executeAction();
+			}
+		})
+		.catch(function(err) {
+			should.not.exist(err);
+		});
 };

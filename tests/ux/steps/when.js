@@ -3,7 +3,7 @@
  */
 
 module.exports = function() {
-	this.when(/^I (click|doubleclick) on the (link|button|element) "$string"$/, require('../support/asserts/waitAndClick'))
+	this.when(/^I (click|doubleclick) on the element "$string"$/, require('../support/asserts/waitAndClick'))
 
 		.when(/^I (add|set) "$string" to the inputfield "$string"$/, function(method, text, element, done) {
 			var command = method === 'add' ? 'addValue' : 'setValue';
@@ -23,10 +23,10 @@ module.exports = function() {
 		})
 
 		.when(/^I wait on element "$string"\s*(for (\d+)ms)?\s*(to be $string)?$/, function() {
-            var waitFor = require('../support/asserts/waitFor');
+			var waitFor = require('../support/asserts/waitFor');
 
-            waitFor.call(this, arguments[0], arguments[2], arguments[4], arguments[5]);
-        })
+			waitFor.call(this, arguments[0], arguments[2], arguments[4], arguments[5]);
+		})
 
 		.when(/^I pause for (\d+)ms$/, function(ms, done) {
 			this.browser.pause(ms).call(done);
