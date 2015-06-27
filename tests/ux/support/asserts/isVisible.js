@@ -3,7 +3,16 @@
  */
 
 module.exports = function (element, falseCase, done) {
-	this.browser.isVisible(element)
+	var exists = false;
+
+	this.browser.elements(element)
+		.then(function (elements) {
+	        exists = elements.value.length > 0;
+
+	        exists.should.equal(true, 'expected element "' + element + '" to exist');
+	    })
+	    .catch(should.not.exist(err))
+	.isVisible(element)
 		.then(function (visible) {
 			if (falseCase) {
 				visible.should.not.equal(true, 'expected element "' + element + '" not to be visible');
