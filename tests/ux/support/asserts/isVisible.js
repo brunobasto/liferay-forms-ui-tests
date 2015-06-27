@@ -1,7 +1,3 @@
-/**
- * check if element is visible
- */
-
 module.exports = function (element, falseCase, done) {
 	var exists = false;
 
@@ -11,16 +7,24 @@ module.exports = function (element, falseCase, done) {
 
 	        exists.should.equal(true, 'expected element "' + element + '" to exist');
 	    })
-	    .catch(should.not.exist(err))
-	.isVisible(element)
-		.then(function (visible) {
-			if (falseCase) {
-				visible.should.not.equal(true, 'expected element "' + element + '" not to be visible');
-			}
-			else {
-				visible.should.equal(true, 'expected element "' + element + '" to be visible');
-			}
-		})
-		.catch(should.not.exist(err))
-	.call(done);
+	    .catch(function(err) {
+	    	should.not.exist(err);
+	    })
+
+	if (exists) {
+		this.browser.isVisible(element)
+			.then(function (visible) {
+				if (falseCase) {
+					visible.should.not.equal(true, 'expected element "' + element + '" not to be visible');
+				}
+				else {
+					visible.should.equal(true, 'expected element "' + element + '" to be visible');
+				}
+			})
+			.catch(function(err) {
+				should.not.exist(err);
+			})
+	}
+
+	this.browser.call(done);
 };
