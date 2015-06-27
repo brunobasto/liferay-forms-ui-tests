@@ -24,12 +24,24 @@ Scenario: Go to Forms
     When  I wait on element "#cpPortletTitle > span.portlet-title-text"
     Then  I expect that element "#cpPortletTitle > span.portlet-title-text" contains the text "Forms"
 
-Scenario: Add a Form
+Scenario: Click on Add
     When  I click on the element "#_com_liferay_dynamic_data_lists_form_web_portlet_DDLFormAdminPortlet_addButtonContainer > a"
     And   I click on the element "#_com_liferay_dynamic_data_lists_form_web_portlet_DDLFormAdminPortlet_addButtonContainer > ul > li > a"
-    And   I click on the element "#_com_liferay_dynamic_data_lists_form_web_portlet_DDLFormAdminPortlet_nameEditor"
+
+Scenario: Fill Name and Description
+    When  I click on the element "#_com_liferay_dynamic_data_lists_form_web_portlet_DDLFormAdminPortlet_nameEditor"
     And   I press "My Form"
     And   I click on the element "#_com_liferay_dynamic_data_lists_form_web_portlet_DDLFormAdminPortlet_descriptionEditor"
     And   I press "My Form description"
-    And   I submit the form "#_com_liferay_dynamic_data_lists_form_web_portlet_DDLFormAdminPortlet_editForm"
+
+Scenario: Add a Text Field
+    When  I click on the element "//*[@id='_com_liferay_dynamic_data_lists_form_web_portlet_DDLFormAdminPortlet_formBuilder']/div/div/div[3]/div[1]/div/div/div/div[1]/div/div/div[2]/div/span"
+    And   I click on the element "/html/body/div[2]/div/div[2]/div/div[2]"
+    And   I press "first_name"
+    And   I click on the element "/html/body/div[2]/div/div[1]/form/div[6]/div/input"
+    And   I press "First Name"
+    And   I click on the element "/html/body/div[2]/div/div[2]/div/button[2]"
+
+Scenario: Submit
+    When  I submit the form "#_com_liferay_dynamic_data_lists_form_web_portlet_DDLFormAdminPortlet_editForm"
     Then  I expect that element ".alert-success" is visible
