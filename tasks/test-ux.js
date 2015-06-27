@@ -62,7 +62,7 @@ module.exports = function() {
 
 	gulp.task('test:ux:install-selenium', [], function(done) {
 		selenium.install({
-			version: '2.40.0',
+			version: '2.45.0',
 			baseURL: 'http://selenium-release.storage.googleapis.com',
 			drivers: {
 				chrome: {
@@ -78,7 +78,7 @@ module.exports = function() {
 		var out = fs.openSync('./selenium.out', 'a');
 
 		selenium.start({
-			version: '2.40.0',
+			version: '2.45.0',
 			spawnOptions: {
 				detached: true,
 				stdio: ['ignore', out, out]
