@@ -25,7 +25,6 @@ Scenario: Go to Forms
     Then  I expect that element "#cpPortletTitle > span.portlet-title-text" contains the text "Forms"
 
 Scenario: Add a Form
-    Given the element "#cpPortletTitle > span.portlet-title-text" does contain the text "Forms"
     When  I click on the element "#_com_liferay_dynamic_data_lists_form_web_portlet_DDLFormAdminPortlet_addButtonContainer > a"
     And   I click on the element "#_com_liferay_dynamic_data_lists_form_web_portlet_DDLFormAdminPortlet_addButtonContainer > ul > li > a"
     And   I click on the element "#_com_liferay_dynamic_data_lists_form_web_portlet_DDLFormAdminPortlet_nameEditor"
