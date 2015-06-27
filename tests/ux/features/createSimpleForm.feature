@@ -5,13 +5,6 @@ Feature: Create a Simple Form
 Scenario: Open Portal Home
     Given I open the url "http://localhost:8080/"
 
-Scenario: Log In
-    When  I set "test@liferay.com" to the inputfield "#_58_login"
-    And   I set "test" to the inputfield "#_58_password"
-    And   I submit the form "#_58_fm"
-    And   I wait on element "#_145_userAvatar .user-full-name"
-    Then  I expect that element "#_145_userAvatar .user-full-name" contains the text "Test Test"
-
 Scenario: Go to Control Panel
     When  I click on the element "#_145_adminLinks > a"
     And   I click on the element "#_145_siteAdministrationLink-site_administration\2e content"
