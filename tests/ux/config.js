@@ -1,4 +1,4 @@
-exports.config = {
+module.exports = {
 
 	/**
 	 * language of your feature files

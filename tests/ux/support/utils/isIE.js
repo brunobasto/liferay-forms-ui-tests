@@ -1,7 +1,3 @@
-/**
- * check content for specific element or input field
- */
-
 // Taken from http://solvedstack.com/questions/javascript-ie-detection-why-not-use-simple-conditional-comments
 var ie = function() {
 	var undef,
@@ -17,8 +13,6 @@ var ie = function() {
 	return v > 4 ? v : undef;
 };
 
-module.exports = function(browser, done) {
-	browser.execute('return (' + ie.toString() + ')();', function(err, res) {
-		done(err, res.value);
-	});
+module.exports = function(browser) {
+	return browser.execute('return (' + ie.toString() + ')();');
 };

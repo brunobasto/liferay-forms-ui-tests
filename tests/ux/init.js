@@ -1,25 +1,17 @@
 var Yadda = require('yadda'),
-    chai = require('chai'),
     path = require('path'),
     glob = require('glob'),
     merge = require('deepmerge'),
-    config = require('./configure'),
-    beforeHook = require('../hooks/before.js'),
-    afterHook = require('../hooks/after.js'),
-    beforeEachHook = require('../hooks/beforeEach.js'),
-    afterEachHook = require('../hooks/afterEach.js'),
+    config = require('./config'),
+    beforeHook = require('./hooks/before.js'),
+    afterHook = require('./hooks/after.js'),
+    beforeEachHook = require('./hooks/beforeEach.js'),
+    afterEachHook = require('./hooks/afterEach.js'),
     processed = 0,
     fileCount = null,
     context = {},
     currentStep,
     runIsolateTestOnly = false;
-
-/**
- * expose assertion library
- */
-global.expect = chai.expect;
-global.assert = chai.assert;
-global.should = chai.should();
 
 /**
  * register own global namespace
@@ -36,10 +28,10 @@ config.featureFiles.forEach(function(globPattern) {
     glob.sync(
         globPattern,
         {
-            cwd: path.join(__dirname, '..', '..', '..')
+            cwd: path.join(__dirname, '..', '..')
         }
     ).forEach(function(file) {
-        files.push(path.join(__dirname, '..', '..', '..', file))
+        files.push(path.join(__dirname, '..', '..', file))
     });
 });
 

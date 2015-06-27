@@ -1,6 +1,6 @@
 var Mocha = require('mocha'),
 	Q = require('q'),
-	config = require('./config').config,
+	config = require('./config'),
 	path = require('path');
 
 module.exports = function(options, done) {
@@ -9,15 +9,15 @@ module.exports = function(options, done) {
 	var run = function(browser) {
 		var deferred = Q.defer();
 
+		var initFilePath = path.join(__dirname, 'init.js');
+
 		// We need to remove it from the cache so
 		// that it runs again with the new globals
-		delete require.cache[path.join(__dirname, 'support', 'init.js')];
+		delete require.cache[initFilePath];
 
 		var mocha = new Mocha(config.mochaOpts || {});
 
-		mocha.addFile(
-			path.join(__dirname, 'support', 'init.js')
-		);
+		mocha.addFile(initFilePath);
 
 		global.testConfig = options;
 		global.desiredCapabilities = browser;

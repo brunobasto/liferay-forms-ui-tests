@@ -3,7 +3,6 @@
  */
 
 module.exports = function() {
-
 	this.when(/^I (click|doubleclick) on the (link|button|element) "$string"$/, require('../support/asserts/waitAndClick'))
 
 		.when(/^I (add|set) "$string" to the inputfield "$string"$/, function(method, text, element, done) {
@@ -52,6 +51,5 @@ module.exports = function() {
 		.when(/^I (accept|dismiss) the alertbox$/, function(action, done) {
 			var command = 'alert' + action.slice(0, 1).toUpperCase() + action.slice(1);
 			this.browser[command]().call(done);
-		})
-
-}
+		});
+};

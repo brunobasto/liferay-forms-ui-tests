@@ -1,5 +1,5 @@
 var Yadda = require('yadda'),
-    config = require('./configure'),
+    config = require('./config'),
     language = Yadda.localisation[upperCaseFirstLetter(config.language)],
     fs = require('fs'),
     path = require('path'),
@@ -8,7 +8,7 @@ var Yadda = require('yadda'),
 module.exports = (function() {
     var library = language.library(),
         dictionary = new Yadda.Dictionary(),
-        stepsFiles = path.join(__dirname, '..', 'steps'),
+        stepsFiles = path.join(__dirname, 'steps'),
         steps = fs.readdirSync(stepsFiles);
 
     /**

@@ -2,7 +2,7 @@ var SauceLabs = require('saucelabs');
 
 var WebdriverIO = require('webdriverio'),
 	merge = require('deepmerge'),
-	config = require('../support/configure');
+	config = require('../config');
 
 var BeforeHook = module.exports = function(done) {
 	var options = config.options;
@@ -21,11 +21,9 @@ var BeforeHook = module.exports = function(done) {
 
 	options.desiredCapabilities = desiredCapabilities;
 
-	var browser = WebdriverIO.remote(options);
-	this.browser = browser;
+	var browser = this.browser = WebdriverIO.remote(options);
 
-	browser
-	.addCommand('sauceJobStatus', function(status, done) {
+	browser.addCommand('sauceJobStatus', function(status, done) {
 		var sessionID = browser.requestHandler.sessionID;
 		var sauceAccount = new SauceLabs({
 			username: process.env.SAUCE_USERNAME,
@@ -33,6 +31,5 @@ var BeforeHook = module.exports = function(done) {
 		});
 
 		sauceAccount.updateJob(sessionID, status, done);
-	})
-	.init().call(done);
+	}).init().call(done);
 };
