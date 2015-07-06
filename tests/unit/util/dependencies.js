@@ -14,6 +14,9 @@ var frontendDir = path.join(liferaySourceDir, 'modules', 'frontend', 'frontend-j
 var frontendJsSrcDir = path.join(osgi.resourcesPath(frontendDir), 'html', 'js');
 var frontendTmpSrcDir = path.join(frontendDir, 'tmp', 'META-INF', 'resources', 'html', 'js');
 
+var editorsDir = path.join(liferaySourceDir, 'modules', 'frontend', 'frontend-editors-web');
+var editorsTmpSrcDir = path.join(editorsDir, 'tmp', 'META-INF', 'resources', 'html', 'editors');
+
 // DMD Renderer
 var ddmRendererResourcesDir = osgi.ddmBundleResourcesPath('dynamic-data-mapping-form-renderer');
 
@@ -75,6 +78,36 @@ module.exports = function(callback) {
 						{
 							included: false,
 							pattern: frontendTmpSrcDir + '/aui/**/*.js',
+							served: true
+						},
+						{
+							included: true,
+							pattern: editorsTmpSrcDir + '/**/*.css',
+							served: true
+						},
+						{
+							included: true,
+							pattern: editorsTmpSrcDir + '/alloyeditor/ckeditor.js',
+							served: true
+						},
+						{
+							included: false,
+							pattern: editorsTmpSrcDir + '/alloyeditor/config.js',
+							served: true
+						},
+						{
+							included: false,
+							pattern: editorsTmpSrcDir + '/alloyeditor/lang/en.js',
+							served: true
+						},
+						{
+							included: false,
+							pattern: editorsTmpSrcDir + '/alloyeditor/styles.js',
+							served: true
+						},
+						{
+							included: true,
+							pattern: editorsTmpSrcDir + '/alloyeditor/liferay-alloy-editor-no-ckeditor-min.js',
 							served: true
 						},
 						{
