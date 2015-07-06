@@ -16,17 +16,3 @@ YUI_config.groups.misc.root = groupsPath + '/misc';
 
 YUI_config.groups.portal.base = jsRootPath + '/test/src/';
 YUI_config.groups.portal.root = jsRootPath + '/test/src/';
-
-YUI_config.groups.mock = {
-	base: Liferay.AUI.getJavaScriptRootPath() + '/test/src/',
-	modules: {
-		'liferay-language-mock': {
-			condition: {
-				name: 'liferay-language-mock',
-				trigger: 'liferay-language',
-				when: 'instead'
-			},
-			path: 'mock_language.js'
-		}
-	}
-};
