@@ -12,12 +12,15 @@ module.exports = function() {
 	});
 
 	gulp.task('test:unit:coverage', [], function(done) {
-		runKarma({configFile: path.resolve(__dirname, '../tests/unit/karma-coverage.conf.js')}, function() {
+		runKarma({
+			configFile: path.resolve(__dirname, '../tests/unit/karma-coverage.conf.js'),
+			coverage: true
+		}, function() {
 			done();
 		});
 	});
 
-	gulp.task('test:unit:coverage:open', ['test:coverage'], function(done) {
+	gulp.task('test:unit:coverage:open', ['test:unit:coverage'], function(done) {
 		openFile(path.resolve(__dirname, '../tests/unit/coverage/lcov/lcov-report/index.html'));
 		done();
 	});
@@ -127,7 +130,7 @@ function runKarma(config, done) {
 	}, config);
 
 	karma.start(config, function(exitCode) {
-		if (exitCode !== 0) {
+		if (!config.coverage && exitCode !== 0) {
 			throw new Error('Karma tests failed.');
 		}
 
