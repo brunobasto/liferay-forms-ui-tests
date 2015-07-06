@@ -118,4 +118,32 @@ describe('DDL Form Builder Field Support', function() {
 
 		done();
 	});
+
+	it('should allow editing a field', function(done) {
+		var test = this,
+			FieldTypes = Liferay.DDM.Renderer.FieldTypes
+
+		var formBuilder = new Liferay.DDL.FormBuilder(
+			{
+				definition: test.definition,
+				pages: test.layout.pages
+			}
+		).render();
+
+		var fields = formBuilder.getFields();
+
+		var field = formBuilder.getField('sites');
+
+		field.renderSettingsPanel(document.body);
+
+		assert.isTrue(field.validateSettings(), 'Validation should pass');
+
+		field.saveSettings();
+
+		assert.equal(fields.length, formBuilder.getFields().length, 'Lengths should equal');
+
+		formBuilder.destroy();
+
+		done();
+	});
 });
