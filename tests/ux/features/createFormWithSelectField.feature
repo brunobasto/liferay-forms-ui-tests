@@ -27,6 +27,7 @@ Scenario: Fill Name and Description
     And   I click on the element "#_com_liferay_dynamic_data_lists_form_web_portlet_DDLFormAdminPortlet_descriptionEditor"
     And   I press "Form with Select description"
 
+@Pending
 Scenario: Add a Select Field
     When  I click on the element "#_com_liferay_dynamic_data_lists_form_web_portlet_DDLFormAdminPortlet_formBuilder > div > div > div.form-builder-layout.layout-builder-resize-col-enabled > div.layout-builder-layout-container > div > div > div > div.col.col-md-12 > div > div > div.form-builder-field-list-add-button.form-builder-field-list-add-button-visible > div > span"
     And   I click on the element "body > div.form-builder-modal.yui3-widget.modal-dialog.yui3-widget-positioned.yui3-widget-stacked.yui3-widget-modal.modal-dialog-focused > div > div.yui3-widget-bd.modal-body > div > div:nth-child(1)"
