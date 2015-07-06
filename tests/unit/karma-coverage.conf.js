@@ -8,7 +8,15 @@ module.exports = function (karmaConfig) {
 			frameworks: ['mocha', 'chai', 'sinon', 'source-map-support', 'commonjs'],
 
 			files: files.concat([
-				'src/**/*.js'
+				'src/**/*.js',
+				{
+					included: false,
+					pattern: 'src/**/assets/*.json'
+				},
+				{
+					included: false,
+					pattern: 'src/**/assets/*.html'
+				}
 			]),
 
 			preprocessors: {

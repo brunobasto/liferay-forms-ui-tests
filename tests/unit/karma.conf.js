@@ -4,25 +4,29 @@ var resolveDependencies = require('./util/dependencies');
 module.exports = function (karmaConfig) {
 	resolveDependencies(function(files) {
 		karmaConfig.set({
-			frameworks: ['mocha', 'chai', 'sinon', 'source-map-support', 'commonjs'],
+			browsers: ['Chrome'],
+
+			frameworks: ['chai', 'commonjs', 'mocha', 'sinon'],
 
 			files: files.concat([
-				'src/**/*.js'
+				'src/**/*.js',
+				{
+					included: false,
+					pattern: 'src/**/assets/*.json'
+				},
+				{
+					included: false,
+					pattern: 'src/**/assets/*.html'
+				}
 			]),
+
+			reporters: ['mocha'],
 
 			preprocessors: {
 				'/**/*.js': ['transformPath', 'replacer'],
 				'/**/*.css': ['transformPath'],
 				'mocks/*.js': ['replacer'],
-				'src/**/*.js': ['babel', 'commonjs']
-			},
-
-			browsers: ['Chrome'],
-
-			babelPreprocessor: {
-				options: {
-					sourceMap: 'both'
-				}
+				'src/**/*.js': ['commonjs']
 			},
 
 			replacerPreprocessor: {
