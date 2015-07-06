@@ -1,0 +1,30 @@
+{
+	"pages": [
+		{
+			"title":{
+				"en_US": "Page One"
+			},
+			"description":{
+				"en_US": "Description of page one."
+			},
+			"rows":[
+				{
+					"columns":[
+						{
+							"fieldNames": ["sites"],
+							"size": 4
+						},
+						{
+							"fieldNames": ["displayStyle"],
+							"size": 4
+						},
+						{
+							"fieldNames": [],
+							"size": 4
+						}
+					]
+				}
+			]
+		}
+	]
+}

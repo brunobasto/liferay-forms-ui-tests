@@ -1,0 +1,27 @@
+{
+	"defaultLanguageId":"en_US",
+	"fieldValues":[
+		{
+			"name":"displayStyle",
+			"value":{
+				"en_US":"descriptive"
+			},
+			"instanceId":"7YxmdIGq"
+		},
+		{
+			"name":"sites",
+			"value":{
+				"en_US":"top-level"
+			},
+			"instanceId":"6tdTM6ai"
+		},
+		{
+			"name":"sites",
+			"value":{
+				"en_US":"top-level 2"
+			},
+			"instanceId":"6tdTM6bi"
+		}
+	],
+	"availableLanguageIds":["en_US"]
+}
