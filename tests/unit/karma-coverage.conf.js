@@ -30,7 +30,7 @@ module.exports = function (karmaConfig) {
 
 			browsers: ['Chrome'],
 
-			reporters: ['coverage', 'progress'],
+			reporters: ['coverage', 'progress', 'threshold'],
 
 			babelPreprocessor: {
 				options: {
@@ -61,6 +61,13 @@ module.exports = function (karmaConfig) {
 
 			replacerPreprocessor: {
 				replacer: normalizer.normalizeContent
+			},
+
+			thresholdReporter: {
+				branches: 100,
+				functions: 100,
+				lines: 100,
+				statements: 100
 			},
 
 			transformPathPreprocessor: {

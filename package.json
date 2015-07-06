@@ -48,6 +48,7 @@
     "karma-sauce-launcher": "^0.2.11",
     "karma-sinon": "^1.0.4",
     "karma-source-map-support": "^1.0.0",
+    "karma-threshold-reporter": "^0.1.15",
     "karma-transform-path-preprocessor": "0.0.3",
     "merge": "^1.2.0",
     "mocha": "^2.2.5",
