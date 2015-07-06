@@ -27,7 +27,7 @@ module.exports = function() {
 
 	gulp.task('test:unit:browsers', [], function(done) {
 		runKarma({
-			browsers: ['Chrome', 'Firefox', 'Safari', 'IE9 - Win7', 'IE10 - Win7', 'IE11 - Win7']
+			browsers: ['Chrome', 'Firefox', 'Safari']
 		}, done);
 	});
 
