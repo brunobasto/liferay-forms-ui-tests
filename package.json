@@ -1,6 +1,6 @@
 {
   "name": "liferay-forms-ui-tests",
-  "version": "0.0.42",
+  "version": "0.0.43",
   "description": "Framework for testing Liferay Forms",
   "homepage": "https://github.com/brunobasto/liferay-forms-ui-tests",
   "main": "tests/functional/runner.js",
@@ -42,7 +42,6 @@
     "karma-mocha": "^0.2.0",
     "karma-mocha-reporter": "^1.0.2",
     "karma-ng-html2js-preprocessor": "^0.1.2",
-    "karma-phantomjs-launcher": "^0.2.0",
     "karma-replacer-preprocessor": "0.0.0",
     "karma-safari-launcher": "^0.1.1",
     "karma-sauce-launcher": "^0.2.11",
@@ -54,7 +53,6 @@
     "mocha": "^2.2.5",
     "open": "0.0.5",
     "path": "^0.11.14",
-    "phantomjs": "^1.9.17",
     "properties": "^1.2.1",
     "ps-tree": "^1.0.0",
     "q": "^1.4.1",
