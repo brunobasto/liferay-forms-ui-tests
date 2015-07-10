@@ -49,6 +49,37 @@ describe('DDM Field Select', function() {
 		done();
 	});
 
+	it('should have the value attribute always as an Array', function(done) {
+		var selectField = new Liferay.DDM.Field.Select({
+			localizable: false,
+			options: [
+				{
+					label: {
+						en_US: 'Bruno'
+					},
+					value: 'bruno'
+				},
+				{
+					label: {
+						en_US: 'Marcellus'
+					},
+					value: 'marcellus'
+				}
+			],
+			value: undefined
+		});
+
+		assert.isArray(selectField.get('value'));
+		assert.lengthOf(selectField.get('value'), 0);
+
+		selectField.set('value', '');
+
+		assert.isArray(selectField.get('value'));
+		assert.lengthOf(selectField.get('value'), 0);
+
+		done();
+	});
+
 	it('should render the select with the selected option according to the localized value attribute', function(done) {
 		var selectField = new Liferay.DDM.Field.Select({
 			localizable: true,
