@@ -8,7 +8,7 @@ Installation is as easy as:
 [sudo] npm install liferay-forms-ui-tests -g
 ```
 
-After that, make sure to expose these environment variable pointing to the path of you liferay source and tomcat bundle:
+After that, make sure to expose these environment variable pointing to the path of your liferay source and tomcat bundle:
 
 ```
 export LIFERAY_BUNDLE_HOME=/path/to/bundles/tomcat-7.0.62
