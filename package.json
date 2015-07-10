@@ -1,6 +1,6 @@
 {
   "name": "liferay-forms-ui-tests",
-  "version": "0.0.43",
+  "version": "0.0.44",
   "description": "Framework for testing Liferay Forms",
   "homepage": "https://github.com/brunobasto/liferay-forms-ui-tests",
   "main": "tests/functional/runner.js",
