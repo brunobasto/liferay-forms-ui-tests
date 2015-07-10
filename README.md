@@ -1,45 +1,35 @@
 # UI Tests for Liferay Forms
 
-## Install
+## Installation
 
-Installations is as easy as:
+Installation is as easy as:
 
 ```
-npm install
+[sudo] npm install liferay-forms-ui-tests -g
+```
+
+After that, make sure to expose these environment variable pointing to the path of you liferay source and tomcat bundle:
+
+```
+export LIFERAY_BUNDLE_HOME=/path/to/bundles/tomcat-7.0.62
+export LIFERAY_SOURCE_HOME=/path/to/liferay-portal
 ```
 
 ## Running the tests
 
-To run the tests, just execute the command:
+To run unit tests, just execute the command:
 
 ```
-npm test
+forms test:unit
+```
+
+To list all the commands available, run:
+
+```
+forms -h
 ```
 
 And that's it!
-
-## Command line tool
-
-If you want to run the tests form anywhere, install it as a global executable:
-
-```
-npm install liferay-forms-ui-tests -g
-```
-
-Create a config file in your home directory called forms.config.js like this one:
-
-```
-module.exports = {
-    liferayBundleDir: '/Users/myuser/Projects/bundles/tomcat-7.0.62',
-    liferaySourceDir: '/Users/myuser/Projects/liferay-portal'
-};
-```
-
-And run the tests:
-
-```
-forms test
-```
 
 ## License
 
