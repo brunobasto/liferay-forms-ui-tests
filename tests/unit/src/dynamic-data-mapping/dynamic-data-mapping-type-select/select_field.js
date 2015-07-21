@@ -170,4 +170,31 @@ describe('DDM Field Select', function() {
 
 		done();
 	});
+
+	it('should not have any options selected when there\'s no value for the desired language', function(done) {
+		var selectField = new Liferay.DDM.Field.Select({
+			localizable: true,
+			locale: 'pt_BR',
+			options: [
+				{
+					label: {
+						en_US: 'Bruno'
+					},
+					value: 'bruno'
+				},
+				{
+					label: {
+						en_US: 'Marcellus'
+					},
+					value: 'marcellus'
+				}
+			]
+		});
+
+		var selectedOptions = selectField.getInputNode().all('option[selected]');
+
+		assert.isTrue(selectedOptions.size() === 0);
+
+		done();
+	});
 });
