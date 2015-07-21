@@ -2,30 +2,6 @@
 
 var assert = chai.assert;
 
-var AddTextField = function(formBuilder, name) {
-	var A = AUI();
-
-	var boundingBox = formBuilder.get('boundingBox');
-
-	// Click on the Add field button
-	boundingBox.one('.form-builder-field-list-add-button-circle').simulate('click');
-
-	// Select the 'text' field type
-	A.all('.form-builder-field-types-list .field-type').item(1).simulate('click');
-
-	var nameInput = A
-		.one('.form-builder-field-settings-content')
-		.all('.lfr-ddm-form-field-container input').filter(function(input) {
-
-		return /\$name\$/g.test(input.attr('name'));
-	}).item(0);
-
-	nameInput.val(name);
-
-	// Save
-	A.one('.form-builder-field-settings-small-screen-header-check').simulate('click');
-};
-
 var getTestData = function(callback) {
 	$.when(
 		$.get('/base/src/dynamic-data-mapping/dynamic-data-mapping-form-renderer/assets/field_types.json'),
@@ -59,29 +35,37 @@ describe('DDL Form Builder', function() {
 		);
 	});
 
-	it('should render the Form Builder with fields augment from FormBuilderFieldSupport', function(done) {
+	it('should call .createField after clicking on a field type on the field types modal', function(done) {
 		var test = this,
 			A = AUI();
 
-		var formBuilder = new Liferay.DDL.FormBuilder().render();
+		var formBuilder = new Liferay.DDL.FormBuilder(
+			{
+				definition: test.definition,
+				pages: test.layout.pages
+			}
+		).render();
 
-		AddTextField(formBuilder, 'test');
+		sinon.spy(formBuilder, 'createField');
 
-		var definition = JSON.parse(
-			new Liferay.DDL.DefinitionSerializer({
-				builder: formBuilder,
-				pages: formBuilder.get('layouts')
-			}).serialize()
-		);
+		var boundingBox = formBuilder.get('boundingBox');
 
-		assert.equal(definition.fields[0].name, 'test');
+		// Show field types modal
+		boundingBox.one('.form-builder-field-list-add-button-circle').simulate('click');
+
+		// Show field settings
+		A.one('.form-builder-modal-content .field-type').simulate('click');
+
+		assert.isTrue(formBuilder.createField.calledOnce);
+
+		formBuilder.createField.restore();
 
 		formBuilder.destroy();
 
 		done();
 	});
 
-	// TODO
+	// TODO - Make assertions
 	it('should destroy all the fields of the Form Builder', function(done) {
 		var test = this;
 
