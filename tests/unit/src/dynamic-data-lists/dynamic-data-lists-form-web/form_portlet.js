@@ -150,6 +150,10 @@ describe('DDL Form Portlet', function() {
 		);
 	});
 
+	beforeEach(function() {
+		document.body.innerHTML = '<div id="_namespace_loader"></div>';
+	});
+
 	it('should create a Form Builder with fields defined in "definition" and "layout"', function(done) {
 		var test = this,
 			A = AUI();
@@ -158,7 +162,8 @@ describe('DDL Form Portlet', function() {
 			{
 				definition: test.definition,
 				editForm: A.Node.create('<form />'),
-				layout: test.layout
+				layout: test.layout,
+				namespace: '_namespace_'
 			}
 		);
 
@@ -246,7 +251,8 @@ describe('DDL Form Portlet', function() {
 			{
 				definition: test.definition,
 				editForm: A.Node.create('<form />'),
-				layout: test.layout
+				layout: test.layout,
+				namespace: '_namespace_'
 			}
 		);
 
