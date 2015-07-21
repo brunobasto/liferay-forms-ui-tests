@@ -5,9 +5,11 @@ var assert = chai.assert;
 var getTestData = function(callback) {
 	$.when(
 		$.get('/base/src/dynamic-data-mapping/dynamic-data-mapping-form-renderer/assets/field_types.json'),
-		$.get('/base/src/dynamic-data-mapping/dynamic-data-mapping-form-renderer/assets/markup01.html'),
-		$.get('/base/src/dynamic-data-mapping/dynamic-data-mapping-form-renderer/assets/markup01_definition.json'),
-		$.get('/base/src/dynamic-data-mapping/dynamic-data-mapping-form-renderer/assets/markup01_values.json')
+		$.get('/base/src/dynamic-data-mapping/dynamic-data-mapping-form-renderer/assets/markup.html'),
+		$.get('/base/src/dynamic-data-mapping/dynamic-data-mapping-form-renderer/assets/markup_definition.json'),
+		$.get('/base/src/dynamic-data-mapping/dynamic-data-mapping-form-renderer/assets/markup_with_repeatable.html'),
+		$.get('/base/src/dynamic-data-mapping/dynamic-data-mapping-form-renderer/assets/markup_with_repeatable_definition.json'),
+		$.get('/base/src/dynamic-data-mapping/dynamic-data-mapping-form-renderer/assets/markup_with_repeatable_values.json')
 	).done(callback);
 };
 
@@ -21,15 +23,19 @@ describe('DDM Renderer Form Definition Support', function() {
 			'liferay-ddm-form-renderer',
 			'liferay-ddm-form-renderer-field',
 			function(A) {
-				getTestData(function(fieldTypes, markup, definition, values) {
-					test.markup = markup[0];
-					test.definition = definition[0];
-					test.values = values[0];
+				getTestData(
+					function(fieldTypes, markup, definition, markupWithRepeatable, definitionWithRepeatable, valuesWithRepeatable) {
+						test.markup = markup[0];
+						test.definition = definition[0];
+						test.markupWithRepeatable = markupWithRepeatable[0];
+						test.definitionWithRepeatable = definitionWithRepeatable[0];
+						test.valuesWithRepeatable = valuesWithRepeatable[0];
 
-					Liferay.DDM.Renderer.FieldTypes.register(fieldTypes[0]);
+						Liferay.DDM.Renderer.FieldTypes.register(fieldTypes[0]);
 
-					done();
-				});
+						done();
+					}
+				);
 			}
 		);
 	});
@@ -162,13 +168,13 @@ describe('DDM Renderer Form Definition Support', function() {
 			A = AUI();
 
 		var form = new Liferay.DDM.Renderer.Form({
-			container: A.Node.create(test.markup),
-			definition: test.definition,
-			values: test.values
+			container: A.Node.create(test.markupWithRepeatable),
+			definition: test.definitionWithRepeatable,
+			values: test.valuesWithRepeatable
 		});
 
 		_.each(form.get('fields'), function(field, index) {
-			assert.deepEqual(field.get('value'), test.values.fieldValues[index].value);
+			assert.deepEqual(field.get('value'), test.valuesWithRepeatable.fieldValues[index].value);
 		});
 
 		done();
@@ -179,13 +185,33 @@ describe('DDM Renderer Form Definition Support', function() {
 
 		var A = AUI();
 
+		var container = A.Node.create(test.markupWithRepeatable);
+
+		var form = new Liferay.DDM.Renderer.Form({
+			container: container,
+			definition: test.definitionWithRepeatable,
+			values: test.valuesWithRepeatable
+		});
+
+		assert.equal(
+			container.all('.lfr-ddm-form-field-container').size(),
+			form.get('fields').length
+		);
+
+		done();
+	});
+
+	it('should retrieve fields already in DOM and don\'t create a new container even when values is not passed', function(done) {
+		var test = this;
+
+		var A = AUI();
+
 		var container = A.Node.create(test.markup);
 
 		var form = new Liferay.DDM.Renderer.Form({
 			container: container,
-			definition: test.definition,
-			values: test.values
-		});
+			definition: test.definition
+		}).render();
 
 		assert.equal(
 			container.all('.lfr-ddm-form-field-container').size(),
@@ -200,14 +226,14 @@ describe('DDM Renderer Form Definition Support', function() {
 
 		var A = AUI();
 
-		var container = A.Node.create(test.markup);
+		var container = A.Node.create(test.markupWithRepeatable);
 
 		container.appendTo(document.body);
 
 		var form = new Liferay.DDM.Renderer.Form({
 			container: container,
-			definition: test.definition,
-			values: test.values
+			definition: test.definitionWithRepeatable,
+			values: test.valuesWithRepeatable
 		}).render();
 
 		var fields = form.get('fields');
@@ -227,14 +253,14 @@ describe('DDM Renderer Form Definition Support', function() {
 
 		var A = AUI();
 
-		var container = A.Node.create(test.markup);
+		var container = A.Node.create(test.markupWithRepeatable);
 
 		container.appendTo(document.body);
 
 		var form = new Liferay.DDM.Renderer.Form({
 			container: container,
-			definition: test.definition,
-			values: test.values
+			definition: test.definitionWithRepeatable,
+			values: test.valuesWithRepeatable
 		});
 
 		var fields = form.get('fields');

@@ -29,8 +29,8 @@ var AddTextField = function(formBuilder, name) {
 var getTestData = function(callback) {
 	$.when(
 		$.get('/base/src/dynamic-data-mapping/dynamic-data-mapping-form-renderer/assets/field_types.json'),
-		$.get('/base/src/dynamic-data-mapping/dynamic-data-mapping-form-renderer/assets/markup01_definition.json'),
-		$.get('/base/src/dynamic-data-mapping/dynamic-data-mapping-form-renderer/assets/markup01_layout.json')
+		$.get('/base/src/dynamic-data-mapping/dynamic-data-mapping-form-renderer/assets/markup_with_repeatable_definition.json'),
+		$.get('/base/src/dynamic-data-mapping/dynamic-data-mapping-form-renderer/assets/markup_with_repeatable_layout.json')
 	).done(callback);
 };
 

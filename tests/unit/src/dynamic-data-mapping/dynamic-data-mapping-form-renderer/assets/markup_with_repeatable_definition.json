@@ -1,0 +1,36 @@
+{
+	"defaultLanguageId":"en_US",
+	"availableLanguageIds":["en_US"],
+	"fields":[
+		{
+			"predefinedValue": {
+				"en_US":""
+			},
+			"dataType":"string",
+			"showLabel":true,
+			"name":"displayStyle",
+			"localizable":true,
+			"label": {
+				"en_US":"Display style"
+			},
+			"required":false,
+			"type":"text",
+			"tip":{}
+		},{
+			"predefinedValue":{
+				"en_US":""
+			},
+			"dataType":"string",
+			"showLabel":true,
+			"name":"sites",
+			"localizable":true,
+			"label":{
+				"en_US":"Sites"
+			},
+			"required":false,
+			"repeatable": true,
+			"type":"text",
+			"tip":{}
+		}
+	]
+}

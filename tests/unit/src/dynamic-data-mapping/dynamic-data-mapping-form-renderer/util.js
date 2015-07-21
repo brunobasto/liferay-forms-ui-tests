@@ -5,8 +5,8 @@ var assert = chai.assert;
 var getTestData = function(callback) {
 	$.when(
 		$.get('/base/src/dynamic-data-mapping/dynamic-data-mapping-form-renderer/assets/field_types.json'),
-		$.get('/base/src/dynamic-data-mapping/dynamic-data-mapping-form-renderer/assets/markup01_definition.json'),
-		$.get('/base/src/dynamic-data-mapping/dynamic-data-mapping-form-renderer/assets/markup01_values.json')
+		$.get('/base/src/dynamic-data-mapping/dynamic-data-mapping-form-renderer/assets/markup_with_repeatable_definition.json'),
+		$.get('/base/src/dynamic-data-mapping/dynamic-data-mapping-form-renderer/assets/markup_with_repeatable_values.json')
 	).done(callback);
 };
 
