@@ -293,7 +293,7 @@ describe('DDM Renderer Field Repetition Support', function() {
 		done();
 	});
 
-	it('should call .remove() after clicking on the - button', function(done) {
+	it('should call .remove() after clicking on the minus (-) button', function(done) {
 		var field = new Liferay.DDM.Renderer.Field({
 			repeatable: true,
 			type: 'text'
@@ -316,7 +316,7 @@ describe('DDM Renderer Field Repetition Support', function() {
 		done();
 	});
 
-	it('should not call .remove() or ,repeat() when clicking on a node that is not a repeatable button', function(done) {
+	it('should not call .remove() or .repeat() when clicking on a node that is not a repeatable button', function(done) {
 		var field = new Liferay.DDM.Renderer.Field({
 			repeatable: true,
 			type: 'text'

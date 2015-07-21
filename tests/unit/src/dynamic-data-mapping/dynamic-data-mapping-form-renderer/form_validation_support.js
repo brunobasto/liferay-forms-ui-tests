@@ -177,7 +177,7 @@ describe('DDM Renderer Form Validation Support', function() {
 		}
 	});
 
-	it('should return false when there\'s an error with the request', function(done) {
+	it('should return false when there\'s a problem with the request', function(done) {
 		var form = new Liferay.DDM.Renderer.Form({
 			fields: [
 				new Liferay.DDM.Renderer.Field({

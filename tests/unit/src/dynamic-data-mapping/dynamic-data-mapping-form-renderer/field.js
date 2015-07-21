@@ -123,6 +123,23 @@ describe('DDM Renderer Field', function() {
 		done();
 	});
 
+	it('should render the value of a unlocalizable field', function(done) {
+		var field = new Liferay.DDM.Renderer.Field({
+			localizable: false,
+			type: 'text',
+			locale: 'en_US',
+			value: 'Bruno Basto'
+		}).render();
+
+		var inputNode = field.getInputNode();
+
+		assert.equal('Bruno Basto', inputNode.val());
+
+		field.destroy();
+
+		done();
+	});
+
 	it('should update the rendered value of a localizable field', function(done) {
 		var field = new Liferay.DDM.Renderer.Field({
 			localizable: true,
@@ -163,23 +180,6 @@ describe('DDM Renderer Field', function() {
 		var inputNode = field.getInputNode();
 
 		assert.equal('', inputNode.val());
-
-		field.destroy();
-
-		done();
-	});
-
-	it('should render the value of a unlocalizable field', function(done) {
-		var field = new Liferay.DDM.Renderer.Field({
-			localizable: false,
-			type: 'text',
-			locale: 'en_US',
-			value: 'Bruno Basto'
-		}).render();
-
-		var inputNode = field.getInputNode();
-
-		assert.equal('Bruno Basto', inputNode.val());
 
 		field.destroy();
 
