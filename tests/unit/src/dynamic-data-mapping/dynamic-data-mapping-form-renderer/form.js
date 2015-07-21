@@ -34,13 +34,15 @@ describe('DDM Renderer Form', function() {
 		done();
 	});
 
-	it('should serialize a JSON with only a "fields" attribute', function(done) {
+	it('should serialize a JSON with "availableLanguageIds", "defaultLanguageId" and "fieldValues" attributes', function(done) {
 		var form = new Liferay.DDM.Renderer.Form().render();
 
 		var json = form.toJSON();
 
-		assert.lengthOf(_.keys(json), 1);
-		assert.property(json, 'fields');
+		assert.lengthOf(_.keys(json), 3);
+		assert.property(json, 'availableLanguageIds');
+		assert.property(json, 'defaultLanguageId');
+		assert.property(json, 'fieldValues');
 
 		done();
 	});
