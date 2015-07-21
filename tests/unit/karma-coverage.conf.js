@@ -1,11 +1,10 @@
-var isparta = require('isparta');
 var normalizer = require('./util/normalizer');
 var resolveDependencies = require('./util/dependencies');
 
 module.exports = function (karmaConfig) {
 	resolveDependencies(function(files) {
 		karmaConfig.set({
-			frameworks: ['mocha', 'chai', 'sinon', 'source-map-support', 'commonjs'],
+			frameworks: ['chai', 'commonjs', 'mocha', 'sinon'],
 
 			files: files.concat([
 				'src/**/*.js',
@@ -25,26 +24,14 @@ module.exports = function (karmaConfig) {
 				'/**/dynamic-data-mapping/**/resources/**/!(*.soy).js': ['coverage'],
 				'/**/dynamic-data-lists/**/resources/**/!(*.soy).js': ['coverage'],
 				'mocks/*.js': ['replacer'],
-				'src/**/*.js': ['babel', 'commonjs']
+				'src/**/*.js': ['commonjs']
 			},
 
 			browsers: ['Chrome'],
 
 			reporters: ['coverage', 'progress', 'threshold'],
 
-			babelPreprocessor: {
-				options: {
-					sourceMap: 'both'
-				}
-			},
-
 			coverageReporter: {
-				instrumenters: {
-					isparta : isparta
-				},
-				instrumenter: {
-					'**/*.js': 'isparta'
-				},
 				reporters: [
 					{
 						type: 'html'
