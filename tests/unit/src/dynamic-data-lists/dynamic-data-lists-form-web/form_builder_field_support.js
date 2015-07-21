@@ -1,6 +1,41 @@
 'use strict';
 
-var assert = chai.assert;
+var assert = chai.assert,
+	server;
+
+var getPassingValidationResponse = function(form) {
+	var fields = [];
+
+	form.eachField(function(field) {
+		fields.push({
+			messages: [],
+			instanceId: field.get('instanceId'),
+			name: field.get('name'),
+			valid: true
+		});
+	});
+
+	return JSON.stringify({
+		fields: fields
+	});
+}
+
+var createFieldWithName = function(formBuilder, type, name) {
+	var fieldType = Liferay.DDM.Renderer.FieldTypes.get(type),
+		field = formBuilder.createField(fieldType),
+		settingsForm = field.get('settingsForm');
+
+	var nameSettingsField = _.filter(
+		settingsForm.get('fields'),
+		function(settingsField) {
+			return settingsField.get('name') === 'name';
+		}
+	)[0];
+
+	nameSettingsField.setValue(name);
+
+	return field;
+}
 
 var getTestData = function(callback) {
 	$.when(
@@ -36,6 +71,58 @@ describe('DDL Form Builder Field Support', function() {
 				});
 			}
 		);
+	});
+
+	beforeEach(function(done) {
+		server = sinon.fakeServer.create();
+
+		done();
+	});
+
+	afterEach(function(done) {
+		server.restore();
+
+		done();
+	});
+
+	it('should validate the settingsForm when calling field.validateSettings', function(done) {
+		var test = this;
+
+		var formBuilder = new Liferay.DDL.FormBuilder(
+			{
+				definition: test.definition,
+				pages: test.layout.pages
+			}
+		).render();
+
+		var field = formBuilder.getField('sites');
+
+		formBuilder.showFieldSettingsPanel(field, field.get('name'));
+
+		var settingsForm = field.get('settingsForm');
+
+		sinon.spy(settingsForm, 'validate');
+
+		field.validateSettings();
+
+		server.requests[0].respond(
+			404,
+			{
+				'Content-Type': 'application/json'
+			}
+		);
+
+		assert.isTrue(settingsForm.validate.calledOnce);
+
+		settingsForm.validate.restore();
+
+		// TODO - Destroy Form Builder
+		// This test case was mainly added to cover the branch where
+		// validateSettings is called without any parameters.
+		// Since validateSettings is async, if we destroy it now
+		// it'll break
+
+		done();
 	});
 
 	it('should create a field with a settingsForm with the fields specified by the FieldType definition', function(done) {
@@ -85,9 +172,8 @@ describe('DDL Form Builder Field Support', function() {
 		done();
 	});
 
-	it('should allow saving a field with the same name an existing field', function(done) {
-		var test = this,
-			FieldTypes = Liferay.DDM.Renderer.FieldTypes
+	it('should not allow saving a field with the same name as an existing field', function(done) {
+		var test = this;
 
 		var formBuilder = new Liferay.DDL.FormBuilder(
 			{
@@ -96,32 +182,29 @@ describe('DDL Form Builder Field Support', function() {
 			}
 		).render();
 
-		var fields = formBuilder.getFields();
+		var fieldWithDuplicatedName = createFieldWithName(formBuilder, 'text', 'sites');
 
-		var field = formBuilder.createField(FieldTypes.get('text'));
+		fieldWithDuplicatedName.validateSettings(function(valid) {
+			assert.isFalse(valid);
 
-		var settingsForm = field.get('settingsForm');
+			formBuilder.destroy();
 
-		var nameSettingsField = _.filter(settingsForm.get('fields'), function(settingsField) {
-			return settingsField.get('name') === 'name';
-		})[0];
+			done();
+		});
 
-		nameSettingsField.setValue('sites');
+		var settingsForm = fieldWithDuplicatedName.get('settingsForm');
 
-		assert.isFalse(field.validateSettings(), 'Validation should not pass');
-
-		field.saveSettings();
-
-		assert.equal(fields.length, formBuilder.getFields().length, 'Field should have not been added');
-
-		formBuilder.destroy();
-
-		done();
+		server.requests[0].respond(
+			200,
+			{
+				'Content-Type': 'application/json'
+			},
+			getPassingValidationResponse(settingsForm)
+		);
 	});
 
 	it('should allow editing a field', function(done) {
-		var test = this,
-			FieldTypes = Liferay.DDM.Renderer.FieldTypes
+		var test = this;
 
 		var formBuilder = new Liferay.DDL.FormBuilder(
 			{
@@ -130,20 +213,26 @@ describe('DDL Form Builder Field Support', function() {
 			}
 		).render();
 
-		var fields = formBuilder.getFields();
-
 		var field = formBuilder.getField('sites');
 
-		field.renderSettingsPanel(document.body);
+		formBuilder.showFieldSettingsPanel(field, field.get('name'));
 
-		assert.isTrue(field.validateSettings(), 'Validation should pass');
+		field.validateSettings(function(valid) {
+			assert.isTrue(valid);
 
-		field.saveSettings();
+			formBuilder.destroy();
 
-		assert.equal(fields.length, formBuilder.getFields().length, 'Lengths should equal');
+			done();
+		});
 
-		formBuilder.destroy();
+		var settingsForm = field.get('settingsForm');
 
-		done();
+		server.requests[0].respond(
+			200,
+			{
+				'Content-Type': 'application/json'
+			},
+			getPassingValidationResponse(settingsForm)
+		);
 	});
 });
