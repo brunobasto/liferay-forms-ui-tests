@@ -38,6 +38,8 @@ describe('DDM Renderer Field Repetition Support', function() {
 
 		assert.isBoolean(field.get('repeatable'), 'Attribute "repeatable" should always be a boolean.');
 
+		field.destroy();
+
 		done();
 	});
 
@@ -52,6 +54,8 @@ describe('DDM Renderer Field Repetition Support', function() {
 		assert.ok(container.one('.lfr-ddm-form-field-repeatable-add-button'), 'Add button should be present.');
 		assert.ok(container.one('.lfr-ddm-form-field-repeatable-delete-button'), 'Delete button should be present.');
 
+		field.destroy();
+
 		done();
 	});
 
@@ -65,6 +69,8 @@ describe('DDM Renderer Field Repetition Support', function() {
 
 		assert.notOk(container.one('.lfr-ddm-form-field-repeatable-add-button'), 'Add button should not be present.');
 		assert.notOk(container.one('.lfr-ddm-form-field-repeatable-delete-button'), 'Delete button should not be present.');
+
+		field.destroy();
 
 		done();
 	});
@@ -91,6 +97,8 @@ describe('DDM Renderer Field Repetition Support', function() {
 			'Delete button should be visible.'
 		);
 
+		field.destroy();
+
 		done();
 	});
 
@@ -101,6 +109,8 @@ describe('DDM Renderer Field Repetition Support', function() {
 		});
 
 		assert.equal(0, field.get('repeatedIndex'));
+
+		field.destroy();
 
 		done();
 	});
@@ -120,6 +130,8 @@ describe('DDM Renderer Field Repetition Support', function() {
 		_.each(repetitions, function(curField, index) {
 			assert.equal(index, curField.get('repeatedIndex'), 'Repeated index should be ' + index);
 		});
+
+		field.destroy();
 
 		done();
 	});
@@ -144,6 +156,8 @@ describe('DDM Renderer Field Repetition Support', function() {
 		assert.deepEqual([1, 2, 3, 4, 5], indexes);
 
 		assert.equal(0, field.get('repeatedIndex'), 'Original field index should remain the sane');
+
+		field.destroy();
 
 		done();
 	});
@@ -170,6 +184,8 @@ describe('DDM Renderer Field Repetition Support', function() {
 
 			assert.equal(qualifiedName, repetitions[index].getQualifiedName());
 		});
+
+		field.destroy();
 
 		done();
 	});
@@ -201,6 +217,8 @@ describe('DDM Renderer Field Repetition Support', function() {
 				assert.equal(indexes[index] - 1, newIndex, 'Repeated index should be ' + newIndexes[index]);
 			}
 		});
+
+		field.destroy();
 
 		done();
 	});
@@ -253,6 +271,8 @@ describe('DDM Renderer Field Repetition Support', function() {
 
 		field.repeat.restore();
 
+		field.destroy();
+
 		done();
 	});
 
@@ -267,6 +287,8 @@ describe('DDM Renderer Field Repetition Support', function() {
 		var repeated = field.repeat();
 
 		assert.equal(repeated.getLabelNode().text(), field.getLabelNode().text());
+
+		field.destroy();
 
 		done();
 	});
@@ -288,6 +310,8 @@ describe('DDM Renderer Field Repetition Support', function() {
 		assert.isTrue(field.remove.calledOnce, 'Method .remove() should be called once.');
 
 		field.remove.restore();
+
+		field.destroy();
 
 		done();
 	});
@@ -312,6 +336,8 @@ describe('DDM Renderer Field Repetition Support', function() {
 
 		field.remove.restore();
 		field.repeat.restore();
+
+		field.destroy();
 
 		done();
 	});

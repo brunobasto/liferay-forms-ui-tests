@@ -40,6 +40,8 @@ describe('DDM Renderer Field', function() {
 
 		assertAttributeTypes(field);
 
+		field.destroy();
+
 		done();
 	});
 
@@ -55,6 +57,8 @@ describe('DDM Renderer Field', function() {
 		var parentContainer = field.get('parent').get('container');
 
 		assert.isTrue(parentContainer.contains(container), 'Container should be in parent\'s container after calling .render()');
+
+		field.destroy();
 
 		done();
 	});
@@ -77,6 +81,9 @@ describe('DDM Renderer Field', function() {
 
 		assert.isTrue(parentContainer.contains(container), 'Container should be in parent\'s container after calling .render()');
 
+		field.destroy();
+		parentField.destroy();
+
 		done();
 	});
 
@@ -94,6 +101,8 @@ describe('DDM Renderer Field', function() {
 
 		assert.equal('Bruno Basto', inputNode.val());
 
+		field.destroy();
+
 		done();
 	});
 
@@ -108,6 +117,8 @@ describe('DDM Renderer Field', function() {
 		var inputNode = field.getInputNode();
 
 		assert.equal('', inputNode.val());
+
+		field.destroy();
 
 		done();
 	});
@@ -130,6 +141,8 @@ describe('DDM Renderer Field', function() {
 
 		assert.equal('Marcellus', inputNode.val());
 
+		field.destroy();
+
 		done();
 	});
 
@@ -151,6 +164,8 @@ describe('DDM Renderer Field', function() {
 
 		assert.equal('', inputNode.val());
 
+		field.destroy();
+
 		done();
 	});
 
@@ -165,6 +180,8 @@ describe('DDM Renderer Field', function() {
 		var inputNode = field.getInputNode();
 
 		assert.equal('Bruno Basto', inputNode.val());
+
+		field.destroy();
 
 		done();
 	});
@@ -186,6 +203,8 @@ describe('DDM Renderer Field', function() {
 		assert.property(json, 'value');
 
 		assert.equal(value, json.value);
+
+		field.destroy();
 
 		done();
 	});
@@ -212,6 +231,8 @@ describe('DDM Renderer Field', function() {
 		assert.isObject(json.value);
 		assert.deepEqual(value, json.value);
 
+		field.destroy();
+
 		done();
 	});
 
@@ -232,6 +253,8 @@ describe('DDM Renderer Field', function() {
 		assert.property(json.value, field.get('locale'));
 
 		assert.equal(json.value[field.get('locale')], 'Marcellus');
+
+		field.destroy();
 
 		done();
 	});
@@ -265,6 +288,9 @@ describe('DDM Renderer Field', function() {
 
 		assert.equal(field.get('fields').length, json.nestedFieldValues.length);
 
+		child.destroy();
+		field.destroy();
+
 		done();
 	});
 
@@ -277,6 +303,8 @@ describe('DDM Renderer Field', function() {
 		var label = field.get('label');
 
 		assert.isString(label, 'Label should always be a string.');
+
+		field.destroy();
 
 		done();
 	});
@@ -291,6 +319,8 @@ describe('DDM Renderer Field', function() {
 		var labelNode = field.getLabelNode();
 
 		assert.equal(labelNode.text(), field.get('label'), 'Label in DOM should equal actual field label.');
+
+		field.destroy();
 
 		done();
 	});
@@ -309,6 +339,8 @@ describe('DDM Renderer Field', function() {
 
 		assert.equal(field.getLabelNode().text(), 'Label', 'Label in DOM should equal actual field label');
 
+		field.destroy();
+
 		done();
 	});
 
@@ -323,21 +355,26 @@ describe('DDM Renderer Field', function() {
 
 		assert.equal(labelNode.text(), field.get('name'), 'Label in DOM should equal field name.');
 
+		field.destroy();
+
 		done();
 	});
 
 	it('should move the field from one parent to the other after changing the "parent" attribute', function(done) {
 		var parent1 = new Liferay.DDM.Renderer.Field({
 			type: 'text',
+			name: 'parent1'
 		});
 
 		var parent2 = new Liferay.DDM.Renderer.Field({
 			type: 'text',
+			name: 'parent2'
 		});
 
 		var child = new Liferay.DDM.Renderer.Field({
 			type: 'text',
-			parent: parent1
+			parent: parent1,
+			name: 'child'
 		});
 
 		var parent1Container = parent1.get('container');
@@ -357,6 +394,10 @@ describe('DDM Renderer Field', function() {
 
 		assert.isTrue(parent2.indexOf(child) > -1, 'Parent 2 should contain child after moving');
 		assert.isTrue(parent2Container.contains(childContainer), 'Parent 2 should contain child in DOM');
+
+		child.destroy();
+		parent1.destroy();
+		parent2.destroy();
 
 		done();
 	});
