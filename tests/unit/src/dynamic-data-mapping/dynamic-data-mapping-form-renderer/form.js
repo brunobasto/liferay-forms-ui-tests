@@ -31,6 +31,8 @@ describe('DDM Renderer Form', function() {
 
 		assert.isTrue(tabView.get('rendered'), 'TabView should be rendered.');
 
+		form.destroy();
+
 		done();
 	});
 
@@ -43,6 +45,8 @@ describe('DDM Renderer Form', function() {
 		assert.property(json, 'availableLanguageIds');
 		assert.property(json, 'defaultLanguageId');
 		assert.property(json, 'fieldValues');
+
+		form.destroy();
 
 		done();
 	});
@@ -63,6 +67,8 @@ describe('DDM Renderer Form', function() {
 		form.set('container', newContainer);
 
 		assert.isTrue(newContainer.contains(field.get('container')), 'New container should contain field container');
+
+		form.destroy();
 
 		done();
 	});

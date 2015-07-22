@@ -98,6 +98,8 @@ describe('DDL Layout Visitor', function() {
 
 		assert.lengthOf(visited, fields.length, 'Should have visited all fields');
 
+		formBuilder.destroy();
+
 		done();
 	});
 });

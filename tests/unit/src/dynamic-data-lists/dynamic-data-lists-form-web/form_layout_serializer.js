@@ -154,6 +154,8 @@ describe('DDL Layout Serializer', function() {
 				}
 			);
 
+			formBuilder.destroy();
+
 			done();
 		}
 		catch(e) {

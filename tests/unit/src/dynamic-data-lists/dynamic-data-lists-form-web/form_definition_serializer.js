@@ -240,6 +240,8 @@ describe('DDL Definition Serializer', function() {
 				}
 			);
 
+			formBuilder.destroy();
+
 			done();
 		}
 		catch(e) {

@@ -89,6 +89,8 @@ describe('DDM Renderer Form Definition Support', function() {
 
 		assert.lengthOf(form.get('fields'), 2, 'Length of "fields" attribute should be 2');
 
+		form.destroy();
+
 		done();
 	});
 
@@ -117,6 +119,8 @@ describe('DDM Renderer Form Definition Support', function() {
 
 		assert.ok(field);
 		assert.equal(field.getValue(), 'Bruno');
+
+		form.destroy();
 
 		done();
 	});
@@ -160,6 +164,8 @@ describe('DDM Renderer Form Definition Support', function() {
 		assert.ok(field);
 		assert.equal(field.getValue(), 'Marcellus');
 
+		form.destroy();
+
 		done();
 	});
 
@@ -176,6 +182,8 @@ describe('DDM Renderer Form Definition Support', function() {
 		_.each(form.get('fields'), function(field, index) {
 			assert.deepEqual(field.get('value'), test.valuesWithRepeatable.fieldValues[index].value);
 		});
+
+		form.destroy();
 
 		done();
 	});
@@ -198,6 +206,8 @@ describe('DDM Renderer Form Definition Support', function() {
 			form.get('fields').length
 		);
 
+		form.destroy();
+
 		done();
 	});
 
@@ -217,6 +227,8 @@ describe('DDM Renderer Form Definition Support', function() {
 			container.all('.lfr-ddm-form-field-container').size(),
 			form.get('fields').length
 		);
+
+		form.destroy();
 
 		done();
 	});
@@ -244,6 +256,8 @@ describe('DDM Renderer Form Definition Support', function() {
 		fields.forEach(function(field, index) {
 			assert.equal(field.get('repeatedIndex'), index);
 		});
+
+		form.destroy();
 
 		done();
 	});
@@ -290,6 +304,8 @@ describe('DDM Renderer Form Definition Support', function() {
 		);
 
 		assert.deepEqual(valuesBefore, valuesAfter);
+
+		form.destroy();
 
 		done();
 	});

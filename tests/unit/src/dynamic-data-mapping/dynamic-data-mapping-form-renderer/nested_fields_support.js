@@ -37,6 +37,8 @@ describe('DDM Renderer Nested Fields Support', function() {
 		assert.lengthOf(fields, 1, 'Field should have been inserted');
 		assert.equal(fields[0], field, 'Inserted field and actual field should match');
 
+		form.destroy();
+
 		done();
 	});
 
@@ -48,6 +50,8 @@ describe('DDM Renderer Nested Fields Support', function() {
 		form.insert(10, field);
 
 		assert.equal(form.get('fields').pop(), field, 'Field should have been inserted at the end');
+
+		form.destroy();
 
 		done();
 	});
@@ -68,6 +72,8 @@ describe('DDM Renderer Nested Fields Support', function() {
 
 		assert.lengthOf(fields, 3, 'Field should have been inserted');
 		assert.equal(fields[1], field, 'Inserted field and actual field should match');
+
+		form.destroy();
 
 		done();
 	});
@@ -98,6 +104,8 @@ describe('DDM Renderer Nested Fields Support', function() {
 
 		assert.isDefined(field);
 		assert.equal(field.get('name'), 'henrique');
+
+		form.destroy();
 
 		done();
 	});

@@ -53,6 +53,8 @@ describe('DDM Renderer Form Validation Support', function() {
 			form.validate(function(valid) {
 				assert.isFalse(valid);
 
+				form.destroy();
+
 				done();
 			});
 
@@ -99,6 +101,8 @@ describe('DDM Renderer Form Validation Support', function() {
 				var firstNameField = form.getField('first_name');
 
 				assert.lengthOf(firstNameField.get('errorMessages'), 1);
+
+				form.destroy();
 
 				done();
 			});
@@ -151,6 +155,8 @@ describe('DDM Renderer Form Validation Support', function() {
 
 				assert.equal(errorMessages[0], form.get('defaultErrorMessage'));
 
+				form.destroy();
+
 				done();
 			});
 
@@ -192,6 +198,8 @@ describe('DDM Renderer Form Validation Support', function() {
 		try {
 			form.validate(function(valid) {
 				assert.isFalse(valid);
+
+				form.destroy();
 
 				done();
 			});
