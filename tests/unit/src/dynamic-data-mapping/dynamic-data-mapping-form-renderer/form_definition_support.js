@@ -40,26 +40,6 @@ describe('DDM Renderer Form Definition Support', function() {
 		);
 	});
 
-	it('should set the fields attribute according to the definition when fields array is empty', function(done) {
-		var form = new Liferay.DDM.Renderer.Form({
-			definition: {
-				fields: [
-					{
-						type: 'text',
-						name: 'field01'
-					}
-				]
-			},
-			fields: []
-		}).render();
-
-		var fields = form.get('fields');
-
-		assert.lengthOf(fields, 1, 'Length of "fields" attribute should be 1');
-
-		done();
-	});
-
 	it('should update the fields after the attribute "definition" changes', function(done) {
 		var form = new Liferay.DDM.Renderer.Form({
 			definition: {

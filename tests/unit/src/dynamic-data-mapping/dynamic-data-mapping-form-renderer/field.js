@@ -360,48 +360,6 @@ describe('DDM Renderer Field', function() {
 		done();
 	});
 
-	it('should move the field from one parent to the other after changing the "parent" attribute', function(done) {
-		var parent1 = new Liferay.DDM.Renderer.Field({
-			type: 'text',
-			name: 'parent1'
-		});
-
-		var parent2 = new Liferay.DDM.Renderer.Field({
-			type: 'text',
-			name: 'parent2'
-		});
-
-		var child = new Liferay.DDM.Renderer.Field({
-			type: 'text',
-			parent: parent1,
-			name: 'child'
-		});
-
-		var parent1Container = parent1.get('container');
-		var parent2Container = parent2.get('container');
-		var childContainer = child.get('container');
-
-		assert.isTrue(parent1.indexOf(child) > -1, 'Parent 1 should contain child');
-		assert.isTrue(parent1Container.contains(childContainer), 'Parent 1 should contain child in DOM');
-
-		assert.isFalse(parent2.indexOf(child) > -1, 'Parent 2 should not contain child');
-		assert.isFalse(parent2Container.contains(childContainer), 'Parent 2 should not contain child in DOM');
-
-		child.set('parent', parent2);
-
-		assert.isFalse(parent1.indexOf(child) > -1, 'Parent 1 should not contain child after moving');
-		assert.isFalse(parent1Container.contains(childContainer), 'Parent 1 should not contain child in DOM');
-
-		assert.isTrue(parent2.indexOf(child) > -1, 'Parent 2 should contain child after moving');
-		assert.isTrue(parent2Container.contains(childContainer), 'Parent 2 should contain child in DOM');
-
-		child.destroy();
-		parent1.destroy();
-		parent2.destroy();
-
-		done();
-	});
-
 	it('should throw an exception when trying to initialize a field without a specified type', function(done) {
 		var createField = function() {
 			new Liferay.DDM.Renderer.Field();
