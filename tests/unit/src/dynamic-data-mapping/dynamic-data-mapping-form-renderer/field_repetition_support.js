@@ -82,7 +82,7 @@ describe('DDM Renderer Field Repetition Support', function() {
 		});
 
 		var isVisible = function(node) {
-			return !node.hasClass('hide');
+			return !node.hasClass('hide') || node.getStyle('display') !== 'none';
 		};
 
 		assert.isFalse(

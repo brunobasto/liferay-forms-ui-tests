@@ -50,7 +50,7 @@ describe('DDM Renderer Form Definition Support', function() {
 					}
 				]
 			}
-		}).render();
+		});
 
 		assert.lengthOf(form.get('fields'), 1, 'Length of "fields" attribute should be 1');
 
@@ -93,7 +93,7 @@ describe('DDM Renderer Form Definition Support', function() {
 					}
 				]
 			}
-		}).render();
+		});
 
 		var field = form.get('fields')[0];
 
@@ -125,7 +125,7 @@ describe('DDM Renderer Form Definition Support', function() {
 					}
 				]
 			}
-		}).render();
+		});
 
 		// Initial value is 'Bruno', lets change it and see if it gets updated
 
@@ -201,7 +201,7 @@ describe('DDM Renderer Form Definition Support', function() {
 		var form = new Liferay.DDM.Renderer.Form({
 			container: container,
 			definition: test.definition
-		}).render();
+		});
 
 		assert.equal(
 			container.all('.lfr-ddm-form-field-container').size(),
@@ -226,7 +226,7 @@ describe('DDM Renderer Form Definition Support', function() {
 			container: container,
 			definition: test.definitionWithRepeatable,
 			values: test.valuesWithRepeatable
-		}).render();
+		});
 
 		var fields = form.get('fields');
 
