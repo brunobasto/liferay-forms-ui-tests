@@ -9,6 +9,7 @@
 		"fields": [{
 			"dataType": "string",
 			"visibilityExpression": "true",
+			"validationExpression": "!name.isEmpty()",
 			"name": "name",
 			"localizable": false,
 			"type": "text"
@@ -27,24 +28,28 @@
 		}, {
 			"dataType": "boolean",
 			"visibilityExpression": "true",
+			"validationExpression": "true",
 			"name": "required",
 			"localizable": false,
 			"type": "checkbox"
 		}, {
 			"dataType": "string",
 			"visibilityExpression": "true",
+			"validationExpression": "true",
 			"name": "indexType",
 			"localizable": false,
 			"type": "text"
 		}, {
 			"dataType": "string",
 			"visibilityExpression": "true",
+			"validationExpression": "true",
 			"name": "label",
 			"localizable": true,
 			"type": "text"
 		}, {
 			"dataType": "string",
 			"visibilityExpression": "true",
+			"validationExpression": "true",
 			"name": "tip",
 			"localizable": true,
 			"type": "text"
@@ -57,24 +62,28 @@
 		}, {
 			"dataType": "boolean",
 			"visibilityExpression": "true",
+			"validationExpression": "true",
 			"name": "localizable",
 			"localizable": false,
 			"type": "checkbox"
 		}, {
 			"dataType": "string",
 			"visibilityExpression": "true",
+			"validationExpression": "true",
 			"name": "predefinedValue",
 			"localizable": true,
 			"type": "text"
 		}, {
 			"dataType": "boolean",
 			"visibilityExpression": "true",
+			"validationExpression": "true",
 			"name": "repeatable",
 			"localizable": false,
 			"type": "checkbox"
 		}, {
 			"dataType": "boolean",
 			"visibilityExpression": "true",
+			"validationExpression": "true",
 			"name": "showLabel",
 			"localizable": false,
 			"type": "checkbox"
@@ -87,18 +96,21 @@
 		}, {
 			"dataType": "boolean",
 			"visibilityExpression": "true",
+			"validationExpression": "true",
 			"name": "readOnly",
 			"localizable": false,
 			"type": "checkbox"
 		}, {
 			"dataType": "ddm-options",
 			"visibilityExpression": "true",
+			"validationExpression": "true",
 			"name": "options",
 			"localizable": false,
 			"type": "options"
 		}, {
 			"dataType": "boolean",
 			"visibilityExpression": "true",
+			"validationExpression": "true",
 			"name": "multiple",
 			"localizable": false,
 			"type": "checkbox"
@@ -116,6 +128,7 @@
 		"fields": [{
 			"dataType": "string",
 			"visibilityExpression": "true",
+			"validationExpression": "!name.isEmpty()",
 			"name": "name",
 			"localizable": false,
 			"type": "text"
@@ -134,24 +147,28 @@
 		}, {
 			"dataType": "boolean",
 			"visibilityExpression": "true",
+			"validationExpression": "true",
 			"name": "required",
 			"localizable": false,
 			"type": "checkbox"
 		}, {
 			"dataType": "string",
 			"visibilityExpression": "true",
+			"validationExpression": "true",
 			"name": "indexType",
 			"localizable": false,
 			"type": "text"
 		}, {
 			"dataType": "string",
 			"visibilityExpression": "true",
+			"validationExpression": "true",
 			"name": "label",
 			"localizable": true,
 			"type": "text"
 		}, {
 			"dataType": "string",
 			"visibilityExpression": "true",
+			"validationExpression": "true",
 			"name": "tip",
 			"localizable": true,
 			"type": "text"
@@ -164,24 +181,28 @@
 		}, {
 			"dataType": "boolean",
 			"visibilityExpression": "true",
+			"validationExpression": "true",
 			"name": "localizable",
 			"localizable": false,
 			"type": "checkbox"
 		}, {
 			"dataType": "string",
 			"visibilityExpression": "true",
+			"validationExpression": "true",
 			"name": "predefinedValue",
 			"localizable": true,
 			"type": "text"
 		}, {
 			"dataType": "boolean",
 			"visibilityExpression": "true",
+			"validationExpression": "true",
 			"name": "repeatable",
 			"localizable": false,
 			"type": "checkbox"
 		}, {
 			"dataType": "boolean",
 			"visibilityExpression": "true",
+			"validationExpression": "true",
 			"name": "showLabel",
 			"localizable": false,
 			"type": "checkbox"
@@ -194,6 +215,7 @@
 		}, {
 			"dataType": "boolean",
 			"visibilityExpression": "true",
+			"validationExpression": "true",
 			"name": "readOnly",
 			"localizable": false,
 			"type": "checkbox"
@@ -211,6 +233,7 @@
 		"fields": [{
 			"dataType": "string",
 			"visibilityExpression": "true",
+			"validationExpression": "!name.isEmpty()",
 			"name": "name",
 			"localizable": false,
 			"type": "text"
@@ -229,24 +252,28 @@
 		}, {
 			"dataType": "boolean",
 			"visibilityExpression": "true",
+			"validationExpression": "true",
 			"name": "required",
 			"localizable": false,
 			"type": "checkbox"
 		}, {
 			"dataType": "string",
 			"visibilityExpression": "true",
+			"validationExpression": "true",
 			"name": "indexType",
 			"localizable": false,
 			"type": "text"
 		}, {
 			"dataType": "string",
 			"visibilityExpression": "true",
+			"validationExpression": "true",
 			"name": "label",
 			"localizable": true,
 			"type": "text"
 		}, {
 			"dataType": "string",
 			"visibilityExpression": "true",
+			"validationExpression": "true",
 			"name": "tip",
 			"localizable": true,
 			"type": "text"
@@ -259,24 +286,28 @@
 		}, {
 			"dataType": "boolean",
 			"visibilityExpression": "true",
+			"validationExpression": "true",
 			"name": "localizable",
 			"localizable": false,
 			"type": "checkbox"
 		}, {
 			"dataType": "string",
 			"visibilityExpression": "true",
+			"validationExpression": "true",
 			"name": "predefinedValue",
 			"localizable": true,
 			"type": "text"
 		}, {
 			"dataType": "boolean",
 			"visibilityExpression": "true",
+			"validationExpression": "true",
 			"name": "repeatable",
 			"localizable": false,
 			"type": "checkbox"
 		}, {
 			"dataType": "boolean",
 			"visibilityExpression": "true",
+			"validationExpression": "true",
 			"name": "showLabel",
 			"localizable": false,
 			"type": "checkbox"
@@ -289,6 +320,7 @@
 		}, {
 			"dataType": "boolean",
 			"visibilityExpression": "true",
+			"validationExpression": "true",
 			"name": "readOnly",
 			"localizable": false,
 			"type": "checkbox"
@@ -306,6 +338,7 @@
 		"fields": [{
 			"dataType": "string",
 			"visibilityExpression": "true",
+			"validationExpression": "!name.isEmpty()",
 			"name": "name",
 			"localizable": false,
 			"type": "text"
@@ -324,24 +357,28 @@
 		}, {
 			"dataType": "boolean",
 			"visibilityExpression": "true",
+			"validationExpression": "true",
 			"name": "required",
 			"localizable": false,
 			"type": "checkbox"
 		}, {
 			"dataType": "string",
 			"visibilityExpression": "true",
+			"validationExpression": "true",
 			"name": "indexType",
 			"localizable": false,
 			"type": "text"
 		}, {
 			"dataType": "string",
 			"visibilityExpression": "true",
+			"validationExpression": "true",
 			"name": "label",
 			"localizable": true,
 			"type": "text"
 		}, {
 			"dataType": "string",
 			"visibilityExpression": "true",
+			"validationExpression": "true",
 			"name": "tip",
 			"localizable": true,
 			"type": "text"
@@ -354,24 +391,28 @@
 		}, {
 			"dataType": "boolean",
 			"visibilityExpression": "true",
+			"validationExpression": "true",
 			"name": "localizable",
 			"localizable": false,
 			"type": "checkbox"
 		}, {
 			"dataType": "string",
 			"visibilityExpression": "true",
+			"validationExpression": "true",
 			"name": "predefinedValue",
 			"localizable": true,
 			"type": "text"
 		}, {
 			"dataType": "boolean",
 			"visibilityExpression": "true",
+			"validationExpression": "true",
 			"name": "repeatable",
 			"localizable": false,
 			"type": "checkbox"
 		}, {
 			"dataType": "boolean",
 			"visibilityExpression": "true",
+			"validationExpression": "true",
 			"name": "showLabel",
 			"localizable": false,
 			"type": "checkbox"
@@ -384,6 +425,7 @@
 		}, {
 			"dataType": "boolean",
 			"visibilityExpression": "true",
+			"validationExpression": "true",
 			"name": "readOnly",
 			"localizable": false,
 			"type": "checkbox"
@@ -401,6 +443,7 @@
 		"fields": [{
 			"dataType": "string",
 			"visibilityExpression": "true",
+			"validationExpression": "!name.isEmpty()",
 			"name": "name",
 			"localizable": false,
 			"type": "text"
@@ -419,24 +462,28 @@
 		}, {
 			"dataType": "boolean",
 			"visibilityExpression": "true",
+			"validationExpression": "true",
 			"name": "required",
 			"localizable": false,
 			"type": "checkbox"
 		}, {
 			"dataType": "string",
 			"visibilityExpression": "true",
+			"validationExpression": "true",
 			"name": "indexType",
 			"localizable": false,
 			"type": "text"
 		}, {
 			"dataType": "string",
 			"visibilityExpression": "true",
+			"validationExpression": "true",
 			"name": "label",
 			"localizable": true,
 			"type": "text"
 		}, {
 			"dataType": "string",
 			"visibilityExpression": "true",
+			"validationExpression": "true",
 			"name": "tip",
 			"localizable": true,
 			"type": "text"
@@ -449,24 +496,28 @@
 		}, {
 			"dataType": "boolean",
 			"visibilityExpression": "true",
+			"validationExpression": "true",
 			"name": "localizable",
 			"localizable": false,
 			"type": "checkbox"
 		}, {
 			"dataType": "string",
 			"visibilityExpression": "true",
+			"validationExpression": "true",
 			"name": "predefinedValue",
 			"localizable": true,
 			"type": "text"
 		}, {
 			"dataType": "boolean",
 			"visibilityExpression": "true",
+			"validationExpression": "true",
 			"name": "repeatable",
 			"localizable": false,
 			"type": "checkbox"
 		}, {
 			"dataType": "boolean",
 			"visibilityExpression": "true",
+			"validationExpression": "true",
 			"name": "showLabel",
 			"localizable": false,
 			"type": "checkbox"
@@ -479,12 +530,14 @@
 		}, {
 			"dataType": "boolean",
 			"visibilityExpression": "true",
+			"validationExpression": "true",
 			"name": "readOnly",
 			"localizable": false,
 			"type": "checkbox"
 		}, {
 			"dataType": "ddm-options",
 			"visibilityExpression": "true",
+			"validationExpression": "true",
 			"name": "options",
 			"localizable": false,
 			"type": "options"
