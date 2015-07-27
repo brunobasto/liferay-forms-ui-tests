@@ -9,12 +9,23 @@ var getTestData = function(callback) {
 	).done(callback);
 };
 
+var respondEmpty = function() {
+	server.requests[0].respond(
+		200,
+		{
+			'Content-Length': '0',
+			'Content-Type': 'text/plain'
+		}
+	);
+};
+
 describe('DDM Renderer Form Validation Support', function() {
 	this.timeout(120000);
 
 	before(function(done) {
 		AUI().use(
 			'liferay-ddm-form-renderer',
+			'liferay-form',
 			function(A) {
 				getTestData(function(fieldTypes) {
 					Liferay.DDM.Renderer.FieldTypes.register(fieldTypes);
@@ -37,7 +48,93 @@ describe('DDM Renderer Form Validation Support', function() {
 		done();
 	});
 
-	it('should validate all the fields of the form when response is success', function(done) {
+	it('should skip inexistent fields in the response', function(done) {
+		var form = new Liferay.DDM.Renderer.Form({
+			fields: [
+				new Liferay.DDM.Renderer.Field({
+					instanceId: 'abc123',
+					name: 'first_name',
+					required: true,
+					type: 'text',
+					validationExpression: 'false'
+				})
+			]
+		});
+
+		try {
+			form.validate(function(hasError) {
+				assert.isFalse(hasError);
+
+				form.destroy();
+
+				done();
+			});
+
+			server.requests[0].respond(
+				200,
+				{
+					'Content-Type': 'application/json'
+				},
+				JSON.stringify(
+					{
+						fields: [
+							{
+								instanceId: 'inconsistent1',
+								messages: ['First Name field is required'],
+								name: 'first_name',
+								valid: false
+							},
+							{
+								instanceId: 'inconsistent2',
+								messages: ['Last Name field is required'],
+								name: 'last_name',
+								valid: false
+							}
+						]
+					}
+				)
+			);
+		}
+		catch (e) {
+			done(e);
+		}
+	});
+
+	it('should handle problems with the request when calling .validate()', function(done) {
+		var form = new Liferay.DDM.Renderer.Form({
+			fields: [
+				new Liferay.DDM.Renderer.Field({
+					instanceId: 'abc123',
+					name: 'first_name',
+					required: true,
+					type: 'text',
+					validationExpression: 'false'
+				})
+			]
+		});
+
+		try {
+			form.validate(function(hasError) {
+				assert.isTrue(hasError);
+
+				form.destroy();
+
+				done();
+			});
+
+			server.requests[0].respond(
+				404,
+				{
+					'Content-Type': 'text/plain'
+				}
+			);
+		}
+		catch (e) {
+			done(e);
+		}
+	});
+
+	it('should pass the validation when there is no validation expression defined', function(done) {
 		var form = new Liferay.DDM.Renderer.Form({
 			fields: [
 				new Liferay.DDM.Renderer.Field({
@@ -45,13 +142,117 @@ describe('DDM Renderer Form Validation Support', function() {
 					name: 'first_name',
 					required: true,
 					type: 'text'
+				}),
+				new Liferay.DDM.Renderer.Field({
+					instanceId: 'abc321',
+					name: 'last_name',
+					required: true,
+					type: 'text'
 				})
 			]
 		});
 
 		try {
-			form.validate(function(valid) {
-				assert.isFalse(valid);
+			form.validate(function(hasError) {
+				assert.isFalse(hasError);
+
+				assert.lengthOf(server.requests, 0);
+
+				form.destroy();
+
+				done();
+			});
+		}
+		catch (e) {
+			done(e);
+		}
+	});
+
+	it('should pass the field validation when there is no validation expression defined', function(done) {
+		var form = new Liferay.DDM.Renderer.Form({
+			fields: [
+				new Liferay.DDM.Renderer.Field({
+					instanceId: 'abc123',
+					name: 'first_name',
+					required: true,
+					type: 'text'
+				}),
+				new Liferay.DDM.Renderer.Field({
+					instanceId: 'abc321',
+					name: 'last_name',
+					required: true,
+					type: 'text'
+				})
+			]
+		});
+
+		try {
+			var lastNameField = form.getField('last_name');
+
+			lastNameField.validate(function(hasError) {
+				assert.isFalse(hasError);
+
+				assert.lengthOf(server.requests, 0);
+
+				form.destroy();
+
+				done();
+			});
+		}
+		catch (e) {
+			done(e);
+		}
+	});
+
+	it('should handle non JSON responses gracefully for .validate()', function(done) {
+		var form = new Liferay.DDM.Renderer.Form({
+			fields: [
+				new Liferay.DDM.Renderer.Field({
+					instanceId: 'abc123',
+					name: 'first_name',
+					required: true,
+					type: 'text',
+					validationExpression: 'false'
+				})
+			]
+		});
+
+		var field = form.getField('first_name');
+
+		try {
+			form.validate(function(hasError) {
+				assert.isTrue(hasError);
+
+				assert.isNull(field.get('container').one('.form-control-feedback'));
+
+				form.destroy();
+
+				done();
+			});
+
+			respondEmpty();
+		}
+		catch (e) {
+			done(e);
+		}
+	});
+
+	it('should validate all the fields of the form when response is success', function(done) {
+		var form = new Liferay.DDM.Renderer.Form({
+			fields: [
+				new Liferay.DDM.Renderer.Field({
+					instanceId: 'abc123',
+					name: 'first_name',
+					required: true,
+					type: 'text',
+					validationExpression: 'false'
+				})
+			]
+		});
+
+		try {
+			form.validate(function(hasError) {
+				assert.isTrue(hasError);
 
 				form.destroy();
 
@@ -91,7 +292,8 @@ describe('DDM Renderer Form Validation Support', function() {
 					instanceId: 'abc123',
 					name: 'first_name',
 					required: true,
-					type: 'text'
+					type: 'text',
+					validationExpression: 'false'
 				})
 			]
 		});
@@ -100,7 +302,7 @@ describe('DDM Renderer Form Validation Support', function() {
 			form.validate(function(valid) {
 				var firstNameField = form.getField('first_name');
 
-				assert.lengthOf(firstNameField.get('errorMessages'), 1);
+				assert.lengthOf(firstNameField.get('validationMessages'), 1);
 
 				form.destroy();
 
@@ -140,20 +342,23 @@ describe('DDM Renderer Form Validation Support', function() {
 					instanceId: 'abc123',
 					name: 'first_name',
 					required: true,
-					type: 'text'
+					type: 'text',
+					validationExpression: 'false'
 				})
 			]
 		});
 
 		try {
-			form.validate(function(valid) {
-				var firstNameField = form.getField('first_name');
+			var field = form.getField('first_name');
 
-				var errorMessages = firstNameField.get('errorMessages');
+			field.validate(function(valid) {
+				var validationMessages = field.get('validationMessages');
 
-				assert.lengthOf(errorMessages, 1);
+				assert.lengthOf(validationMessages, 1);
 
-				assert.equal(errorMessages[0], form.get('defaultErrorMessage'));
+				var strings = field.get('strings');
+
+				assert.equal(validationMessages[0], strings.defaultValidationMessage);
 
 				form.destroy();
 
@@ -183,21 +388,39 @@ describe('DDM Renderer Form Validation Support', function() {
 		}
 	});
 
-	it('should return false when there\'s a problem with the request', function(done) {
+	it('should focus the first field with error when validating the whole form', function(done) {
 		var form = new Liferay.DDM.Renderer.Form({
 			fields: [
 				new Liferay.DDM.Renderer.Field({
-					instanceId: 'abc123',
+					instanceId: 'field1',
 					name: 'first_name',
 					required: true,
-					type: 'text'
+					type: 'text',
+					validationExpression: 'false'
+				}),
+				new Liferay.DDM.Renderer.Field({
+					instanceId: 'field2',
+					name: 'last_name',
+					required: true,
+					type: 'text',
+					validationExpression: 'false'
 				})
 			]
 		});
 
 		try {
-			form.validate(function(valid) {
-				assert.isFalse(valid);
+			var firstNameField = form.getField('first_name');
+			var lastNameField = form.getField('last_name');
+
+			sinon.spy(firstNameField, 'focus');
+			sinon.spy(lastNameField, 'focus');
+
+			form.validate(function() {
+				assert.isTrue(firstNameField.focus.calledOnce);
+				assert.isFalse(lastNameField.focus.called);
+
+				firstNameField.focus.restore();
+				lastNameField.focus.restore();
 
 				form.destroy();
 
@@ -205,11 +428,314 @@ describe('DDM Renderer Form Validation Support', function() {
 			});
 
 			server.requests[0].respond(
+				200,
+				{
+					'Content-Type': 'application/json'
+				},
+				JSON.stringify(
+					{
+						fields: [
+							{
+								instanceId: 'field1',
+								messages: ['First Name field is required'],
+								name: 'first_name',
+								valid: false
+							},
+							{
+								instanceId: 'field2',
+								messages: ['Last Name field is required'],
+								name: 'last_name',
+								valid: false
+							}
+						]
+					}
+				)
+			);
+		}
+		catch (e) {
+			done(e);
+		}
+	});
+
+	it('should prevent form submission when validation does not pass', function(done) {
+		var A = AUI();
+
+		var formNode = A.Node.create('<form action=""><button type="submit" /></form>');
+
+		formNode.appendTo(document.body);
+
+		var form = new Liferay.DDM.Renderer.Form({
+			container: formNode,
+			fields: [
+				new Liferay.DDM.Renderer.Field({
+					instanceId: 'abc123',
+					name: 'first_name',
+					required: true,
+					type: 'text',
+					validationExpression: 'false'
+				})
+			]
+		});
+
+		sinon.spy(form, 'validate');
+
+		var restore = function() {
+			form.validate.restore();
+
+			form.destroy();
+
+			formNode.remove();
+		};
+
+		try {
+			formNode.simulate('submit');
+
+			assert.isTrue(form.validate.calledOnce);
+
+			server.requests[0].respond(
+				200,
+				{
+					'Content-Type': 'application/json'
+				},
+				JSON.stringify(
+					{
+						fields: [
+							{
+								instanceId: 'abc123',
+								name: 'first_name',
+								valid: false
+							}
+						]
+					}
+				)
+			);
+
+			setTimeout(function() {
+				restore();
+
+				// Assert page was not reloaded
+				assert.isTrue(true);
+
+				done();
+			});
+		}
+		catch (e) {
+			restore();
+
+			done(e);
+		}
+	});
+
+	it('should submit the form when validation passes', function(done) {
+		var A = AUI(),
+			formNode = A.Node.create('<form name="test" action=""><button type="submit" /></form>');
+
+		formNode.appendTo(document.body);
+
+		var original = Liferay.DDM.Renderer.Form.prototype._getDOMForm;
+
+		Liferay.DDM.Renderer.Form.prototype._getDOMForm = function() {
+			return formNode;
+		};
+
+		var form = new Liferay.DDM.Renderer.Form({
+			container: formNode,
+			fields: [
+				new Liferay.DDM.Renderer.Field({
+					instanceId: 'abc123',
+					name: 'first_name',
+					required: true,
+					type: 'text',
+					validationExpression: 'false'
+				})
+			]
+		});
+
+		sinon.spy(form, 'validate');
+
+		var restore = function() {
+			Liferay.DDM.Renderer.Form.prototype._getDOMForm = original;
+
+			form.validate.restore();
+
+			form.destroy();
+
+			formNode.remove();
+		};
+
+		try {
+			formNode.submit = sinon.spy();
+
+			formNode.simulate('submit');
+
+			assert.isTrue(form.validate.calledOnce, 'should call .validate()');
+
+			server.requests[0].respond(
+				200,
+				{
+					'Content-Type': 'application/json'
+				},
+				JSON.stringify(
+					{
+						fields: [
+							{
+								instanceId: 'abc123',
+								name: 'first_name',
+								valid: true
+							}
+						]
+					}
+				)
+			);
+
+			setTimeout(function() {
+				assert.isTrue(formNode.submit.called, 'should try to submit the form');
+
+				restore();
+
+				done();
+			}, 100);
+		}
+		catch (e) {
+			restore();
+
+			done(e);
+		}
+	});
+
+	it('should prevent liferay form submission when validation does not pass', function(done) {
+		var A = AUI();
+
+		var formNode = A.Node.create('<form name="myForm" id="myForm" action=""><button type="submit" /></form>');
+
+		formNode.appendTo(document.body);
+
+		Liferay.Form.register({
+			id: 'myForm'
+		});
+
+		var form = new Liferay.DDM.Renderer.Form({
+			container: formNode,
+			fields: [
+				new Liferay.DDM.Renderer.Field({
+					instanceId: 'abc123',
+					name: 'first_name',
+					required: true,
+					type: 'text',
+					validationExpression: 'false'
+				})
+			]
+		});
+
+		sinon.spy(form, 'validate');
+
+		var restore = function() {
+			form.validate.restore();
+
+			form.destroy();
+
+			formNode.remove();
+		};
+
+		try {
+			formNode.simulate('submit');
+
+			// Liferay.Form submission is async :/
+			setTimeout(function() {
+				assert.isTrue(form.validate.called, 'Validation should have been triggered');
+				assert.isTrue(form.validate.calledOnce, 'Validation should have been triggered only once');
+
+				server.requests[0].respond(
+					200,
+					{
+						'Content-Type': 'application/json'
+					},
+					JSON.stringify(
+						{
+							fields: [
+								{
+									instanceId: 'abc123',
+									name: 'first_name',
+									valid: false
+								}
+							]
+						}
+					)
+				);
+
+				setTimeout(function() {
+					restore();
+
+					// Assert page was not reloaded
+					assert.isTrue(true);
+
+					done();
+				}, 100);
+			}, 100);
+		}
+		catch (e) {
+			restore();
+
+			done(e);
+		}
+	});
+
+	it('should enable calling .validate() without a callback parameter', function(done) {
+		var A = AUI(),
+			form = new Liferay.DDM.Renderer.Form({
+				fields: [
+					new Liferay.DDM.Renderer.Field({
+						instanceId: 'abc123',
+						name: 'first_name',
+						required: true,
+						type: 'text'
+					})
+				]
+			});
+
+		try {
+			form.validate();
+
+			assert.lengthOf(server.requests, 0);
+
+			form.destroy();
+
+			done();
+		}
+		catch (e) {
+			done(e);
+		}
+	});
+
+	it('should enable calling .validate() without a callback parameter but with validations', function(done) {
+		var A = AUI(),
+			form = new Liferay.DDM.Renderer.Form({
+				fields: [
+					new Liferay.DDM.Renderer.Field({
+						instanceId: 'abc123',
+						name: 'first_name',
+						required: true,
+						type: 'text',
+						validationExpression: 'false'
+					})
+				]
+			});
+
+		try {
+			form.validate();
+
+			assert.lengthOf(server.requests, 1);
+
+			server.requests[0].respond(
 				404,
 				{
 					'Content-Type': 'text/plain'
 				}
 			);
+
+			form.destroy();
+
+			done();
 		}
 		catch (e) {
 			done(e);

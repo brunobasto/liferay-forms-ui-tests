@@ -8,8 +8,8 @@ var getPassingValidationResponse = function(form) {
 
 	form.eachField(function(field) {
 		fields.push({
-			messages: [],
 			instanceId: field.get('instanceId'),
+			messages: [],
 			name: field.get('name'),
 			valid: true
 		});
@@ -122,7 +122,13 @@ describe('DDL Form Builder Field Support', function() {
 		// Since validateSettings is async, if we destroy it now
 		// it'll break
 
-		done();
+		setTimeout(function() {
+			settingsForm.destroy();
+
+			formBuilder.destroy();
+
+			done();
+		}, 100);
 	});
 
 	it('should create a field with a settingsForm with the fields specified by the FieldType definition', function(done) {
@@ -184,8 +190,8 @@ describe('DDL Form Builder Field Support', function() {
 
 		var fieldWithDuplicatedName = createFieldWithName(formBuilder, 'text', 'sites');
 
-		fieldWithDuplicatedName.validateSettings(function(valid) {
-			assert.isFalse(valid);
+		fieldWithDuplicatedName.validateSettings(function(hasError) {
+			assert.isTrue(hasError);
 
 			formBuilder.destroy();
 
@@ -217,8 +223,8 @@ describe('DDL Form Builder Field Support', function() {
 
 		formBuilder.showFieldSettingsPanel(field, field.get('name'));
 
-		field.validateSettings(function(valid) {
-			assert.isTrue(valid);
+		field.validateSettings(function(hasError) {
+			assert.isFalse(hasError);
 
 			formBuilder.destroy();
 

@@ -1,11 +1,22 @@
 'use strict';
 
-var assert = chai.assert;
+var assert = chai.assert,
+	server;
 
 var getTestData = function(callback) {
 	$.when(
 		$.get('/base/src/dynamic-data-mapping/dynamic-data-mapping-form-renderer/assets/field_types.json')
 	).done(callback);
+};
+
+var respondEmpty = function() {
+	server.requests[0].respond(
+		200,
+		{
+			'Content-Length': '0',
+			'Content-Type': 'text/plain'
+		}
+	);
 };
 
 describe('DDM Renderer Field Validation Support', function() {
@@ -25,73 +36,177 @@ describe('DDM Renderer Field Validation Support', function() {
 		);
 	});
 
-	it('should render the error messages uppon initialization', function(done) {
-		var field = new Liferay.DDM.Renderer.Field({
-			errorMessages: [
-				'This field is required',
-				'This field value is not correct'
-			],
-			type: 'text'
-		});
-
-		var errorMessages = field.get('errorMessages');
-
-		var nodes = field.get('container').all('.validation-message');
-
-		assert.equal(nodes.size(), errorMessages.length);
-
-		nodes.each(function(node) {
-			assert.equal(node.text(), errorMessages.pop());
-		});
-
-		field.destroy();
+	beforeEach(function(done) {
+		server = sinon.fakeServer.create();
 
 		done();
 	});
 
-	it('should add one error message at the top after calling .addErrorMessage()', function(done) {
-		var field = new Liferay.DDM.Renderer.Field({
-			errorMessages: [
-				'This field is required',
-				'This field value is not correct'
-			],
-			type: 'text'
-		});
-
-		var errorMessages = field.get('errorMessages');
-
-		field.addErrorMessage('New error message');
-
-		assert.equal(3, errorMessages.length);
-
-		var nodes = field.get('container').all('.validation-message');
-
-		assert.equal(nodes.item(0).text(), 'New error message');
-
-		field.destroy();
+	afterEach(function(done) {
+		server.restore();
 
 		done();
 	});
 
-	it('should clear the error messages after calling .clearErrorMessages()', function(done) {
-		var field = new Liferay.DDM.Renderer.Field({
-			errorMessages: [
-				'This field is required',
-				'This field value is not correct'
-			],
-			type: 'text'
+	it('should handle problems with the request when calling .validate()', function(done) {
+		var form = new Liferay.DDM.Renderer.Form({
+			fields: [
+				new Liferay.DDM.Renderer.Field({
+					instanceId: 'abc123',
+					name: 'first_name',
+					required: true,
+					type: 'text',
+					validationExpression: 'false'
+				})
+			]
 		});
 
-		field.clearErrorMessages();
+		try {
+			var field = form.getField('first_name');
 
-		var errorMessages = field.get('errorMessages');
-		var nodes = field.get('container').all('.validation-message');
+			field.validate(function(hasError) {
+				assert.isTrue(hasError);
 
-		assert.equal(nodes.size(), 0);
-		assert.equal(errorMessages.length, 0);
+				form.destroy();
 
-		field.destroy();
+				done();
+			});
 
-		done();
+			server.requests[0].respond(
+				404,
+				{
+					'Content-Type': 'text/plain'
+				}
+			);
+		}
+		catch (e) {
+			done(e);
+		}
+	});
+
+	it('should handle non JSON responses gracefully for .validate()', function(done) {
+		var form = new Liferay.DDM.Renderer.Form({
+			fields: [
+				new Liferay.DDM.Renderer.Field({
+					instanceId: 'abc123',
+					name: 'first_name',
+					required: true,
+					type: 'text',
+					validationExpression: 'false'
+				})
+			]
+		});
+
+		var field = form.getField('first_name');
+
+		try {
+			field.validate(function(hasError) {
+				assert.isTrue(hasError);
+
+				assert.isNull(field.get('container').one('.form-control-feedback'));
+
+				form.destroy();
+
+				done();
+			});
+
+			respondEmpty();
+		}
+		catch (e) {
+			done(e);
+		}
+	});
+
+	it('should validate only the desired field after calling .validate()', function(done) {
+		var form = new Liferay.DDM.Renderer.Form({
+			fields: [
+				new Liferay.DDM.Renderer.Field({
+					instanceId: 'field1',
+					name: 'first_name',
+					required: true,
+					type: 'text',
+					validationExpression: 'false'
+				}),
+				new Liferay.DDM.Renderer.Field({
+					instanceId: 'field2',
+					name: 'last_name',
+					required: true,
+					type: 'text',
+					validationExpression: 'false'
+				})
+			]
+		});
+
+		try {
+			var firstNameField = form.getField('first_name');
+			var lastNameField = form.getField('last_name');
+
+			lastNameField.validate(function() {
+				assert.lengthOf(firstNameField.get('validationMessages'), 0);
+				assert.lengthOf(lastNameField.get('validationMessages'), 1);
+
+				form.destroy();
+
+				done();
+			});
+
+			server.requests[0].respond(
+				200,
+				{
+					'Content-Type': 'application/json'
+				},
+				JSON.stringify(
+					{
+						fields: [
+							{
+								instanceId: 'field1',
+								messages: ['First Name field is required'],
+								name: 'first_name',
+								valid: false
+							},
+							{
+								instanceId: 'field2',
+								messages: ['Last Name field is required'],
+								name: 'last_name',
+								valid: false
+							}
+						]
+					}
+				)
+			);
+		}
+		catch (e) {
+			done(e);
+		}
+	});
+
+	it('should enable calling .validate() without a callback parameter', function(done) {
+		var A = AUI();
+
+		var form = new Liferay.DDM.Renderer.Form({
+			fields: [
+				new Liferay.DDM.Renderer.Field({
+					instanceId: 'abc123',
+					name: 'first_name',
+					required: true,
+					type: 'text'
+				})
+			]
+		});
+
+		try {
+			var field = form.getField('first_name');
+
+			field.validate();
+
+			assert.lengthOf(server.requests, 0);
+
+			form.destroy();
+
+			done();
+		}
+		catch (e) {
+			done(e);
+		}
 	});
 });
