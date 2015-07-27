@@ -46,7 +46,11 @@ module.exports = function(callback) {
 				function(file) {
 					var filePath = [file];
 
-					if ((file.indexOf('aui') === 0) || (file.indexOf('bootstrap') === 0)) {
+					if ((file.indexOf('aui') === 0) ||
+						(file.indexOf('bootstrap') === 0) ||
+						(file.indexOf('lexicon') === 0) ||
+						(file.indexOf('loader') === 0)) {
+
 						filePath.unshift(frontendTmpSrcDir);
 					}
 					else {
