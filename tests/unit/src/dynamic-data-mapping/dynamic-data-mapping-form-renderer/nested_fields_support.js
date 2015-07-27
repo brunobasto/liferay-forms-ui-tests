@@ -25,6 +25,50 @@ describe('DDM Renderer Nested Fields Support', function() {
 		);
 	});
 
+	it('should set each children\'s parent to itself', function(done) {
+		var form = new Liferay.DDM.Renderer.Form({
+			fields: [
+				new Liferay.DDM.Renderer.Field({
+					instanceId: 'field1',
+					name: 'first_name',
+					required: false,
+					type: 'text'
+				}),
+				new Liferay.DDM.Renderer.Field({
+					instanceId: 'field2',
+					name: 'last_name',
+					required: true,
+					type: 'text'
+				})
+			]
+		});
+
+		form.get('fields').forEach(function(field) {
+			assert.isTrue(form == field.get('parent'));
+		});
+
+		form.destroy();
+
+		done();
+	});
+
+	it('should insert a field at position 0 calling .appendChild', function(done) {
+		var form = new Liferay.DDM.Renderer.Form();
+
+		var field = new Liferay.DDM.Renderer.Field({ type: 'text' });
+
+		form.appendChild(field);
+
+		var fields = form.get('fields');
+
+		assert.lengthOf(fields, 1, 'Field should have been inserted');
+		assert.equal(fields[0], field, 'Inserted field and actual field should match');
+
+		form.destroy();
+
+		done();
+	});
+
 	it('should insert a field at position 0 when fields array is empty', function(done) {
 		var form = new Liferay.DDM.Renderer.Form();
 
@@ -70,7 +114,7 @@ describe('DDM Renderer Nested Fields Support', function() {
 
 		var fields = form.get('fields');
 
-		assert.lengthOf(fields, 3, 'Field should have been inserted');
+		assert.equal(fields.length, 3, 'Field should have been inserted');
 		assert.equal(fields[1], field, 'Inserted field and actual field should match');
 
 		form.destroy();
