@@ -25,6 +25,28 @@ describe('DDM Renderer Nested Fields Support', function() {
 		);
 	});
 
+	it('should re-append the nested fields after the container changes', function(done) {
+		var A = AUI();
+
+		var field = new Liferay.DDM.Renderer.Field({
+			type: 'text'
+		});
+
+		var form = new Liferay.DDM.Renderer.Form({
+			fields: [field]
+		});
+
+		var newContainer = new A.Node.create('<div></div>');
+
+		form.set('container', newContainer);
+
+		assert.isTrue(newContainer.contains(field.get('container')), 'New container should contain field container');
+
+		form.destroy();
+
+		done();
+	});
+
 	it('should set each children\'s parent to itself', function(done) {
 		var form = new Liferay.DDM.Renderer.Form({
 			fields: [
