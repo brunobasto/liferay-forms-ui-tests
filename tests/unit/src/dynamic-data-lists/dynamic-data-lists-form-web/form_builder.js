@@ -42,7 +42,7 @@ describe('DDL Form Builder', function() {
 		var formBuilder = new Liferay.DDL.FormBuilder(
 			{
 				definition: test.definition,
-				pages: test.layout.pages
+				pagesJSON: test.layout.pages
 			}
 		).render();
 
@@ -72,7 +72,7 @@ describe('DDL Form Builder', function() {
 		var formBuilder = new Liferay.DDL.FormBuilder(
 			{
 				definition: test.definition,
-				pages: test.layout.pages
+				pagesJSON: test.layout.pages
 			}
 		).render();
 
@@ -87,14 +87,14 @@ describe('DDL Form Builder', function() {
 		var formBuilder = new Liferay.DDL.FormBuilder(
 			{
 				definition: test.definition,
-				pages: test.layout.pages
+				pagesJSON: test.layout.pages
 			}
 		).render();
 
 		var boundingBox = formBuilder.get('boundingBox');
 
 		// Add a page
-		boundingBox.one('.form-builder-pages-add-page').simulate('click');
+		boundingBox.one('.form-builder-page-manager-add-page').simulate('click');
 
 		// Click on the back pagination link
 		boundingBox.one('.pagination-control a').simulate('click');
@@ -113,7 +113,7 @@ describe('DDL Form Builder', function() {
 		var formBuilder = new Liferay.DDL.FormBuilder(
 			{
 				definition: test.definition,
-				pages: test.layout.pages
+				pagesJSON: test.layout.pages
 			}
 		).render();
 

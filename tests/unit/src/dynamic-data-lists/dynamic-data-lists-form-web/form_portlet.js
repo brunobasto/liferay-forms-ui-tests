@@ -170,7 +170,7 @@ describe('DDL Form Portlet', function() {
 		var formBuilder = portlet.get('formBuilder');
 
 		assert.equal(portlet.get('definition'), formBuilder.get('definition'));
-		assert.equal(portlet.get('layout').pages, formBuilder.get('pages'));
+		assert.equal(portlet.get('layout').pages, formBuilder.get('pagesJSON'));
 
 		portlet.destroy();
 

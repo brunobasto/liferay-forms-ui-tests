@@ -91,7 +91,7 @@ describe('DDL Form Builder Field Support', function() {
 		var formBuilder = new Liferay.DDL.FormBuilder(
 			{
 				definition: test.definition,
-				pages: test.layout.pages
+				pagesJSON: test.layout.pages
 			}
 		).render();
 
@@ -105,7 +105,7 @@ describe('DDL Form Builder Field Support', function() {
 
 		field.validateSettings();
 
-		server.requests[0].respond(
+		server.requests.pop().respond(
 			404,
 			{
 				'Content-Type': 'application/json'
@@ -158,7 +158,7 @@ describe('DDL Form Builder Field Support', function() {
 		var formBuilder = new Liferay.DDL.FormBuilder(
 			{
 				definition: test.definition,
-				pages: test.layout.pages
+				pagesJSON: test.layout.pages
 			}
 		).render();
 
@@ -184,7 +184,7 @@ describe('DDL Form Builder Field Support', function() {
 		var formBuilder = new Liferay.DDL.FormBuilder(
 			{
 				definition: test.definition,
-				pages: test.layout.pages
+				pagesJSON: test.layout.pages
 			}
 		).render();
 
@@ -195,12 +195,14 @@ describe('DDL Form Builder Field Support', function() {
 
 			formBuilder.destroy();
 
+			server.restore();
+
 			done();
 		});
 
 		var settingsForm = fieldWithDuplicatedName.get('settingsForm');
 
-		server.requests[0].respond(
+		server.requests.pop().respond(
 			200,
 			{
 				'Content-Type': 'application/json'
@@ -215,11 +217,13 @@ describe('DDL Form Builder Field Support', function() {
 		var formBuilder = new Liferay.DDL.FormBuilder(
 			{
 				definition: test.definition,
-				pages: test.layout.pages
+				pagesJSON: test.layout.pages
 			}
 		).render();
 
 		var field = formBuilder.getField('sites');
+
+		var settingsForm = field.get('settingsForm');
 
 		formBuilder.showFieldSettingsPanel(field, field.get('name'));
 
@@ -228,12 +232,12 @@ describe('DDL Form Builder Field Support', function() {
 
 			formBuilder.destroy();
 
+			server.restore();
+
 			done();
 		});
 
-		var settingsForm = field.get('settingsForm');
-
-		server.requests[0].respond(
+		server.requests.pop().respond(
 			200,
 			{
 				'Content-Type': 'application/json'

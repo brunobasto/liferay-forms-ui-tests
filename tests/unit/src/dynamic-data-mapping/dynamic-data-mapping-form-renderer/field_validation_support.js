@@ -9,16 +9,6 @@ var getTestData = function(callback) {
 	).done(callback);
 };
 
-var respondEmpty = function() {
-	server.requests[0].respond(
-		200,
-		{
-			'Content-Length': '0',
-			'Content-Type': 'text/plain'
-		}
-	);
-};
-
 describe('DDM Renderer Field Validation Support', function() {
 	this.timeout(120000);
 
@@ -110,7 +100,13 @@ describe('DDM Renderer Field Validation Support', function() {
 				done();
 			});
 
-			respondEmpty();
+			server.requests[0].respond(
+				200,
+				{
+					'Content-Length': '0',
+					'Content-Type': 'text/plain'
+				}
+			);
 		}
 		catch (e) {
 			done(e);
