@@ -1,0 +1,203 @@
+{
+	"defaultLanguageId": "en_US",
+	"availableLanguageIds": ["en_US"],
+	"fields": [{
+		"localizable": true,
+		"label": {
+			"en_US": "First"
+		},
+		"type": "text",
+		"fieldNamespace": "",
+		"tip": {
+			"en_US": "Enter your first name"
+		},
+		"indexType": "",
+		"predefinedValue": {
+			"en_US": ""
+		},
+		"dataType": "string",
+		"readOnly": false,
+		"visibilityExpression": "true",
+		"validationExpression": "true",
+		"showLabel": true,
+		"repeatable": false,
+		"name": "First",
+		"required": true
+	}, {
+		"localizable": true,
+		"label": {
+			"en_US": "Street Address"
+		},
+		"type": "text",
+		"fieldNamespace": "",
+		"tip": {
+			"en_US": "Fill in your address"
+		},
+		"indexType": "",
+		"predefinedValue": {
+			"en_US": ""
+		},
+		"dataType": "string",
+		"readOnly": false,
+		"visibilityExpression": "true",
+		"validationExpression": "true",
+		"showLabel": true,
+		"repeatable": false,
+		"name": "Address",
+		"required": true
+	}, {
+		"localizable": true,
+		"label": {
+			"en_US": "Last"
+		},
+		"type": "text",
+		"fieldNamespace": "",
+		"tip": {
+			"en_US": "Fill in your last name"
+		},
+		"indexType": "",
+		"predefinedValue": {
+			"en_US": "Last"
+		},
+		"dataType": "string",
+		"readOnly": false,
+		"visibilityExpression": "true",
+		"validationExpression": "true",
+		"showLabel": true,
+		"repeatable": false,
+		"name": "Last",
+		"required": true
+	}, {
+		"localizable": true,
+		"label": {
+			"en_US": "City"
+		},
+		"type": "text",
+		"fieldNamespace": "",
+		"tip": {
+			"en_US": "Fill in your city"
+		},
+		"indexType": "",
+		"predefinedValue": {
+			"en_US": ""
+		},
+		"dataType": "string",
+		"readOnly": false,
+		"visibilityExpression": "true",
+		"validationExpression": "true",
+		"showLabel": true,
+		"repeatable": false,
+		"name": "City",
+		"required": false
+	}, {
+		"localizable": true,
+		"label": {
+			"en_US": "State"
+		},
+		"type": "text",
+		"fieldNamespace": "",
+		"tip": {
+			"en_US": ""
+		},
+		"indexType": "",
+		"predefinedValue": {
+			"en_US": ""
+		},
+		"dataType": "string",
+		"readOnly": false,
+		"visibilityExpression": "true",
+		"validationExpression": "true",
+		"showLabel": true,
+		"repeatable": false,
+		"name": "State",
+		"required": true
+	}, {
+		"localizable": true,
+		"label": {
+			"en_US": "Zip Code"
+		},
+		"type": "text",
+		"fieldNamespace": "",
+		"tip": {
+			"en_US": ""
+		},
+		"indexType": "",
+		"predefinedValue": {
+			"en_US": ""
+		},
+		"dataType": "string",
+		"readOnly": false,
+		"visibilityExpression": "true",
+		"validationExpression": "true",
+		"showLabel": true,
+		"repeatable": false,
+		"name": "ZipCode",
+		"required": true
+	}, {
+		"localizable": true,
+		"label": {
+			"en_US": "Size"
+		},
+		"type": "text",
+		"fieldNamespace": "",
+		"tip": {
+			"en_US": ""
+		},
+		"indexType": "",
+		"predefinedValue": {
+			"en_US": ""
+		},
+		"dataType": "string",
+		"readOnly": false,
+		"visibilityExpression": "true",
+		"validationExpression": "true",
+		"showLabel": true,
+		"repeatable": false,
+		"name": "Size",
+		"required": false
+	}, {
+		"localizable": true,
+		"label": {
+			"en_US": "Credit Card"
+		},
+		"type": "text",
+		"fieldNamespace": "",
+		"tip": {
+			"en_US": ""
+		},
+		"indexType": "",
+		"predefinedValue": {
+			"en_US": ""
+		},
+		"dataType": "string",
+		"readOnly": false,
+		"visibilityExpression": "true",
+		"validationExpression": "true",
+		"showLabel": true,
+		"repeatable": false,
+		"name": "CreditCard",
+		"required": false
+	}, {
+		"localizable": true,
+		"label": {
+			"en_US": "Final Page"
+		},
+		"type": "text",
+		"fieldNamespace": "",
+		"tip": {
+			"en_US": ""
+		},
+		"indexType": "",
+		"predefinedValue": {
+			"en_US": ""
+		},
+		"dataType": "string",
+		"readOnly": false,
+		"visibilityExpression": "true",
+		"validationExpression": "true",
+		"showLabel": true,
+		"repeatable": false,
+		"name": "final",
+		"required": false
+	}]
+}
