@@ -1,9 +1,9 @@
 var jsRootPath = Liferay.AUI.getJavaScriptRootPath();
 
-YUI_config.base = jsRootPath + '/tmp/META-INF/resources/html/js/aui/';
-YUI_config.root = jsRootPath + '/tmp/META-INF/resources/html/js/aui/';
+YUI_config.base = jsRootPath + '/tmp/META-INF/resources/aui/';
+YUI_config.root = jsRootPath + '/tmp/META-INF/resources/aui/';
 
-var groupsPath = jsRootPath + '/src/META-INF/resources/html/js';
+var groupsPath = jsRootPath + '/src/META-INF/resources';
 
 YUI_config.groups.editor.base = groupsPath + '/editor/';
 YUI_config.groups.editor.root = groupsPath + '/editor/';

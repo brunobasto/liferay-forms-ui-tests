@@ -11,21 +11,22 @@ var liferaySourceDir = config.liferaySourceDir;
 var mocksDir = path.join('mocks');
 
 var frontendDir = path.join(liferaySourceDir, 'modules', 'frontend', 'frontend-js-web');
-var frontendJsSrcDir = path.join(osgi.resourcesPath(frontendDir), 'html', 'js');
-var frontendTmpSrcDir = path.join(frontendDir, 'tmp', 'META-INF', 'resources', 'html', 'js');
+var frontendJsSrcDir = path.join(osgi.resourcesPath(frontendDir));
+var frontendTmpSrcDir = path.join(frontendDir, 'tmp', 'META-INF', 'resources');
 
 var editorsDir = path.join(liferaySourceDir, 'modules', 'frontend', 'frontend-editors-web');
-var editorsTmpSrcDir = path.join(editorsDir, 'tmp', 'META-INF', 'resources', 'html', 'editors');
+var editorsTmpSrcDir = path.join(editorsDir, 'tmp', 'META-INF', 'resources');
 
 // DMD Renderer
 var ddmRendererResourcesDir = osgi.ddmBundleResourcesPath('dynamic-data-mapping-form-renderer');
 
 // DDM Fields
 var checkboxResourcesDir = osgi.ddmBundleResourcesPath('dynamic-data-mapping-type-checkbox');
-var radioResourcesDir = osgi.ddmBundleResourcesPath('dynamic-data-mapping-type-radio');
-var textResourcesDir = osgi.ddmBundleResourcesPath('dynamic-data-mapping-type-text');
 var optionsResourcesDir = osgi.ddmBundleResourcesPath('dynamic-data-mapping-type-options');
+var radioResourcesDir = osgi.ddmBundleResourcesPath('dynamic-data-mapping-type-radio');
 var selectResourcesDir = osgi.ddmBundleResourcesPath('dynamic-data-mapping-type-select');
+var textResourcesDir = osgi.ddmBundleResourcesPath('dynamic-data-mapping-type-text');
+var validationResourcesDir = osgi.ddmBundleResourcesPath('dynamic-data-mapping-type-validation');
 
 // DDL Forms Portlet
 var ddlFormsResourcesDir = osgi.ddlBundleResourcesPath('dynamic-data-lists-form-web');
@@ -152,6 +153,11 @@ module.exports = function(callback) {
 						{
 							included: true,
 							pattern: radioResourcesDir + '/*.js',
+							served: true
+						},
+						{
+							included: true,
+							pattern: validationResourcesDir + '/*.js',
 							served: true
 						},
 						{
