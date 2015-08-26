@@ -8,12 +8,30 @@ var getTestData = function(callback) {
 	).done(callback);
 };
 
+var createFieldWithName = function(formBuilder, type, name) {
+	var fieldType = Liferay.DDM.Renderer.FieldTypes.get(type),
+		field = formBuilder.createField(fieldType),
+		settingsForm = field.get('settingsForm');
+
+	var nameSettingsField = _.filter(
+		settingsForm.get('fields'),
+		function(settingsField) {
+			return settingsField.get('name') === 'name';
+		}
+	)[0];
+
+	nameSettingsField.setValue(name);
+
+	return field;
+}
+
 describe('DDM Field Select', function() {
 	this.timeout(120000);
 
 	before(function(done) {
 		AUI().use(
 			'liferay-ddm-form-field-select',
+			'liferay-ddl-form-builder',
 			function(A) {
 				getTestData(function(fieldTypes) {
 					Liferay.DDM.Renderer.FieldTypes.register(fieldTypes);
@@ -194,6 +212,32 @@ describe('DDM Field Select', function() {
 		var selectedOptions = selectField.getInputNode().all('option[selected]');
 
 		assert.isTrue(selectedOptions.size() === 0);
+
+		done();
+	});
+
+	it('should allow the user to add and remove options on the configuration form', function(done) {
+		var test = this;
+
+		var formBuilder = new Liferay.DDL.FormBuilder().render(document.body);
+
+		var newSelectField = createFieldWithName(formBuilder, 'select', 'select');
+
+		formBuilder.showFieldSettingsPanel(newSelectField, newSelectField.get('name'));
+
+		var settingsForm = newSelectField.get('settingsForm');
+
+		var optionsField = settingsForm.getField('options');
+
+		var optionsContainer = optionsField.get('container');
+
+		var sizeBefore = optionsContainer.all('.ddm-options-row').size();
+
+		optionsContainer.one('.add-row').simulate('click');
+
+		var sizeAfter = optionsContainer.all('.ddm-options-row').size();
+
+		assert.isFalse(sizeAfter === sizeBefore);
 
 		done();
 	});
