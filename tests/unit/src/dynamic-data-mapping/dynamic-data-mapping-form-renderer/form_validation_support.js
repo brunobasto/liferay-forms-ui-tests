@@ -9,16 +9,6 @@ var getTestData = function(callback) {
 	).done(callback);
 };
 
-var respondEmpty = function() {
-	server.requests[0].respond(
-		200,
-		{
-			'Content-Length': '0',
-			'Content-Type': 'text/plain'
-		}
-	);
-};
-
 describe('DDM Renderer Form Validation Support', function() {
 	this.timeout(120000);
 
@@ -230,7 +220,13 @@ describe('DDM Renderer Form Validation Support', function() {
 				done();
 			});
 
-			respondEmpty();
+			server.requests[0].respond(
+				200,
+				{
+					'Content-Length': '0',
+					'Content-Type': 'text/plain'
+				}
+			);
 		}
 		catch (e) {
 			done(e);
@@ -453,229 +449,6 @@ describe('DDM Renderer Form Validation Support', function() {
 			);
 		}
 		catch (e) {
-			done(e);
-		}
-	});
-
-	it('should prevent form submission when validation does not pass', function(done) {
-		var A = AUI();
-
-		var formNode = A.Node.create('<form action=""><button type="submit" /></form>');
-
-		formNode.appendTo(document.body);
-
-		var form = new Liferay.DDM.Renderer.Form({
-			container: formNode,
-			fields: [
-				new Liferay.DDM.Renderer.Field({
-					instanceId: 'abc123',
-					name: 'first_name',
-					required: true,
-					type: 'text',
-					validationExpression: 'false'
-				})
-			]
-		});
-
-		sinon.spy(form, 'validate');
-
-		var restore = function() {
-			form.validate.restore();
-
-			form.destroy();
-
-			formNode.remove();
-		};
-
-		try {
-			formNode.simulate('submit');
-
-			assert.isTrue(form.validate.calledOnce);
-
-			server.requests[0].respond(
-				200,
-				{
-					'Content-Type': 'application/json'
-				},
-				JSON.stringify(
-					{
-						fields: [
-							{
-								instanceId: 'abc123',
-								name: 'first_name',
-								valid: false
-							}
-						]
-					}
-				)
-			);
-
-			setTimeout(function() {
-				restore();
-
-				// Assert page was not reloaded
-				assert.isTrue(true);
-
-				done();
-			});
-		}
-		catch (e) {
-			restore();
-
-			done(e);
-		}
-	});
-
-	it('should submit the form when validation passes', function(done) {
-		var A = AUI(),
-			formNode = A.Node.create('<form name="test" action=""><button type="submit" /></form>');
-
-		formNode.appendTo(document.body);
-
-		var original = Liferay.DDM.Renderer.Form.prototype._getDOMForm;
-
-		Liferay.DDM.Renderer.Form.prototype._getDOMForm = function() {
-			return formNode;
-		};
-
-		var form = new Liferay.DDM.Renderer.Form({
-			container: formNode,
-			fields: [
-				new Liferay.DDM.Renderer.Field({
-					instanceId: 'abc123',
-					name: 'first_name',
-					required: true,
-					type: 'text',
-					validationExpression: 'false'
-				})
-			]
-		});
-
-		sinon.spy(form, 'validate');
-
-		var restore = function() {
-			Liferay.DDM.Renderer.Form.prototype._getDOMForm = original;
-
-			form.validate.restore();
-
-			form.destroy();
-
-			formNode.remove();
-		};
-
-		try {
-			formNode.submit = sinon.spy();
-
-			formNode.simulate('submit');
-
-			assert.isTrue(form.validate.calledOnce, 'should call .validate()');
-
-			server.requests[0].respond(
-				200,
-				{
-					'Content-Type': 'application/json'
-				},
-				JSON.stringify(
-					{
-						fields: [
-							{
-								instanceId: 'abc123',
-								name: 'first_name',
-								valid: true
-							}
-						]
-					}
-				)
-			);
-
-			setTimeout(function() {
-				assert.isTrue(formNode.submit.called, 'should try to submit the form');
-
-				restore();
-
-				done();
-			}, 100);
-		}
-		catch (e) {
-			restore();
-
-			done(e);
-		}
-	});
-
-	it('should prevent liferay form submission when validation does not pass', function(done) {
-		var A = AUI();
-
-		var formNode = A.Node.create('<form name="myForm" id="myForm" action=""><button type="submit" /></form>');
-
-		formNode.appendTo(document.body);
-
-		Liferay.Form.register({
-			id: 'myForm'
-		});
-
-		var form = new Liferay.DDM.Renderer.Form({
-			container: formNode,
-			fields: [
-				new Liferay.DDM.Renderer.Field({
-					instanceId: 'abc123',
-					name: 'first_name',
-					required: true,
-					type: 'text',
-					validationExpression: 'false'
-				})
-			]
-		});
-
-		sinon.spy(form, 'validate');
-
-		var restore = function() {
-			form.validate.restore();
-
-			form.destroy();
-
-			formNode.remove();
-		};
-
-		try {
-			formNode.simulate('submit');
-
-			// Liferay.Form submission is async :/
-			setTimeout(function() {
-				assert.isTrue(form.validate.called, 'Validation should have been triggered');
-				assert.isTrue(form.validate.calledOnce, 'Validation should have been triggered only once');
-
-				server.requests[0].respond(
-					200,
-					{
-						'Content-Type': 'application/json'
-					},
-					JSON.stringify(
-						{
-							fields: [
-								{
-									instanceId: 'abc123',
-									name: 'first_name',
-									valid: false
-								}
-							]
-						}
-					)
-				);
-
-				setTimeout(function() {
-					restore();
-
-					// Assert page was not reloaded
-					assert.isTrue(true);
-
-					done();
-				}, 100);
-			}, 100);
-		}
-		catch (e) {
-			restore();
-
 			done(e);
 		}
 	});
