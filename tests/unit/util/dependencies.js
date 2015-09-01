@@ -28,6 +28,9 @@ var selectResourcesDir = osgi.ddmBundleResourcesPath('dynamic-data-mapping-type-
 var textResourcesDir = osgi.ddmBundleResourcesPath('dynamic-data-mapping-type-text');
 var validationResourcesDir = osgi.ddmBundleResourcesPath('dynamic-data-mapping-type-validation');
 
+// DMD Web
+var ddmWebResourcesDir = osgi.ddmBundleResourcesPath('dynamic-data-mapping-web');
+
 // DDL Forms Portlet
 var ddlFormsResourcesDir = osgi.ddlBundleResourcesPath('dynamic-data-lists-form-web');
 
@@ -69,12 +72,21 @@ module.exports = function(callback) {
 					if (file === 'liferay/modules.js') {
 						files.push(mocksDir + '/modules.js');
 					}
+
+					if (file === 'liferay/util.js') {
+						files.push(mocksDir + '/util.js');
+					}
 				}
 			);
 
 			callback(
 				files.concat(
 					[
+						{
+							included: false,
+							pattern: mocksDir + '/*.js',
+							served: true
+						},
 						{
 							included: false,
 							pattern: frontendTmpSrcDir + '/aui/**/*.css',
@@ -123,6 +135,11 @@ module.exports = function(callback) {
 						{
 							included: true,
 							pattern: ddmRendererResourcesDir + '/js/*.js',
+							served: true
+						},
+						{
+							included: true,
+							pattern: ddmWebResourcesDir + '/js/*.js',
 							served: true
 						},
 						{
