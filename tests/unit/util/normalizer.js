@@ -6,15 +6,17 @@ var path = require('path');
 
 var liferaySourceDir = path.resolve(config.liferaySourceDir);
 
-var fieldTypeRegex = /.*\/dynamic-data-mapping-type-(\w+)\/.*/ig;
-
 module.exports = {
 	normalizeContent: function(file, content) {
 		// Normalize OSGI Web-ContextPath for fields
-		if (/\/o\/ddm-type-(\w+)?/.test(content)) {
+
+		// Liferay.ThemeDisplay.getPathContext() + '/o/ddm-type-checkbox'
+		if (/dynamic-data-mapping-type-(\w+)?/.test(file.path)) {
 			var fieldPath = osgi.ddmBundleResourcesPath('dynamic-data-mapping-type-$1');
 
-			fieldPath = fieldPath.replace(liferaySourceDir, '/liferay')
+			fieldPath = fieldPath.replace(liferaySourceDir, '/liferay');
+
+			content = content.replace('Liferay.ThemeDisplay.getPathContext()', '\'\'');
 
 			content = content.replace(/\/o\/ddm-type-(\w+)?/g, fieldPath);
 		}
