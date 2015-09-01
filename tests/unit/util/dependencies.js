@@ -139,6 +139,11 @@ module.exports = function(callback) {
 						},
 						{
 							included: true,
+							pattern: ddmRendererResourcesDir + '/*.js',
+							served: true
+						},
+						{
+							included: true,
 							pattern: ddmWebResourcesDir + '/js/*.js',
 							served: true
 						},
