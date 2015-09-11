@@ -60,7 +60,7 @@ describe('DDM Field Select', function() {
 				}
 			],
 			value: ['marcellus']
-		});
+		}).render();
 
 		assert.equal(selectField.getInputNode().val(), 'marcellus');
 
@@ -85,7 +85,7 @@ describe('DDM Field Select', function() {
 				}
 			],
 			value: undefined
-		});
+		}).render();
 
 		assert.isArray(selectField.get('value'));
 		assert.lengthOf(selectField.get('value'), 0);
@@ -119,7 +119,7 @@ describe('DDM Field Select', function() {
 			value: {
 				en_US: ['marcellus']
 			}
-		});
+		}).render();
 
 		assert.equal(selectField.getInputNode().val(), 'marcellus');
 
@@ -143,7 +143,7 @@ describe('DDM Field Select', function() {
 					value: 'marcellus'
 				}
 			]
-		});
+		}).render();
 
 		var options = selectField.get('options');
 
@@ -177,7 +177,7 @@ describe('DDM Field Select', function() {
 					value: 'marcellus'
 				}
 			]
-		});
+		}).render();
 
 		selectField.getInputNode().val('marcellus');
 
@@ -207,7 +207,7 @@ describe('DDM Field Select', function() {
 					value: 'marcellus'
 				}
 			]
-		});
+		}).render();
 
 		var selectedOptions = selectField.getInputNode().all('option[selected]');
 

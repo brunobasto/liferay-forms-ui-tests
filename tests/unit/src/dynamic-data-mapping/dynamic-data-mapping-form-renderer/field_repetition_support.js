@@ -29,7 +29,7 @@ describe('DDM Renderer Field Repetition Support', function() {
 	it('should set the default value of the repeatable attribute', function(done) {
 		var field = new Liferay.DDM.Renderer.Field({
 			type: 'text'
-		});
+		}).render();
 
 		assert.isBoolean(field.get('repeatable'), 'Attribute "repeatable" should be a boolean.');
 		assert.equal(field.get('repeatable'), false, 'Default value for attribute "repeatable" is false');
@@ -47,7 +47,7 @@ describe('DDM Renderer Field Repetition Support', function() {
 		var field = new Liferay.DDM.Renderer.Field({
 			repeatable: true,
 			type: 'text'
-		});
+		}).render();
 
 		var container = field.get('container');
 
@@ -63,7 +63,7 @@ describe('DDM Renderer Field Repetition Support', function() {
 		var field = new Liferay.DDM.Renderer.Field({
 			repeatable: false,
 			type: 'text'
-		});
+		}).render();
 
 		var container = field.get('container');
 
@@ -79,7 +79,7 @@ describe('DDM Renderer Field Repetition Support', function() {
 		var field = new Liferay.DDM.Renderer.Field({
 			repeatable: true,
 			type: 'text'
-		});
+		}).render(document.body);
 
 		var isVisible = function(node) {
 			return !node.hasClass('hide') || node.getStyle('display') !== 'none';
@@ -106,7 +106,7 @@ describe('DDM Renderer Field Repetition Support', function() {
 		var field = new Liferay.DDM.Renderer.Field({
 			repeatable: true,
 			type: 'text'
-		});
+		}).render();
 
 		assert.equal(0, field.get('repeatedIndex'));
 
@@ -119,7 +119,7 @@ describe('DDM Renderer Field Repetition Support', function() {
 		var field = new Liferay.DDM.Renderer.Field({
 			repeatable: true,
 			type: 'text'
-		});
+		}).render(document.body);
 
 		var repetitions = [field];
 
@@ -141,7 +141,7 @@ describe('DDM Renderer Field Repetition Support', function() {
 			repeatable: true,
 			type: 'text',
 			name: 'repeatableField'
-		});
+		}).render(document.body);
 
 		var repetitions = [];
 
@@ -163,11 +163,16 @@ describe('DDM Renderer Field Repetition Support', function() {
 	});
 
 	it('should have the order of fields in DOM respect the repeatedIndex', function(done) {
+		var A = AUI();
+		var container = A.Node.create('<div></div>');
+
+		container.appendTo(document.body);
+
 		var field = new Liferay.DDM.Renderer.Field({
 			repeatable: true,
 			type: 'text',
 			name: 'repeatableField'
-		});
+		}).render(container);
 
 		var repetitions = [];
 
@@ -194,7 +199,7 @@ describe('DDM Renderer Field Repetition Support', function() {
 		var field = new Liferay.DDM.Renderer.Field({
 			repeatable: true,
 			type: 'text'
-		});
+		}).render(document.body);
 
 		var repetitions = [field];
 
@@ -233,14 +238,16 @@ describe('DDM Renderer Field Repetition Support', function() {
 			type: 'text',
 			name: 'repeatable',
 			parent: parent
-		});
+		}).render();
 
 		var regularChild = new Liferay.DDM.Renderer.Field({
 			repeatable: false,
 			type: 'text',
 			name: 'notRepeatable',
 			parent: parent
-		});
+		}).render();
+
+		parent.render(document.body);
 
 		var repeated = repeatableChild.repeat();
 
@@ -257,7 +264,7 @@ describe('DDM Renderer Field Repetition Support', function() {
 		var field = new Liferay.DDM.Renderer.Field({
 			repeatable: true,
 			type: 'text'
-		});
+		}).render();
 
 		sinon.spy(field, 'repeat');
 
@@ -282,7 +289,7 @@ describe('DDM Renderer Field Repetition Support', function() {
 			name: 'field_name',
 			repeatable: true,
 			type: 'text'
-		});
+		}).render(document.body);
 
 		var repeated = field.repeat();
 
@@ -297,7 +304,7 @@ describe('DDM Renderer Field Repetition Support', function() {
 		var field = new Liferay.DDM.Renderer.Field({
 			repeatable: true,
 			type: 'text'
-		});
+		}).render();
 
 		sinon.spy(field, 'remove');
 
@@ -320,7 +327,7 @@ describe('DDM Renderer Field Repetition Support', function() {
 		var field = new Liferay.DDM.Renderer.Field({
 			repeatable: true,
 			type: 'text'
-		});
+		}).render();
 
 		sinon.spy(field, 'remove');
 		sinon.spy(field, 'repeat');

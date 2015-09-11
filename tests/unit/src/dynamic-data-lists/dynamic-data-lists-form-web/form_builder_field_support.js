@@ -97,9 +97,13 @@ describe('DDL Form Builder Field Support', function() {
 
 		var field = formBuilder.getField('sites');
 
+		field.render();
+
 		formBuilder.showFieldSettingsPanel(field, field.get('name'));
 
 		var settingsForm = field.get('settingsForm');
+
+		settingsForm.render();
 
 		sinon.spy(settingsForm, 'validate');
 

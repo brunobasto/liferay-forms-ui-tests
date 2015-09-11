@@ -56,7 +56,7 @@ describe('DDM Renderer Field Visibility Support', function() {
 					VisibilityExpression: 'false'
 				})
 			]
-		});
+		}).render();
 
 		try {
 			var firstNameField = form.getField('first_name');

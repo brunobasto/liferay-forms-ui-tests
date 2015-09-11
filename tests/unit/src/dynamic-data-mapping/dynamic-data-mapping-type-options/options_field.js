@@ -48,7 +48,7 @@ describe('DDM Field Options', function() {
 					value: 'jadson'
 				}
 			]
-		});
+		}).render();
 
 		var inputs = optionsField.get('container').all('input[type="text"]');
 
@@ -86,11 +86,9 @@ describe('DDM Field Options', function() {
 					value: 'jadson'
 				}
 			]
-		});
+		}).render();
 
 		var container = optionsField.get('container');
-
-		container.appendTo(document.body);
 
 		container.one('.add-row').simulate('click');
 

@@ -164,7 +164,7 @@ describe('DDM Renderer Nested Fields Support', function() {
 					]
 				})
 			]
-		});
+		}).render();
 
 		var field = form.getField('henrique');
 

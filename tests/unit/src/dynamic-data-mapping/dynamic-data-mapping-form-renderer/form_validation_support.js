@@ -49,7 +49,7 @@ describe('DDM Renderer Form Validation Support', function() {
 					validationExpression: 'false'
 				})
 			]
-		});
+		}).render();
 
 		try {
 			form.validate(function(hasError) {
@@ -101,7 +101,7 @@ describe('DDM Renderer Form Validation Support', function() {
 					validationExpression: 'false'
 				})
 			]
-		});
+		}).render();
 
 		try {
 			form.validate(function(hasError) {
@@ -140,7 +140,7 @@ describe('DDM Renderer Form Validation Support', function() {
 					type: 'text'
 				})
 			]
-		});
+		}).render();
 
 		try {
 			form.validate(function(hasError) {
@@ -174,7 +174,7 @@ describe('DDM Renderer Form Validation Support', function() {
 					type: 'text'
 				})
 			]
-		});
+		}).render();
 
 		try {
 			var lastNameField = form.getField('last_name');
@@ -205,7 +205,7 @@ describe('DDM Renderer Form Validation Support', function() {
 					validationExpression: 'false'
 				})
 			]
-		});
+		}).render();
 
 		var field = form.getField('first_name');
 
@@ -244,7 +244,7 @@ describe('DDM Renderer Form Validation Support', function() {
 					validationExpression: 'false'
 				})
 			]
-		});
+		}).render();
 
 		try {
 			form.validate(function(hasError) {
@@ -292,7 +292,7 @@ describe('DDM Renderer Form Validation Support', function() {
 					validationExpression: 'false'
 				})
 			]
-		});
+		}).render();
 
 		try {
 			form.validate(function(valid) {
@@ -342,7 +342,7 @@ describe('DDM Renderer Form Validation Support', function() {
 					validationExpression: 'false'
 				})
 			]
-		});
+		}).render();
 
 		try {
 			var field = form.getField('first_name');
@@ -402,7 +402,7 @@ describe('DDM Renderer Form Validation Support', function() {
 					validationExpression: 'false'
 				})
 			]
-		});
+		}).render();
 
 		try {
 			var firstNameField = form.getField('first_name');
@@ -464,7 +464,7 @@ describe('DDM Renderer Form Validation Support', function() {
 						type: 'text'
 					})
 				]
-			});
+			}).render();
 
 		try {
 			form.validate();
@@ -492,7 +492,7 @@ describe('DDM Renderer Form Validation Support', function() {
 						validationExpression: 'false'
 					})
 				]
-			});
+			}).render();
 
 		try {
 			form.validate();

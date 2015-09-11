@@ -29,7 +29,7 @@ describe('DDM Renderer Field Events Support', function() {
 	it('should fire the "valueChanged" event when input node changes', function(done) {
 		var field = new Liferay.DDM.Renderer.Field({
 			type: 'text'
-		});
+		}).render();
 
 		var callback = sinon.spy();
 
@@ -48,7 +48,7 @@ describe('DDM Renderer Field Events Support', function() {
 		var A = AUI(),
 			field = new Liferay.DDM.Renderer.Field({
 				type: 'text'
-			});
+			}).render();
 
 		var callback = sinon.spy();
 
@@ -57,6 +57,8 @@ describe('DDM Renderer Field Events Support', function() {
 		field.set('container', A.Node.create('<div></div>'));
 
 		field.render();
+
+		field.get('container').appendTo(document.body);
 
 		field.getInputNode().simulate('change');
 

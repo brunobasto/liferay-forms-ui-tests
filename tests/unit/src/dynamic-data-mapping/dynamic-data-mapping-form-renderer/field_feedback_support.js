@@ -30,7 +30,7 @@ describe('DDM Renderer Field Feedback Support', function() {
 				'This field value is not correct'
 			],
 			type: 'text'
-		});
+		}).render();
 
 		var validationMessages = field.get('validationMessages');
 
@@ -54,7 +54,7 @@ describe('DDM Renderer Field Feedback Support', function() {
 				'This field value is not correct'
 			],
 			type: 'text'
-		});
+		}).render();
 
 		var validationMessages = field.get('validationMessages');
 

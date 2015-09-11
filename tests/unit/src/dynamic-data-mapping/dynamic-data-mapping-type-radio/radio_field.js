@@ -42,7 +42,7 @@ describe('DDM Field Radio', function() {
 				}
 			],
 			value: 'marcellus'
-		});
+		}).render();
 
 		var radios = radioField.get('container').all('input[type="radio"]');
 
@@ -76,7 +76,7 @@ describe('DDM Field Radio', function() {
 			value: {
 				en_US: 'marcellus'
 			}
-		});
+		}).render();
 
 		var radios = radioField.get('container').all('input[type="radio"]');
 
@@ -107,9 +107,7 @@ describe('DDM Field Radio', function() {
 				}
 			],
 			value: 'marcellus'
-		});
-
-		radioField.get('container').appendTo(document.body);
+		}).render();
 
 		radioField.get('container').one('[value="bruno"]').simulate('click');
 

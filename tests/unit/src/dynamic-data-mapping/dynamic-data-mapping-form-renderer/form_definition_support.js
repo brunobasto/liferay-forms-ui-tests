@@ -93,7 +93,7 @@ describe('DDM Renderer Form Definition Support', function() {
 					}
 				]
 			}
-		});
+		}).render();
 
 		var field = form.get('fields')[0];
 
@@ -125,7 +125,7 @@ describe('DDM Renderer Form Definition Support', function() {
 					}
 				]
 			}
-		});
+		}).render();
 
 		// Initial value is 'Bruno', lets change it and see if it gets updated
 
@@ -226,7 +226,7 @@ describe('DDM Renderer Form Definition Support', function() {
 			container: container,
 			definition: test.definitionWithRepeatable,
 			values: test.valuesWithRepeatable
-		});
+		}).render();
 
 		var fields = form.get('fields');
 
@@ -254,8 +254,9 @@ describe('DDM Renderer Form Definition Support', function() {
 		var form = new Liferay.DDM.Renderer.Form({
 			container: container,
 			definition: test.definitionWithRepeatable,
+			portletNamespace: 'namespace_',
 			values: test.valuesWithRepeatable
-		});
+		}).render();
 
 		var fields = form.get('fields');
 

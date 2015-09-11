@@ -49,7 +49,7 @@ describe('DDM Renderer Field Validation Support', function() {
 					validationExpression: 'false'
 				})
 			]
-		});
+		}).render();
 
 		try {
 			var field = form.getField('first_name');
@@ -131,7 +131,7 @@ describe('DDM Renderer Field Validation Support', function() {
 					validationExpression: 'false'
 				})
 			]
-		});
+		}).render();
 
 		try {
 			var firstNameField = form.getField('first_name');

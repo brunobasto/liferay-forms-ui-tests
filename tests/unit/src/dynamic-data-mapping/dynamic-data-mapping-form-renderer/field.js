@@ -262,13 +262,13 @@ describe('DDM Renderer Field', function() {
 	it('should serialize the value of a localizable field with nested fields', function(done) {
 		var child = new Liferay.DDM.Renderer.Field({
 			type: 'text'
-		});
+		}).render();
 
 		var field = new Liferay.DDM.Renderer.Field({
 			type: 'text',
 			localizable: true,
 			fields: [child]
-		});
+		}).render();
 
 		var value = {
 			en_US: 'Bruno Basto'

@@ -30,7 +30,7 @@ describe('DDM Field Checkbox', function() {
 			value: {
 				en_US: ''
 			}
-		});
+		}).render(document.body);
 
 		assert.isFalse(checkboxField.getValue());
 
@@ -41,7 +41,7 @@ describe('DDM Field Checkbox', function() {
 		var checkboxField = new Liferay.DDM.Field.Checkbox({
 			localizable: false,
 			value: false
-		});
+		}).render(document.body);
 
 		assert.isFalse(checkboxField.getValue());
 
@@ -59,7 +59,7 @@ describe('DDM Field Checkbox', function() {
 				en_US: 'false',
 				pt_BR: 'true'
 			}
-		});
+		}).render();
 
 		var value = checkboxField.get('value');
 
@@ -74,7 +74,7 @@ describe('DDM Field Checkbox', function() {
 		var checkboxField = new Liferay.DDM.Field.Checkbox({
 			localizable: false,
 			value: true
-		});
+		}).render();
 
 		checkboxField.set('value', false);
 

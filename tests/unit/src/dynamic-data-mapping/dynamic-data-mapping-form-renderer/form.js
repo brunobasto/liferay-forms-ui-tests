@@ -220,7 +220,7 @@ describe('DDM Renderer Form', function() {
 					validationExpression: 'false'
 				})
 			]
-		});
+		}).render();
 
 		sinon.spy(form, 'validate');
 
