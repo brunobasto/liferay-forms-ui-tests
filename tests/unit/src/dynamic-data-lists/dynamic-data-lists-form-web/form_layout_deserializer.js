@@ -41,6 +41,7 @@ describe('DDL Layout Deserializer', function() {
 		var test = this;
 
 		var deserializer = new Liferay.DDL.LayoutDeserializer({
+			builder: new Liferay.DDL.FormBuilder(),
 			definition: test.definition,
 			pages: [
 				{
@@ -108,6 +109,7 @@ describe('DDL Layout Deserializer', function() {
 		var test = this;
 
 		var emptyPage = new Liferay.DDL.LayoutDeserializer({
+			builder: new Liferay.DDL.FormBuilder(),
 			definition: test.definition,
 			pages: []
 		}).deserialize();
