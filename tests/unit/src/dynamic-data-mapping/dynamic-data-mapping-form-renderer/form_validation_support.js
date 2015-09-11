@@ -60,7 +60,7 @@ describe('DDM Renderer Form Validation Support', function() {
 				done();
 			});
 
-			server.requests[0].respond(
+			server.requests.pop().respond(
 				200,
 				{
 					'Content-Type': 'application/json'
@@ -112,7 +112,7 @@ describe('DDM Renderer Form Validation Support', function() {
 				done();
 			});
 
-			server.requests[0].respond(
+			server.requests.pop().respond(
 				404,
 				{
 					'Content-Type': 'text/plain'

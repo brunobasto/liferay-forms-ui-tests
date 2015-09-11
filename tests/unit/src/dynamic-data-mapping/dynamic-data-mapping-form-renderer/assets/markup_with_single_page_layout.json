@@ -1,0 +1,62 @@
+{
+	"pages": [
+		{
+			"title":{
+				"en_US": "Page One"
+			},
+			"description":{
+				"en_US": "Description of page one."
+			},
+			"rows":[
+				{
+					"columns": [
+						{
+							"fieldNames": ["First"],
+							"size": 4
+						},
+						{
+							"fieldNames": ["Last"],
+							"size": 4
+						},
+						{
+							"fieldNames": ["final"],
+							"size": 4
+						}
+					]
+				},
+				{
+					"columns": [
+						{
+							"fieldNames": ["Address"],
+							"size": 6
+						},
+						{
+							"fieldNames": ["CreditCard"],
+							"size": 6
+						}
+					]
+				},
+				{
+					"columns": [
+						{
+							"fieldNames": ["City"],
+							"size": 4
+						},
+						{
+							"fieldNames": ["State"],
+							"size": 4
+						},
+						{
+							"fieldNames": ["ZipCode"],
+							"size": 4
+						},
+						{
+							"fieldNames": ["Size"],
+							"size": 4
+						}
+					]
+				}
+			]
+		}
+	]
+}

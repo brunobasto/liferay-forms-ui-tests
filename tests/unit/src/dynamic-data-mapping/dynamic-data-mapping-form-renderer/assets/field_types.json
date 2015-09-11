@@ -1,6 +1,7 @@
 [{
 	"javaScriptModule": "liferay-ddm-form-field-select",
-	"icon": "icon-ok-circle",
+	"icon": "icon-list",
+	"system": 0,
 	"templateNamespace": "ddm.select",
 	"name": "select",
 	"settings": {
@@ -8,118 +9,432 @@
 		"availableLanguageIds": [],
 		"fields": [{
 			"dataType": "string",
+			"validationExpression": "true",
 			"visibilityExpression": "true",
-			"validationExpression": "!name.isEmpty()",
-			"name": "name",
-			"localizable": false,
+			"name": "validationMessage",
+			"validationMessage": "",
+			"localizable": 0,
+			"label": {
+				"iw_IL": "validation-message",
+				"pt_BR": "validation-message",
+				"ca_ES": "validation-message",
+				"en_US": "validation-message",
+				"de_DE": "validation-message",
+				"fi_FI": "validation-message",
+				"ja_JP": "validation-message",
+				"es_ES": "validation-message",
+				"hu_HU": "validation-message",
+				"fr_FR": "validation-message",
+				"zh_CN": "validation-message",
+				"nl_NL": "validation-message"
+			},
+			"type": "text"
+		}, {
+			"dataType": "boolean",
+			"validationExpression": "true",
+			"visibilityExpression": "true",
+			"name": "localizable",
+			"validationMessage": "",
+			"localizable": 0,
+			"label": {
+				"iw_IL": "\u05e0\u05d9\u05ea\u05df \u05dc\u05de\u05d9\u05e7\u05d5\u05dd",
+				"pt_BR": "Localiz\u00e1vel",
+				"ca_ES": "Localitzable",
+				"en_US": "Localizable",
+				"de_DE": "Lokalisierbar",
+				"fi_FI": "K\u00e4\u00e4nnett\u00e4v\u00e4",
+				"ja_JP": "\u30ed\u30fc\u30ab\u30e9\u30a4\u30bc\u30fc\u30b7\u30e7\u30f3\u53ef\u80fd",
+				"es_ES": "Localizable",
+				"hu_HU": "Leford\u00edthat\u00f3",
+				"fr_FR": "Traduisible",
+				"zh_CN": "\u53ef\u672c\u5730\u5316\u7684",
+				"nl_NL": "Vertaalbaar"
+			},
+			"type": "checkbox"
+		}, {
+			"dataType": "string",
+			"validationExpression": "true",
+			"visibilityExpression": "true",
+			"name": "label",
+			"validationMessage": "",
+			"localizable": 1,
+			"label": {
+				"iw_IL": "\u05ea\u05d5\u05d5\u05d9\u05ea",
+				"pt_BR": "R\u00f3tulo",
+				"ca_ES": "Etiqueta",
+				"en_US": "Label",
+				"de_DE": "Beschriftung",
+				"fi_FI": "Selite",
+				"ja_JP": "\u30e9\u30d9\u30eb",
+				"es_ES": "Etiqueta",
+				"hu_HU": "C\u00edmke",
+				"fr_FR": "Libell\u00e9",
+				"zh_CN": "\u6807\u7b7e",
+				"nl_NL": "Label"
+			},
 			"type": "text"
 		}, {
 			"dataType": "string",
+			"validationExpression": "true",
 			"visibilityExpression": "false",
 			"name": "type",
-			"localizable": false,
+			"validationMessage": "",
+			"localizable": 0,
 			"type": "text"
 		}, {
 			"dataType": "string",
-			"visibilityExpression": "false",
-			"name": "dataType",
-			"localizable": false,
-			"type": "text"
-		}, {
-			"dataType": "boolean",
-			"visibilityExpression": "true",
 			"validationExpression": "true",
-			"name": "required",
-			"localizable": false,
-			"type": "checkbox"
-		}, {
-			"dataType": "string",
-			"visibilityExpression": "true",
-			"validationExpression": "true",
-			"name": "indexType",
-			"localizable": false,
-			"type": "text"
-		}, {
-			"dataType": "string",
-			"visibilityExpression": "true",
-			"validationExpression": "true",
-			"name": "label",
-			"localizable": true,
-			"type": "text"
-		}, {
-			"dataType": "string",
-			"visibilityExpression": "true",
-			"validationExpression": "true",
-			"name": "tip",
-			"localizable": true,
-			"type": "text"
-		}, {
-			"dataType": "string",
 			"visibilityExpression": "false",
 			"name": "fieldNamespace",
-			"localizable": false,
+			"validationMessage": "",
+			"localizable": 0,
 			"type": "text"
 		}, {
-			"dataType": "boolean",
-			"visibilityExpression": "true",
+			"dataType": "string",
 			"validationExpression": "true",
-			"name": "localizable",
-			"localizable": false,
-			"type": "checkbox"
+			"visibilityExpression": "true",
+			"name": "tip",
+			"validationMessage": "",
+			"localizable": 1,
+			"label": {
+				"iw_IL": "\u05d8\u05d9\u05e4",
+				"pt_BR": "Dica",
+				"ca_ES": "Consell",
+				"en_US": "Tip",
+				"de_DE": "Tipp",
+				"fi_FI": "Vihje",
+				"ja_JP": "\u30c1\u30c3\u30d7",
+				"es_ES": "Consejo",
+				"hu_HU": "Tipp",
+				"fr_FR": "Truc",
+				"zh_CN": "\u63d0\u793a",
+				"nl_NL": "Tip"
+			},
+			"type": "text"
 		}, {
 			"dataType": "string",
-			"visibilityExpression": "true",
 			"validationExpression": "true",
+			"visibilityExpression": "true",
+			"name": "indexType",
+			"validationMessage": "",
+			"localizable": 0,
+			"label": {
+				"iw_IL": "\u05e0\u05d9\u05ea\u05df \u05dc\u05de\u05e4\u05ea\u05d5\u05d7",
+				"pt_BR": "Index\u00e1vel",
+				"ca_ES": "Indexable",
+				"en_US": "Indexable",
+				"de_DE": "Indizierbar",
+				"fi_FI": "Indeksoitava",
+				"ja_JP": "\u30a4\u30f3\u30c7\u30c3\u30af\u30b9\u53ef\u80fd",
+				"es_ES": "Indexable",
+				"hu_HU": "Indexelhet\u0151",
+				"fr_FR": "Indexable",
+				"zh_CN": "\u53ef\u7d22\u5f15",
+				"nl_NL": "Indexeerbaar"
+			},
+			"type": "select",
+			"options": [{
+				"value": "",
+				"label": {
+					"iw_IL": "\u05dc\u05d0 \u05e0\u05d9\u05ea\u05df \u05dc\u05de\u05e4\u05ea\u05d5\u05d7",
+					"pt_BR": "N\u00e3o index\u00e1vel",
+					"ca_ES": "No es pot indexar",
+					"en_US": "Not Indexable",
+					"de_DE": "Nicht indizierbar",
+					"fi_FI": "Ei indeksoitavissa",
+					"ja_JP": "\u30a4\u30f3\u30c7\u30c3\u30af\u30b9\u5316\u3067\u304d\u307e\u305b\u3093\u3002",
+					"es_ES": "No indexable",
+					"hu_HU": "Nem indexelhet\u0151",
+					"fr_FR": "Non-indexable",
+					"zh_CN": "\u4e0d\u53ef\u7d22\u5f15",
+					"nl_NL": "Niet indexeerbaar"
+				}
+			}, {
+				"value": "keyword",
+				"label": {
+					"iw_IL": "\u05e0\u05d9\u05ea\u05df \u05dc\u05de\u05e4\u05ea\u05d5\u05d7 - \u05de\u05d9\u05dc\u05ea \u05de\u05e4\u05ea\u05d7",
+					"pt_BR": "Index\u00e1vel - Palavra-chave",
+					"ca_ES": "Indexable - Paraula Clau",
+					"en_US": "Indexable - Keyword",
+					"de_DE": "Indizierbar - Schl\u00fcsselwort",
+					"fi_FI": "Indeksoitava - avainsana",
+					"ja_JP": "\u30a4\u30f3\u30c7\u30c3\u30af\u30b9\u53ef\u80fd - \u30ad\u30fc\u30ef\u30fc\u30c9",
+					"es_ES": "Indexable - Palabra clave",
+					"hu_HU": "Indexelhet\u0151 - kulcssz\u00f3",
+					"fr_FR": "Indexable - Mot-cl\u00e9",
+					"zh_CN": "\u53ef\u7d22\u5f15-\u5173\u952e\u8bcd",
+					"nl_NL": "Indexeerbaar - Sleutelwoord"
+				}
+			}, {
+				"value": "text",
+				"label": {
+					"iw_IL": "\u05e0\u05d9\u05ea\u05df \u05dc\u05de\u05e4\u05ea\u05d5\u05d7 - \u05d8\u05e7\u05e1\u05d8",
+					"pt_BR": "Index\u00e1vel - Texto",
+					"ca_ES": "Indexable - Text",
+					"en_US": "Indexable - Text",
+					"de_DE": "Indizierbar - Text",
+					"fi_FI": "Indeksoitava - teksti",
+					"ja_JP": "\u30a4\u30f3\u30c7\u30c3\u30af\u30b9\u53ef\u80fd - \u30c6\u30ad\u30b9\u30c8",
+					"es_ES": "Indexable - Texto",
+					"hu_HU": "Indexelhet\u0151 - Sz\u00f6veg",
+					"fr_FR": "Indexable - Texte",
+					"zh_CN": "\u53ef\u7d22\u5f15-\u6587\u672c",
+					"nl_NL": "Indexeerbaar - Tekst"
+				}
+			}]
+		}, {
+			"dataType": "string",
+			"validationExpression": "true",
+			"visibilityExpression": "true",
 			"name": "predefinedValue",
-			"localizable": true,
+			"validationMessage": "",
+			"localizable": 1,
+			"label": {
+				"iw_IL": "\u05e2\u05e8\u05da \u05de\u05d5\u05d2\u05d3\u05e8 \u05de\u05e8\u05d0\u05e9",
+				"pt_BR": "Valor predefinido",
+				"ca_ES": "Valor predefinit",
+				"en_US": "Predefined Value",
+				"de_DE": "Vordefinierter Wert",
+				"fi_FI": "Esit\u00e4ytetty arvo",
+				"ja_JP": "\u898f\u5b9a\u5024",
+				"es_ES": "Valor predefinido",
+				"hu_HU": "Kijel\u00f6lt \u00e9rt\u00e9k",
+				"fr_FR": "Valeur pr\u00e9d\u00e9finie",
+				"zh_CN": "\u9884\u5b9a\u4e49\u7684\u503c",
+				"nl_NL": "Vooraf bepaalde waarde"
+			},
+			"type": "text"
+		}, {
+			"dataType": "string",
+			"validationExpression": "true",
+			"visibilityExpression": "false",
+			"name": "dataType",
+			"validationMessage": "",
+			"localizable": 0,
 			"type": "text"
 		}, {
 			"dataType": "boolean",
-			"visibilityExpression": "true",
 			"validationExpression": "true",
-			"name": "repeatable",
-			"localizable": false,
-			"type": "checkbox"
-		}, {
-			"dataType": "boolean",
 			"visibilityExpression": "true",
-			"validationExpression": "true",
-			"name": "showLabel",
-			"localizable": false,
+			"name": "readOnly",
+			"validationMessage": "",
+			"localizable": 0,
+			"label": {
+				"iw_IL": "\u05dc\u05e7\u05e8\u05d9\u05d0\u05d4 \u05d1\u05dc\u05d1\u05d3",
+				"pt_BR": "Somente leitura",
+				"ca_ES": "Nom\u00e9s de lectura",
+				"en_US": "Read Only",
+				"de_DE": "Nur lesen",
+				"fi_FI": "Vain luku",
+				"ja_JP": "\u8aad\u307f\u53d6\u308a\u5c02\u7528",
+				"es_ES": "De s\u00f3lo lectura",
+				"hu_HU": "Csak olvashat\u00f3",
+				"fr_FR": "Lecture seule",
+				"zh_CN": "\u53ea\u8bfb",
+				"nl_NL": "Alleen-lezen"
+			},
 			"type": "checkbox"
 		}, {
 			"dataType": "string",
-			"visibilityExpression": "false",
+			"validationExpression": "true",
+			"visibilityExpression": "true",
 			"name": "visibilityExpression",
-			"localizable": false,
+			"validationMessage": "",
+			"localizable": 0,
+			"label": {
+				"iw_IL": "\u05e0\u05e8\u05d0\u05d5\u05ea",
+				"pt_BR": "Visibilidade",
+				"ca_ES": "Visibilitat",
+				"en_US": "Visibility",
+				"de_DE": "Sichtbarkeit",
+				"fi_FI": "N\u00e4kyvyys",
+				"ja_JP": "\u95b2\u89a7\u53ef\u80fd\u304b",
+				"es_ES": "Visibilidad",
+				"hu_HU": "L\u00e1that\u00f3s\u00e1g",
+				"fr_FR": "Visibilit\u00e9",
+				"zh_CN": "\u53ef\u89c1\u6027",
+				"nl_NL": "Zichtbaarheid"
+			},
+			"type": "text"
+		}, {
+			"dataType": "string",
+			"validationExpression": "true",
+			"visibilityExpression": "true",
+			"name": "validationExpression",
+			"validationMessage": "",
+			"localizable": 0,
+			"label": {
+				"iw_IL": "\u05d1\u05d3\u05d9\u05e7\u05d4",
+				"pt_BR": "Valida\u00e7\u00e3o",
+				"ca_ES": "Validaci\u00f3",
+				"en_US": "Validation",
+				"de_DE": "Validierung",
+				"fi_FI": "Validointi",
+				"ja_JP": "\u78ba\u8a8d",
+				"es_ES": "Validaci\u00f3n",
+				"hu_HU": "\u00c9rv\u00e9nyes\u00edt\u00e9s",
+				"fr_FR": "Vacances",
+				"zh_CN": "\u9a8c\u8bc1",
+				"nl_NL": "Validatie"
+			},
+			"type": "validation"
+		}, {
+			"dataType": "boolean",
+			"validationExpression": "true",
+			"visibilityExpression": "true",
+			"name": "showLabel",
+			"validationMessage": "",
+			"localizable": 0,
+			"label": {
+				"iw_IL": "\u05d4\u05e6\u05d2 \u05ea\u05d5\u05d9\u05ea",
+				"pt_BR": "Mostrar etiqueta",
+				"ca_ES": "Mostra l'etiqueta",
+				"en_US": "Show Label",
+				"de_DE": "Label anzeigen",
+				"fi_FI": "N\u00e4yt\u00e4 selite",
+				"ja_JP": "\u30e9\u30d9\u30eb\u3092\u8868\u793a\u3059\u308b",
+				"es_ES": "Mostrar etiqueta",
+				"hu_HU": "C\u00edmke megjelen\u00edt\u00e9se",
+				"fr_FR": "Afficher les intitul\u00e9s",
+				"zh_CN": "\u663e\u793a\u6807\u7b7e",
+				"nl_NL": "Label tonen"
+			},
+			"type": "checkbox"
+		}, {
+			"dataType": "boolean",
+			"validationExpression": "true",
+			"visibilityExpression": "true",
+			"name": "repeatable",
+			"validationMessage": "",
+			"localizable": 0,
+			"label": {
+				"iw_IL": "\u05e9\u05e0\u05d9\u05ea\u05df \u05dc\u05d7\u05d6\u05d5\u05e8 \u05e2\u05dc\u05d9\u05d5",
+				"pt_BR": "Repet\u00edvel",
+				"ca_ES": "Repetible",
+				"en_US": "Repeatable",
+				"de_DE": "Wiederholung m\u00f6glich",
+				"fi_FI": "Toistettava",
+				"ja_JP": "\u7e70\u308a\u8fd4\u3057\u53ef\u80fd",
+				"es_ES": "Repetible",
+				"hu_HU": "Ism\u00e9telhet\u0151",
+				"fr_FR": "Qu'on peut r\u00e9p\u00e9ter",
+				"zh_CN": "\u53ef\u91cd\u590d",
+				"nl_NL": "Herhaalbaar"
+			},
+			"type": "checkbox"
+		}, {
+			"dataType": "string",
+			"validationExpression": "!name.equals(\"\")",
+			"visibilityExpression": "true",
+			"name": "name",
+			"validationMessage": "",
+			"localizable": 0,
+			"label": {
+				"iw_IL": "\u05e9\u05dd",
+				"pt_BR": "Nome",
+				"ca_ES": "Nom",
+				"en_US": "Name",
+				"de_DE": "Name",
+				"fi_FI": "Nimi",
+				"ja_JP": "\u540d\u524d",
+				"es_ES": "Nombre",
+				"hu_HU": "N\u00e9v",
+				"fr_FR": "Nom",
+				"zh_CN": "\u540d\u79f0",
+				"nl_NL": "Naam"
+			},
 			"type": "text"
 		}, {
 			"dataType": "boolean",
-			"visibilityExpression": "true",
 			"validationExpression": "true",
-			"name": "readOnly",
-			"localizable": false,
+			"visibilityExpression": "true",
+			"name": "required",
+			"validationMessage": "",
+			"localizable": 0,
+			"label": {
+				"iw_IL": "\u05e0\u05d3\u05e8\u05e9",
+				"pt_BR": "Obrigat\u00f3rio",
+				"ca_ES": "Obligatori",
+				"en_US": "Required",
+				"de_DE": "Erforderlich",
+				"fi_FI": "Pakollinen",
+				"ja_JP": "\u5fc5\u9808",
+				"es_ES": "Requerido",
+				"hu_HU": "Sz\u00fcks\u00e9ges",
+				"fr_FR": "Requis",
+				"zh_CN": "\u5fc5\u9700\u7684",
+				"nl_NL": "Vereist"
+			},
+			"type": "checkbox"
+		}, {
+			"dataType": "boolean",
+			"validationExpression": "true",
+			"visibilityExpression": "true",
+			"name": "multiple",
+			"validationMessage": "",
+			"localizable": 0,
+			"label": {
+				"iw_IL": "\u05de\u05e8\u05d5\u05d1\u05d4",
+				"pt_BR": "M\u00faltiplo",
+				"ca_ES": "M\u00faltiples",
+				"en_US": "Multiple",
+				"de_DE": "Mehrere",
+				"fi_FI": "Useita",
+				"ja_JP": "\u8907\u6570",
+				"es_ES": "M\u00faltiple",
+				"hu_HU": "T\u00f6bbsz\u00f6r\u00f6s",
+				"fr_FR": "Plusieurs",
+				"zh_CN": "\u591a\u4e2a",
+				"nl_NL": "Meerdere"
+			},
 			"type": "checkbox"
 		}, {
 			"dataType": "ddm-options",
-			"visibilityExpression": "true",
 			"validationExpression": "true",
+			"visibilityExpression": "true",
 			"name": "options",
-			"localizable": false,
+			"validationMessage": "",
+			"localizable": 0,
+			"label": {
+				"iw_IL": "\u05d0\u05e4\u05e9\u05e8\u05d5\u05d9\u05d5\u05ea",
+				"pt_BR": "Op\u00e7\u00f5es",
+				"ca_ES": "Opcions",
+				"en_US": "Options",
+				"de_DE": "Optionen",
+				"fi_FI": "Valinnat",
+				"ja_JP": "\u30aa\u30d7\u30b7\u30e7\u30f3",
+				"es_ES": "Opciones",
+				"hu_HU": "Opci\u00f3k",
+				"fr_FR": "Facultatif",
+				"zh_CN": "\u9009\u9879",
+				"nl_NL": "Opties"
+			},
 			"type": "options"
+		}]
+	},
+	"settingsLayout": {
+		"defaultLanguageId": "en_US",
+		"pages": [{
+			"rows": [{
+				"columns": [{
+					"fieldNames": ["label", "name", "tip", "required"],
+					"size": 12
+				}]
+			}]
 		}, {
-			"dataType": "boolean",
-			"visibilityExpression": "true",
-			"validationExpression": "true",
-			"name": "multiple",
-			"localizable": false,
-			"type": "checkbox"
+			"rows": [{
+				"columns": [{
+					"fieldNames": ["type", "dataType", "readOnly", "indexType", "fieldNamespace", "localizable", "predefinedValue", "showLabel", "validationExpression", "validationMessage", "visibilityExpression", "repeatable", "options", "multiple"],
+					"size": 12
+				}]
+			}]
 		}]
 	},
 	"javaScriptClass": "Liferay.DDM.Field.Select"
 }, {
 	"javaScriptModule": "liferay-ddm-form-renderer-field",
-	"icon": "icon-ok-circle",
+	"icon": "icon-font",
+	"system": 0,
 	"templateNamespace": "ddm.text",
 	"name": "text",
 	"settings": {
@@ -127,104 +442,777 @@
 		"availableLanguageIds": [],
 		"fields": [{
 			"dataType": "string",
+			"validationExpression": "true",
 			"visibilityExpression": "true",
-			"validationExpression": "!name.isEmpty()",
-			"name": "name",
-			"localizable": false,
+			"name": "validationMessage",
+			"validationMessage": "",
+			"localizable": 0,
+			"label": {
+				"iw_IL": "validation-message",
+				"pt_BR": "validation-message",
+				"ca_ES": "validation-message",
+				"en_US": "validation-message",
+				"de_DE": "validation-message",
+				"fi_FI": "validation-message",
+				"ja_JP": "validation-message",
+				"es_ES": "validation-message",
+				"hu_HU": "validation-message",
+				"fr_FR": "validation-message",
+				"zh_CN": "validation-message",
+				"nl_NL": "validation-message"
+			},
+			"type": "text"
+		}, {
+			"dataType": "boolean",
+			"validationExpression": "true",
+			"visibilityExpression": "true",
+			"name": "localizable",
+			"validationMessage": "",
+			"localizable": 0,
+			"label": {
+				"iw_IL": "\u05e0\u05d9\u05ea\u05df \u05dc\u05de\u05d9\u05e7\u05d5\u05dd",
+				"pt_BR": "Localiz\u00e1vel",
+				"ca_ES": "Localitzable",
+				"en_US": "Localizable",
+				"de_DE": "Lokalisierbar",
+				"fi_FI": "K\u00e4\u00e4nnett\u00e4v\u00e4",
+				"ja_JP": "\u30ed\u30fc\u30ab\u30e9\u30a4\u30bc\u30fc\u30b7\u30e7\u30f3\u53ef\u80fd",
+				"es_ES": "Localizable",
+				"hu_HU": "Leford\u00edthat\u00f3",
+				"fr_FR": "Traduisible",
+				"zh_CN": "\u53ef\u672c\u5730\u5316\u7684",
+				"nl_NL": "Vertaalbaar"
+			},
+			"type": "checkbox"
+		}, {
+			"dataType": "string",
+			"validationExpression": "true",
+			"visibilityExpression": "true",
+			"name": "label",
+			"validationMessage": "",
+			"localizable": 1,
+			"label": {
+				"iw_IL": "\u05ea\u05d5\u05d5\u05d9\u05ea",
+				"pt_BR": "R\u00f3tulo",
+				"ca_ES": "Etiqueta",
+				"en_US": "Label",
+				"de_DE": "Beschriftung",
+				"fi_FI": "Selite",
+				"ja_JP": "\u30e9\u30d9\u30eb",
+				"es_ES": "Etiqueta",
+				"hu_HU": "C\u00edmke",
+				"fr_FR": "Libell\u00e9",
+				"zh_CN": "\u6807\u7b7e",
+				"nl_NL": "Label"
+			},
 			"type": "text"
 		}, {
 			"dataType": "string",
+			"validationExpression": "true",
 			"visibilityExpression": "false",
 			"name": "type",
-			"localizable": false,
+			"validationMessage": "",
+			"localizable": 0,
 			"type": "text"
 		}, {
 			"dataType": "string",
-			"visibilityExpression": "false",
-			"name": "dataType",
-			"localizable": false,
-			"type": "text"
-		}, {
-			"dataType": "boolean",
-			"visibilityExpression": "true",
 			"validationExpression": "true",
-			"name": "required",
-			"localizable": false,
-			"type": "checkbox"
-		}, {
-			"dataType": "string",
-			"visibilityExpression": "true",
-			"validationExpression": "true",
-			"name": "indexType",
-			"localizable": false,
-			"type": "text"
-		}, {
-			"dataType": "string",
-			"visibilityExpression": "true",
-			"validationExpression": "true",
-			"name": "label",
-			"localizable": true,
-			"type": "text"
-		}, {
-			"dataType": "string",
-			"visibilityExpression": "true",
-			"validationExpression": "true",
-			"name": "tip",
-			"localizable": true,
-			"type": "text"
-		}, {
-			"dataType": "string",
 			"visibilityExpression": "false",
 			"name": "fieldNamespace",
-			"localizable": false,
+			"validationMessage": "",
+			"localizable": 0,
 			"type": "text"
 		}, {
-			"dataType": "boolean",
-			"visibilityExpression": "true",
+			"dataType": "string",
 			"validationExpression": "true",
-			"name": "localizable",
-			"localizable": false,
-			"type": "checkbox"
+			"visibilityExpression": "true",
+			"name": "tip",
+			"validationMessage": "",
+			"localizable": 1,
+			"label": {
+				"iw_IL": "\u05d8\u05d9\u05e4",
+				"pt_BR": "Dica",
+				"ca_ES": "Consell",
+				"en_US": "Tip",
+				"de_DE": "Tipp",
+				"fi_FI": "Vihje",
+				"ja_JP": "\u30c1\u30c3\u30d7",
+				"es_ES": "Consejo",
+				"hu_HU": "Tipp",
+				"fr_FR": "Truc",
+				"zh_CN": "\u63d0\u793a",
+				"nl_NL": "Tip"
+			},
+			"type": "text"
 		}, {
 			"dataType": "string",
-			"visibilityExpression": "true",
 			"validationExpression": "true",
+			"visibilityExpression": "true",
+			"name": "indexType",
+			"validationMessage": "",
+			"localizable": 0,
+			"label": {
+				"iw_IL": "\u05e0\u05d9\u05ea\u05df \u05dc\u05de\u05e4\u05ea\u05d5\u05d7",
+				"pt_BR": "Index\u00e1vel",
+				"ca_ES": "Indexable",
+				"en_US": "Indexable",
+				"de_DE": "Indizierbar",
+				"fi_FI": "Indeksoitava",
+				"ja_JP": "\u30a4\u30f3\u30c7\u30c3\u30af\u30b9\u53ef\u80fd",
+				"es_ES": "Indexable",
+				"hu_HU": "Indexelhet\u0151",
+				"fr_FR": "Indexable",
+				"zh_CN": "\u53ef\u7d22\u5f15",
+				"nl_NL": "Indexeerbaar"
+			},
+			"type": "select",
+			"options": [{
+				"value": "",
+				"label": {
+					"iw_IL": "\u05dc\u05d0 \u05e0\u05d9\u05ea\u05df \u05dc\u05de\u05e4\u05ea\u05d5\u05d7",
+					"pt_BR": "N\u00e3o index\u00e1vel",
+					"ca_ES": "No es pot indexar",
+					"en_US": "Not Indexable",
+					"de_DE": "Nicht indizierbar",
+					"fi_FI": "Ei indeksoitavissa",
+					"ja_JP": "\u30a4\u30f3\u30c7\u30c3\u30af\u30b9\u5316\u3067\u304d\u307e\u305b\u3093\u3002",
+					"es_ES": "No indexable",
+					"hu_HU": "Nem indexelhet\u0151",
+					"fr_FR": "Non-indexable",
+					"zh_CN": "\u4e0d\u53ef\u7d22\u5f15",
+					"nl_NL": "Niet indexeerbaar"
+				}
+			}, {
+				"value": "keyword",
+				"label": {
+					"iw_IL": "\u05e0\u05d9\u05ea\u05df \u05dc\u05de\u05e4\u05ea\u05d5\u05d7 - \u05de\u05d9\u05dc\u05ea \u05de\u05e4\u05ea\u05d7",
+					"pt_BR": "Index\u00e1vel - Palavra-chave",
+					"ca_ES": "Indexable - Paraula Clau",
+					"en_US": "Indexable - Keyword",
+					"de_DE": "Indizierbar - Schl\u00fcsselwort",
+					"fi_FI": "Indeksoitava - avainsana",
+					"ja_JP": "\u30a4\u30f3\u30c7\u30c3\u30af\u30b9\u53ef\u80fd - \u30ad\u30fc\u30ef\u30fc\u30c9",
+					"es_ES": "Indexable - Palabra clave",
+					"hu_HU": "Indexelhet\u0151 - kulcssz\u00f3",
+					"fr_FR": "Indexable - Mot-cl\u00e9",
+					"zh_CN": "\u53ef\u7d22\u5f15-\u5173\u952e\u8bcd",
+					"nl_NL": "Indexeerbaar - Sleutelwoord"
+				}
+			}, {
+				"value": "text",
+				"label": {
+					"iw_IL": "\u05e0\u05d9\u05ea\u05df \u05dc\u05de\u05e4\u05ea\u05d5\u05d7 - \u05d8\u05e7\u05e1\u05d8",
+					"pt_BR": "Index\u00e1vel - Texto",
+					"ca_ES": "Indexable - Text",
+					"en_US": "Indexable - Text",
+					"de_DE": "Indizierbar - Text",
+					"fi_FI": "Indeksoitava - teksti",
+					"ja_JP": "\u30a4\u30f3\u30c7\u30c3\u30af\u30b9\u53ef\u80fd - \u30c6\u30ad\u30b9\u30c8",
+					"es_ES": "Indexable - Texto",
+					"hu_HU": "Indexelhet\u0151 - Sz\u00f6veg",
+					"fr_FR": "Indexable - Texte",
+					"zh_CN": "\u53ef\u7d22\u5f15-\u6587\u672c",
+					"nl_NL": "Indexeerbaar - Tekst"
+				}
+			}]
+		}, {
+			"dataType": "string",
+			"validationExpression": "true",
+			"visibilityExpression": "true",
 			"name": "predefinedValue",
-			"localizable": true,
+			"validationMessage": "",
+			"localizable": 1,
+			"label": {
+				"iw_IL": "\u05e2\u05e8\u05da \u05de\u05d5\u05d2\u05d3\u05e8 \u05de\u05e8\u05d0\u05e9",
+				"pt_BR": "Valor predefinido",
+				"ca_ES": "Valor predefinit",
+				"en_US": "Predefined Value",
+				"de_DE": "Vordefinierter Wert",
+				"fi_FI": "Esit\u00e4ytetty arvo",
+				"ja_JP": "\u898f\u5b9a\u5024",
+				"es_ES": "Valor predefinido",
+				"hu_HU": "Kijel\u00f6lt \u00e9rt\u00e9k",
+				"fr_FR": "Valeur pr\u00e9d\u00e9finie",
+				"zh_CN": "\u9884\u5b9a\u4e49\u7684\u503c",
+				"nl_NL": "Vooraf bepaalde waarde"
+			},
+			"type": "text"
+		}, {
+			"dataType": "string",
+			"validationExpression": "true",
+			"visibilityExpression": "false",
+			"name": "dataType",
+			"validationMessage": "",
+			"localizable": 0,
 			"type": "text"
 		}, {
 			"dataType": "boolean",
-			"visibilityExpression": "true",
 			"validationExpression": "true",
-			"name": "repeatable",
-			"localizable": false,
-			"type": "checkbox"
-		}, {
-			"dataType": "boolean",
 			"visibilityExpression": "true",
-			"validationExpression": "true",
-			"name": "showLabel",
-			"localizable": false,
+			"name": "readOnly",
+			"validationMessage": "",
+			"localizable": 0,
+			"label": {
+				"iw_IL": "\u05dc\u05e7\u05e8\u05d9\u05d0\u05d4 \u05d1\u05dc\u05d1\u05d3",
+				"pt_BR": "Somente leitura",
+				"ca_ES": "Nom\u00e9s de lectura",
+				"en_US": "Read Only",
+				"de_DE": "Nur lesen",
+				"fi_FI": "Vain luku",
+				"ja_JP": "\u8aad\u307f\u53d6\u308a\u5c02\u7528",
+				"es_ES": "De s\u00f3lo lectura",
+				"hu_HU": "Csak olvashat\u00f3",
+				"fr_FR": "Lecture seule",
+				"zh_CN": "\u53ea\u8bfb",
+				"nl_NL": "Alleen-lezen"
+			},
 			"type": "checkbox"
 		}, {
 			"dataType": "string",
-			"visibilityExpression": "false",
+			"validationExpression": "true",
+			"visibilityExpression": "true",
 			"name": "visibilityExpression",
-			"localizable": false,
+			"validationMessage": "",
+			"localizable": 0,
+			"label": {
+				"iw_IL": "\u05e0\u05e8\u05d0\u05d5\u05ea",
+				"pt_BR": "Visibilidade",
+				"ca_ES": "Visibilitat",
+				"en_US": "Visibility",
+				"de_DE": "Sichtbarkeit",
+				"fi_FI": "N\u00e4kyvyys",
+				"ja_JP": "\u95b2\u89a7\u53ef\u80fd\u304b",
+				"es_ES": "Visibilidad",
+				"hu_HU": "L\u00e1that\u00f3s\u00e1g",
+				"fr_FR": "Visibilit\u00e9",
+				"zh_CN": "\u53ef\u89c1\u6027",
+				"nl_NL": "Zichtbaarheid"
+			},
+			"type": "text"
+		}, {
+			"dataType": "string",
+			"validationExpression": "true",
+			"visibilityExpression": "true",
+			"name": "validationExpression",
+			"validationMessage": "",
+			"localizable": 0,
+			"label": {
+				"iw_IL": "\u05d1\u05d3\u05d9\u05e7\u05d4",
+				"pt_BR": "Valida\u00e7\u00e3o",
+				"ca_ES": "Validaci\u00f3",
+				"en_US": "Validation",
+				"de_DE": "Validierung",
+				"fi_FI": "Validointi",
+				"ja_JP": "\u78ba\u8a8d",
+				"es_ES": "Validaci\u00f3n",
+				"hu_HU": "\u00c9rv\u00e9nyes\u00edt\u00e9s",
+				"fr_FR": "Vacances",
+				"zh_CN": "\u9a8c\u8bc1",
+				"nl_NL": "Validatie"
+			},
+			"type": "validation"
+		}, {
+			"dataType": "boolean",
+			"validationExpression": "true",
+			"visibilityExpression": "true",
+			"name": "showLabel",
+			"validationMessage": "",
+			"localizable": 0,
+			"label": {
+				"iw_IL": "\u05d4\u05e6\u05d2 \u05ea\u05d5\u05d9\u05ea",
+				"pt_BR": "Mostrar etiqueta",
+				"ca_ES": "Mostra l'etiqueta",
+				"en_US": "Show Label",
+				"de_DE": "Label anzeigen",
+				"fi_FI": "N\u00e4yt\u00e4 selite",
+				"ja_JP": "\u30e9\u30d9\u30eb\u3092\u8868\u793a\u3059\u308b",
+				"es_ES": "Mostrar etiqueta",
+				"hu_HU": "C\u00edmke megjelen\u00edt\u00e9se",
+				"fr_FR": "Afficher les intitul\u00e9s",
+				"zh_CN": "\u663e\u793a\u6807\u7b7e",
+				"nl_NL": "Label tonen"
+			},
+			"type": "checkbox"
+		}, {
+			"dataType": "boolean",
+			"validationExpression": "true",
+			"visibilityExpression": "true",
+			"name": "repeatable",
+			"validationMessage": "",
+			"localizable": 0,
+			"label": {
+				"iw_IL": "\u05e9\u05e0\u05d9\u05ea\u05df \u05dc\u05d7\u05d6\u05d5\u05e8 \u05e2\u05dc\u05d9\u05d5",
+				"pt_BR": "Repet\u00edvel",
+				"ca_ES": "Repetible",
+				"en_US": "Repeatable",
+				"de_DE": "Wiederholung m\u00f6glich",
+				"fi_FI": "Toistettava",
+				"ja_JP": "\u7e70\u308a\u8fd4\u3057\u53ef\u80fd",
+				"es_ES": "Repetible",
+				"hu_HU": "Ism\u00e9telhet\u0151",
+				"fr_FR": "Qu'on peut r\u00e9p\u00e9ter",
+				"zh_CN": "\u53ef\u91cd\u590d",
+				"nl_NL": "Herhaalbaar"
+			},
+			"type": "checkbox"
+		}, {
+			"dataType": "string",
+			"validationExpression": "!name.equals(\"\")",
+			"visibilityExpression": "true",
+			"name": "name",
+			"validationMessage": "",
+			"localizable": 0,
+			"label": {
+				"iw_IL": "\u05e9\u05dd",
+				"pt_BR": "Nome",
+				"ca_ES": "Nom",
+				"en_US": "Name",
+				"de_DE": "Name",
+				"fi_FI": "Nimi",
+				"ja_JP": "\u540d\u524d",
+				"es_ES": "Nombre",
+				"hu_HU": "N\u00e9v",
+				"fr_FR": "Nom",
+				"zh_CN": "\u540d\u79f0",
+				"nl_NL": "Naam"
+			},
 			"type": "text"
 		}, {
 			"dataType": "boolean",
-			"visibilityExpression": "true",
 			"validationExpression": "true",
-			"name": "readOnly",
-			"localizable": false,
+			"visibilityExpression": "true",
+			"name": "required",
+			"validationMessage": "",
+			"localizable": 0,
+			"label": {
+				"iw_IL": "\u05e0\u05d3\u05e8\u05e9",
+				"pt_BR": "Obrigat\u00f3rio",
+				"ca_ES": "Obligatori",
+				"en_US": "Required",
+				"de_DE": "Erforderlich",
+				"fi_FI": "Pakollinen",
+				"ja_JP": "\u5fc5\u9808",
+				"es_ES": "Requerido",
+				"hu_HU": "Sz\u00fcks\u00e9ges",
+				"fr_FR": "Requis",
+				"zh_CN": "\u5fc5\u9700\u7684",
+				"nl_NL": "Vereist"
+			},
 			"type": "checkbox"
+		}]
+	},
+	"settingsLayout": {
+		"defaultLanguageId": "en_US",
+		"pages": [{
+			"rows": [{
+				"columns": [{
+					"fieldNames": ["label", "name", "tip", "required"],
+					"size": 12
+				}]
+			}]
+		}, {
+			"rows": [{
+				"columns": [{
+					"fieldNames": ["type", "dataType", "readOnly", "indexType", "fieldNamespace", "localizable", "predefinedValue", "showLabel", "validationExpression", "validationMessage", "visibilityExpression", "repeatable"],
+					"size": 12
+				}]
+			}]
 		}]
 	},
 	"javaScriptClass": "Liferay.DDM.Renderer.Field"
 }, {
-	"javaScriptModule": "liferay-ddm-form-field-checkbox",
+	"javaScriptModule": "liferay-ddm-form-field-validation",
 	"icon": "icon-ok-circle",
+	"system": 1,
+	"templateNamespace": "ddm.validation",
+	"name": "validation",
+	"settings": {
+		"defaultLanguageId": "en_US",
+		"availableLanguageIds": [],
+		"fields": [{
+			"dataType": "string",
+			"validationExpression": "true",
+			"visibilityExpression": "true",
+			"name": "validationMessage",
+			"validationMessage": "",
+			"localizable": 0,
+			"label": {
+				"iw_IL": "validation-message",
+				"pt_BR": "validation-message",
+				"ca_ES": "validation-message",
+				"en_US": "validation-message",
+				"de_DE": "validation-message",
+				"fi_FI": "validation-message",
+				"ja_JP": "validation-message",
+				"es_ES": "validation-message",
+				"hu_HU": "validation-message",
+				"fr_FR": "validation-message",
+				"zh_CN": "validation-message",
+				"nl_NL": "validation-message"
+			},
+			"type": "text"
+		}, {
+			"dataType": "boolean",
+			"validationExpression": "true",
+			"visibilityExpression": "true",
+			"name": "localizable",
+			"validationMessage": "",
+			"localizable": 0,
+			"label": {
+				"iw_IL": "\u05e0\u05d9\u05ea\u05df \u05dc\u05de\u05d9\u05e7\u05d5\u05dd",
+				"pt_BR": "Localiz\u00e1vel",
+				"ca_ES": "Localitzable",
+				"en_US": "Localizable",
+				"de_DE": "Lokalisierbar",
+				"fi_FI": "K\u00e4\u00e4nnett\u00e4v\u00e4",
+				"ja_JP": "\u30ed\u30fc\u30ab\u30e9\u30a4\u30bc\u30fc\u30b7\u30e7\u30f3\u53ef\u80fd",
+				"es_ES": "Localizable",
+				"hu_HU": "Leford\u00edthat\u00f3",
+				"fr_FR": "Traduisible",
+				"zh_CN": "\u53ef\u672c\u5730\u5316\u7684",
+				"nl_NL": "Vertaalbaar"
+			},
+			"type": "checkbox"
+		}, {
+			"dataType": "string",
+			"validationExpression": "true",
+			"visibilityExpression": "true",
+			"name": "label",
+			"validationMessage": "",
+			"localizable": 1,
+			"label": {
+				"iw_IL": "\u05ea\u05d5\u05d5\u05d9\u05ea",
+				"pt_BR": "R\u00f3tulo",
+				"ca_ES": "Etiqueta",
+				"en_US": "Label",
+				"de_DE": "Beschriftung",
+				"fi_FI": "Selite",
+				"ja_JP": "\u30e9\u30d9\u30eb",
+				"es_ES": "Etiqueta",
+				"hu_HU": "C\u00edmke",
+				"fr_FR": "Libell\u00e9",
+				"zh_CN": "\u6807\u7b7e",
+				"nl_NL": "Label"
+			},
+			"type": "text"
+		}, {
+			"dataType": "string",
+			"validationExpression": "true",
+			"visibilityExpression": "false",
+			"name": "type",
+			"validationMessage": "",
+			"localizable": 0,
+			"type": "text"
+		}, {
+			"dataType": "string",
+			"validationExpression": "true",
+			"visibilityExpression": "false",
+			"name": "fieldNamespace",
+			"validationMessage": "",
+			"localizable": 0,
+			"type": "text"
+		}, {
+			"dataType": "string",
+			"validationExpression": "true",
+			"visibilityExpression": "true",
+			"name": "tip",
+			"validationMessage": "",
+			"localizable": 1,
+			"label": {
+				"iw_IL": "\u05d8\u05d9\u05e4",
+				"pt_BR": "Dica",
+				"ca_ES": "Consell",
+				"en_US": "Tip",
+				"de_DE": "Tipp",
+				"fi_FI": "Vihje",
+				"ja_JP": "\u30c1\u30c3\u30d7",
+				"es_ES": "Consejo",
+				"hu_HU": "Tipp",
+				"fr_FR": "Truc",
+				"zh_CN": "\u63d0\u793a",
+				"nl_NL": "Tip"
+			},
+			"type": "text"
+		}, {
+			"dataType": "string",
+			"validationExpression": "true",
+			"visibilityExpression": "true",
+			"name": "indexType",
+			"validationMessage": "",
+			"localizable": 0,
+			"label": {
+				"iw_IL": "\u05e0\u05d9\u05ea\u05df \u05dc\u05de\u05e4\u05ea\u05d5\u05d7",
+				"pt_BR": "Index\u00e1vel",
+				"ca_ES": "Indexable",
+				"en_US": "Indexable",
+				"de_DE": "Indizierbar",
+				"fi_FI": "Indeksoitava",
+				"ja_JP": "\u30a4\u30f3\u30c7\u30c3\u30af\u30b9\u53ef\u80fd",
+				"es_ES": "Indexable",
+				"hu_HU": "Indexelhet\u0151",
+				"fr_FR": "Indexable",
+				"zh_CN": "\u53ef\u7d22\u5f15",
+				"nl_NL": "Indexeerbaar"
+			},
+			"type": "select",
+			"options": [{
+				"value": "",
+				"label": {
+					"iw_IL": "\u05dc\u05d0 \u05e0\u05d9\u05ea\u05df \u05dc\u05de\u05e4\u05ea\u05d5\u05d7",
+					"pt_BR": "N\u00e3o index\u00e1vel",
+					"ca_ES": "No es pot indexar",
+					"en_US": "Not Indexable",
+					"de_DE": "Nicht indizierbar",
+					"fi_FI": "Ei indeksoitavissa",
+					"ja_JP": "\u30a4\u30f3\u30c7\u30c3\u30af\u30b9\u5316\u3067\u304d\u307e\u305b\u3093\u3002",
+					"es_ES": "No indexable",
+					"hu_HU": "Nem indexelhet\u0151",
+					"fr_FR": "Non-indexable",
+					"zh_CN": "\u4e0d\u53ef\u7d22\u5f15",
+					"nl_NL": "Niet indexeerbaar"
+				}
+			}, {
+				"value": "keyword",
+				"label": {
+					"iw_IL": "\u05e0\u05d9\u05ea\u05df \u05dc\u05de\u05e4\u05ea\u05d5\u05d7 - \u05de\u05d9\u05dc\u05ea \u05de\u05e4\u05ea\u05d7",
+					"pt_BR": "Index\u00e1vel - Palavra-chave",
+					"ca_ES": "Indexable - Paraula Clau",
+					"en_US": "Indexable - Keyword",
+					"de_DE": "Indizierbar - Schl\u00fcsselwort",
+					"fi_FI": "Indeksoitava - avainsana",
+					"ja_JP": "\u30a4\u30f3\u30c7\u30c3\u30af\u30b9\u53ef\u80fd - \u30ad\u30fc\u30ef\u30fc\u30c9",
+					"es_ES": "Indexable - Palabra clave",
+					"hu_HU": "Indexelhet\u0151 - kulcssz\u00f3",
+					"fr_FR": "Indexable - Mot-cl\u00e9",
+					"zh_CN": "\u53ef\u7d22\u5f15-\u5173\u952e\u8bcd",
+					"nl_NL": "Indexeerbaar - Sleutelwoord"
+				}
+			}, {
+				"value": "text",
+				"label": {
+					"iw_IL": "\u05e0\u05d9\u05ea\u05df \u05dc\u05de\u05e4\u05ea\u05d5\u05d7 - \u05d8\u05e7\u05e1\u05d8",
+					"pt_BR": "Index\u00e1vel - Texto",
+					"ca_ES": "Indexable - Text",
+					"en_US": "Indexable - Text",
+					"de_DE": "Indizierbar - Text",
+					"fi_FI": "Indeksoitava - teksti",
+					"ja_JP": "\u30a4\u30f3\u30c7\u30c3\u30af\u30b9\u53ef\u80fd - \u30c6\u30ad\u30b9\u30c8",
+					"es_ES": "Indexable - Texto",
+					"hu_HU": "Indexelhet\u0151 - Sz\u00f6veg",
+					"fr_FR": "Indexable - Texte",
+					"zh_CN": "\u53ef\u7d22\u5f15-\u6587\u672c",
+					"nl_NL": "Indexeerbaar - Tekst"
+				}
+			}]
+		}, {
+			"dataType": "string",
+			"validationExpression": "true",
+			"visibilityExpression": "true",
+			"name": "predefinedValue",
+			"validationMessage": "",
+			"localizable": 1,
+			"label": {
+				"iw_IL": "\u05e2\u05e8\u05da \u05de\u05d5\u05d2\u05d3\u05e8 \u05de\u05e8\u05d0\u05e9",
+				"pt_BR": "Valor predefinido",
+				"ca_ES": "Valor predefinit",
+				"en_US": "Predefined Value",
+				"de_DE": "Vordefinierter Wert",
+				"fi_FI": "Esit\u00e4ytetty arvo",
+				"ja_JP": "\u898f\u5b9a\u5024",
+				"es_ES": "Valor predefinido",
+				"hu_HU": "Kijel\u00f6lt \u00e9rt\u00e9k",
+				"fr_FR": "Valeur pr\u00e9d\u00e9finie",
+				"zh_CN": "\u9884\u5b9a\u4e49\u7684\u503c",
+				"nl_NL": "Vooraf bepaalde waarde"
+			},
+			"type": "text"
+		}, {
+			"dataType": "string",
+			"validationExpression": "true",
+			"visibilityExpression": "false",
+			"name": "dataType",
+			"validationMessage": "",
+			"localizable": 0,
+			"type": "text"
+		}, {
+			"dataType": "boolean",
+			"validationExpression": "true",
+			"visibilityExpression": "true",
+			"name": "readOnly",
+			"validationMessage": "",
+			"localizable": 0,
+			"label": {
+				"iw_IL": "\u05dc\u05e7\u05e8\u05d9\u05d0\u05d4 \u05d1\u05dc\u05d1\u05d3",
+				"pt_BR": "Somente leitura",
+				"ca_ES": "Nom\u00e9s de lectura",
+				"en_US": "Read Only",
+				"de_DE": "Nur lesen",
+				"fi_FI": "Vain luku",
+				"ja_JP": "\u8aad\u307f\u53d6\u308a\u5c02\u7528",
+				"es_ES": "De s\u00f3lo lectura",
+				"hu_HU": "Csak olvashat\u00f3",
+				"fr_FR": "Lecture seule",
+				"zh_CN": "\u53ea\u8bfb",
+				"nl_NL": "Alleen-lezen"
+			},
+			"type": "checkbox"
+		}, {
+			"dataType": "string",
+			"validationExpression": "true",
+			"visibilityExpression": "true",
+			"name": "visibilityExpression",
+			"validationMessage": "",
+			"localizable": 0,
+			"label": {
+				"iw_IL": "\u05e0\u05e8\u05d0\u05d5\u05ea",
+				"pt_BR": "Visibilidade",
+				"ca_ES": "Visibilitat",
+				"en_US": "Visibility",
+				"de_DE": "Sichtbarkeit",
+				"fi_FI": "N\u00e4kyvyys",
+				"ja_JP": "\u95b2\u89a7\u53ef\u80fd\u304b",
+				"es_ES": "Visibilidad",
+				"hu_HU": "L\u00e1that\u00f3s\u00e1g",
+				"fr_FR": "Visibilit\u00e9",
+				"zh_CN": "\u53ef\u89c1\u6027",
+				"nl_NL": "Zichtbaarheid"
+			},
+			"type": "text"
+		}, {
+			"dataType": "string",
+			"validationExpression": "true",
+			"visibilityExpression": "true",
+			"name": "validationExpression",
+			"validationMessage": "",
+			"localizable": 0,
+			"label": {
+				"iw_IL": "\u05d1\u05d3\u05d9\u05e7\u05d4",
+				"pt_BR": "Valida\u00e7\u00e3o",
+				"ca_ES": "Validaci\u00f3",
+				"en_US": "Validation",
+				"de_DE": "Validierung",
+				"fi_FI": "Validointi",
+				"ja_JP": "\u78ba\u8a8d",
+				"es_ES": "Validaci\u00f3n",
+				"hu_HU": "\u00c9rv\u00e9nyes\u00edt\u00e9s",
+				"fr_FR": "Vacances",
+				"zh_CN": "\u9a8c\u8bc1",
+				"nl_NL": "Validatie"
+			},
+			"type": "validation"
+		}, {
+			"dataType": "boolean",
+			"validationExpression": "true",
+			"visibilityExpression": "true",
+			"name": "showLabel",
+			"validationMessage": "",
+			"localizable": 0,
+			"label": {
+				"iw_IL": "\u05d4\u05e6\u05d2 \u05ea\u05d5\u05d9\u05ea",
+				"pt_BR": "Mostrar etiqueta",
+				"ca_ES": "Mostra l'etiqueta",
+				"en_US": "Show Label",
+				"de_DE": "Label anzeigen",
+				"fi_FI": "N\u00e4yt\u00e4 selite",
+				"ja_JP": "\u30e9\u30d9\u30eb\u3092\u8868\u793a\u3059\u308b",
+				"es_ES": "Mostrar etiqueta",
+				"hu_HU": "C\u00edmke megjelen\u00edt\u00e9se",
+				"fr_FR": "Afficher les intitul\u00e9s",
+				"zh_CN": "\u663e\u793a\u6807\u7b7e",
+				"nl_NL": "Label tonen"
+			},
+			"type": "checkbox"
+		}, {
+			"dataType": "boolean",
+			"validationExpression": "true",
+			"visibilityExpression": "true",
+			"name": "repeatable",
+			"validationMessage": "",
+			"localizable": 0,
+			"label": {
+				"iw_IL": "\u05e9\u05e0\u05d9\u05ea\u05df \u05dc\u05d7\u05d6\u05d5\u05e8 \u05e2\u05dc\u05d9\u05d5",
+				"pt_BR": "Repet\u00edvel",
+				"ca_ES": "Repetible",
+				"en_US": "Repeatable",
+				"de_DE": "Wiederholung m\u00f6glich",
+				"fi_FI": "Toistettava",
+				"ja_JP": "\u7e70\u308a\u8fd4\u3057\u53ef\u80fd",
+				"es_ES": "Repetible",
+				"hu_HU": "Ism\u00e9telhet\u0151",
+				"fr_FR": "Qu'on peut r\u00e9p\u00e9ter",
+				"zh_CN": "\u53ef\u91cd\u590d",
+				"nl_NL": "Herhaalbaar"
+			},
+			"type": "checkbox"
+		}, {
+			"dataType": "string",
+			"validationExpression": "!name.equals(\"\")",
+			"visibilityExpression": "true",
+			"name": "name",
+			"validationMessage": "",
+			"localizable": 0,
+			"label": {
+				"iw_IL": "\u05e9\u05dd",
+				"pt_BR": "Nome",
+				"ca_ES": "Nom",
+				"en_US": "Name",
+				"de_DE": "Name",
+				"fi_FI": "Nimi",
+				"ja_JP": "\u540d\u524d",
+				"es_ES": "Nombre",
+				"hu_HU": "N\u00e9v",
+				"fr_FR": "Nom",
+				"zh_CN": "\u540d\u79f0",
+				"nl_NL": "Naam"
+			},
+			"type": "text"
+		}, {
+			"dataType": "boolean",
+			"validationExpression": "true",
+			"visibilityExpression": "true",
+			"name": "required",
+			"validationMessage": "",
+			"localizable": 0,
+			"label": {
+				"iw_IL": "\u05e0\u05d3\u05e8\u05e9",
+				"pt_BR": "Obrigat\u00f3rio",
+				"ca_ES": "Obligatori",
+				"en_US": "Required",
+				"de_DE": "Erforderlich",
+				"fi_FI": "Pakollinen",
+				"ja_JP": "\u5fc5\u9808",
+				"es_ES": "Requerido",
+				"hu_HU": "Sz\u00fcks\u00e9ges",
+				"fr_FR": "Requis",
+				"zh_CN": "\u5fc5\u9700\u7684",
+				"nl_NL": "Vereist"
+			},
+			"type": "checkbox"
+		}]
+	},
+	"settingsLayout": {
+		"defaultLanguageId": "en_US",
+		"pages": [{
+			"rows": [{
+				"columns": [{
+					"fieldNames": ["label", "name", "tip", "required"],
+					"size": 12
+				}]
+			}]
+		}, {
+			"rows": [{
+				"columns": [{
+					"fieldNames": ["type", "dataType", "readOnly", "indexType", "fieldNamespace", "localizable", "predefinedValue", "showLabel", "validationExpression", "validationMessage", "visibilityExpression", "repeatable"],
+					"size": 12
+				}]
+			}]
+		}]
+	},
+	"javaScriptClass": "Liferay.DDM.Field.Validation"
+}, {
+	"javaScriptModule": "liferay-ddm-form-field-checkbox",
+	"icon": "icon-check",
+	"system": 0,
 	"templateNamespace": "ddm.checkbox",
 	"name": "checkbox",
 	"settings": {
@@ -232,104 +1220,388 @@
 		"availableLanguageIds": [],
 		"fields": [{
 			"dataType": "string",
+			"validationExpression": "true",
 			"visibilityExpression": "true",
-			"validationExpression": "!name.isEmpty()",
-			"name": "name",
-			"localizable": false,
+			"name": "validationMessage",
+			"validationMessage": "",
+			"localizable": 0,
+			"label": {
+				"iw_IL": "validation-message",
+				"pt_BR": "validation-message",
+				"ca_ES": "validation-message",
+				"en_US": "validation-message",
+				"de_DE": "validation-message",
+				"fi_FI": "validation-message",
+				"ja_JP": "validation-message",
+				"es_ES": "validation-message",
+				"hu_HU": "validation-message",
+				"fr_FR": "validation-message",
+				"zh_CN": "validation-message",
+				"nl_NL": "validation-message"
+			},
+			"type": "text"
+		}, {
+			"dataType": "boolean",
+			"validationExpression": "true",
+			"visibilityExpression": "true",
+			"name": "localizable",
+			"validationMessage": "",
+			"localizable": 0,
+			"label": {
+				"iw_IL": "\u05e0\u05d9\u05ea\u05df \u05dc\u05de\u05d9\u05e7\u05d5\u05dd",
+				"pt_BR": "Localiz\u00e1vel",
+				"ca_ES": "Localitzable",
+				"en_US": "Localizable",
+				"de_DE": "Lokalisierbar",
+				"fi_FI": "K\u00e4\u00e4nnett\u00e4v\u00e4",
+				"ja_JP": "\u30ed\u30fc\u30ab\u30e9\u30a4\u30bc\u30fc\u30b7\u30e7\u30f3\u53ef\u80fd",
+				"es_ES": "Localizable",
+				"hu_HU": "Leford\u00edthat\u00f3",
+				"fr_FR": "Traduisible",
+				"zh_CN": "\u53ef\u672c\u5730\u5316\u7684",
+				"nl_NL": "Vertaalbaar"
+			},
+			"type": "checkbox"
+		}, {
+			"dataType": "string",
+			"validationExpression": "true",
+			"visibilityExpression": "true",
+			"name": "label",
+			"validationMessage": "",
+			"localizable": 1,
+			"label": {
+				"iw_IL": "\u05ea\u05d5\u05d5\u05d9\u05ea",
+				"pt_BR": "R\u00f3tulo",
+				"ca_ES": "Etiqueta",
+				"en_US": "Label",
+				"de_DE": "Beschriftung",
+				"fi_FI": "Selite",
+				"ja_JP": "\u30e9\u30d9\u30eb",
+				"es_ES": "Etiqueta",
+				"hu_HU": "C\u00edmke",
+				"fr_FR": "Libell\u00e9",
+				"zh_CN": "\u6807\u7b7e",
+				"nl_NL": "Label"
+			},
 			"type": "text"
 		}, {
 			"dataType": "string",
+			"validationExpression": "true",
 			"visibilityExpression": "false",
 			"name": "type",
-			"localizable": false,
+			"validationMessage": "",
+			"localizable": 0,
 			"type": "text"
 		}, {
 			"dataType": "string",
-			"visibilityExpression": "false",
-			"name": "dataType",
-			"localizable": false,
-			"type": "text"
-		}, {
-			"dataType": "boolean",
-			"visibilityExpression": "true",
 			"validationExpression": "true",
-			"name": "required",
-			"localizable": false,
-			"type": "checkbox"
-		}, {
-			"dataType": "string",
-			"visibilityExpression": "true",
-			"validationExpression": "true",
-			"name": "indexType",
-			"localizable": false,
-			"type": "text"
-		}, {
-			"dataType": "string",
-			"visibilityExpression": "true",
-			"validationExpression": "true",
-			"name": "label",
-			"localizable": true,
-			"type": "text"
-		}, {
-			"dataType": "string",
-			"visibilityExpression": "true",
-			"validationExpression": "true",
-			"name": "tip",
-			"localizable": true,
-			"type": "text"
-		}, {
-			"dataType": "string",
 			"visibilityExpression": "false",
 			"name": "fieldNamespace",
-			"localizable": false,
+			"validationMessage": "",
+			"localizable": 0,
 			"type": "text"
 		}, {
-			"dataType": "boolean",
-			"visibilityExpression": "true",
+			"dataType": "string",
 			"validationExpression": "true",
-			"name": "localizable",
-			"localizable": false,
-			"type": "checkbox"
+			"visibilityExpression": "true",
+			"name": "tip",
+			"validationMessage": "",
+			"localizable": 1,
+			"label": {
+				"iw_IL": "\u05d8\u05d9\u05e4",
+				"pt_BR": "Dica",
+				"ca_ES": "Consell",
+				"en_US": "Tip",
+				"de_DE": "Tipp",
+				"fi_FI": "Vihje",
+				"ja_JP": "\u30c1\u30c3\u30d7",
+				"es_ES": "Consejo",
+				"hu_HU": "Tipp",
+				"fr_FR": "Truc",
+				"zh_CN": "\u63d0\u793a",
+				"nl_NL": "Tip"
+			},
+			"type": "text"
 		}, {
 			"dataType": "string",
-			"visibilityExpression": "true",
 			"validationExpression": "true",
+			"visibilityExpression": "true",
+			"name": "indexType",
+			"validationMessage": "",
+			"localizable": 0,
+			"label": {
+				"iw_IL": "\u05e0\u05d9\u05ea\u05df \u05dc\u05de\u05e4\u05ea\u05d5\u05d7",
+				"pt_BR": "Index\u00e1vel",
+				"ca_ES": "Indexable",
+				"en_US": "Indexable",
+				"de_DE": "Indizierbar",
+				"fi_FI": "Indeksoitava",
+				"ja_JP": "\u30a4\u30f3\u30c7\u30c3\u30af\u30b9\u53ef\u80fd",
+				"es_ES": "Indexable",
+				"hu_HU": "Indexelhet\u0151",
+				"fr_FR": "Indexable",
+				"zh_CN": "\u53ef\u7d22\u5f15",
+				"nl_NL": "Indexeerbaar"
+			},
+			"type": "select",
+			"options": [{
+				"value": "",
+				"label": {
+					"iw_IL": "\u05dc\u05d0 \u05e0\u05d9\u05ea\u05df \u05dc\u05de\u05e4\u05ea\u05d5\u05d7",
+					"pt_BR": "N\u00e3o index\u00e1vel",
+					"ca_ES": "No es pot indexar",
+					"en_US": "Not Indexable",
+					"de_DE": "Nicht indizierbar",
+					"fi_FI": "Ei indeksoitavissa",
+					"ja_JP": "\u30a4\u30f3\u30c7\u30c3\u30af\u30b9\u5316\u3067\u304d\u307e\u305b\u3093\u3002",
+					"es_ES": "No indexable",
+					"hu_HU": "Nem indexelhet\u0151",
+					"fr_FR": "Non-indexable",
+					"zh_CN": "\u4e0d\u53ef\u7d22\u5f15",
+					"nl_NL": "Niet indexeerbaar"
+				}
+			}, {
+				"value": "keyword",
+				"label": {
+					"iw_IL": "\u05e0\u05d9\u05ea\u05df \u05dc\u05de\u05e4\u05ea\u05d5\u05d7 - \u05de\u05d9\u05dc\u05ea \u05de\u05e4\u05ea\u05d7",
+					"pt_BR": "Index\u00e1vel - Palavra-chave",
+					"ca_ES": "Indexable - Paraula Clau",
+					"en_US": "Indexable - Keyword",
+					"de_DE": "Indizierbar - Schl\u00fcsselwort",
+					"fi_FI": "Indeksoitava - avainsana",
+					"ja_JP": "\u30a4\u30f3\u30c7\u30c3\u30af\u30b9\u53ef\u80fd - \u30ad\u30fc\u30ef\u30fc\u30c9",
+					"es_ES": "Indexable - Palabra clave",
+					"hu_HU": "Indexelhet\u0151 - kulcssz\u00f3",
+					"fr_FR": "Indexable - Mot-cl\u00e9",
+					"zh_CN": "\u53ef\u7d22\u5f15-\u5173\u952e\u8bcd",
+					"nl_NL": "Indexeerbaar - Sleutelwoord"
+				}
+			}, {
+				"value": "text",
+				"label": {
+					"iw_IL": "\u05e0\u05d9\u05ea\u05df \u05dc\u05de\u05e4\u05ea\u05d5\u05d7 - \u05d8\u05e7\u05e1\u05d8",
+					"pt_BR": "Index\u00e1vel - Texto",
+					"ca_ES": "Indexable - Text",
+					"en_US": "Indexable - Text",
+					"de_DE": "Indizierbar - Text",
+					"fi_FI": "Indeksoitava - teksti",
+					"ja_JP": "\u30a4\u30f3\u30c7\u30c3\u30af\u30b9\u53ef\u80fd - \u30c6\u30ad\u30b9\u30c8",
+					"es_ES": "Indexable - Texto",
+					"hu_HU": "Indexelhet\u0151 - Sz\u00f6veg",
+					"fr_FR": "Indexable - Texte",
+					"zh_CN": "\u53ef\u7d22\u5f15-\u6587\u672c",
+					"nl_NL": "Indexeerbaar - Tekst"
+				}
+			}]
+		}, {
+			"dataType": "boolean",
+			"validationExpression": "true",
+			"visibilityExpression": "true",
 			"name": "predefinedValue",
-			"localizable": true,
-			"type": "text"
-		}, {
-			"dataType": "boolean",
-			"visibilityExpression": "true",
-			"validationExpression": "true",
-			"name": "repeatable",
-			"localizable": false,
-			"type": "checkbox"
-		}, {
-			"dataType": "boolean",
-			"visibilityExpression": "true",
-			"validationExpression": "true",
-			"name": "showLabel",
-			"localizable": false,
+			"validationMessage": "",
+			"localizable": 1,
+			"label": {
+				"iw_IL": "\u05e2\u05e8\u05da \u05de\u05d5\u05d2\u05d3\u05e8 \u05de\u05e8\u05d0\u05e9",
+				"pt_BR": "Valor predefinido",
+				"ca_ES": "Valor predefinit",
+				"en_US": "Predefined Value",
+				"de_DE": "Vordefinierter Wert",
+				"fi_FI": "Esit\u00e4ytetty arvo",
+				"ja_JP": "\u898f\u5b9a\u5024",
+				"es_ES": "Valor predefinido",
+				"hu_HU": "Kijel\u00f6lt \u00e9rt\u00e9k",
+				"fr_FR": "Valeur pr\u00e9d\u00e9finie",
+				"zh_CN": "\u9884\u5b9a\u4e49\u7684\u503c",
+				"nl_NL": "Vooraf bepaalde waarde"
+			},
 			"type": "checkbox"
 		}, {
 			"dataType": "string",
+			"validationExpression": "true",
 			"visibilityExpression": "false",
-			"name": "visibilityExpression",
-			"localizable": false,
+			"name": "dataType",
+			"validationMessage": "",
+			"localizable": 0,
 			"type": "text"
 		}, {
 			"dataType": "boolean",
-			"visibilityExpression": "true",
 			"validationExpression": "true",
+			"visibilityExpression": "true",
 			"name": "readOnly",
-			"localizable": false,
+			"validationMessage": "",
+			"localizable": 0,
+			"label": {
+				"iw_IL": "\u05dc\u05e7\u05e8\u05d9\u05d0\u05d4 \u05d1\u05dc\u05d1\u05d3",
+				"pt_BR": "Somente leitura",
+				"ca_ES": "Nom\u00e9s de lectura",
+				"en_US": "Read Only",
+				"de_DE": "Nur lesen",
+				"fi_FI": "Vain luku",
+				"ja_JP": "\u8aad\u307f\u53d6\u308a\u5c02\u7528",
+				"es_ES": "De s\u00f3lo lectura",
+				"hu_HU": "Csak olvashat\u00f3",
+				"fr_FR": "Lecture seule",
+				"zh_CN": "\u53ea\u8bfb",
+				"nl_NL": "Alleen-lezen"
+			},
 			"type": "checkbox"
+		}, {
+			"dataType": "string",
+			"validationExpression": "true",
+			"visibilityExpression": "true",
+			"name": "visibilityExpression",
+			"validationMessage": "",
+			"localizable": 0,
+			"label": {
+				"iw_IL": "\u05e0\u05e8\u05d0\u05d5\u05ea",
+				"pt_BR": "Visibilidade",
+				"ca_ES": "Visibilitat",
+				"en_US": "Visibility",
+				"de_DE": "Sichtbarkeit",
+				"fi_FI": "N\u00e4kyvyys",
+				"ja_JP": "\u95b2\u89a7\u53ef\u80fd\u304b",
+				"es_ES": "Visibilidad",
+				"hu_HU": "L\u00e1that\u00f3s\u00e1g",
+				"fr_FR": "Visibilit\u00e9",
+				"zh_CN": "\u53ef\u89c1\u6027",
+				"nl_NL": "Zichtbaarheid"
+			},
+			"type": "text"
+		}, {
+			"dataType": "string",
+			"validationExpression": "true",
+			"visibilityExpression": "true",
+			"name": "validationExpression",
+			"validationMessage": "",
+			"localizable": 0,
+			"label": {
+				"iw_IL": "\u05d1\u05d3\u05d9\u05e7\u05d4",
+				"pt_BR": "Valida\u00e7\u00e3o",
+				"ca_ES": "Validaci\u00f3",
+				"en_US": "Validation",
+				"de_DE": "Validierung",
+				"fi_FI": "Validointi",
+				"ja_JP": "\u78ba\u8a8d",
+				"es_ES": "Validaci\u00f3n",
+				"hu_HU": "\u00c9rv\u00e9nyes\u00edt\u00e9s",
+				"fr_FR": "Vacances",
+				"zh_CN": "\u9a8c\u8bc1",
+				"nl_NL": "Validatie"
+			},
+			"type": "validation"
+		}, {
+			"dataType": "boolean",
+			"validationExpression": "true",
+			"visibilityExpression": "true",
+			"name": "showLabel",
+			"validationMessage": "",
+			"localizable": 0,
+			"label": {
+				"iw_IL": "\u05d4\u05e6\u05d2 \u05ea\u05d5\u05d9\u05ea",
+				"pt_BR": "Mostrar etiqueta",
+				"ca_ES": "Mostra l'etiqueta",
+				"en_US": "Show Label",
+				"de_DE": "Label anzeigen",
+				"fi_FI": "N\u00e4yt\u00e4 selite",
+				"ja_JP": "\u30e9\u30d9\u30eb\u3092\u8868\u793a\u3059\u308b",
+				"es_ES": "Mostrar etiqueta",
+				"hu_HU": "C\u00edmke megjelen\u00edt\u00e9se",
+				"fr_FR": "Afficher les intitul\u00e9s",
+				"zh_CN": "\u663e\u793a\u6807\u7b7e",
+				"nl_NL": "Label tonen"
+			},
+			"type": "checkbox"
+		}, {
+			"dataType": "boolean",
+			"validationExpression": "true",
+			"visibilityExpression": "true",
+			"name": "repeatable",
+			"validationMessage": "",
+			"localizable": 0,
+			"label": {
+				"iw_IL": "\u05e9\u05e0\u05d9\u05ea\u05df \u05dc\u05d7\u05d6\u05d5\u05e8 \u05e2\u05dc\u05d9\u05d5",
+				"pt_BR": "Repet\u00edvel",
+				"ca_ES": "Repetible",
+				"en_US": "Repeatable",
+				"de_DE": "Wiederholung m\u00f6glich",
+				"fi_FI": "Toistettava",
+				"ja_JP": "\u7e70\u308a\u8fd4\u3057\u53ef\u80fd",
+				"es_ES": "Repetible",
+				"hu_HU": "Ism\u00e9telhet\u0151",
+				"fr_FR": "Qu'on peut r\u00e9p\u00e9ter",
+				"zh_CN": "\u53ef\u91cd\u590d",
+				"nl_NL": "Herhaalbaar"
+			},
+			"type": "checkbox"
+		}, {
+			"dataType": "string",
+			"validationExpression": "!name.equals(\"\")",
+			"visibilityExpression": "true",
+			"name": "name",
+			"validationMessage": "",
+			"localizable": 0,
+			"label": {
+				"iw_IL": "\u05e9\u05dd",
+				"pt_BR": "Nome",
+				"ca_ES": "Nom",
+				"en_US": "Name",
+				"de_DE": "Name",
+				"fi_FI": "Nimi",
+				"ja_JP": "\u540d\u524d",
+				"es_ES": "Nombre",
+				"hu_HU": "N\u00e9v",
+				"fr_FR": "Nom",
+				"zh_CN": "\u540d\u79f0",
+				"nl_NL": "Naam"
+			},
+			"type": "text"
+		}, {
+			"dataType": "boolean",
+			"validationExpression": "true",
+			"visibilityExpression": "true",
+			"name": "required",
+			"validationMessage": "",
+			"localizable": 0,
+			"label": {
+				"iw_IL": "\u05e0\u05d3\u05e8\u05e9",
+				"pt_BR": "Obrigat\u00f3rio",
+				"ca_ES": "Obligatori",
+				"en_US": "Required",
+				"de_DE": "Erforderlich",
+				"fi_FI": "Pakollinen",
+				"ja_JP": "\u5fc5\u9808",
+				"es_ES": "Requerido",
+				"hu_HU": "Sz\u00fcks\u00e9ges",
+				"fr_FR": "Requis",
+				"zh_CN": "\u5fc5\u9700\u7684",
+				"nl_NL": "Vereist"
+			},
+			"type": "checkbox"
+		}]
+	},
+	"settingsLayout": {
+		"defaultLanguageId": "en_US",
+		"pages": [{
+			"rows": [{
+				"columns": [{
+					"fieldNames": ["label", "name", "tip", "required"],
+					"size": 12
+				}]
+			}]
+		}, {
+			"rows": [{
+				"columns": [{
+					"fieldNames": ["type", "dataType", "readOnly", "indexType", "fieldNamespace", "localizable", "predefinedValue", "showLabel", "validationExpression", "validationMessage", "visibilityExpression", "repeatable", "predefinedValue"],
+					"size": 12
+				}]
+			}]
 		}]
 	},
 	"javaScriptClass": "Liferay.DDM.Field.Checkbox"
 }, {
 	"javaScriptModule": "liferay-ddm-form-field-options",
 	"icon": "icon-ok-circle",
+	"system": 1,
 	"templateNamespace": "ddm.options",
 	"name": "options",
 	"settings": {
@@ -337,104 +1609,388 @@
 		"availableLanguageIds": [],
 		"fields": [{
 			"dataType": "string",
+			"validationExpression": "true",
 			"visibilityExpression": "true",
-			"validationExpression": "!name.isEmpty()",
-			"name": "name",
-			"localizable": false,
+			"name": "validationMessage",
+			"validationMessage": "",
+			"localizable": 0,
+			"label": {
+				"iw_IL": "validation-message",
+				"pt_BR": "validation-message",
+				"ca_ES": "validation-message",
+				"en_US": "validation-message",
+				"de_DE": "validation-message",
+				"fi_FI": "validation-message",
+				"ja_JP": "validation-message",
+				"es_ES": "validation-message",
+				"hu_HU": "validation-message",
+				"fr_FR": "validation-message",
+				"zh_CN": "validation-message",
+				"nl_NL": "validation-message"
+			},
+			"type": "text"
+		}, {
+			"dataType": "boolean",
+			"validationExpression": "true",
+			"visibilityExpression": "true",
+			"name": "localizable",
+			"validationMessage": "",
+			"localizable": 0,
+			"label": {
+				"iw_IL": "\u05e0\u05d9\u05ea\u05df \u05dc\u05de\u05d9\u05e7\u05d5\u05dd",
+				"pt_BR": "Localiz\u00e1vel",
+				"ca_ES": "Localitzable",
+				"en_US": "Localizable",
+				"de_DE": "Lokalisierbar",
+				"fi_FI": "K\u00e4\u00e4nnett\u00e4v\u00e4",
+				"ja_JP": "\u30ed\u30fc\u30ab\u30e9\u30a4\u30bc\u30fc\u30b7\u30e7\u30f3\u53ef\u80fd",
+				"es_ES": "Localizable",
+				"hu_HU": "Leford\u00edthat\u00f3",
+				"fr_FR": "Traduisible",
+				"zh_CN": "\u53ef\u672c\u5730\u5316\u7684",
+				"nl_NL": "Vertaalbaar"
+			},
+			"type": "checkbox"
+		}, {
+			"dataType": "string",
+			"validationExpression": "true",
+			"visibilityExpression": "true",
+			"name": "label",
+			"validationMessage": "",
+			"localizable": 1,
+			"label": {
+				"iw_IL": "\u05ea\u05d5\u05d5\u05d9\u05ea",
+				"pt_BR": "R\u00f3tulo",
+				"ca_ES": "Etiqueta",
+				"en_US": "Label",
+				"de_DE": "Beschriftung",
+				"fi_FI": "Selite",
+				"ja_JP": "\u30e9\u30d9\u30eb",
+				"es_ES": "Etiqueta",
+				"hu_HU": "C\u00edmke",
+				"fr_FR": "Libell\u00e9",
+				"zh_CN": "\u6807\u7b7e",
+				"nl_NL": "Label"
+			},
 			"type": "text"
 		}, {
 			"dataType": "string",
+			"validationExpression": "true",
 			"visibilityExpression": "false",
 			"name": "type",
-			"localizable": false,
+			"validationMessage": "",
+			"localizable": 0,
 			"type": "text"
 		}, {
 			"dataType": "string",
-			"visibilityExpression": "false",
-			"name": "dataType",
-			"localizable": false,
-			"type": "text"
-		}, {
-			"dataType": "boolean",
-			"visibilityExpression": "true",
 			"validationExpression": "true",
-			"name": "required",
-			"localizable": false,
-			"type": "checkbox"
-		}, {
-			"dataType": "string",
-			"visibilityExpression": "true",
-			"validationExpression": "true",
-			"name": "indexType",
-			"localizable": false,
-			"type": "text"
-		}, {
-			"dataType": "string",
-			"visibilityExpression": "true",
-			"validationExpression": "true",
-			"name": "label",
-			"localizable": true,
-			"type": "text"
-		}, {
-			"dataType": "string",
-			"visibilityExpression": "true",
-			"validationExpression": "true",
-			"name": "tip",
-			"localizable": true,
-			"type": "text"
-		}, {
-			"dataType": "string",
 			"visibilityExpression": "false",
 			"name": "fieldNamespace",
-			"localizable": false,
+			"validationMessage": "",
+			"localizable": 0,
 			"type": "text"
 		}, {
-			"dataType": "boolean",
-			"visibilityExpression": "true",
+			"dataType": "string",
 			"validationExpression": "true",
-			"name": "localizable",
-			"localizable": false,
-			"type": "checkbox"
+			"visibilityExpression": "true",
+			"name": "tip",
+			"validationMessage": "",
+			"localizable": 1,
+			"label": {
+				"iw_IL": "\u05d8\u05d9\u05e4",
+				"pt_BR": "Dica",
+				"ca_ES": "Consell",
+				"en_US": "Tip",
+				"de_DE": "Tipp",
+				"fi_FI": "Vihje",
+				"ja_JP": "\u30c1\u30c3\u30d7",
+				"es_ES": "Consejo",
+				"hu_HU": "Tipp",
+				"fr_FR": "Truc",
+				"zh_CN": "\u63d0\u793a",
+				"nl_NL": "Tip"
+			},
+			"type": "text"
 		}, {
 			"dataType": "string",
-			"visibilityExpression": "true",
 			"validationExpression": "true",
+			"visibilityExpression": "true",
+			"name": "indexType",
+			"validationMessage": "",
+			"localizable": 0,
+			"label": {
+				"iw_IL": "\u05e0\u05d9\u05ea\u05df \u05dc\u05de\u05e4\u05ea\u05d5\u05d7",
+				"pt_BR": "Index\u00e1vel",
+				"ca_ES": "Indexable",
+				"en_US": "Indexable",
+				"de_DE": "Indizierbar",
+				"fi_FI": "Indeksoitava",
+				"ja_JP": "\u30a4\u30f3\u30c7\u30c3\u30af\u30b9\u53ef\u80fd",
+				"es_ES": "Indexable",
+				"hu_HU": "Indexelhet\u0151",
+				"fr_FR": "Indexable",
+				"zh_CN": "\u53ef\u7d22\u5f15",
+				"nl_NL": "Indexeerbaar"
+			},
+			"type": "select",
+			"options": [{
+				"value": "",
+				"label": {
+					"iw_IL": "\u05dc\u05d0 \u05e0\u05d9\u05ea\u05df \u05dc\u05de\u05e4\u05ea\u05d5\u05d7",
+					"pt_BR": "N\u00e3o index\u00e1vel",
+					"ca_ES": "No es pot indexar",
+					"en_US": "Not Indexable",
+					"de_DE": "Nicht indizierbar",
+					"fi_FI": "Ei indeksoitavissa",
+					"ja_JP": "\u30a4\u30f3\u30c7\u30c3\u30af\u30b9\u5316\u3067\u304d\u307e\u305b\u3093\u3002",
+					"es_ES": "No indexable",
+					"hu_HU": "Nem indexelhet\u0151",
+					"fr_FR": "Non-indexable",
+					"zh_CN": "\u4e0d\u53ef\u7d22\u5f15",
+					"nl_NL": "Niet indexeerbaar"
+				}
+			}, {
+				"value": "keyword",
+				"label": {
+					"iw_IL": "\u05e0\u05d9\u05ea\u05df \u05dc\u05de\u05e4\u05ea\u05d5\u05d7 - \u05de\u05d9\u05dc\u05ea \u05de\u05e4\u05ea\u05d7",
+					"pt_BR": "Index\u00e1vel - Palavra-chave",
+					"ca_ES": "Indexable - Paraula Clau",
+					"en_US": "Indexable - Keyword",
+					"de_DE": "Indizierbar - Schl\u00fcsselwort",
+					"fi_FI": "Indeksoitava - avainsana",
+					"ja_JP": "\u30a4\u30f3\u30c7\u30c3\u30af\u30b9\u53ef\u80fd - \u30ad\u30fc\u30ef\u30fc\u30c9",
+					"es_ES": "Indexable - Palabra clave",
+					"hu_HU": "Indexelhet\u0151 - kulcssz\u00f3",
+					"fr_FR": "Indexable - Mot-cl\u00e9",
+					"zh_CN": "\u53ef\u7d22\u5f15-\u5173\u952e\u8bcd",
+					"nl_NL": "Indexeerbaar - Sleutelwoord"
+				}
+			}, {
+				"value": "text",
+				"label": {
+					"iw_IL": "\u05e0\u05d9\u05ea\u05df \u05dc\u05de\u05e4\u05ea\u05d5\u05d7 - \u05d8\u05e7\u05e1\u05d8",
+					"pt_BR": "Index\u00e1vel - Texto",
+					"ca_ES": "Indexable - Text",
+					"en_US": "Indexable - Text",
+					"de_DE": "Indizierbar - Text",
+					"fi_FI": "Indeksoitava - teksti",
+					"ja_JP": "\u30a4\u30f3\u30c7\u30c3\u30af\u30b9\u53ef\u80fd - \u30c6\u30ad\u30b9\u30c8",
+					"es_ES": "Indexable - Texto",
+					"hu_HU": "Indexelhet\u0151 - Sz\u00f6veg",
+					"fr_FR": "Indexable - Texte",
+					"zh_CN": "\u53ef\u7d22\u5f15-\u6587\u672c",
+					"nl_NL": "Indexeerbaar - Tekst"
+				}
+			}]
+		}, {
+			"dataType": "string",
+			"validationExpression": "true",
+			"visibilityExpression": "true",
 			"name": "predefinedValue",
-			"localizable": true,
+			"validationMessage": "",
+			"localizable": 1,
+			"label": {
+				"iw_IL": "\u05e2\u05e8\u05da \u05de\u05d5\u05d2\u05d3\u05e8 \u05de\u05e8\u05d0\u05e9",
+				"pt_BR": "Valor predefinido",
+				"ca_ES": "Valor predefinit",
+				"en_US": "Predefined Value",
+				"de_DE": "Vordefinierter Wert",
+				"fi_FI": "Esit\u00e4ytetty arvo",
+				"ja_JP": "\u898f\u5b9a\u5024",
+				"es_ES": "Valor predefinido",
+				"hu_HU": "Kijel\u00f6lt \u00e9rt\u00e9k",
+				"fr_FR": "Valeur pr\u00e9d\u00e9finie",
+				"zh_CN": "\u9884\u5b9a\u4e49\u7684\u503c",
+				"nl_NL": "Vooraf bepaalde waarde"
+			},
+			"type": "text"
+		}, {
+			"dataType": "string",
+			"validationExpression": "true",
+			"visibilityExpression": "false",
+			"name": "dataType",
+			"validationMessage": "",
+			"localizable": 0,
 			"type": "text"
 		}, {
 			"dataType": "boolean",
-			"visibilityExpression": "true",
 			"validationExpression": "true",
-			"name": "repeatable",
-			"localizable": false,
-			"type": "checkbox"
-		}, {
-			"dataType": "boolean",
 			"visibilityExpression": "true",
-			"validationExpression": "true",
-			"name": "showLabel",
-			"localizable": false,
+			"name": "readOnly",
+			"validationMessage": "",
+			"localizable": 0,
+			"label": {
+				"iw_IL": "\u05dc\u05e7\u05e8\u05d9\u05d0\u05d4 \u05d1\u05dc\u05d1\u05d3",
+				"pt_BR": "Somente leitura",
+				"ca_ES": "Nom\u00e9s de lectura",
+				"en_US": "Read Only",
+				"de_DE": "Nur lesen",
+				"fi_FI": "Vain luku",
+				"ja_JP": "\u8aad\u307f\u53d6\u308a\u5c02\u7528",
+				"es_ES": "De s\u00f3lo lectura",
+				"hu_HU": "Csak olvashat\u00f3",
+				"fr_FR": "Lecture seule",
+				"zh_CN": "\u53ea\u8bfb",
+				"nl_NL": "Alleen-lezen"
+			},
 			"type": "checkbox"
 		}, {
 			"dataType": "string",
-			"visibilityExpression": "false",
+			"validationExpression": "true",
+			"visibilityExpression": "true",
 			"name": "visibilityExpression",
-			"localizable": false,
+			"validationMessage": "",
+			"localizable": 0,
+			"label": {
+				"iw_IL": "\u05e0\u05e8\u05d0\u05d5\u05ea",
+				"pt_BR": "Visibilidade",
+				"ca_ES": "Visibilitat",
+				"en_US": "Visibility",
+				"de_DE": "Sichtbarkeit",
+				"fi_FI": "N\u00e4kyvyys",
+				"ja_JP": "\u95b2\u89a7\u53ef\u80fd\u304b",
+				"es_ES": "Visibilidad",
+				"hu_HU": "L\u00e1that\u00f3s\u00e1g",
+				"fr_FR": "Visibilit\u00e9",
+				"zh_CN": "\u53ef\u89c1\u6027",
+				"nl_NL": "Zichtbaarheid"
+			},
+			"type": "text"
+		}, {
+			"dataType": "string",
+			"validationExpression": "true",
+			"visibilityExpression": "true",
+			"name": "validationExpression",
+			"validationMessage": "",
+			"localizable": 0,
+			"label": {
+				"iw_IL": "\u05d1\u05d3\u05d9\u05e7\u05d4",
+				"pt_BR": "Valida\u00e7\u00e3o",
+				"ca_ES": "Validaci\u00f3",
+				"en_US": "Validation",
+				"de_DE": "Validierung",
+				"fi_FI": "Validointi",
+				"ja_JP": "\u78ba\u8a8d",
+				"es_ES": "Validaci\u00f3n",
+				"hu_HU": "\u00c9rv\u00e9nyes\u00edt\u00e9s",
+				"fr_FR": "Vacances",
+				"zh_CN": "\u9a8c\u8bc1",
+				"nl_NL": "Validatie"
+			},
+			"type": "validation"
+		}, {
+			"dataType": "boolean",
+			"validationExpression": "true",
+			"visibilityExpression": "true",
+			"name": "showLabel",
+			"validationMessage": "",
+			"localizable": 0,
+			"label": {
+				"iw_IL": "\u05d4\u05e6\u05d2 \u05ea\u05d5\u05d9\u05ea",
+				"pt_BR": "Mostrar etiqueta",
+				"ca_ES": "Mostra l'etiqueta",
+				"en_US": "Show Label",
+				"de_DE": "Label anzeigen",
+				"fi_FI": "N\u00e4yt\u00e4 selite",
+				"ja_JP": "\u30e9\u30d9\u30eb\u3092\u8868\u793a\u3059\u308b",
+				"es_ES": "Mostrar etiqueta",
+				"hu_HU": "C\u00edmke megjelen\u00edt\u00e9se",
+				"fr_FR": "Afficher les intitul\u00e9s",
+				"zh_CN": "\u663e\u793a\u6807\u7b7e",
+				"nl_NL": "Label tonen"
+			},
+			"type": "checkbox"
+		}, {
+			"dataType": "boolean",
+			"validationExpression": "true",
+			"visibilityExpression": "true",
+			"name": "repeatable",
+			"validationMessage": "",
+			"localizable": 0,
+			"label": {
+				"iw_IL": "\u05e9\u05e0\u05d9\u05ea\u05df \u05dc\u05d7\u05d6\u05d5\u05e8 \u05e2\u05dc\u05d9\u05d5",
+				"pt_BR": "Repet\u00edvel",
+				"ca_ES": "Repetible",
+				"en_US": "Repeatable",
+				"de_DE": "Wiederholung m\u00f6glich",
+				"fi_FI": "Toistettava",
+				"ja_JP": "\u7e70\u308a\u8fd4\u3057\u53ef\u80fd",
+				"es_ES": "Repetible",
+				"hu_HU": "Ism\u00e9telhet\u0151",
+				"fr_FR": "Qu'on peut r\u00e9p\u00e9ter",
+				"zh_CN": "\u53ef\u91cd\u590d",
+				"nl_NL": "Herhaalbaar"
+			},
+			"type": "checkbox"
+		}, {
+			"dataType": "string",
+			"validationExpression": "!name.equals(\"\")",
+			"visibilityExpression": "true",
+			"name": "name",
+			"validationMessage": "",
+			"localizable": 0,
+			"label": {
+				"iw_IL": "\u05e9\u05dd",
+				"pt_BR": "Nome",
+				"ca_ES": "Nom",
+				"en_US": "Name",
+				"de_DE": "Name",
+				"fi_FI": "Nimi",
+				"ja_JP": "\u540d\u524d",
+				"es_ES": "Nombre",
+				"hu_HU": "N\u00e9v",
+				"fr_FR": "Nom",
+				"zh_CN": "\u540d\u79f0",
+				"nl_NL": "Naam"
+			},
 			"type": "text"
 		}, {
 			"dataType": "boolean",
-			"visibilityExpression": "true",
 			"validationExpression": "true",
-			"name": "readOnly",
-			"localizable": false,
+			"visibilityExpression": "true",
+			"name": "required",
+			"validationMessage": "",
+			"localizable": 0,
+			"label": {
+				"iw_IL": "\u05e0\u05d3\u05e8\u05e9",
+				"pt_BR": "Obrigat\u00f3rio",
+				"ca_ES": "Obligatori",
+				"en_US": "Required",
+				"de_DE": "Erforderlich",
+				"fi_FI": "Pakollinen",
+				"ja_JP": "\u5fc5\u9808",
+				"es_ES": "Requerido",
+				"hu_HU": "Sz\u00fcks\u00e9ges",
+				"fr_FR": "Requis",
+				"zh_CN": "\u5fc5\u9700\u7684",
+				"nl_NL": "Vereist"
+			},
 			"type": "checkbox"
+		}]
+	},
+	"settingsLayout": {
+		"defaultLanguageId": "en_US",
+		"pages": [{
+			"rows": [{
+				"columns": [{
+					"fieldNames": ["label", "name", "tip", "required"],
+					"size": 12
+				}]
+			}]
+		}, {
+			"rows": [{
+				"columns": [{
+					"fieldNames": ["type", "dataType", "readOnly", "indexType", "fieldNamespace", "localizable", "predefinedValue", "showLabel", "validationExpression", "validationMessage", "visibilityExpression", "repeatable"],
+					"size": 12
+				}]
+			}]
 		}]
 	},
 	"javaScriptClass": "Liferay.DDM.Field.Options"
 }, {
 	"javaScriptModule": "liferay-ddm-form-field-radio",
 	"icon": "icon-ok-circle",
+	"system": 0,
 	"templateNamespace": "ddm.radio",
 	"name": "radio",
 	"settings": {
@@ -442,105 +1998,403 @@
 		"availableLanguageIds": [],
 		"fields": [{
 			"dataType": "string",
+			"validationExpression": "true",
 			"visibilityExpression": "true",
-			"validationExpression": "!name.isEmpty()",
-			"name": "name",
-			"localizable": false,
+			"name": "validationMessage",
+			"validationMessage": "",
+			"localizable": 0,
+			"label": {
+				"iw_IL": "validation-message",
+				"pt_BR": "validation-message",
+				"ca_ES": "validation-message",
+				"en_US": "validation-message",
+				"de_DE": "validation-message",
+				"fi_FI": "validation-message",
+				"ja_JP": "validation-message",
+				"es_ES": "validation-message",
+				"hu_HU": "validation-message",
+				"fr_FR": "validation-message",
+				"zh_CN": "validation-message",
+				"nl_NL": "validation-message"
+			},
+			"type": "text"
+		}, {
+			"dataType": "boolean",
+			"validationExpression": "true",
+			"visibilityExpression": "true",
+			"name": "localizable",
+			"validationMessage": "",
+			"localizable": 0,
+			"label": {
+				"iw_IL": "\u05e0\u05d9\u05ea\u05df \u05dc\u05de\u05d9\u05e7\u05d5\u05dd",
+				"pt_BR": "Localiz\u00e1vel",
+				"ca_ES": "Localitzable",
+				"en_US": "Localizable",
+				"de_DE": "Lokalisierbar",
+				"fi_FI": "K\u00e4\u00e4nnett\u00e4v\u00e4",
+				"ja_JP": "\u30ed\u30fc\u30ab\u30e9\u30a4\u30bc\u30fc\u30b7\u30e7\u30f3\u53ef\u80fd",
+				"es_ES": "Localizable",
+				"hu_HU": "Leford\u00edthat\u00f3",
+				"fr_FR": "Traduisible",
+				"zh_CN": "\u53ef\u672c\u5730\u5316\u7684",
+				"nl_NL": "Vertaalbaar"
+			},
+			"type": "checkbox"
+		}, {
+			"dataType": "string",
+			"validationExpression": "true",
+			"visibilityExpression": "true",
+			"name": "label",
+			"validationMessage": "",
+			"localizable": 1,
+			"label": {
+				"iw_IL": "\u05ea\u05d5\u05d5\u05d9\u05ea",
+				"pt_BR": "R\u00f3tulo",
+				"ca_ES": "Etiqueta",
+				"en_US": "Label",
+				"de_DE": "Beschriftung",
+				"fi_FI": "Selite",
+				"ja_JP": "\u30e9\u30d9\u30eb",
+				"es_ES": "Etiqueta",
+				"hu_HU": "C\u00edmke",
+				"fr_FR": "Libell\u00e9",
+				"zh_CN": "\u6807\u7b7e",
+				"nl_NL": "Label"
+			},
 			"type": "text"
 		}, {
 			"dataType": "string",
+			"validationExpression": "true",
 			"visibilityExpression": "false",
 			"name": "type",
-			"localizable": false,
+			"validationMessage": "",
+			"localizable": 0,
 			"type": "text"
 		}, {
 			"dataType": "string",
-			"visibilityExpression": "false",
-			"name": "dataType",
-			"localizable": false,
-			"type": "text"
-		}, {
-			"dataType": "boolean",
-			"visibilityExpression": "true",
 			"validationExpression": "true",
-			"name": "required",
-			"localizable": false,
-			"type": "checkbox"
-		}, {
-			"dataType": "string",
-			"visibilityExpression": "true",
-			"validationExpression": "true",
-			"name": "indexType",
-			"localizable": false,
-			"type": "text"
-		}, {
-			"dataType": "string",
-			"visibilityExpression": "true",
-			"validationExpression": "true",
-			"name": "label",
-			"localizable": true,
-			"type": "text"
-		}, {
-			"dataType": "string",
-			"visibilityExpression": "true",
-			"validationExpression": "true",
-			"name": "tip",
-			"localizable": true,
-			"type": "text"
-		}, {
-			"dataType": "string",
 			"visibilityExpression": "false",
 			"name": "fieldNamespace",
-			"localizable": false,
+			"validationMessage": "",
+			"localizable": 0,
 			"type": "text"
 		}, {
-			"dataType": "boolean",
-			"visibilityExpression": "true",
+			"dataType": "string",
 			"validationExpression": "true",
-			"name": "localizable",
-			"localizable": false,
-			"type": "checkbox"
+			"visibilityExpression": "true",
+			"name": "tip",
+			"validationMessage": "",
+			"localizable": 1,
+			"label": {
+				"iw_IL": "\u05d8\u05d9\u05e4",
+				"pt_BR": "Dica",
+				"ca_ES": "Consell",
+				"en_US": "Tip",
+				"de_DE": "Tipp",
+				"fi_FI": "Vihje",
+				"ja_JP": "\u30c1\u30c3\u30d7",
+				"es_ES": "Consejo",
+				"hu_HU": "Tipp",
+				"fr_FR": "Truc",
+				"zh_CN": "\u63d0\u793a",
+				"nl_NL": "Tip"
+			},
+			"type": "text"
 		}, {
 			"dataType": "string",
-			"visibilityExpression": "true",
 			"validationExpression": "true",
+			"visibilityExpression": "true",
+			"name": "indexType",
+			"validationMessage": "",
+			"localizable": 0,
+			"label": {
+				"iw_IL": "\u05e0\u05d9\u05ea\u05df \u05dc\u05de\u05e4\u05ea\u05d5\u05d7",
+				"pt_BR": "Index\u00e1vel",
+				"ca_ES": "Indexable",
+				"en_US": "Indexable",
+				"de_DE": "Indizierbar",
+				"fi_FI": "Indeksoitava",
+				"ja_JP": "\u30a4\u30f3\u30c7\u30c3\u30af\u30b9\u53ef\u80fd",
+				"es_ES": "Indexable",
+				"hu_HU": "Indexelhet\u0151",
+				"fr_FR": "Indexable",
+				"zh_CN": "\u53ef\u7d22\u5f15",
+				"nl_NL": "Indexeerbaar"
+			},
+			"type": "select",
+			"options": [{
+				"value": "",
+				"label": {
+					"iw_IL": "\u05dc\u05d0 \u05e0\u05d9\u05ea\u05df \u05dc\u05de\u05e4\u05ea\u05d5\u05d7",
+					"pt_BR": "N\u00e3o index\u00e1vel",
+					"ca_ES": "No es pot indexar",
+					"en_US": "Not Indexable",
+					"de_DE": "Nicht indizierbar",
+					"fi_FI": "Ei indeksoitavissa",
+					"ja_JP": "\u30a4\u30f3\u30c7\u30c3\u30af\u30b9\u5316\u3067\u304d\u307e\u305b\u3093\u3002",
+					"es_ES": "No indexable",
+					"hu_HU": "Nem indexelhet\u0151",
+					"fr_FR": "Non-indexable",
+					"zh_CN": "\u4e0d\u53ef\u7d22\u5f15",
+					"nl_NL": "Niet indexeerbaar"
+				}
+			}, {
+				"value": "keyword",
+				"label": {
+					"iw_IL": "\u05e0\u05d9\u05ea\u05df \u05dc\u05de\u05e4\u05ea\u05d5\u05d7 - \u05de\u05d9\u05dc\u05ea \u05de\u05e4\u05ea\u05d7",
+					"pt_BR": "Index\u00e1vel - Palavra-chave",
+					"ca_ES": "Indexable - Paraula Clau",
+					"en_US": "Indexable - Keyword",
+					"de_DE": "Indizierbar - Schl\u00fcsselwort",
+					"fi_FI": "Indeksoitava - avainsana",
+					"ja_JP": "\u30a4\u30f3\u30c7\u30c3\u30af\u30b9\u53ef\u80fd - \u30ad\u30fc\u30ef\u30fc\u30c9",
+					"es_ES": "Indexable - Palabra clave",
+					"hu_HU": "Indexelhet\u0151 - kulcssz\u00f3",
+					"fr_FR": "Indexable - Mot-cl\u00e9",
+					"zh_CN": "\u53ef\u7d22\u5f15-\u5173\u952e\u8bcd",
+					"nl_NL": "Indexeerbaar - Sleutelwoord"
+				}
+			}, {
+				"value": "text",
+				"label": {
+					"iw_IL": "\u05e0\u05d9\u05ea\u05df \u05dc\u05de\u05e4\u05ea\u05d5\u05d7 - \u05d8\u05e7\u05e1\u05d8",
+					"pt_BR": "Index\u00e1vel - Texto",
+					"ca_ES": "Indexable - Text",
+					"en_US": "Indexable - Text",
+					"de_DE": "Indizierbar - Text",
+					"fi_FI": "Indeksoitava - teksti",
+					"ja_JP": "\u30a4\u30f3\u30c7\u30c3\u30af\u30b9\u53ef\u80fd - \u30c6\u30ad\u30b9\u30c8",
+					"es_ES": "Indexable - Texto",
+					"hu_HU": "Indexelhet\u0151 - Sz\u00f6veg",
+					"fr_FR": "Indexable - Texte",
+					"zh_CN": "\u53ef\u7d22\u5f15-\u6587\u672c",
+					"nl_NL": "Indexeerbaar - Tekst"
+				}
+			}]
+		}, {
+			"dataType": "string",
+			"validationExpression": "true",
+			"visibilityExpression": "true",
 			"name": "predefinedValue",
-			"localizable": true,
+			"validationMessage": "",
+			"localizable": 1,
+			"label": {
+				"iw_IL": "\u05e2\u05e8\u05da \u05de\u05d5\u05d2\u05d3\u05e8 \u05de\u05e8\u05d0\u05e9",
+				"pt_BR": "Valor predefinido",
+				"ca_ES": "Valor predefinit",
+				"en_US": "Predefined Value",
+				"de_DE": "Vordefinierter Wert",
+				"fi_FI": "Esit\u00e4ytetty arvo",
+				"ja_JP": "\u898f\u5b9a\u5024",
+				"es_ES": "Valor predefinido",
+				"hu_HU": "Kijel\u00f6lt \u00e9rt\u00e9k",
+				"fr_FR": "Valeur pr\u00e9d\u00e9finie",
+				"zh_CN": "\u9884\u5b9a\u4e49\u7684\u503c",
+				"nl_NL": "Vooraf bepaalde waarde"
+			},
+			"type": "text"
+		}, {
+			"dataType": "string",
+			"validationExpression": "true",
+			"visibilityExpression": "false",
+			"name": "dataType",
+			"validationMessage": "",
+			"localizable": 0,
 			"type": "text"
 		}, {
 			"dataType": "boolean",
-			"visibilityExpression": "true",
 			"validationExpression": "true",
-			"name": "repeatable",
-			"localizable": false,
-			"type": "checkbox"
-		}, {
-			"dataType": "boolean",
 			"visibilityExpression": "true",
-			"validationExpression": "true",
-			"name": "showLabel",
-			"localizable": false,
+			"name": "readOnly",
+			"validationMessage": "",
+			"localizable": 0,
+			"label": {
+				"iw_IL": "\u05dc\u05e7\u05e8\u05d9\u05d0\u05d4 \u05d1\u05dc\u05d1\u05d3",
+				"pt_BR": "Somente leitura",
+				"ca_ES": "Nom\u00e9s de lectura",
+				"en_US": "Read Only",
+				"de_DE": "Nur lesen",
+				"fi_FI": "Vain luku",
+				"ja_JP": "\u8aad\u307f\u53d6\u308a\u5c02\u7528",
+				"es_ES": "De s\u00f3lo lectura",
+				"hu_HU": "Csak olvashat\u00f3",
+				"fr_FR": "Lecture seule",
+				"zh_CN": "\u53ea\u8bfb",
+				"nl_NL": "Alleen-lezen"
+			},
 			"type": "checkbox"
 		}, {
 			"dataType": "string",
-			"visibilityExpression": "false",
+			"validationExpression": "true",
+			"visibilityExpression": "true",
 			"name": "visibilityExpression",
-			"localizable": false,
+			"validationMessage": "",
+			"localizable": 0,
+			"label": {
+				"iw_IL": "\u05e0\u05e8\u05d0\u05d5\u05ea",
+				"pt_BR": "Visibilidade",
+				"ca_ES": "Visibilitat",
+				"en_US": "Visibility",
+				"de_DE": "Sichtbarkeit",
+				"fi_FI": "N\u00e4kyvyys",
+				"ja_JP": "\u95b2\u89a7\u53ef\u80fd\u304b",
+				"es_ES": "Visibilidad",
+				"hu_HU": "L\u00e1that\u00f3s\u00e1g",
+				"fr_FR": "Visibilit\u00e9",
+				"zh_CN": "\u53ef\u89c1\u6027",
+				"nl_NL": "Zichtbaarheid"
+			},
+			"type": "text"
+		}, {
+			"dataType": "string",
+			"validationExpression": "true",
+			"visibilityExpression": "true",
+			"name": "validationExpression",
+			"validationMessage": "",
+			"localizable": 0,
+			"label": {
+				"iw_IL": "\u05d1\u05d3\u05d9\u05e7\u05d4",
+				"pt_BR": "Valida\u00e7\u00e3o",
+				"ca_ES": "Validaci\u00f3",
+				"en_US": "Validation",
+				"de_DE": "Validierung",
+				"fi_FI": "Validointi",
+				"ja_JP": "\u78ba\u8a8d",
+				"es_ES": "Validaci\u00f3n",
+				"hu_HU": "\u00c9rv\u00e9nyes\u00edt\u00e9s",
+				"fr_FR": "Vacances",
+				"zh_CN": "\u9a8c\u8bc1",
+				"nl_NL": "Validatie"
+			},
+			"type": "validation"
+		}, {
+			"dataType": "boolean",
+			"validationExpression": "true",
+			"visibilityExpression": "true",
+			"name": "showLabel",
+			"validationMessage": "",
+			"localizable": 0,
+			"label": {
+				"iw_IL": "\u05d4\u05e6\u05d2 \u05ea\u05d5\u05d9\u05ea",
+				"pt_BR": "Mostrar etiqueta",
+				"ca_ES": "Mostra l'etiqueta",
+				"en_US": "Show Label",
+				"de_DE": "Label anzeigen",
+				"fi_FI": "N\u00e4yt\u00e4 selite",
+				"ja_JP": "\u30e9\u30d9\u30eb\u3092\u8868\u793a\u3059\u308b",
+				"es_ES": "Mostrar etiqueta",
+				"hu_HU": "C\u00edmke megjelen\u00edt\u00e9se",
+				"fr_FR": "Afficher les intitul\u00e9s",
+				"zh_CN": "\u663e\u793a\u6807\u7b7e",
+				"nl_NL": "Label tonen"
+			},
+			"type": "checkbox"
+		}, {
+			"dataType": "boolean",
+			"validationExpression": "true",
+			"visibilityExpression": "true",
+			"name": "repeatable",
+			"validationMessage": "",
+			"localizable": 0,
+			"label": {
+				"iw_IL": "\u05e9\u05e0\u05d9\u05ea\u05df \u05dc\u05d7\u05d6\u05d5\u05e8 \u05e2\u05dc\u05d9\u05d5",
+				"pt_BR": "Repet\u00edvel",
+				"ca_ES": "Repetible",
+				"en_US": "Repeatable",
+				"de_DE": "Wiederholung m\u00f6glich",
+				"fi_FI": "Toistettava",
+				"ja_JP": "\u7e70\u308a\u8fd4\u3057\u53ef\u80fd",
+				"es_ES": "Repetible",
+				"hu_HU": "Ism\u00e9telhet\u0151",
+				"fr_FR": "Qu'on peut r\u00e9p\u00e9ter",
+				"zh_CN": "\u53ef\u91cd\u590d",
+				"nl_NL": "Herhaalbaar"
+			},
+			"type": "checkbox"
+		}, {
+			"dataType": "string",
+			"validationExpression": "!name.equals(\"\")",
+			"visibilityExpression": "true",
+			"name": "name",
+			"validationMessage": "",
+			"localizable": 0,
+			"label": {
+				"iw_IL": "\u05e9\u05dd",
+				"pt_BR": "Nome",
+				"ca_ES": "Nom",
+				"en_US": "Name",
+				"de_DE": "Name",
+				"fi_FI": "Nimi",
+				"ja_JP": "\u540d\u524d",
+				"es_ES": "Nombre",
+				"hu_HU": "N\u00e9v",
+				"fr_FR": "Nom",
+				"zh_CN": "\u540d\u79f0",
+				"nl_NL": "Naam"
+			},
 			"type": "text"
 		}, {
 			"dataType": "boolean",
-			"visibilityExpression": "true",
 			"validationExpression": "true",
-			"name": "readOnly",
-			"localizable": false,
+			"visibilityExpression": "true",
+			"name": "required",
+			"validationMessage": "",
+			"localizable": 0,
+			"label": {
+				"iw_IL": "\u05e0\u05d3\u05e8\u05e9",
+				"pt_BR": "Obrigat\u00f3rio",
+				"ca_ES": "Obligatori",
+				"en_US": "Required",
+				"de_DE": "Erforderlich",
+				"fi_FI": "Pakollinen",
+				"ja_JP": "\u5fc5\u9808",
+				"es_ES": "Requerido",
+				"hu_HU": "Sz\u00fcks\u00e9ges",
+				"fr_FR": "Requis",
+				"zh_CN": "\u5fc5\u9700\u7684",
+				"nl_NL": "Vereist"
+			},
 			"type": "checkbox"
 		}, {
 			"dataType": "ddm-options",
-			"visibilityExpression": "true",
 			"validationExpression": "true",
+			"visibilityExpression": "true",
 			"name": "options",
-			"localizable": false,
+			"validationMessage": "",
+			"localizable": 0,
+			"label": {
+				"iw_IL": "\u05d0\u05e4\u05e9\u05e8\u05d5\u05d9\u05d5\u05ea",
+				"pt_BR": "Op\u00e7\u00f5es",
+				"ca_ES": "Opcions",
+				"en_US": "Options",
+				"de_DE": "Optionen",
+				"fi_FI": "Valinnat",
+				"ja_JP": "\u30aa\u30d7\u30b7\u30e7\u30f3",
+				"es_ES": "Opciones",
+				"hu_HU": "Opci\u00f3k",
+				"fr_FR": "Facultatif",
+				"zh_CN": "\u9009\u9879",
+				"nl_NL": "Opties"
+			},
 			"type": "options"
+		}]
+	},
+	"settingsLayout": {
+		"defaultLanguageId": "en_US",
+		"pages": [{
+			"rows": [{
+				"columns": [{
+					"fieldNames": ["label", "name", "tip", "required"],
+					"size": 12
+				}]
+			}]
+		}, {
+			"rows": [{
+				"columns": [{
+					"fieldNames": ["type", "dataType", "readOnly", "indexType", "fieldNamespace", "localizable", "predefinedValue", "showLabel", "validationExpression", "validationMessage", "visibilityExpression", "repeatable", "options"],
+					"size": 12
+				}]
+			}]
 		}]
 	},
 	"javaScriptClass": "Liferay.DDM.Field.Radio"

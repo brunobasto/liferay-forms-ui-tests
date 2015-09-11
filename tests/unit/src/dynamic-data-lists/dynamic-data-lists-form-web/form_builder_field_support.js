@@ -20,22 +20,21 @@ var getPassingValidationResponse = function(form) {
 	});
 }
 
-var createFieldWithName = function(formBuilder, type, name) {
+var createField = function(formBuilder, type) {
 	var fieldType = Liferay.DDM.Renderer.FieldTypes.get(type),
-		field = formBuilder.createField(fieldType),
-		settingsForm = field.get('settingsForm');
-
-	var nameSettingsField = _.filter(
-		settingsForm.get('fields'),
-		function(settingsField) {
-			return settingsField.get('name') === 'name';
-		}
-	)[0];
-
-	nameSettingsField.setValue(name);
+		field = formBuilder.createField(fieldType);
 
 	return field;
 }
+
+var setFieldSetting = function(field, setting, value) {
+	var nameSettingsField = _.filter(
+		field.get('settingsForm').get('fields'),
+		function(settingsField) {
+			return settingsField.get('name') === setting;
+		}
+	)[0].setValue(value);
+};
 
 var getTestData = function(callback) {
 	$.when(
@@ -192,10 +191,14 @@ describe('DDL Form Builder Field Support', function() {
 			}
 		).render();
 
-		var fieldWithDuplicatedName = createFieldWithName(formBuilder, 'text', 'sites');
+		var fieldWithDuplicatedName = createField(formBuilder, 'text', 'sites');
 
-		fieldWithDuplicatedName.validateSettings(function(hasError) {
-			assert.isTrue(hasError);
+		formBuilder.showFieldSettingsPanel(fieldWithDuplicatedName, fieldWithDuplicatedName.get('name'));
+
+		setFieldSetting(fieldWithDuplicatedName, 'name', 'sites');
+
+		fieldWithDuplicatedName.validateSettings(function(hasErrors) {
+			assert.isTrue(hasErrors);
 
 			formBuilder.destroy();
 
@@ -227,8 +230,6 @@ describe('DDL Form Builder Field Support', function() {
 
 		var field = formBuilder.getField('sites');
 
-		var settingsForm = field.get('settingsForm');
-
 		formBuilder.showFieldSettingsPanel(field, field.get('name'));
 
 		field.validateSettings(function(hasError) {
@@ -240,6 +241,8 @@ describe('DDL Form Builder Field Support', function() {
 
 			done();
 		});
+
+		var settingsForm = field.get('settingsForm');
 
 		server.requests.pop().respond(
 			200,

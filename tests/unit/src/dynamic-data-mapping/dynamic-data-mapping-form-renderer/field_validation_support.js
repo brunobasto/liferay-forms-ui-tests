@@ -62,7 +62,7 @@ describe('DDM Renderer Field Validation Support', function() {
 				done();
 			});
 
-			server.requests[0].respond(
+			server.requests.pop().respond(
 				404,
 				{
 					'Content-Type': 'text/plain'
@@ -128,7 +128,7 @@ describe('DDM Renderer Field Validation Support', function() {
 					name: 'last_name',
 					required: true,
 					type: 'text',
-					validationExpression: 'false'
+					validationExpression: '!last_name.equals("")'
 				})
 			]
 		}).render();
@@ -146,7 +146,7 @@ describe('DDM Renderer Field Validation Support', function() {
 				done();
 			});
 
-			server.requests[0].respond(
+			server.requests.pop().respond(
 				200,
 				{
 					'Content-Type': 'application/json'

@@ -184,13 +184,21 @@ describe('DDM Renderer Field Repetition Support', function() {
 
 		var parent = field.get('parent');
 
-		parent.get('container').all('.lfr-ddm-form-field-container').each(function(container, index) {
+		container.all('.lfr-ddm-form-field-container').each(function(container, index) {
 			var qualifiedName = container.one('input').attr('name');
 
 			assert.equal(qualifiedName, repetitions[index].getQualifiedName());
 		});
 
 		field.destroy();
+
+		repetitions.forEach(
+			function(repeatedField) {
+				repeatedField.destroy();
+			}
+		);
+
+		container.remove();
 
 		done();
 	});
@@ -207,13 +215,13 @@ describe('DDM Renderer Field Repetition Support', function() {
 			repetitions.push(repetitions[repetitions.length - 1].repeat());
 		}
 
-		var indexes = _.map(repetitions, function(item) {
+		var indexes = repetitions.map(function(item) {
 			return item.get('repeatedIndex');
 		});
 
 		field.remove();
 
-		var newIndexes = _.map(repetitions, function(item) {
+		var newIndexes = repetitions.map(function(item) {
 			return item.get('repeatedIndex');
 		});
 
@@ -275,6 +283,14 @@ describe('DDM Renderer Field Repetition Support', function() {
 		container.one('.lfr-ddm-form-field-repeatable-add-button').simulate('click');
 
 		assert.isTrue(field.repeat.calledOnce, 'Method .repeat() should be called once.');
+
+		var repeated = field.repeat();
+
+		sinon.spy(repeated, 'repeat');
+
+		repeated.get('container').one('.lfr-ddm-form-field-repeatable-add-button').simulate('click');
+
+		assert.isTrue(repeated.repeat.calledOnce, 'Method .repeat() should be called once.');
 
 		field.repeat.restore();
 

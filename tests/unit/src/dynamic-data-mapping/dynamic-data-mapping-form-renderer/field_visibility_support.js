@@ -46,14 +46,14 @@ describe('DDM Renderer Field Visibility Support', function() {
 					name: 'first_name',
 					required: true,
 					type: 'text',
-					VisibilityExpression: 'false'
+					visibilityExpression: 'false'
 				}),
 				new Liferay.DDM.Renderer.Field({
 					instanceId: 'field2',
 					name: 'last_name',
 					required: true,
 					type: 'text',
-					VisibilityExpression: 'false'
+					visibilityExpression: 'false'
 				})
 			]
 		}).render();
@@ -62,15 +62,13 @@ describe('DDM Renderer Field Visibility Support', function() {
 			var firstNameField = form.getField('first_name');
 			var lastNameField = form.getField('last_name');
 
-			assert.isTrue(firstNameField.get('visible'));
-			assert.isTrue(lastNameField.get('visible'));
+			assert.isFalse(firstNameField.get('visible'));
+			assert.isFalse(lastNameField.get('visible'));
 
 			lastNameField.setValue('Basto');
 			lastNameField.getInputNode().simulate('change');
 
-			assert.lengthOf(server.requests, 1);
-
-			server.requests[0].respond(
+			server.requests.pop().respond(
 				200,
 				{
 					'Content-Type': 'application/json'

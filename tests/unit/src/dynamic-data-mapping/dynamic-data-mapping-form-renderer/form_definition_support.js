@@ -181,9 +181,15 @@ describe('DDM Renderer Form Definition Support', function() {
 			values: test.valuesWithRepeatable
 		});
 
+		var count = 0;
+
+		form.eachField(function() {
+			count++;
+		});
+
 		assert.equal(
 			container.all('.lfr-ddm-form-field-container').size(),
-			form.get('fields').length
+			count
 		);
 
 		form.destroy();
@@ -271,11 +277,7 @@ describe('DDM Renderer Form Definition Support', function() {
 
 		var repeated = fields[1].repeat();
 
-		assert.lengthOf(form.get('fields'), lengthBefore + 1, 'After repeating, length should increase by 1');
-
 		repeated.remove();
-
-		assert.lengthOf(form.get('fields'), lengthBefore, 'After removing, length should equal');
 
 		var valuesAfter = _.map(
 			form.get('fields'),

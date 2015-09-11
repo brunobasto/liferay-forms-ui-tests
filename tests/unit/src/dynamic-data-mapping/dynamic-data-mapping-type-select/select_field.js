@@ -8,22 +8,21 @@ var getTestData = function(callback) {
 	).done(callback);
 };
 
-var createFieldWithName = function(formBuilder, type, name) {
+var createField = function(formBuilder, type) {
 	var fieldType = Liferay.DDM.Renderer.FieldTypes.get(type),
-		field = formBuilder.createField(fieldType),
-		settingsForm = field.get('settingsForm');
-
-	var nameSettingsField = _.filter(
-		settingsForm.get('fields'),
-		function(settingsField) {
-			return settingsField.get('name') === 'name';
-		}
-	)[0];
-
-	nameSettingsField.setValue(name);
+		field = formBuilder.createField(fieldType);
 
 	return field;
 }
+
+var setFieldSetting = function(field, setting, value) {
+	var nameSettingsField = _.filter(
+		field.get('settingsForm').get('fields'),
+		function(settingsField) {
+			return settingsField.get('name') === setting;
+		}
+	)[0].setValue(value);
+};
 
 describe('DDM Field Select', function() {
 	this.timeout(120000);
@@ -221,9 +220,11 @@ describe('DDM Field Select', function() {
 
 		var formBuilder = new Liferay.DDL.FormBuilder().render(document.body);
 
-		var newSelectField = createFieldWithName(formBuilder, 'select', 'select');
+		var newSelectField = createField(formBuilder, 'select', 'select');
 
 		formBuilder.showFieldSettingsPanel(newSelectField, newSelectField.get('name'));
+
+		setFieldSetting(newSelectField, 'name', 'select');
 
 		var settingsForm = newSelectField.get('settingsForm');
 

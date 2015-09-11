@@ -42,7 +42,8 @@ describe('DDM Renderer Form Tabs Support', function() {
 			container = A.Node.create('<div><div class="lfr-ddm-form-tabs"></div></div>');
 
 		var form = new Liferay.DDM.Renderer.Form({
-			container: container
+			container: container,
+			templateNamespace: 'ddm.tabbed_form'
 		});
 
 		var tabView = form.getTabView();

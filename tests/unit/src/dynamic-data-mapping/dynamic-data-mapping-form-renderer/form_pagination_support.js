@@ -8,8 +8,10 @@ var getTestData = function(callback) {
 		$.get('/base/src/dynamic-data-mapping/dynamic-data-mapping-form-renderer/assets/field_types.json'),
 		$.get('/base/src/dynamic-data-mapping/dynamic-data-mapping-form-renderer/assets/markup_with_multiple_pages.html'),
 		$.get('/base/src/dynamic-data-mapping/dynamic-data-mapping-form-renderer/assets/markup_with_multiple_pages_definition.json'),
+		$.get('/base/src/dynamic-data-mapping/dynamic-data-mapping-form-renderer/assets/markup_with_multiple_pages_layout.json'),
 		$.get('/base/src/dynamic-data-mapping/dynamic-data-mapping-form-renderer/assets/markup_with_single_page.html'),
-		$.get('/base/src/dynamic-data-mapping/dynamic-data-mapping-form-renderer/assets/markup_with_single_page_definition.json')
+		$.get('/base/src/dynamic-data-mapping/dynamic-data-mapping-form-renderer/assets/markup_with_single_page_definition.json'),
+		$.get('/base/src/dynamic-data-mapping/dynamic-data-mapping-form-renderer/assets/markup_with_single_page_layout.json')
 	).done(callback);
 };
 
@@ -27,11 +29,13 @@ describe('DDM Renderer Form Pagination Support', function() {
 			'liferay-ddm-form-renderer',
 			function(A) {
 				getTestData(
-					function(fieldTypes, multiplePageMarkup, multiplePageDefinition, singlePageMarkup, singlePageDefinition) {
+					function(fieldTypes, multiplePageMarkup, multiplePageDefinition, multiplePageLayout, singlePageMarkup, singlePageDefinition, singlePageLayout) {
 						test.multiplePageMarkup = multiplePageMarkup[0];
 						test.multiplePageDefinition = multiplePageDefinition[0];
+						test.multiplePageLayout = multiplePageLayout[0];
 						test.singlePageMarkup = singlePageMarkup[0];
 						test.singlePageDefinition = singlePageDefinition[0];
+						test.singlePageLayout = singlePageLayout[0];
 
 						Liferay.DDM.Renderer.FieldTypes.register(fieldTypes[0]);
 
@@ -63,7 +67,8 @@ describe('DDM Renderer Form Pagination Support', function() {
 
 		var form = new Liferay.DDM.Renderer.Form({
 			container: container,
-			definition: test.multiplePageDefinition
+			definition: test.multiplePageDefinition,
+			layout: test.multiplePageLayout
 		}).render();
 
 		var nextBtn = container.one('.lfr-ddm-form-pagination-next');
@@ -117,7 +122,8 @@ describe('DDM Renderer Form Pagination Support', function() {
 
 		var form = new Liferay.DDM.Renderer.Form({
 			container: container,
-			definition: test.singlePageDefinition
+			definition: test.singlePageDefinition,
+			layout: test.singlePageLayout
 		}).render();
 
 		var nextBtn = container.one('.lfr-ddm-form-pagination-next');
@@ -142,7 +148,8 @@ describe('DDM Renderer Form Pagination Support', function() {
 
 		var form = new Liferay.DDM.Renderer.Form({
 			container: container,
-			definition: test.multiplePageDefinition
+			definition: test.multiplePageDefinition,
+			layout: test.multiplePageLayout
 		}).render();
 
 		var firstPageField = form.getFirstPageField();
@@ -188,7 +195,8 @@ describe('DDM Renderer Form Pagination Support', function() {
 
 		var form = new Liferay.DDM.Renderer.Form({
 			container: container,
-			definition: test.multiplePageDefinition
+			definition: test.multiplePageDefinition,
+			layout: test.multiplePageLayout
 		}).render();
 
 		sinon.spy(form, 'nextPage');

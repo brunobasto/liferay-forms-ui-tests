@@ -45,48 +45,6 @@ describe('DDM Renderer Field', function() {
 		done();
 	});
 
-	it('should render a new field without a parent field/form', function(done) {
-		var field = new Liferay.DDM.Renderer.Field({
-			type: 'text'
-		});
-
-		field.render();
-
-		var container = field.get('container');
-
-		var parentContainer = field.get('parent').get('container');
-
-		assert.isTrue(parentContainer.contains(container), 'Container should be in parent\'s container after calling .render()');
-
-		field.destroy();
-
-		done();
-	});
-
-	it('should render a new field with a parent field', function(done) {
-		var parentField = new Liferay.DDM.Renderer.Field({
-			type: 'text',
-			name: 'parent'
-		});
-
-		var field = new Liferay.DDM.Renderer.Field({
-			type: 'text',
-			name: 'child',
-			parent: parentField
-		});
-
-		var parentContainer = parentField.get('container');
-
-		var container = field.get('container');
-
-		assert.isTrue(parentContainer.contains(container), 'Container should be in parent\'s container after calling .render()');
-
-		field.destroy();
-		parentField.destroy();
-
-		done();
-	});
-
 	it('should render the value of a localizable field', function(done) {
 		var field = new Liferay.DDM.Renderer.Field({
 			localizable: true,
@@ -373,17 +331,13 @@ describe('DDM Renderer Field', function() {
 	it('should remove the field from the DOM after calling .destroy()', function(done) {
 		var field = new Liferay.DDM.Renderer.Field({
 			type: 'text'
-		});
+		}).render(document.body);
 
-		var parent = field.get('parent');
-
-		var container = field.get('container');
-
-		assert.isTrue(parent.get('container').contains(container), 'Container should be in parent\'s container before destroying.');
+		assert.isTrue(field.get('container').inDoc(), 'Container should be in DOM before destroying.');
 
 		field.destroy();
 
-		assert.isFalse(parent.get('container').contains(container), 'Container should not be in parent\'s container before destroying.');
+		assert.isFalse(field.get('container').inDoc(), 'Container should not be in DOM after destroying.');
 
 		done();
 	});

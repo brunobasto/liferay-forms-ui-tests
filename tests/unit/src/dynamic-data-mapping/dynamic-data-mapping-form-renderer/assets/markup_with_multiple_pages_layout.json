@@ -1,0 +1,90 @@
+{
+	"pages": [
+		{
+			"title":{
+				"en_US": "Page One"
+			},
+			"description":{
+				"en_US": "Description of page one."
+			},
+			"rows":[
+				{
+					"columns": [
+						{
+							"fieldNames": ["First"],
+							"size": 6
+						},
+						{
+							"fieldNames": ["Last"],
+							"size": 6
+						}
+					]
+				},
+				{
+					"columns": [
+						{
+							"fieldNames": ["Address"],
+							"size": 12
+						}
+					]
+				},
+				{
+					"columns": [
+						{
+							"fieldNames": ["City"],
+							"size": 4
+						},
+						{
+							"fieldNames": ["State"],
+							"size": 4
+						},
+						{
+							"fieldNames": ["ZipCode"],
+							"size": 4
+						},
+						{
+							"fieldNames": ["Size"],
+							"size": 4
+						}
+					]
+				}
+			]
+		},
+		{
+			"title":{
+				"en_US": "Page Two"
+			},
+			"description":{
+				"en_US": "Description of page two."
+			},
+			"rows":[
+				{
+					"columns": [
+						{
+							"fieldNames": ["CreditCard"],
+							"size": 12
+						}
+					]
+				}
+			]
+		},
+		{
+			"title":{
+				"en_US": "Page Three"
+			},
+			"description":{
+				"en_US": "Description of page three."
+			},
+			"rows":[
+				{
+					"columns": [
+						{
+							"fieldNames": ["final"],
+							"size": 12
+						}
+					]
+				}
+			]
+		}
+	]
+}
