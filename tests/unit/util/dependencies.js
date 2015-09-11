@@ -184,6 +184,11 @@ module.exports = function(callback) {
 						},
 						{
 							included: true,
+							pattern: validationResourcesDir + '/*.css',
+							served: true
+						},
+						{
+							included: true,
 							pattern: ddmRendererResourcesDir + '/css/*.css',
 							served: true
 						}
