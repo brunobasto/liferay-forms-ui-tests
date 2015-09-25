@@ -10,6 +10,9 @@ var liferaySourceDir = config.liferaySourceDir;
 
 var mocksDir = path.join('mocks');
 
+var soyDir = path.join(liferaySourceDir, 'modules', 'frontend', 'frontend-js-soyutils-web');
+var soyJSDir = path.join(osgi.resourcesPath(soyDir));
+
 var frontendDir = path.join(liferaySourceDir, 'modules', 'frontend', 'frontend-js-web');
 var frontendJsSrcDir = path.join(osgi.resourcesPath(frontendDir));
 var frontendTmpSrcDir = path.join(frontendDir, 'tmp', 'META-INF', 'resources');
@@ -125,6 +128,16 @@ module.exports = function(callback) {
 						{
 							included: true,
 							pattern: editorsTmpSrcDir + '/alloyeditor/liferay-alloy-editor-no-ckeditor-min.js',
+							served: true
+						},
+						{
+							included: true,
+							pattern: soyJSDir + '/config.js',
+							served: true
+						},
+						{
+							included: true,
+							pattern: soyDir + '/.task-cache/soyutils.js',
 							served: true
 						},
 						{
