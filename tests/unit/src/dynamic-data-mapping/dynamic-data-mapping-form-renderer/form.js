@@ -55,7 +55,7 @@ describe('DDM Renderer Form', function() {
 	it('should prevent form submission when validation does not pass', function(done) {
 		var A = AUI();
 
-		var formNode = A.Node.create('<form action=""><button type="submit" /></form>');
+		var formNode = A.Node.create('<form action=""></form>');
 
 		formNode.appendTo(document.body);
 
@@ -67,7 +67,9 @@ describe('DDM Renderer Form', function() {
 					name: 'first_name',
 					required: true,
 					type: 'text',
-					validationExpression: 'false'
+					validation: {
+						expression: 'false'
+					}
 				})
 			]
 		});
@@ -87,7 +89,7 @@ describe('DDM Renderer Form', function() {
 
 			assert.isTrue(form.validate.calledOnce);
 
-			server.requests[0].respond(
+			server.requests.pop().respond(
 				200,
 				{
 					'Content-Type': 'application/json'
@@ -98,7 +100,8 @@ describe('DDM Renderer Form', function() {
 							{
 								instanceId: 'abc123',
 								name: 'first_name',
-								valid: false
+								valid: false,
+								visible: true
 							}
 						]
 					}
@@ -127,9 +130,9 @@ describe('DDM Renderer Form', function() {
 
 		formNode.appendTo(document.body);
 
-		var original = Liferay.DDM.Renderer.Form.prototype._getDOMForm;
+		var original = Liferay.DDM.Renderer.Form.prototype.getFormNode;
 
-		Liferay.DDM.Renderer.Form.prototype._getDOMForm = function() {
+		Liferay.DDM.Renderer.Form.prototype.getFormNode = function() {
 			return formNode;
 		};
 
@@ -149,7 +152,7 @@ describe('DDM Renderer Form', function() {
 		sinon.spy(form, 'validate');
 
 		var restore = function() {
-			Liferay.DDM.Renderer.Form.prototype._getDOMForm = original;
+			Liferay.DDM.Renderer.Form.prototype.getFormNode = original;
 
 			form.validate.restore();
 
@@ -165,7 +168,7 @@ describe('DDM Renderer Form', function() {
 
 			assert.isTrue(form.validate.calledOnce, 'should call .validate()');
 
-			server.requests[0].respond(
+			server.requests.pop().respond(
 				200,
 				{
 					'Content-Type': 'application/json'
@@ -217,7 +220,9 @@ describe('DDM Renderer Form', function() {
 					name: 'first_name',
 					required: true,
 					type: 'text',
-					validationExpression: 'false'
+					validation: {
+						expression: 'false'
+					}
 				})
 			]
 		}).render();
@@ -240,7 +245,7 @@ describe('DDM Renderer Form', function() {
 				assert.isTrue(form.validate.called, 'Validation should have been triggered');
 				assert.isTrue(form.validate.calledOnce, 'Validation should have been triggered only once');
 
-				server.requests[0].respond(
+				server.requests.pop().respond(
 					200,
 					{
 						'Content-Type': 'application/json'
@@ -251,7 +256,8 @@ describe('DDM Renderer Form', function() {
 								{
 									instanceId: 'abc123',
 									name: 'first_name',
-									valid: false
+									valid: false,
+									visible: true
 								}
 							]
 						}

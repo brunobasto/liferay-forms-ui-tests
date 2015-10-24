@@ -11,10 +11,10 @@ var liferaySourceDir = config.liferaySourceDir;
 var mocksDir = path.join('mocks');
 
 var soyDir = path.join(liferaySourceDir, 'modules', 'frontend', 'frontend-js-soyutils-web');
-var soyJSDir = path.join(osgi.resourcesPath(soyDir));
+var soyJSDir = path.join(osgi.resourcesMainPath(soyDir));
 
 var frontendDir = path.join(liferaySourceDir, 'modules', 'frontend', 'frontend-js-web');
-var frontendJsSrcDir = path.join(osgi.resourcesPath(frontendDir));
+var frontendJsSrcDir = path.join(osgi.resourcesMainPath(frontendDir));
 var frontendTmpSrcDir = path.join(frontendDir, 'tmp', 'META-INF', 'resources');
 
 var editorsDir = path.join(liferaySourceDir, 'modules', 'frontend', 'frontend-editors-web');
@@ -56,7 +56,7 @@ module.exports = function(callback) {
 					if ((file.indexOf('aui') === 0) ||
 						(file.indexOf('bootstrap') === 0) ||
 						(file.indexOf('lexicon') === 0) ||
-						(file.indexOf('loader') === 0)) {
+						(file.indexOf('loader.js') > -1)) {
 
 						filePath.unshift(frontendTmpSrcDir);
 					}

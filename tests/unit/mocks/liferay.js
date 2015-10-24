@@ -4,6 +4,7 @@ window.Liferay = {
 		getCombine: sinon.stub().returns(false),
 		getComboPath: sinon.stub().returns('/'),
 		getEditorsPath: sinon.stub().returns('../../../frontend-editors-web/src/META-INF'),
+		getEditorCKEditorPath: sinon.stub().returns('../../../frontend-editors-web/src/META-INF'),
 		getFilter: sinon.stub().returns('raw'),
 		getJavaScriptRootPath: sinon.stub().returns('/absolute/[%LIFERAY_PATH%]/modules/frontend/frontend-js-web'),
 		getStaticResourceURLParams: sinon.stub().returns('')
@@ -18,6 +19,7 @@ window.Liferay = {
 		getLanguageId: sinon.stub().returns('en_US'),
 		getPathContext: sinon.stub().returns('/base'),
 		getPathThemeImages: sinon.stub().returns('../../themes/classic/images'),
+		getPortalURL: sinon.stub().returns('/'),
 		isAddSessionIdToURL: sinon.stub().returns(false)
 	}
 };

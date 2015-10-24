@@ -155,11 +155,11 @@ describe('DDM Renderer Form Pagination Support', function() {
 		var firstPageField = form.getFirstPageField();
 
 		// Make it "required"
-		firstPageField.set('validationExpression', ['!', firstPageField.get('name'), '.equals("")'].join(''));
+		firstPageField.set('validation.expression', ['!', firstPageField.get('name'), '.equals("")'].join(''));
 
 		form.nextPage();
 
-		server.requests[0].respond(
+		server.requests.pop().respond(
 			200,
 			{
 				'Content-Type': 'application/json'
@@ -170,7 +170,8 @@ describe('DDM Renderer Form Pagination Support', function() {
 						{
 							instanceId: firstPageField.get('instanceId'),
 							name: firstPageField.get('name'),
-							valid: false
+							valid: false,
+							visible: true
 						}
 					]
 				}

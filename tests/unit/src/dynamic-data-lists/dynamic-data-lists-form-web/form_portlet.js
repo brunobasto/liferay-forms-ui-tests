@@ -181,13 +181,14 @@ describe('DDL Form Portlet', function() {
 		var test = this,
 			A = AUI();
 
-		var formNode = A.Node.create('<form action="" name="_namespace_testForm" id="_namespace_testForm"></form>');
-		var nameEditorNode = A.Node.create('<div id="_namespace_nameEditorContainer"><div class="alloy-editor alloy-editor-placeholder" contenteditable="false" id="_namespace_nameEditor" name="_namespace_nameEditor"></div></div>');
-		var nameInput = A.Node.create('<input name="_namespace_name" id="_namespace_name" type="hidden" />');
+		var definitionInput = A.Node.create('<input name="_namespace_definition" id="_namespace_definition" type="hidden" />');
 		var descriptionEditorNode = A.Node.create('<div id="_namespace_descriptionEditorContainer"><div class="alloy-editor alloy-editor-placeholder" contenteditable="false" id="_namespace_descriptionEditor" name="_namespace_descriptionEditor"></div></div>');
 		var descriptionInput = A.Node.create('<input name="_namespace_description" id="_namespace_description" type="hidden" />');
-		var definitionInput = A.Node.create('<input name="_namespace_definition" id="_namespace_definition" type="hidden" />');
+		var formNode = A.Node.create('<form action="" name="_namespace_testForm" id="_namespace_testForm"></form>');
 		var layoutInput = A.Node.create('<input name="_namespace_layout" id="_namespace_layout" type="hidden" />');
+		var nameEditorNode = A.Node.create('<div id="_namespace_nameEditorContainer"><div class="alloy-editor alloy-editor-placeholder" contenteditable="false" id="_namespace_nameEditor" name="_namespace_nameEditor"></div></div>');
+		var nameInput = A.Node.create('<input name="_namespace_name" id="_namespace_name" type="hidden" />');
+		var submitButton = A.Node.create('<button id="_namespace_submit" type="submit" />');
 
 		formNode.append(nameEditorNode);
 		formNode.append(nameInput);
@@ -195,6 +196,7 @@ describe('DDL Form Portlet', function() {
 		formNode.append(descriptionInput);
 		formNode.append(definitionInput);
 		formNode.append(layoutInput);
+		formNode.append(submitButton);
 		formNode.appendTo(document.body);
 
 		// Liferay needded this

@@ -51,7 +51,7 @@ describe('DDL Form Builder', function() {
 		var boundingBox = formBuilder.get('boundingBox');
 
 		// Show field types modal
-		boundingBox.one('.form-builder-field-list-add-button-circle').simulate('click');
+		boundingBox.one('.form-builder-field-list-add-button').simulate('click');
 
 		// Show field settings
 		A.one('.form-builder-modal-content .field-type').simulate('click');
@@ -82,6 +82,7 @@ describe('DDL Form Builder', function() {
 	});
 
 	it('should not reload the page when clicking on a pagination item', function(done) {
+		var A = AUI();
 		var test = this;
 
 		var formBuilder = new Liferay.DDL.FormBuilder(
@@ -93,8 +94,11 @@ describe('DDL Form Builder', function() {
 
 		var boundingBox = formBuilder.get('boundingBox');
 
+		// Open menu to add a page
+		boundingBox.one('.form-builder-controls-trigger').simulate('click');
+
 		// Add a page
-		boundingBox.one('.form-builder-page-manager-add-page').simulate('click');
+		A.one('.form-builder-page-manager-add-last-position').simulate('click');
 
 		// Click on the back pagination link
 		boundingBox.one('.pagination-control a').simulate('click');

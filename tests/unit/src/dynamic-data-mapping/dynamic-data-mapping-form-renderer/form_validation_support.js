@@ -98,7 +98,9 @@ describe('DDM Renderer Form Validation Support', function() {
 					name: 'first_name',
 					required: true,
 					type: 'text',
-					validationExpression: 'false'
+					validation: {
+						expression: 'false'
+					}
 				})
 			]
 		}).render();
@@ -130,13 +132,13 @@ describe('DDM Renderer Form Validation Support', function() {
 				new Liferay.DDM.Renderer.Field({
 					instanceId: 'abc123',
 					name: 'first_name',
-					required: true,
+					required: false,
 					type: 'text'
 				}),
 				new Liferay.DDM.Renderer.Field({
 					instanceId: 'abc321',
 					name: 'last_name',
-					required: true,
+					required: false,
 					type: 'text'
 				})
 			]
@@ -145,8 +147,6 @@ describe('DDM Renderer Form Validation Support', function() {
 		try {
 			form.validate(function(hasError) {
 				assert.isFalse(hasError);
-
-				assert.lengthOf(server.requests, 0);
 
 				form.destroy();
 
@@ -164,13 +164,13 @@ describe('DDM Renderer Form Validation Support', function() {
 				new Liferay.DDM.Renderer.Field({
 					instanceId: 'abc123',
 					name: 'first_name',
-					required: true,
+					required: false,
 					type: 'text'
 				}),
 				new Liferay.DDM.Renderer.Field({
 					instanceId: 'abc321',
 					name: 'last_name',
-					required: true,
+					required: false,
 					type: 'text'
 				})
 			]
@@ -181,8 +181,6 @@ describe('DDM Renderer Form Validation Support', function() {
 
 			lastNameField.validate(function(hasError) {
 				assert.isFalse(hasError);
-
-				assert.lengthOf(server.requests, 0);
 
 				form.destroy();
 
@@ -241,7 +239,9 @@ describe('DDM Renderer Form Validation Support', function() {
 					name: 'first_name',
 					required: true,
 					type: 'text',
-					validationExpression: 'false'
+					validation: {
+						expression: 'false'
+					}
 				})
 			]
 		}).render();
@@ -255,7 +255,7 @@ describe('DDM Renderer Form Validation Support', function() {
 				done();
 			});
 
-			server.requests[0].respond(
+			server.requests.pop().respond(
 				200,
 				{
 					'Content-Type': 'application/json'
@@ -264,12 +264,11 @@ describe('DDM Renderer Form Validation Support', function() {
 					{
 						fields: [
 							{
+								errorMessage: 'This field is required.',
 								instanceId: 'abc123',
-								messages: [
-									'This field is required.'
-								],
 								name: 'first_name',
-								valid: false
+								valid: false,
+								visible: true
 							}
 						]
 					}
@@ -289,7 +288,9 @@ describe('DDM Renderer Form Validation Support', function() {
 					name: 'first_name',
 					required: true,
 					type: 'text',
-					validationExpression: 'false'
+					validation: {
+						expression: 'false'
+					}
 				})
 			]
 		}).render();
@@ -298,14 +299,14 @@ describe('DDM Renderer Form Validation Support', function() {
 			form.validate(function(valid) {
 				var firstNameField = form.getField('first_name');
 
-				assert.lengthOf(firstNameField.get('validationMessages'), 1);
+				assert.equal(firstNameField.get('errorMessage'), 'This field is required.');
 
 				form.destroy();
 
 				done();
 			});
 
-			server.requests[0].respond(
+			server.requests.pop().respond(
 				200,
 				{
 					'Content-Type': 'application/json'
@@ -314,12 +315,11 @@ describe('DDM Renderer Form Validation Support', function() {
 					{
 						fields: [
 							{
+								errorMessage: 'This field is required.',
 								instanceId: 'abc123',
-								messages: [
-									'This field is required.'
-								],
 								name: 'first_name',
-								valid: false
+								valid: false,
+								visible: true
 							}
 						]
 					}
@@ -339,7 +339,9 @@ describe('DDM Renderer Form Validation Support', function() {
 					name: 'first_name',
 					required: true,
 					type: 'text',
-					validationExpression: 'false'
+					validation: {
+						expression: 'false'
+					}
 				})
 			]
 		}).render();
@@ -348,20 +350,18 @@ describe('DDM Renderer Form Validation Support', function() {
 			var field = form.getField('first_name');
 
 			field.validate(function(valid) {
-				var validationMessages = field.get('validationMessages');
-
-				assert.lengthOf(validationMessages, 1);
+				var errorMessage = field.get('errorMessage');
 
 				var strings = field.get('strings');
 
-				assert.equal(validationMessages[0], strings.defaultValidationMessage);
+				assert.equal(errorMessage, strings.defaultErrorMessage);
 
 				form.destroy();
 
 				done();
 			});
 
-			server.requests[0].respond(
+			server.requests.pop().respond(
 				200,
 				{
 					'Content-Type': 'application/json'
@@ -372,7 +372,8 @@ describe('DDM Renderer Form Validation Support', function() {
 							{
 								instanceId: 'abc123',
 								name: 'first_name',
-								valid: false
+								valid: false,
+								visible: true
 							}
 						]
 					}
@@ -392,14 +393,18 @@ describe('DDM Renderer Form Validation Support', function() {
 					name: 'first_name',
 					required: true,
 					type: 'text',
-					validationExpression: 'false'
+					validation: {
+						expression: 'false'
+					}
 				}),
 				new Liferay.DDM.Renderer.Field({
 					instanceId: 'field2',
 					name: 'last_name',
 					required: true,
 					type: 'text',
-					validationExpression: 'false'
+					validation: {
+						expression: 'false'
+					}
 				})
 			]
 		}).render();
@@ -423,7 +428,7 @@ describe('DDM Renderer Form Validation Support', function() {
 				done();
 			});
 
-			server.requests[0].respond(
+			server.requests.pop().respond(
 				200,
 				{
 					'Content-Type': 'application/json'
@@ -433,15 +438,17 @@ describe('DDM Renderer Form Validation Support', function() {
 						fields: [
 							{
 								instanceId: 'field1',
-								messages: ['First Name field is required'],
+								errorMessage: 'First Name field is required',
 								name: 'first_name',
-								valid: false
+								valid: false,
+								visible: true
 							},
 							{
 								instanceId: 'field2',
-								messages: ['Last Name field is required'],
+								errorMessage: 'Last Name field is required',
 								name: 'last_name',
-								valid: false
+								valid: false,
+								visible: true
 							}
 						]
 					}
@@ -469,7 +476,9 @@ describe('DDM Renderer Form Validation Support', function() {
 		try {
 			form.validate();
 
-			assert.lengthOf(server.requests, 0);
+			var evaluator = form.get('evaluator');
+
+			assert.isTrue(evaluator.evaluating());
 
 			form.destroy();
 

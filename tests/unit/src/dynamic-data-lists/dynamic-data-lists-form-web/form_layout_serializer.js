@@ -33,6 +33,8 @@ describe('DDL Layout Serializer', function() {
 			FieldTypes = Liferay.DDM.Renderer.FieldTypes,
 			formBuilder = new Liferay.DDL.FormBuilder();
 
+		formBuilder.render();
+
 		var fields = [
 			formBuilder.createField(FieldTypes.get('checkbox')),
 			formBuilder.createField(FieldTypes.get('radio')),
@@ -129,7 +131,7 @@ describe('DDL Layout Serializer', function() {
 								}
 							],
 							"title":{
-								"en_US":1
+								"en_US": ""
 							}
 						},
 						{
@@ -147,7 +149,7 @@ describe('DDL Layout Serializer', function() {
 								}
 							],
 							"title":{
-								"en_US":2
+								"en_US": ""
 							}
 						}
 					]

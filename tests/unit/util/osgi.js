@@ -24,6 +24,10 @@ module.exports = {
 		return path.resolve(appsDir, 'dynamic-data-mapping', bundleName);
 	},
 
+	resourcesMainPath: function(bundleDir) {
+		return path.resolve(bundleDir, 'src', 'main', 'resources', 'META-INF', 'resources');
+	},
+
 	resourcesPath: function(bundleDir) {
 		return path.resolve(bundleDir, 'src', 'META-INF', 'resources');
 	}

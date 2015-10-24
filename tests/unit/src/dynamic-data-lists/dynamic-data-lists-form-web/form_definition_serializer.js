@@ -31,6 +31,8 @@ describe('DDL Definition Serializer', function() {
 			FieldTypes = Liferay.DDM.Renderer.FieldTypes,
 			formBuilder = new Liferay.DDL.FormBuilder();
 
+		formBuilder.render();
+
 		var fields = [
 			formBuilder.createField(FieldTypes.get('text')),
 			formBuilder.createField(FieldTypes.get('text')),
@@ -137,41 +139,41 @@ describe('DDL Definition Serializer', function() {
 							"predefinedValue": {
 								"en_US":""
 							},
-							"dataType":"string",
-							"showLabel":true,
-							"name":"first_name",
-							"localizable":true,
+							"dataType": "string",
+							"fieldNamespace": "",
+							"indexType": "keyword",
 							"label": {
 								"en_US":"First Name"
 							},
-							"required":true,
-							"type":"text",
-							"tip":{},
-							"validationExpression": "",
-							"visibilityExpression": "true",
+							"localizable":true,
+							"name":"first_name",
 							"readOnly": false,
-							"fieldNamespace": "",
-							"repeatable": false
+							"repeatable": false,
+							"required":true,
+							"showLabel":true,
+							"tip": "",
+							"type":"text",
+							"visibilityExpression": "true"
 						},
 						{
-							"predefinedValue": {
-								"en_US":""
-							},
 							"dataType":"string",
-							"showLabel":true,
-							"name":"last_name",
-							"localizable":true,
+							"fieldNamespace": "",
+							"indexType": "keyword",
 							"label": {
 								"en_US":"Last Name"
 							},
-							"required":true,
-							"type":"text",
-							"tip":{},
-							"validationExpression": "",
-							"visibilityExpression": "true",
+							"localizable":true,
+							"name":"last_name",
+							"predefinedValue": {
+								"en_US":""
+							},
 							"readOnly": false,
-							"fieldNamespace": "",
-							"repeatable": false
+							"repeatable": false,
+							"required":true,
+							"showLabel":true,
+							"tip": "",
+							"type":"text",
+							"visibilityExpression": "true"
 						},
 						{
 							"predefinedValue": {
@@ -179,6 +181,7 @@ describe('DDL Definition Serializer', function() {
 							},
 							"dataType":"string",
 							"showLabel":true,
+							"indexType": "keyword",
 							"name":"children",
 							"localizable":true,
 							"label": {
@@ -191,55 +194,54 @@ describe('DDL Definition Serializer', function() {
 							],
 							"required":false,
 							"type":"radio",
-							"tip":{},
-							"validationExpression": "",
+							"tip": "",
 							"visibilityExpression": "true",
 							"readOnly": false,
 							"fieldNamespace": "",
 							"repeatable": false
 						},
 						{
-							"predefinedValue": {
-								"en_US":""
-							},
 							"dataType":"string",
-							"showLabel":true,
+							"fieldNamespace": "",
+							"indexType": "keyword",
+							"label": {
+								"en_US":"Favourite Color"
+							},
+							"localizable":true,
 							"name":"color",
 							"options": [
 								{ label: { en_US: 'Blue' }, value: 'blue' },
 								{ label: { en_US: 'Red' }, value: 'red' },
 								{ label: { en_US: 'Green' }, value: 'green' }
 							],
-							"localizable":true,
-							"label": {
-								"en_US":"Favourite Color"
+							"predefinedValue": {
+								"en_US":""
 							},
-							"required":false,
-							"type":"select",
-							"tip":{},
-							"validationExpression": "",
-							"visibilityExpression": "true",
 							"readOnly": false,
-							"fieldNamespace": "",
-							"repeatable": false
+							"repeatable": false,
+							"required":false,
+							"showLabel":true,
+							"tip": "",
+							"type":"select",
+							"visibilityExpression": "true"
 						},
 						{
-							"predefinedValue": true,
-							"dataType":"string",
-							"showLabel":true,
-							"name":"agree",
-							"localizable":false,
+							"dataType":"boolean",
+							"fieldNamespace": "",
+							"indexType": "keyword",
 							"label": {
 								"en_US":"I Agree to the terms"
 							},
-							"required":false,
-							"type":"checkbox",
-							"tip":{},
-							"validationExpression": "",
-							"visibilityExpression": "true",
+							"localizable":false,
+							"name":"agree",
+							"predefinedValue": true,
 							"readOnly": false,
-							"fieldNamespace": "",
-							"repeatable": false
+							"repeatable": false,
+							"required":false,
+							"showLabel":true,
+							"tip": "",
+							"type":"checkbox",
+							"visibilityExpression": "true"
 						}
 					]
 				}

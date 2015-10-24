@@ -46,6 +46,7 @@ describe('DDM Renderer Field Visibility Support', function() {
 					name: 'first_name',
 					required: true,
 					type: 'text',
+					visible: false,
 					visibilityExpression: 'false'
 				}),
 				new Liferay.DDM.Renderer.Field({
@@ -53,6 +54,7 @@ describe('DDM Renderer Field Visibility Support', function() {
 					name: 'last_name',
 					required: true,
 					type: 'text',
+					visible: true,
 					visibilityExpression: 'false'
 				})
 			]
@@ -63,7 +65,7 @@ describe('DDM Renderer Field Visibility Support', function() {
 			var lastNameField = form.getField('last_name');
 
 			assert.isFalse(firstNameField.get('visible'));
-			assert.isFalse(lastNameField.get('visible'));
+			assert.isTrue(lastNameField.get('visible'));
 
 			lastNameField.setValue('Basto');
 			lastNameField.getInputNode().simulate('change');

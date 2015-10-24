@@ -25,68 +25,55 @@ describe('DDM Renderer Field Feedback Support', function() {
 
 	it('should render the error messages uppon initialization', function(done) {
 		var field = new Liferay.DDM.Renderer.Field({
-			validationMessages: [
-				'This field is required',
-				'This field value is not correct'
-			],
+			errorMessage: 'This field is required',
 			type: 'text'
 		}).render();
 
-		var validationMessages = field.get('validationMessages');
+		var errorMessage = field.get('errorMessage');
 
-		var nodes = field.get('container').all('.validation-message');
+		var node = field.get('container').one('.validation-message');
 
-		assert.equal(nodes.size(), validationMessages.length);
-
-		nodes.each(function(node) {
-			assert.equal(node.text(), validationMessages.pop());
-		});
+		assert.ok(node);
+		assert.equal(node.text(), errorMessage);
 
 		field.destroy();
 
 		done();
 	});
 
-	it('should add one error message at the top after calling .addValidationMessage()', function(done) {
+	it('should show one error message at the top after calling .showErrorMessage()', function(done) {
 		var field = new Liferay.DDM.Renderer.Field({
-			validationMessages: [
-				'This field is required',
-				'This field value is not correct'
-			],
+			errorMessage: 'This field is required',
 			type: 'text'
 		}).render();
 
-		var validationMessages = field.get('validationMessages');
+		var errorMessage = field.get('errorMessage');
 
-		field.addValidationMessage('New error message');
+		field.showErrorMessage('New error message');
 
-		assert.equal(3, validationMessages.length);
+		var node = field.get('container').one('.validation-message');
 
-		var nodes = field.get('container').all('.validation-message');
-
-		assert.equal(nodes.item(0).text(), 'New error message');
+		assert.ok(node);
+		assert.equal(node.text(), 'New error message');
 
 		field.destroy();
 
 		done();
 	});
 
-	it('should clear the error messages after calling .clearValidationMessages()', function(done) {
+	it('should clear the error messages after calling .hideErrorMessage()', function(done) {
 		var field = new Liferay.DDM.Renderer.Field({
-			validationMessages: [
-				'This field is required',
-				'This field value is not correct'
-			],
+			errorMessage: 'This field is required',
 			type: 'text'
 		});
 
-		field.clearValidationMessages();
+		field.hideErrorMessage();
 
-		var validationMessages = field.get('validationMessages');
+		var errorMessage = field.get('errorMessage');
 		var nodes = field.get('container').all('.validation-message');
 
 		assert.equal(nodes.size(), 0);
-		assert.equal(validationMessages.length, 0);
+		assert.equal(errorMessage.length, 0);
 
 		field.destroy();
 
@@ -95,12 +82,11 @@ describe('DDM Renderer Field Feedback Support', function() {
 
 	it('should clear validation status after calling .clearValidationStatus()', function(done) {
 		var field = new Liferay.DDM.Renderer.Field({
-			validationExpression: 'false',
-			validationMessages: [
-				'This field is required',
-				'This field value is not correct'
-			],
-			type: 'text'
+			errorMessage: 'This field is required',
+			type: 'text',
+			validation: {
+				expression: 'false'
+			}
 		});
 
 		field.showValidationStatus();
@@ -121,12 +107,11 @@ describe('DDM Renderer Field Feedback Support', function() {
 
 	it('should show validation status after calling .showValidationStatus()', function(done) {
 		var field = new Liferay.DDM.Renderer.Field({
-			validationExpression: 'false',
-			validationMessages: [
-				'This field is required',
-				'This field value is not correct'
-			],
-			type: 'text'
+			errorMessage: 'This field is required',
+			type: 'text',
+			validation: {
+				expression: 'false'
+			}
 		});
 
 		field.showValidationStatus();
@@ -134,14 +119,12 @@ describe('DDM Renderer Field Feedback Support', function() {
 		var container = field.get('container');
 
 		assert.isTrue(container.hasClass('has-error'));
-		assert.isFalse(container.hasClass('has-success'));
 
-		field.set('validationMessages', []);
+		field.set('errorMessage', '');
 
 		field.showValidationStatus();
 
 		assert.isFalse(container.hasClass('has-error'));
-		assert.isTrue(container.hasClass('has-success'));
 
 		field.destroy();
 

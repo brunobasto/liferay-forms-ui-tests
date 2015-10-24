@@ -9,9 +9,10 @@ var getPassingValidationResponse = function(form) {
 	form.eachField(function(field) {
 		fields.push({
 			instanceId: field.get('instanceId'),
-			messages: [],
+			errorMessage: '',
 			name: field.get('name'),
-			valid: true
+			valid: true,
+			visible: true
 		});
 	});
 
@@ -107,13 +108,6 @@ describe('DDL Form Builder Field Support', function() {
 		sinon.spy(settingsForm, 'validate');
 
 		field.validateSettings();
-
-		server.requests.pop().respond(
-			404,
-			{
-				'Content-Type': 'application/json'
-			}
-		);
 
 		assert.isTrue(settingsForm.validate.calledOnce);
 

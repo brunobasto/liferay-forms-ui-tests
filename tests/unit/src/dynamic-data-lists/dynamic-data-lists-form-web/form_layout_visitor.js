@@ -31,6 +31,8 @@ describe('DDL Layout Visitor', function() {
 			FieldTypes = Liferay.DDM.Renderer.FieldTypes,
 			formBuilder = new Liferay.DDL.FormBuilder();
 
+		formBuilder.render();
+
 		var fields = [
 			formBuilder.createField(FieldTypes.get('checkbox')),
 			formBuilder.createField(FieldTypes.get('radio')),
