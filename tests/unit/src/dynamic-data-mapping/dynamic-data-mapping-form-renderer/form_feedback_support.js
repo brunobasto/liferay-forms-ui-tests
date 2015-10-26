@@ -14,7 +14,7 @@ describe('DDM Renderer Form Feedback Support', function() {
 
 	it('should show a loading spinner on the form submit button after calling .showLoadingFeedback()', function(done) {
 		var A = AUI(),
-			formNode = A.Node.create('<form name="myFeedbackForm" id="myFeedbackForm" action=""><button type="submit" /></form>');
+			formNode = A.Node.create('<form name="myFeedbackForm" id="myFeedbackForm" action="javascript:;"><button type="submit" /></form>');
 
 		formNode.appendTo(document.body);
 

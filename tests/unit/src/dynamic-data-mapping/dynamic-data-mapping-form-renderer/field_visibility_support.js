@@ -9,6 +9,10 @@ var getTestData = function(callback) {
 	).done(callback);
 };
 
+var simulateFieldChange = function(field) {
+	field._onInputChange();
+};
+
 describe('DDM Renderer Field Visibility Support', function() {
 	this.timeout(120000);
 
@@ -58,7 +62,7 @@ describe('DDM Renderer Field Visibility Support', function() {
 					visibilityExpression: 'false'
 				})
 			]
-		}).render();
+		}).render(document.body);
 
 		try {
 			var firstNameField = form.getField('first_name');
@@ -68,9 +72,13 @@ describe('DDM Renderer Field Visibility Support', function() {
 			assert.isTrue(lastNameField.get('visible'));
 
 			lastNameField.setValue('Basto');
-			lastNameField.getInputNode().simulate('change');
+			simulateFieldChange(lastNameField);
 
-			server.requests.pop().respond(
+			var ajax = server.requests.pop();
+
+			assert.equal(ajax.url, '/o/ddm-form-evaluator/');
+
+			ajax.respond(
 				200,
 				{
 					'Content-Type': 'application/json'
@@ -98,6 +106,8 @@ describe('DDM Renderer Field Visibility Support', function() {
 				assert.isTrue(lastNameField.get('visible'));
 
 				form.destroy();
+
+				form.get('container').remove();
 
 				done();
 			}, 100);

@@ -37,44 +37,44 @@ module.exports = function() {
 				base: 'SauceLabs',
 				browserName: 'chrome'
 			},
-			sl_safari: {
-				base: 'SauceLabs',
-				browserName: 'safari'
-			},
+			//* sl_safari: {
+			// 	base: 'SauceLabs',
+			// 	browserName: 'safari'
+			// },
 			sl_firefox: {
 				base: 'SauceLabs',
 				browserName: 'firefox'
 			},
-			sl_ie_9: {
-				base: 'SauceLabs',
-				browserName: 'internet explorer',
-				platform: 'Windows 7',
-				version: '9'
-			},
-			sl_ie_10: {
-				base: 'SauceLabs',
-				browserName: 'internet explorer',
-				platform: 'Windows 7',
-				version: '10'
-			},
-			sl_ie_11: {
-				base: 'SauceLabs',
-				browserName: 'internet explorer',
-				platform: 'Windows 8.1',
-				version: '11'
-			},
-			sl_iphone: {
-				base: 'SauceLabs',
-				browserName: 'iphone',
-				platform: 'OS X 10.10',
-				version: '7.1'
-			},
-			sl_android_4: {
-				base: 'SauceLabs',
-				browserName: 'android',
-				platform: 'Linux',
-				version: '4.4'
-			},
+			//* sl_ie_9: {
+			// 	base: 'SauceLabs',
+			// 	browserName: 'internet explorer',
+			// 	platform: 'Windows 7',
+			// 	version: '9'
+			// },
+			//* sl_ie_10: {
+			// 	base: 'SauceLabs',
+			// 	browserName: 'internet explorer',
+			// 	platform: 'Windows 7',
+			// 	version: '10'
+			// },
+			//* sl_ie_11: {
+			// 	base: 'SauceLabs',
+			// 	browserName: 'internet explorer',
+			// 	platform: 'Windows 8.1',
+			// 	version: '11'
+			// },
+			//* sl_iphone: {
+			// 	base: 'SauceLabs',
+			// 	browserName: 'iphone',
+			// 	platform: 'OS X 10.10',
+			// 	version: '7.1'
+			// },
+			//* sl_android_4: {
+			// 	base: 'SauceLabs',
+			// 	browserName: 'android',
+			// 	platform: 'Linux',
+			// 	version: '4.4'
+			// },
 			sl_android_5: {
 				base: 'SauceLabs',
 				browserName: 'android',
@@ -86,17 +86,17 @@ module.exports = function() {
 		runKarma({
 			browsers: Object.keys(launchers),
 
-			browserDisconnectTimeout: 10000,
+			browserDisconnectTimeout: 100000,
 			browserDisconnectTolerance: 2,
-			browserNoActivityTimeout: 240000,
+			browserNoActivityTimeout: 2400000,
 
 			client: {
 				mocha: {
-					timeout: 240000
+					timeout: 2400000
 				}
 			},
 
-			captureTimeout: 240000,
+			captureTimeout: 2400000,
 			customLaunchers: launchers,
 
 			reporters: ['coverage', 'progress', 'saucelabs'],

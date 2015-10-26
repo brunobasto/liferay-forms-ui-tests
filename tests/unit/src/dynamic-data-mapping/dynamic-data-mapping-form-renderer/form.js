@@ -55,7 +55,7 @@ describe('DDM Renderer Form', function() {
 	it('should prevent form submission when validation does not pass', function(done) {
 		var A = AUI();
 
-		var formNode = A.Node.create('<form action=""></form>');
+		var formNode = A.Node.create('<form action="javascript:;"></form>');
 
 		formNode.appendTo(document.body);
 
@@ -126,7 +126,7 @@ describe('DDM Renderer Form', function() {
 
 	it('should submit the form when validation passes', function(done) {
 		var A = AUI(),
-			formNode = A.Node.create('<form name="test" action=""><button type="submit" /></form>');
+			formNode = A.Node.create('<form name="test" action="javascript:;"><button type="submit" /></form>');
 
 		formNode.appendTo(document.body);
 
@@ -204,7 +204,7 @@ describe('DDM Renderer Form', function() {
 	it('should prevent liferay form submission when validation does not pass', function(done) {
 		var A = AUI();
 
-		var formNode = A.Node.create('<form name="myForm" id="myForm" action=""><button type="submit" /></form>');
+		var formNode = A.Node.create('<form name="myForm" id="myForm" action="javascript:;"><button type="submit" /></form>');
 
 		formNode.appendTo(document.body);
 

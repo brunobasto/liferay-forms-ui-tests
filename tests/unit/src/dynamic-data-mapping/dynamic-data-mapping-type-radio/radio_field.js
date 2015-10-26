@@ -52,6 +52,8 @@ describe('DDM Field Radio', function() {
 			}
 		});
 
+		radioField.destroy();
+
 		done();
 	});
 
@@ -86,6 +88,8 @@ describe('DDM Field Radio', function() {
 			}
 		});
 
+		radioField.destroy();
+
 		done();
 	});
 
@@ -114,6 +118,8 @@ describe('DDM Field Radio', function() {
 		var json = radioField.toJSON();
 
 		assert.equal(json.value, 'bruno');
+
+		radioField.destroy();
 
 		done();
 	});

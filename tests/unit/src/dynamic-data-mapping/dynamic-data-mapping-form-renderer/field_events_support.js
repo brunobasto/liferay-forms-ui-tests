@@ -7,6 +7,9 @@ var getTestData = function(callback) {
 		$.get('/base/src/dynamic-data-mapping/dynamic-data-mapping-form-renderer/assets/field_types.json')
 	).done(callback);
 };
+var simulateFieldChange = function(field) {
+	field._onInputChange();
+};
 
 describe('DDM Renderer Field Events Support', function() {
 	this.timeout(120000);
@@ -35,7 +38,7 @@ describe('DDM Renderer Field Events Support', function() {
 
 		field.on('valueChanged', callback);
 
-		field.getInputNode().simulate('change');
+		simulateFieldChange(field);
 
 		assert.isTrue(callback.calledOnce);
 

@@ -66,6 +66,8 @@ describe('DDM Field Options', function() {
 			}
 		});
 
+		optionsField.destroy();
+
 		done();
 	});
 
@@ -86,7 +88,7 @@ describe('DDM Field Options', function() {
 					value: 'jadson'
 				}
 			]
-		}).render();
+		}).render(document.body);
 
 		var container = optionsField.get('container');
 
@@ -102,6 +104,8 @@ describe('DDM Field Options', function() {
 		assert.lengthOf(json.value, 3);
 		assert.equal(json.value[2].value, 'new');
 		assert.equal(json.value[2].label[optionsField.get('locale')], 'New');
+
+		optionsField.destroy();
 
 		done();
 	});

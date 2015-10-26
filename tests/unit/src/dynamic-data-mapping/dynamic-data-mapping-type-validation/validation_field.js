@@ -41,13 +41,19 @@ describe('DDM Field Validation', function() {
 		var container = validationField.get('container');
 
 		container.one('.enable-validation').attr('checked', true);
-		container.one('.enable-validation').simulate('change');
+		validationField._syncValidationUI({
+			currentTarget: container.one('.enable-validation')
+		});
 
 		container.one('.types-select').val('number');
-		container.one('.types-select').simulate('change');
+		validationField._syncValidationUI({
+			currentTarget: container.one('.types-select')
+		});
 
 		container.one('.validations-select').val('eq');
-		container.one('.validations-select').simulate('change');
+		validationField._syncValidationUI({
+			currentTarget: container.one('.validations-select')
+		});
 
 		container.one('.parameter-input').val('5');
 

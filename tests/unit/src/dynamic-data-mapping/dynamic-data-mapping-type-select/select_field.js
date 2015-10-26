@@ -8,12 +8,14 @@ var getTestData = function(callback) {
 	).done(callback);
 };
 
-var createField = function(formBuilder, type) {
+var createField = function(formBuilder, type, name) {
 	var fieldType = Liferay.DDM.Renderer.FieldTypes.get(type),
 		field = formBuilder.createField(fieldType);
 
+	field.set('name', name);
+
 	return field;
-}
+};
 
 var setFieldSetting = function(field, setting, value) {
 	var nameSettingsField = _.filter(
@@ -63,6 +65,8 @@ describe('DDM Field Select', function() {
 
 		assert.equal(selectField.getInputNode().val(), 'marcellus');
 
+		selectField.destroy();
+
 		done();
 	});
 
@@ -94,6 +98,8 @@ describe('DDM Field Select', function() {
 		assert.isArray(selectField.get('value'));
 		assert.lengthOf(selectField.get('value'), 0);
 
+		selectField.destroy();
+
 		done();
 	});
 
@@ -121,6 +127,8 @@ describe('DDM Field Select', function() {
 		}).render();
 
 		assert.equal(selectField.getInputNode().val(), 'marcellus');
+
+		selectField.destroy();
 
 		done();
 	});
@@ -156,6 +164,8 @@ describe('DDM Field Select', function() {
 			);
 		});
 
+		selectField.destroy();
+
 		done();
 	});
 
@@ -185,6 +195,8 @@ describe('DDM Field Select', function() {
 		assert.property(json, 'value');
 		assert.equal(json.value, 'marcellus');
 
+		selectField.destroy();
+
 		done();
 	});
 
@@ -211,6 +223,8 @@ describe('DDM Field Select', function() {
 		var selectedOptions = selectField.getInputNode().all('option[selected]');
 
 		assert.isTrue(selectedOptions.size() === 0);
+
+		selectField.destroy();
 
 		done();
 	});
@@ -239,6 +253,8 @@ describe('DDM Field Select', function() {
 		var sizeAfter = optionsContainer.all('.ddm-options-row').size();
 
 		assert.isFalse(sizeAfter === sizeBefore);
+
+		formBuilder.destroy();
 
 		done();
 	});

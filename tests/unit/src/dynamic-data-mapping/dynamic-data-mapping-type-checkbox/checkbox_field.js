@@ -34,6 +34,8 @@ describe('DDM Field Checkbox', function() {
 
 		assert.isFalse(checkboxField.getValue());
 
+		checkboxField.destroy();
+
 		done();
 	});
 
@@ -48,6 +50,8 @@ describe('DDM Field Checkbox', function() {
 		checkboxField.set('value', true);
 
 		assert.isTrue(checkboxField.getValue());
+
+		checkboxField.destroy();
 
 		done();
 	});
@@ -66,6 +70,8 @@ describe('DDM Field Checkbox', function() {
 		for (var locale in value) {
 			assert.isBoolean(value[locale]);
 		}
+
+		checkboxField.destroy();
 
 		done();
 	});
@@ -86,6 +92,8 @@ describe('DDM Field Checkbox', function() {
 		checkboxField.setValue(true);
 
 		assert.isTrue(inputNode.attr('checked'));
+
+		checkboxField.destroy();
 
 		done();
 	});
@@ -124,6 +132,8 @@ describe('DDM Field Checkbox', function() {
 		var json = checkboxField.toJSON();
 
 		assert.isFalse(json.value);
+
+		checkboxField.destroy();
 
 		done();
 	});
