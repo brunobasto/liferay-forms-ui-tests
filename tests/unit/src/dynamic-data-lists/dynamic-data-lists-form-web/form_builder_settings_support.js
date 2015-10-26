@@ -47,7 +47,7 @@ var getTestData = function(callback) {
 	).done(callback);
 };
 
-describe('DDL Form Builder Field Support', function() {
+describe('DDL Form Builder Settings Support', function() {
 	this.timeout(120000);
 
 	before(function(done) {
@@ -83,49 +83,6 @@ describe('DDL Form Builder Field Support', function() {
 		server.restore();
 
 		done();
-	});
-
-	it('should validate the settingsForm when calling field.validateSettings', function(done) {
-		var test = this;
-
-		var formBuilder = new Liferay.DDL.FormBuilder(
-			{
-				definition: test.definition,
-				pagesJSON: test.layout.pages
-			}
-		).render();
-
-		var field = formBuilder.getField('sites');
-
-		field.render();
-
-		formBuilder.showFieldSettingsPanel(field, field.get('name'));
-
-		var settingsForm = field.get('settingsForm');
-
-		settingsForm.render();
-
-		sinon.spy(settingsForm, 'validate');
-
-		field.validateSettings();
-
-		assert.isTrue(settingsForm.validate.calledOnce);
-
-		settingsForm.validate.restore();
-
-		// TODO - Destroy Form Builder
-		// This test case was mainly added to cover the branch where
-		// validateSettings is called without any parameters.
-		// Since validateSettings is async, if we destroy it now
-		// it'll break
-
-		setTimeout(function() {
-			settingsForm.destroy();
-
-			formBuilder.destroy();
-
-			done();
-		}, 100);
 	});
 
 	it('should create a field with a settingsForm with the fields specified by the FieldType definition', function(done) {
@@ -175,42 +132,47 @@ describe('DDL Form Builder Field Support', function() {
 		done();
 	});
 
-	it('should not allow saving a field with the same name as an existing field', function(done) {
-		var test = this;
+	it(
+		'should not allow saving a field with the same name as an existing field',
+		function(done) {
+			var instance = this;
 
-		var formBuilder = new Liferay.DDL.FormBuilder(
-			{
-				definition: test.definition,
-				pagesJSON: test.layout.pages
-			}
-		).render();
+			var formBuilder = new Liferay.DDL.FormBuilder(
+				{
+					definition: instance.definition,
+					pagesJSON: instance.layout.pages
+				}
+			).render();
 
-		var fieldWithDuplicatedName = createField(formBuilder, 'text', 'sites');
+			var fieldWithDuplicatedName = createField(formBuilder, 'text', 'sites');
 
-		formBuilder.showFieldSettingsPanel(fieldWithDuplicatedName, fieldWithDuplicatedName.get('name'));
+			formBuilder.showFieldSettingsPanel(fieldWithDuplicatedName, fieldWithDuplicatedName.get('name'));
 
-		setFieldSetting(fieldWithDuplicatedName, 'name', 'sites');
+			setFieldSetting(fieldWithDuplicatedName, 'name', 'sites');
 
-		fieldWithDuplicatedName.validateSettings(function(hasErrors) {
-			assert.isTrue(hasErrors);
+			fieldWithDuplicatedName.validateSettings(
+				function(hasErrors) {
+					assert.isTrue(hasErrors);
 
-			formBuilder.destroy();
+					formBuilder.destroy();
 
-			server.restore();
+					server.restore();
 
-			done();
-		});
+					done();
+				}
+			);
 
-		var settingsForm = fieldWithDuplicatedName.get('settingsForm');
+			var settingsForm = fieldWithDuplicatedName.get('settingsForm');
 
-		server.requests.pop().respond(
-			200,
-			{
-				'Content-Type': 'application/json'
-			},
-			getPassingValidationResponse(settingsForm)
-		);
-	});
+			server.requests.pop().respond(
+				200,
+				{
+					'Content-Type': 'application/json'
+				},
+				getPassingValidationResponse(settingsForm)
+			);
+		}
+	);
 
 	it('should allow editing a field', function(done) {
 		var test = this;

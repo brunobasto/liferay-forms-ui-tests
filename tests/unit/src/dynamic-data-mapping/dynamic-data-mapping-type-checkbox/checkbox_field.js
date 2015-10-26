@@ -70,6 +70,49 @@ describe('DDM Field Checkbox', function() {
 		done();
 	});
 
+	it('should update the checkbox state correctly after calling .setValue', function(done) {
+		var checkboxField = new Liferay.DDM.Field.Checkbox({
+			localizable: true,
+			value: {
+				en_US: 'false',
+				pt_BR: 'true'
+			}
+		}).render();
+
+		var inputNode = checkboxField.getInputNode();
+
+		assert.isFalse(inputNode.attr('checked'));
+
+		checkboxField.setValue(true);
+
+		assert.isTrue(inputNode.attr('checked'));
+
+		done();
+	});
+
+	it('should show the loading feedback inside the container', function(done) {
+		var checkboxField = new Liferay.DDM.Field.Checkbox({
+			localizable: true,
+			value: {
+				en_US: 'false',
+				pt_BR: 'true'
+			}
+		}).render(document.body);
+
+		checkboxField.showLoadingFeedback();
+
+		var container = checkboxField.get('container');
+
+		var spinner = container.one('.icon-spinner');
+
+		assert.isTrue(spinner.inDoc());
+		assert.isTrue(spinner.previous() !== checkboxField.getInputNode());
+
+		checkboxField.destroy();
+
+		done();
+	});
+
 	it('should serialize the value attribute according to the checkbox input status', function(done) {
 		var checkboxField = new Liferay.DDM.Field.Checkbox({
 			localizable: false,

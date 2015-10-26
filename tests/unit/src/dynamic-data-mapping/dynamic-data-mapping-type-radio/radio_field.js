@@ -117,4 +117,69 @@ describe('DDM Field Radio', function() {
 
 		done();
 	});
+
+	it('should show the loading feedback inside the container', function(done) {
+		var radioField = new Liferay.DDM.Field.Radio({
+			localizable: false,
+			options: [
+				{
+					label: {
+						en_US: 'Bruno'
+					},
+					value: 'bruno'
+				},
+				{
+					label: {
+						en_US: 'Marcellus'
+					},
+					value: 'marcellus'
+				}
+			],
+			value: 'marcellus'
+		}).render(document.body);
+
+		radioField.showLoadingFeedback();
+
+		var container = radioField.get('container');
+
+		var spinner = container.one('.icon-spinner');
+
+		assert.isTrue(spinner.inDoc());
+		assert.isTrue(spinner.previous() !== radioField.getInputNode());
+
+		radioField.destroy();
+
+		done();
+	});
+
+	it('should update the nodes state correctly', function(done) {
+		var radioField = new Liferay.DDM.Field.Radio({
+			localizable: false,
+			options: [
+				{
+					label: {
+						en_US: 'Bruno'
+					},
+					value: 'bruno'
+				},
+				{
+					label: {
+						en_US: 'Marcellus'
+					},
+					value: 'marcellus'
+				}
+			],
+			value: 'marcellus'
+		}).render();
+
+		assert.equal('marcellus', radioField.getValue());
+
+		radioField.setValue('bruno');
+
+		assert.equal('bruno', radioField.getValue());
+
+		radioField.destroy();
+
+		done();
+	});
 });
