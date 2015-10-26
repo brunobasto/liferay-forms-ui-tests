@@ -28,6 +28,25 @@ module.exports = {
 
 			content = content.replace(/\/o\/ddm-form-renderer/g, modulePath);
 		}
+		else if (/dynamic-data-lists-form-web/.test(file.path)) {
+			var modulePath = osgi.ddlBundleResourcesPath('dynamic-data-lists-form-web');
+
+			modulePath = modulePath.replace(liferaySourceDir, '/liferay');
+
+			content = content.replace('Liferay.ThemeDisplay.getPathContext()', '\'\'');
+
+			content = content.replace(/\/o\/ddl-form-web/g, modulePath);
+		}
+		else if (/frontend-js-soyutils-web/.test(file.path)) {
+			var soyDir = path.join(liferaySourceDir, 'modules', 'frontend', 'frontend-js-soyutils-web');
+			var modulePath = path.join(soyDir, 'classes', 'META-INF', 'resources');
+
+			modulePath = modulePath.replace(liferaySourceDir, '/liferay');
+
+			content = content.replace('Liferay.ThemeDisplay.getPathContext()', '\'\'');
+
+			content = content.replace(/\/o\/frontend-js-soyutils-web/g, modulePath);
+		}
 
 		return content.replace('[%LIFERAY_PATH%]', 'liferay');
 	},

@@ -137,7 +137,7 @@ module.exports = function(callback) {
 						},
 						{
 							included: true,
-							pattern: soyDir + '/.task-cache/soyutils.js',
+							pattern: soyDir + '/classes/META-INF/resources/soyutils.js',
 							served: true
 						},
 						{
