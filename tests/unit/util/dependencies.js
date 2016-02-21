@@ -10,21 +10,21 @@ var liferaySourceDir = config.liferaySourceDir;
 
 var mocksDir = path.join('mocks');
 
-var soyDir = path.join(liferaySourceDir, 'modules', 'frontend', 'frontend-js-soyutils-web');
+var soyDir = path.join(liferaySourceDir, 'modules', 'apps', 'platform', 'frontend', 'frontend-js-soyutils-web');
 var soyJSDir = path.join(osgi.resourcesMainPath(soyDir));
 
-var frontendDir = path.join(liferaySourceDir, 'modules', 'frontend', 'frontend-js-web');
+var frontendDir = path.join(liferaySourceDir, 'modules', 'apps', 'platform', 'frontend', 'frontend-js-web');
 var frontendJsSrcDir = path.join(osgi.resourcesMainPath(frontendDir));
 var frontendTmpSrcDir = path.join(frontendDir, 'tmp', 'META-INF', 'resources');
 
-var editorsDir = path.join(liferaySourceDir, 'modules', 'frontend', 'frontend-editors-web');
-var editorsTmpSrcDir = path.join(editorsDir, 'tmp', 'META-INF', 'resources');
+var editorsDir = path.join(liferaySourceDir, 'modules', 'apps', 'platform', 'frontend', 'frontend-editor');
 
 // DMD Renderer
 var ddmRendererResourcesDir = osgi.ddmBundleResourcesPath('dynamic-data-mapping-form-renderer');
 
 // DDM Fields
 var checkboxResourcesDir = osgi.ddmBundleResourcesPath('dynamic-data-mapping-type-checkbox');
+var keyValueResourcesDir = osgi.ddmBundleResourcesPath('dynamic-data-mapping-type-key-value');
 var optionsResourcesDir = osgi.ddmBundleResourcesPath('dynamic-data-mapping-type-options');
 var radioResourcesDir = osgi.ddmBundleResourcesPath('dynamic-data-mapping-type-radio');
 var selectResourcesDir = osgi.ddmBundleResourcesPath('dynamic-data-mapping-type-select');
@@ -56,6 +56,9 @@ module.exports = function(callback) {
 					if ((file.indexOf('aui') === 0) ||
 						(file.indexOf('bootstrap') === 0) ||
 						(file.indexOf('lexicon') === 0) ||
+						(file.indexOf('jquery.js') > -1) ||
+						(file.indexOf('lodash.js') > -1) ||
+						(file.indexOf('svg4everybody.js') > -1) ||
 						(file.indexOf('loader.js') > -1)) {
 
 						filePath.unshift(frontendTmpSrcDir);
@@ -97,37 +100,47 @@ module.exports = function(callback) {
 						},
 						{
 							included: false,
+							pattern: frontendTmpSrcDir + '/aui/**/*.png',
+							served: true
+						},
+						{
+							included: false,
 							pattern: frontendTmpSrcDir + '/aui/**/*.js',
 							served: true
 						},
 						{
 							included: true,
-							pattern: editorsTmpSrcDir + '/**/*.css',
+							pattern: editorsDir + '/**/*.css',
 							served: true
 						},
 						{
 							included: true,
-							pattern: editorsTmpSrcDir + '/alloyeditor/ckeditor.js',
-							served: true
-						},
-						{
-							included: false,
-							pattern: editorsTmpSrcDir + '/alloyeditor/config.js',
-							served: true
-						},
-						{
-							included: false,
-							pattern: editorsTmpSrcDir + '/alloyeditor/lang/en.js',
-							served: true
-						},
-						{
-							included: false,
-							pattern: editorsTmpSrcDir + '/alloyeditor/styles.js',
+							pattern: editorsDir + '/frontend-editor-alloyeditor-web/src/main/resources/META-INF/resources/js/*.js',
 							served: true
 						},
 						{
 							included: true,
-							pattern: editorsTmpSrcDir + '/alloyeditor/liferay-alloy-editor-no-ckeditor-min.js',
+							pattern: editorsDir + '/frontend-editor-alloyeditor-web/tmp/META-INF/resources/alloyeditor/ckeditor.js',
+							served: true
+						},
+						{
+							included: false,
+							pattern: editorsDir + '/frontend-editor-alloyeditor-web/tmp/META-INF/resources/alloyeditor/config.js',
+							served: true
+						},
+						{
+							included: false,
+							pattern: editorsDir + '/frontend-editor-alloyeditor-web/tmp/META-INF/resources/alloyeditor/lang/en.js',
+							served: true
+						},
+						{
+							included: false,
+							pattern: editorsDir + '/frontend-editor-alloyeditor-web/tmp/META-INF/resources/alloyeditor/styles.js',
+							served: true
+						},
+						{
+							included: true,
+							pattern: editorsDir + '/frontend-editor-alloyeditor-web/tmp/META-INF/resources/alloyeditor/liferay-alloy-editor-no-ckeditor-min.js',
 							served: true
 						},
 						{
@@ -172,6 +185,11 @@ module.exports = function(callback) {
 						},
 						{
 							included: true,
+							pattern: keyValueResourcesDir + '/*.js',
+							served: true
+						},
+						{
+							included: true,
 							pattern: selectResourcesDir + '/*.js',
 							served: true
 						},
@@ -198,11 +216,6 @@ module.exports = function(callback) {
 						{
 							included: true,
 							pattern: validationResourcesDir + '/*.css',
-							served: true
-						},
-						{
-							included: true,
-							pattern: ddmRendererResourcesDir + '/css/*.css',
 							served: true
 						}
 					]

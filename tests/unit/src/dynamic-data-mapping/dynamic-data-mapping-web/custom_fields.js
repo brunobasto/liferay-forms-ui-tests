@@ -31,6 +31,9 @@ describe('OLD DDM Form Builder', function() {
 
 	it('LPS-51684 DDM fields of the same type are saved with the same Field Label', function(done) {
 		var A = AUI();
+
+		document.body.id = 'main-content';
+
 		var formBuilder = new Liferay.FormBuilder().render();
 
 		window.formBuilder = formBuilder;
@@ -69,6 +72,8 @@ describe('OLD DDM Form Builder', function() {
 		var definition = JSON.parse(formBuilder.getContent());
 
 		assert.notDeepEqual(definition.fields[0].label, definition.fields[1].label);
+
+		document.body.id = '';
 
 		done();
 	});

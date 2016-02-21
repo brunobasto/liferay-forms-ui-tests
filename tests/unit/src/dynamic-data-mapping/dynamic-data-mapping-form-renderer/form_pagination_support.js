@@ -75,42 +75,59 @@ describe('DDM Renderer Form Pagination Support', function() {
 		var prevBtn = container.one('.lfr-ddm-form-pagination-prev');
 		var submitBtn = container.one('.lfr-ddm-form-submit');
 
+		var respond = function() {
+			var fields = [];
+
+			form.eachField(function(field) {
+				fields.push({
+					instanceId: field.get('instanceId'),
+					name: field.get('name'),
+					valid: true,
+					visible: true
+				});
+			});
+
+			server.requests.pop().respond(
+				200,
+				{
+					'Content-Type': 'application/json'
+				},
+				JSON.stringify(
+					{
+						fields: fields
+					}
+				)
+			);
+		}
+
+		form.getPagination().on('changeRequest', respond);
+
 		// On page one
 		assert.isTrue(isVisible(nextBtn));
 		assert.isFalse(isVisible(prevBtn));
 		assert.isFalse(isVisible(submitBtn));
 
+		form.getPagination().after('pageChange', function(event) {
+			if (event.newVal == 2) {
+				// On page two
+				assert.isTrue(isVisible(nextBtn));
+				assert.isTrue(isVisible(prevBtn));
+				assert.isFalse(isVisible(submitBtn));
+
+				form.nextPage();
+			}
+			else if (event.newVal == 3) {
+				// On last page
+				assert.isFalse(isVisible(nextBtn));
+				assert.isTrue(isVisible(prevBtn));
+				assert.isTrue(isVisible(submitBtn));
+
+				form.destroy();
+				done();
+			}
+		});
+
 		form.nextPage();
-
-		// On page two
-		assert.isTrue(isVisible(nextBtn));
-		assert.isTrue(isVisible(prevBtn));
-		assert.isFalse(isVisible(submitBtn));
-
-		form.nextPage();
-
-		// On last page
-		assert.isFalse(isVisible(nextBtn));
-		assert.isTrue(isVisible(prevBtn));
-		assert.isTrue(isVisible(submitBtn));
-
-		form.prevPage();
-
-		// On page two again
-		assert.isTrue(isVisible(nextBtn));
-		assert.isTrue(isVisible(prevBtn));
-		assert.isFalse(isVisible(submitBtn));
-
-		form.prevPage();
-
-		// On page one again
-		assert.isTrue(isVisible(nextBtn));
-		assert.isFalse(isVisible(prevBtn));
-		assert.isFalse(isVisible(submitBtn));
-
-		form.destroy();
-
-		done();
 	});
 
 	it('should show control buttons correctly with single page forms', function(done) {

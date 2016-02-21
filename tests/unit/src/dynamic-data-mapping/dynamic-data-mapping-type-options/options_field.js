@@ -50,19 +50,16 @@ describe('DDM Field Options', function() {
 			]
 		}).render();
 
-		var inputs = optionsField.get('container').all('input[type="text"]');
-
 		var value = optionsField.get('value');
 
-		inputs.each(function(input, index) {
-			var isLabel = index % 2 === 0,
-				valueIndex = Math.floor(index / 2);
+		var repetitions = optionsField.getLastField().get('repetitions');
 
-			if (isLabel) {
-				assert.equal(value[valueIndex].label[optionsField.get('locale')], input.val());
-			}
-			else {
-				assert.equal(value[valueIndex].value, input.val());
+		repetitions.forEach(function(repetition, index) {
+			var optionValue = value[index];
+
+			if (optionValue) {
+				assert.equal(optionValue.label[optionsField.get('locale')], repetition.getValue());
+				assert.equal(optionValue.value, repetition.get('key'));
 			}
 		});
 
@@ -90,14 +87,10 @@ describe('DDM Field Options', function() {
 			]
 		}).render(document.body);
 
-		var container = optionsField.get('container');
+		var lastOptionField = optionsField.getLastField();
 
-		container.one('.add-row').simulate('click');
-
-		var inputs = optionsField.get('container').all('input[type="text"]');
-
-		inputs.item(4).val('New');
-		inputs.item(5).val('new');
+		lastOptionField.setValue('New');
+		lastOptionField.set('key', 'new');
 
 		var json = optionsField.toJSON();
 

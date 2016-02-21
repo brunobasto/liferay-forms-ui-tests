@@ -122,7 +122,7 @@ describe('DDL Form Builder Settings Support', function() {
 				if (field.get('repeatable')) {
 					var toolbar = field.get('container').one('.lfr-ddm-form-field-repeatable-toolbar');
 
-					assert.isTrue(toolbar.hasClass('hide'));
+					assert.notOk(toolbar);
 				}
 			}
 		}).visit();
@@ -150,7 +150,9 @@ describe('DDL Form Builder Settings Support', function() {
 
 			setFieldSetting(fieldWithDuplicatedName, 'name', 'sites');
 
-			fieldWithDuplicatedName.validateSettings(
+			var settingsForm = fieldWithDuplicatedName.get('settingsForm');
+
+			settingsForm.validateSettings(
 				function(hasErrors) {
 					assert.isTrue(hasErrors);
 
@@ -188,7 +190,9 @@ describe('DDL Form Builder Settings Support', function() {
 
 		formBuilder.showFieldSettingsPanel(field, field.get('name'));
 
-		field.validateSettings(function(hasError) {
+		var settingsForm = field.get('settingsForm');
+
+		settingsForm.validateSettings(function(hasError) {
 			assert.isFalse(hasError);
 
 			formBuilder.destroy();
@@ -197,8 +201,6 @@ describe('DDL Form Builder Settings Support', function() {
 
 			done();
 		});
-
-		var settingsForm = field.get('settingsForm');
 
 		server.requests.pop().respond(
 			200,

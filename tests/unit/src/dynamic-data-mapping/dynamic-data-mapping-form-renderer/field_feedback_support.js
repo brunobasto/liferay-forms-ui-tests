@@ -31,7 +31,7 @@ describe('DDM Renderer Field Feedback Support', function() {
 
 		var errorMessage = field.get('errorMessage');
 
-		var node = field.get('container').one('.validation-message');
+		var node = field.get('container').one('.help-block');
 
 		assert.ok(node);
 		assert.equal(node.text(), errorMessage);
@@ -51,7 +51,7 @@ describe('DDM Renderer Field Feedback Support', function() {
 
 		field.showErrorMessage('New error message');
 
-		var node = field.get('container').one('.validation-message');
+		var node = field.get('container').one('.help-block');
 
 		assert.ok(node);
 		assert.equal(node.text(), 'New error message');

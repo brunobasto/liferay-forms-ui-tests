@@ -10,14 +10,14 @@ module.exports = {
 	normalizeContent: function(file, content) {
 		// Normalize OSGI Web-ContextPath for fields
 
-		if (/dynamic-data-mapping-type-(\w+)?/.test(file.path)) {
+		if (/dynamic-data-mapping-type-([\-\w]+)?/.test(file.path)) {
 			var fieldPath = osgi.ddmBundleResourcesPath('dynamic-data-mapping-type-$1');
 
 			fieldPath = fieldPath.replace(liferaySourceDir, '/liferay');
 
 			content = content.replace('Liferay.ThemeDisplay.getPathContext()', '\'\'');
 
-			content = content.replace(/\/o\/ddm-type-(\w+)?/g, fieldPath);
+			content = content.replace(/\/o\/dynamic-data-mapping-type-([-\w]+)?/g, fieldPath);
 		}
 		else if (/dynamic-data-mapping-form-renderer/.test(file.path)) {
 			var modulePath = osgi.ddmBundleResourcesPath('dynamic-data-mapping-form-renderer');
@@ -26,7 +26,7 @@ module.exports = {
 
 			content = content.replace('Liferay.ThemeDisplay.getPathContext()', '\'\'');
 
-			content = content.replace(/\/o\/ddm-form-renderer/g, modulePath);
+			content = content.replace(/\/o\/dynamic-data-mapping-form-renderer/g, modulePath);
 		}
 		else if (/dynamic-data-lists-form-web/.test(file.path)) {
 			var modulePath = osgi.ddlBundleResourcesPath('dynamic-data-lists-form-web');
@@ -35,10 +35,10 @@ module.exports = {
 
 			content = content.replace('Liferay.ThemeDisplay.getPathContext()', '\'\'');
 
-			content = content.replace(/\/o\/ddl-form-web/g, modulePath);
+			content = content.replace(/\/o\/dynamic-data-lists-form-web/g, modulePath);
 		}
 		else if (/frontend-js-soyutils-web/.test(file.path)) {
-			var soyDir = path.join(liferaySourceDir, 'modules', 'frontend', 'frontend-js-soyutils-web');
+			var soyDir = path.join(liferaySourceDir, 'modules', 'apps', 'platform', 'frontend', 'frontend-js-soyutils-web');
 			var modulePath = path.join(soyDir, 'classes', 'META-INF', 'resources');
 
 			modulePath = modulePath.replace(liferaySourceDir, '/liferay');

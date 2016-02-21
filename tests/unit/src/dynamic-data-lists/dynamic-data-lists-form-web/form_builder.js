@@ -54,7 +54,7 @@ describe('DDL Form Builder', function() {
 		boundingBox.one('.form-builder-field-list-add-button').simulate('click');
 
 		// Show field settings
-		A.one('.form-builder-modal-content .field-type').simulate('click');
+		A.one('.lfr-ddl-form-builder-field-types-modal-content .field-type').simulate('click');
 
 		assert.isTrue(formBuilder.createField.calledOnce);
 

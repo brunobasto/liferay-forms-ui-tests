@@ -1,7 +1,7 @@
 'use strict';
 
-var path = require('path');
 var config = require('../../../config');
+var path = require('path');
 
 var liferaySourceDir = config.liferaySourceDir;
 
@@ -9,19 +9,19 @@ var appsDir = path.resolve(liferaySourceDir, 'modules', 'apps');
 
 module.exports = {
 	ddlBundlePath: function(bundleName) {
-		return path.resolve(appsDir, 'dynamic-data-lists', bundleName);
+		return path.resolve(appsDir, 'business-productivity', 'dynamic-data-lists', bundleName);
 	},
 
 	ddlBundleResourcesPath: function(bundleName) {
 		return path.resolve(this.resourcesPath(this.ddlBundlePath(bundleName)));
 	},
 
-	ddmBundleResourcesPath: function(bundleName) {
-		return path.resolve(this.resourcesPath(this.ddmBundlePath(bundleName)));
+	ddmBundlePath: function(bundleName) {
+		return path.resolve(appsDir, 'business-productivity', 'dynamic-data-mapping', bundleName);
 	},
 
-	ddmBundlePath: function(bundleName) {
-		return path.resolve(appsDir, 'dynamic-data-mapping', bundleName);
+	ddmBundleResourcesPath: function(bundleName) {
+		return path.resolve(this.resourcesPath(this.ddmBundlePath(bundleName)));
 	},
 
 	resourcesMainPath: function(bundleDir) {
@@ -29,6 +29,6 @@ module.exports = {
 	},
 
 	resourcesPath: function(bundleDir) {
-		return path.resolve(bundleDir, 'src', 'META-INF', 'resources');
+		return path.resolve(bundleDir, 'src', 'main', 'resources', 'META-INF', 'resources');
 	}
 };

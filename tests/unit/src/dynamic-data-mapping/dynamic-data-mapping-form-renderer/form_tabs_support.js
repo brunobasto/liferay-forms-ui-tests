@@ -44,15 +44,12 @@ describe('DDM Renderer Form Tabs Support', function() {
 		var form = new Liferay.DDM.Renderer.Form({
 			container: container,
 			templateNamespace: 'ddm.tabbed_form'
-		});
+		}).render();
 
-		var tabView = form.getTabView();
+		var tabView = form.tabView;
 
-		assert.isFalse(tabView.get('rendered'), 'TabView should not be rendered yet');
-
-		form.render();
-
-		assert.isTrue(tabView.get('rendered'), 'TabView should be rendered now');
+		assert.ok(tabView);
+		assert.isTrue(tabView.get('rendered'), 'TabView should be rendered.');
 
 		form.destroy();
 

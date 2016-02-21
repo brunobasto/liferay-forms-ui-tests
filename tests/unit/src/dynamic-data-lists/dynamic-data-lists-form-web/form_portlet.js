@@ -26,7 +26,7 @@ var registerAlloyEditor = function(name) {
 		window._editorInstances[name] = new A.LiferayAlloyEditor(
 			{
 				editorConfig: {
-					srcNode: document.getElementById(name)
+					srcNode: name
 				},
 				namespace: name,
 				plugins: {},
@@ -151,7 +151,7 @@ describe('DDL Form Portlet', function() {
 	});
 
 	beforeEach(function() {
-		document.body.innerHTML = '<div id="_namespace_loader"></div>';
+		document.body.innerHTML = '<div id="_namespace_loader"></div><input id="_namespace_publishCheckbox" type="checkbox" />';
 	});
 
 	it('should create a Form Builder with fields defined in "definition" and "layout"', function(done) {
@@ -181,6 +181,26 @@ describe('DDL Form Portlet', function() {
 		var test = this,
 			A = AUI();
 
+		Liferay.component(
+			'settingsDDMForm',
+			new Liferay.DDM.Renderer.Form(
+				{
+					definition: {
+						fields: [
+							{
+								name: 'published',
+								type: 'checkbox',
+								value: false
+							}
+						]
+					},
+					portletNamespace: '_namespace_',
+					templateNamespace: 'ddm.settings_form'
+				}
+			).render()
+		);
+
+		var settingsInput = A.Node.create('<input typ="hidden" id="_namespace_serializedSettingsDDMFormValues" />');
 		var definitionInput = A.Node.create('<input name="_namespace_definition" id="_namespace_definition" type="hidden" />');
 		var descriptionEditorNode = A.Node.create('<div id="_namespace_descriptionEditorContainer"><div class="alloy-editor alloy-editor-placeholder" contenteditable="false" id="_namespace_descriptionEditor" name="_namespace_descriptionEditor"></div></div>');
 		var descriptionInput = A.Node.create('<input name="_namespace_description" id="_namespace_description" type="hidden" />');
@@ -197,6 +217,7 @@ describe('DDL Form Portlet', function() {
 		formNode.append(definitionInput);
 		formNode.append(layoutInput);
 		formNode.append(submitButton);
+		formNode.append(settingsInput);
 		formNode.appendTo(document.body);
 
 		// Liferay needded this

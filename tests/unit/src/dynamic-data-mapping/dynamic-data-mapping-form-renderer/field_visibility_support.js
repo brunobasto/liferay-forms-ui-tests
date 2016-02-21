@@ -76,7 +76,7 @@ describe('DDM Renderer Field Visibility Support', function() {
 
 			var ajax = server.requests.pop();
 
-			assert.equal(ajax.url, '/o/ddm-form-evaluator/');
+			assert.equal(ajax.url, '/o/dynamic-data-mapping-form-evaluator/');
 
 			ajax.respond(
 				200,

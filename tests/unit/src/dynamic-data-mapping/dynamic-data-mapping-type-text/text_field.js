@@ -47,11 +47,9 @@ describe('DDM Field Text', function() {
 	it('should show a tooltip when tip is not null', function(done) {
 		var textField = new Liferay.DDM.Field.Text({
 			name: 'textField',
-			tip: 'this is some tip',
+			tooltip: 'this is some tip',
 			value: 'marcellus'
 		}).render(document.body);
-
-		textField.showLoadingFeedback();
 
 		var container = textField.get('container');
 
@@ -65,13 +63,11 @@ describe('DDM Field Text', function() {
 	it('should show a tooltip when tip a localized value', function(done) {
 		var textField = new Liferay.DDM.Field.Text({
 			name: 'textField',
-			tip: {
+			tooltip: {
 				en_US: 'this is some tip'
 			},
 			value: 'marcellus'
 		}).render(document.body);
-
-		textField.showLoadingFeedback();
 
 		var container = textField.get('container');
 

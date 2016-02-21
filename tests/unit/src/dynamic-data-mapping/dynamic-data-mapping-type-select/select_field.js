@@ -46,6 +46,7 @@ describe('DDM Field Select', function() {
 	it('should render the select with the selected option according to the unlocalized value attribute', function(done) {
 		var selectField = new Liferay.DDM.Field.Select({
 			localizable: false,
+			readOnly: true,
 			options: [
 				{
 					label: {
@@ -155,10 +156,14 @@ describe('DDM Field Select', function() {
 		var options = selectField.get('options');
 
 		selectField.getInputNode().all('option').each(function(optionNode, index) {
-			assert.equal(options[index].value, optionNode.attr('value'), 'option valuein DOM should match');
+			if (index === 0) {
+				return; // first option is 'Select an option'
+			}
+
+			assert.equal(options[index-1].value, optionNode.attr('value'), 'option valuein DOM should match');
 
 			assert.equal(
-				options[index].label[selectField.get('locale')],
+				options[index-1].label[selectField.get('locale')],
 				optionNode.text(),
 				'Displayed label should be the one corresponding to the current locale'
 			);
@@ -200,7 +205,7 @@ describe('DDM Field Select', function() {
 		done();
 	});
 
-	it('should not have any options selected when there\'s no value for the desired language', function(done) {
+	it('should default option selected when there\'s no value for the desired language', function(done) {
 		var selectField = new Liferay.DDM.Field.Select({
 			localizable: true,
 			locale: 'pt_BR',
@@ -222,7 +227,8 @@ describe('DDM Field Select', function() {
 
 		var selectedOptions = selectField.getInputNode().all('option[selected]');
 
-		assert.isTrue(selectedOptions.size() === 0);
+		assert.isTrue(selectedOptions.size() === 1);
+		assert.equal(selectedOptions.item(0).attr('disabled'), true);
 
 		selectField.destroy();
 
@@ -244,13 +250,11 @@ describe('DDM Field Select', function() {
 
 		var optionsField = settingsForm.getField('options');
 
-		var optionsContainer = optionsField.get('container');
+		var sizeBefore = optionsField.getLastField().get('repetitions').length;
 
-		var sizeBefore = optionsContainer.all('.ddm-options-row').size();
+		optionsField.addField();
 
-		optionsContainer.one('.add-row').simulate('click');
-
-		var sizeAfter = optionsContainer.all('.ddm-options-row').size();
+		var sizeAfter = optionsField.getLastField().get('repetitions').length;
 
 		assert.isFalse(sizeAfter === sizeBefore);
 

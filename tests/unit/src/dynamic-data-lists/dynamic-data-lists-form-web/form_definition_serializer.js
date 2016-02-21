@@ -66,7 +66,6 @@ describe('DDL Definition Serializer', function() {
 		]);
 
 		fields[4].set('name', 'agree');
-		fields[4].set('localizable', false);
 		fields[4].set('label', { en_US: 'I Agree to the terms' });
 		fields[4].set('predefinedValue', true);
 
@@ -153,7 +152,7 @@ describe('DDL Definition Serializer', function() {
 							"showLabel":true,
 							"tip": "",
 							"type":"text",
-							"visibilityExpression": "true"
+							"visibilityExpression": ""
 						},
 						{
 							"dataType":"string",
@@ -173,7 +172,7 @@ describe('DDL Definition Serializer', function() {
 							"showLabel":true,
 							"tip": "",
 							"type":"text",
-							"visibilityExpression": "true"
+							"visibilityExpression": ""
 						},
 						{
 							"predefinedValue": {
@@ -195,7 +194,7 @@ describe('DDL Definition Serializer', function() {
 							"required":false,
 							"type":"radio",
 							"tip": "",
-							"visibilityExpression": "true",
+							"visibilityExpression": "",
 							"readOnly": false,
 							"fieldNamespace": "",
 							"repeatable": false
@@ -208,6 +207,7 @@ describe('DDL Definition Serializer', function() {
 								"en_US":"Favourite Color"
 							},
 							"localizable":true,
+							"multiple": false,
 							"name":"color",
 							"options": [
 								{ label: { en_US: 'Blue' }, value: 'blue' },
@@ -223,7 +223,7 @@ describe('DDL Definition Serializer', function() {
 							"showLabel":true,
 							"tip": "",
 							"type":"select",
-							"visibilityExpression": "true"
+							"visibilityExpression": ""
 						},
 						{
 							"dataType":"boolean",
@@ -232,7 +232,7 @@ describe('DDL Definition Serializer', function() {
 							"label": {
 								"en_US":"I Agree to the terms"
 							},
-							"localizable":false,
+							"localizable": true,
 							"name":"agree",
 							"predefinedValue": true,
 							"readOnly": false,
@@ -241,7 +241,7 @@ describe('DDL Definition Serializer', function() {
 							"showLabel":true,
 							"tip": "",
 							"type":"checkbox",
-							"visibilityExpression": "true"
+							"visibilityExpression": ""
 						}
 					]
 				}

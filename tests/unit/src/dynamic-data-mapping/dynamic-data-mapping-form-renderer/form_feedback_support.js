@@ -24,9 +24,11 @@ describe('DDM Renderer Form Feedback Support', function() {
 
 		var submitButton = formNode.one('[type="submit"]');
 
+		assert.ok(submitButton);
+
 		form.showLoadingFeedback();
 
-		assert.ok(submitButton.one('.icon-spinner'))
+		assert.ok(submitButton.one('.icon-spinner'));
 
 		form.destroy();
 

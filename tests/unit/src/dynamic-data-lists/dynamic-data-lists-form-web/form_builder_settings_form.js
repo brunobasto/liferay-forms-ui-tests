@@ -132,7 +132,7 @@ describe('DDL Form Builder Settings Form', function() {
 
 			assert.isFalse(advancedPage.hasClass('active'));
 
-			container.one('.settings-toggler').simulate('click');
+			settingsForm.modeToggler.simulate('click');
 
 			assert.isTrue(advancedPage.hasClass('active'));
 
@@ -140,7 +140,7 @@ describe('DDL Form Builder Settings Form', function() {
 		}
 	);
 
-	it('should validate the settingsForm when calling field.validateSettings', function(done) {
+	it('should validate the settingsForm when calling validateSettings', function(done) {
 		var test = this;
 
 		var formBuilder = new Liferay.DDL.FormBuilder(
@@ -162,7 +162,7 @@ describe('DDL Form Builder Settings Form', function() {
 
 		sinon.spy(settingsForm, 'validate');
 
-		field.validateSettings();
+		settingsForm.validateSettings();
 
 		assert.isTrue(settingsForm.validate.calledOnce);
 
